@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoVRTest.CSharp", "PicoVRTest.CSharp.csproj", "{74291356-7A85-C9CE-55A5-237B0F1BE430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicoVRTest.CSharp.Editor", "PicoVRTest.CSharp.Editor.csproj", "{4601B0C6-E569-3BE6-BC96-B7996A393810}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74291356-7A85-C9CE-55A5-237B0F1BE430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74291356-7A85-C9CE-55A5-237B0F1BE430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74291356-7A85-C9CE-55A5-237B0F1BE430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74291356-7A85-C9CE-55A5-237B0F1BE430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4601B0C6-E569-3BE6-BC96-B7996A393810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4601B0C6-E569-3BE6-BC96-B7996A393810}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4601B0C6-E569-3BE6-BC96-B7996A393810}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4601B0C6-E569-3BE6-BC96-B7996A393810}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
