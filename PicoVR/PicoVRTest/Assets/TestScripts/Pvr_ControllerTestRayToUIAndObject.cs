@@ -46,7 +46,8 @@ public class Pvr_ControllerTestRayToUIAndObject : MonoBehaviour
         graphicRaycaster = transform.Find("/Canvas").GetComponent<GraphicRaycaster>();
     }
 	void Start () {
-        
+		ray = new Ray();
+		ray.origin = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -100,6 +101,22 @@ public class Pvr_ControllerTestRayToUIAndObject : MonoBehaviour
         //图形射线发射线检测
         graphicRaycaster.Raycast(eventData, result);
         //返回一个bool值，表示有没有检测到UI
+		//把这个抽出来做成一个主法，（参数：hit.point）
+		if(result.Count> 0)
+		{
+			flag.gameObject.SetActive(true);
+			//只能在UI的中心位置生成一个圆圈
+			flag.transform.position = result[0].gameObject.transform.position + new Vector3(0, 0, -0.1f);
+			flag.DOKill();
+			flag.DOScale(0.025f, 0.5f);
+			dot.gameObject.SetActive(false);
+		}
+		else
+		{
+			flag.DOScale(0.0f, 0.2f);
+			flag.gameObject.SetActive(false);
+			dot.gameObject.SetActive(true);
+		}
         return result.Count > 0;
     }
 
@@ -178,7 +195,7 @@ public class Pvr_ControllerTestRayToUIAndObject : MonoBehaviour
             flag.transform.position = hit.point + new Vector3(0, 0, -0.1f);
             flag.DOKill();
             flag.DOScale(0.025f, 0.5f);
-            dot.gameObject.SetActive(true);
+            dot.gameObject.SetActive(false);
 
             return true;
         }
@@ -186,7 +203,7 @@ public class Pvr_ControllerTestRayToUIAndObject : MonoBehaviour
         checkingObject = null;
 
         flag.DOScale(0.0f, 0.2f);
-        flag.gameObject.SetActive(true);
+        flag.gameObject.SetActive(false);
         dot.gameObject.SetActive(true);
 
         return false;
