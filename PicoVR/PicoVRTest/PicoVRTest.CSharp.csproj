@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -74,6 +76,12 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\PicoVRSDK\Plugins\DOTween\DOTween.dll</HintPath>
@@ -160,8 +168,9 @@
     <Compile Include="Assets\PicoVRSDK\Pvr_UnitySDKLegacy\Scripts\Tracking\PicoVRPose.cs" />
     <Compile Include="Assets\PicoVRSDK\Pvr_VolumePowerBrightness\API\Pvr_VolumePowerBrightnessAPI.cs" />
     <Compile Include="Assets\PicoVRSDK\Pvr_VolumePowerBrightness\Scripts\Pvr_VolumePowerBrightness.cs" />
+    <Compile Include="Assets\TestScripts\Class1.cs" />
     <Compile Include="Assets\TestScripts\Cube.cs" />
-    <Compile Include="Assets\TestScripts\Pvr_ControllerTestRayToUIAndObject.cs" />
+    <Compile Include="Assets\TestScripts\Pvr_ControllerRayCheck.cs" />
     <Compile Include="Assets\TestScripts\TestCanvas.cs" />
     <Compile Include="Assets\TestScripts\TestTextClick.cs" />
     <Compile Include="Assets\TestScripts\testCubeClick.cs" />
