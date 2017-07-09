@@ -9,7 +9,8 @@ public class MoveController : MonoBehaviour {
     public static bool isRight;
 
     public float speed;
-    public float rotationSpeed;
+    public float rotationHSpeed;
+	public float rotationVSpeed;
 
     CharacterController controller;
     Transform camera;
@@ -17,6 +18,7 @@ public class MoveController : MonoBehaviour {
 	void Start () {
         controller = GetComponent<CharacterController>();
         camera = transform.Find("Main Camera");
+		Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -66,11 +68,11 @@ public class MoveController : MonoBehaviour {
         float y = Input.GetAxis("Mouse Y");
         if(x != 0)
         {
-            transform.Rotate(transform.up, x * rotationSpeed, Space.World);
+            transform.Rotate(transform.up, x * rotationHSpeed, Space.World);
         }
         if(y != 0)
         {
-            camera.Rotate(camera.right, y * rotationSpeed, Space.World);
+            camera.Rotate(camera.right, -y * rotationVSpeed, Space.World);
         }
     }
     void LateUpdate()
