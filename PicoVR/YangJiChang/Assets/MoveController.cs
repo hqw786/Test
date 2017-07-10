@@ -7,10 +7,13 @@ public class MoveController : MonoBehaviour {
     public static bool isBack;
     public static bool isLeft;
     public static bool isRight;
+    public static bool isJump;
+    public static bool isJumpDown;
 
     public float speed;
     public float rotationHSpeed;
 	public float rotationVSpeed;
+    public float jumpHeight;
 
     CharacterController controller;
     Transform camera;
@@ -43,6 +46,11 @@ public class MoveController : MonoBehaviour {
         else if (Input.GetKey(KeyCode.D))
         {
             isRight = true;
+        }
+        //航拍模式不能跳
+        if(Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
+        {
+            isJump = true;
         }
 
         if (Input.GetKeyUp(KeyCode.W))
@@ -79,19 +87,54 @@ public class MoveController : MonoBehaviour {
     {
         if(isForward)
         {
-            controller.SimpleMove(transform.forward * Time.deltaTime * speed);
+            float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+            controller.SimpleMove(transform.forward * Time.deltaTime * v);
         }
         else if(isBack)
         {
-            controller.SimpleMove(-transform.forward * Time.deltaTime * speed);
+            float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+            controller.SimpleMove(-transform.forward * Time.deltaTime * v);
         }
         if(isLeft)
         {
-            controller.SimpleMove(-transform.right * Time.deltaTime * speed);
+            float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+            controller.SimpleMove(-transform.right * Time.deltaTime * v);
         }
         else if(isRight)
         {
-            controller.SimpleMove(transform.right * Time.deltaTime * speed);
+            float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+            controller.SimpleMove(transform.right * Time.deltaTime * v);
+        }
+
+        if(isJump)
+        {
+            if (!isJumpDown)
+            {
+                float y = transform.position.y;
+                y = Mathf.Lerp(y, jumpHeight, 0.05f);
+                if (y >= 0.95f * jumpHeight)
+                {
+                    isJumpDown = true;
+                    y = jumpHeight;
+                }
+                transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            }
+            else
+            {
+                float y = transform.position.y;
+                y = Mathf.Lerp(y, 0f, 0.05f);
+                if(y<=0.05f * jumpHeight)
+                {
+                    isJump = false;
+                    isJumpDown = false;
+                    y = 0f;
+                }
+                transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            }
+        }
+        if(controller.isGrounded && isJump)
+        {
+            isJump = false;
         }
     }
 }
