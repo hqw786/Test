@@ -31,7 +31,10 @@ public class MoveController : MonoBehaviour {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             Direction();
-            Rotation();
+            if (Input.GetMouseButton(1))
+            {
+                Rotation();
+            }
         }
 	}
     void Direction()
@@ -119,22 +122,22 @@ public class MoveController : MonoBehaviour {
             if (isForward)
             {
                 float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(transform.forward * Time.deltaTime * v);
+                controller.Move(Vector3.forward * Time.deltaTime * v);
             }
             else if (isBack)
             {
                 float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(-transform.forward * Time.deltaTime * v);
+                controller.Move(-Vector3.forward * Time.deltaTime * v);
             }
             if (isLeft)
             {
                 float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(-transform.right * Time.deltaTime * v);
+                controller.Move(-Vector3.right * Time.deltaTime * v);
             }
             else if (isRight)
             {
                 float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(transform.right * Time.deltaTime * v);
+                controller.Move(Vector3.right * Time.deltaTime * v);
             }
         }
         //if(MainManager.Instance.curView == ViewMode.firstView)

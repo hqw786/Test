@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public enum ViewMode
 {
@@ -16,8 +15,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
 	Transform person;
 
-    FirstPersonController firstPerson;
-    //MoveController firstPerson;
+    MoveController firstPerson;
     FlyController flyController;
 
 	public ViewMode curView;
@@ -28,18 +26,15 @@ public class MainManager : MonoBehaviour
 	void Awake()
 	{
         Instance = this;
-        //person = transform.Find("/Person");
-        person = transform.Find("/FPSController");
+        person = transform.Find("/Person");
         rb = person.GetComponent<Rigidbody>();
-        //rb.useGravity = false;
-        //firstPerson = person.GetComponent<MoveController>();
-        firstPerson = person.GetComponent<FirstPersonController>();
-		//flyController = person.GetComponent<FlyController>();
+        firstPerson = person.GetComponent<MoveController>();
+		flyController = person.GetComponent<FlyController>();
         curView = ViewMode.firstView;
         
 	}
 	void Start () {
-		//flyController.enabled = false;
+		flyController.enabled = false;
 		firstPerson.enabled = true;
         //Application.runInBackground = true;
         
@@ -58,17 +53,19 @@ public class MainManager : MonoBehaviour
         curView = lastView == ViewMode.firstView ? ViewMode.flyView : ViewMode.firstView;
         if (curView == ViewMode.firstView)
 		{
-			//firstPerson.enabled = true;
-			//flyController.enabled = false;
+			firstPerson.enabled = true;
+			flyController.enabled = false;
             positionSwitch(curView);
-            //rb.useGravity = true;
+            rb.useGravity = true;
+            //rb.isKinematic = true;
 		}
 		else
 		{
-			//firstPerson.enabled = false;
-			//flyController.enabled = true;
+			firstPerson.enabled = false;
+			flyController.enabled = true;
             positionSwitch(curView);
-            //rb.useGravity = false;
+            rb.useGravity = false;
+            //rb.isKinematic = true;
 		}
 	}
     /// <summary>
@@ -79,11 +76,11 @@ public class MainManager : MonoBehaviour
 	{
 		if(view == ViewMode.firstView)
 		{
-			person.position = new Vector3(person.position.x, 50f, person.position.z);
+			person.position = new Vector3(person.position.x, 1f, person.position.z);
 		}
 		else
 		{
-			person.position = new Vector3(person.position.x, 0f, person.position.z);
+			person.position = new Vector3(person.position.x, 50f, person.position.z);
 		}
 	}
 }
