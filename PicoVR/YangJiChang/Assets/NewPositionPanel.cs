@@ -25,6 +25,7 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
     public void OnBtnPoint1Click()
     {
         MainManager.Instance.WarpToNewPosition(point1);
+		btnPoint1.image.color = Color.red;
         gameObject.SetActive(false);
     }
 
