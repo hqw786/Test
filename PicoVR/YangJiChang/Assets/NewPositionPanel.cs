@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
 {
     Button btnPoint1;
+    public Transform point1;
 	// Use this for initialization
     void Awake()
     {
@@ -21,13 +22,15 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
 	void Update () {
 		
 	}
-    void OnBtnPoint1Click()
+    public void OnBtnPoint1Click()
     {
+        MainManager.Instance.WarpToNewPosition(point1);
         gameObject.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        gameObject.SetActive(false);
+        if(eventData.pointerEnter.name == this.name || eventData.pointerEnter.transform.parent.name == this.name)
+            gameObject.SetActive(false);
     }
 }

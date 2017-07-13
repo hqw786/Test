@@ -8,51 +8,81 @@ public class FlyController : MonoBehaviour {
     public static bool isBack;
     public static bool isLeft;
     public static bool isRight;
-    Vector3 moveDirection;
+    //Vector3 moveDirection;
     public static bool isJump;
     public static bool isJumpDown;
 
-    public float speed;
-    public float rotationHSpeed;
-    public float rotationVSpeed;
-    public float jumpHeight;
+    float yHeight;
+    float normalSpeed;
+    float fastSpeed;
+    float rotationHSpeed;
+    float rotationVSpeed;
 
-    public float minFov;
-    public float maxFov;
+    float minFOV;
+    float maxFOV;
+    float FOVSpeed;
     bool isZoomIn;
     bool isZoomOut;
-    
+
+    float rate = 1f;
+
     Camera camera;
     CharacterController controller;
     Transform cameraTransform;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         controller = GetComponent<CharacterController>();
         cameraTransform = transform.Find("Main Camera");
         camera = cameraTransform.GetComponent<Camera>();
+    }
+    public void Initial()
+    {
+        yHeight = MainManager.Instance.flyYHeight;
+        normalSpeed = MainManager.Instance.walkSpeed_Fly;
+        fastSpeed = MainManager.Instance.runSpeed_Fly;
+
+        rotationHSpeed = MainManager.Instance.rotationHSpeed;
+        rotationVSpeed = MainManager.Instance.rotationVSpeed;
+
+        minFOV = MainManager.Instance.minFOV_Fly;
+        maxFOV = MainManager.Instance.maxFOV_Fly;
+        FOVSpeed = MainManager.Instance.FOVSpeed_Fly;
+
+        //位置旋转视距等改变
+        camera.fieldOfView = maxFOV;
+        transform.position = new Vector3(transform.position.x, yHeight, transform.position.z);
+        FOVReset();
+    }
+    void Start()
+    {
         //Cursor.visible = false;//隐藏鼠标
-		camera.fieldOfView = maxFov;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isZoomIn)
+        if (isZoomIn)
         {
-			isZoomIn = false;
-            if (maxFov == minFov) return;
-            camera.fieldOfView = Mathf.Lerp((camera.fieldOfView - minFov) / (maxFov - minFov), 0f, Time.fixedDeltaTime*10);
-			camera.fieldOfView = Mathf.Clamp(camera.fieldOfView * (maxFov - minFov), minFov, maxFov);
-            //换种插值方法
-            //camera.fieldOfView = Mathf.SmoothStep()
+            isZoomIn = false;
+            if (maxFOV == minFOV) return;
+            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, minFOV, Time.fixedDeltaTime * FOVSpeed);
+            if (camera.fieldOfView < minFOV + 1f)
+            {
+                camera.fieldOfView = minFOV;
+            }
+            rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
         }
-        else if(isZoomOut)
+        if (isZoomOut)
         {
-			isZoomOut = false;
-            if (maxFov == minFov) return;
-            camera.fieldOfView = Mathf.Lerp((camera.fieldOfView - minFov) / (maxFov - minFov), 1f, Time.fixedDeltaTime*10);
-            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView*(maxFov - minFov), minFov, maxFov);
+            isZoomOut = false;
+            if (maxFOV == minFOV) return;
+            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, maxFOV, Time.fixedDeltaTime * FOVSpeed);
+            if (camera.fieldOfView > maxFOV - 1f)
+            {
+                camera.fieldOfView = maxFOV;
+            }
+            rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
         }
     }
     void Update()
@@ -68,6 +98,10 @@ public class FlyController : MonoBehaviour {
         
         FOVChange(Input.GetAxis("Mouse ScrollWheel"));
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            print(cameraTransform.rotation);
+        }
         
     }
     void Direction()
@@ -112,11 +146,11 @@ public class FlyController : MonoBehaviour {
         float y = Input.GetAxis("Mouse Y");
         if (x != 0)
         {
-			transform.Rotate(transform.up, x * rotationHSpeed * (camera.fieldOfView - minFov + 1) / (maxFov - minFov), Space.World);
+			transform.Rotate(transform.up, x * rotationHSpeed * rate, Space.World);
         }
         if (y != 0)
         {
-			cameraTransform.Rotate(cameraTransform.right, -y * rotationVSpeed * (camera.fieldOfView - minFov + 1) / (maxFov - minFov), Space.World);
+			cameraTransform.Rotate(cameraTransform.right, -y * rotationVSpeed * rate, Space.World);
         }
     }
     void FOVChange(float w)
@@ -137,24 +171,34 @@ public class FlyController : MonoBehaviour {
         {
             if (isForward)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(transform.forward * Time.deltaTime * v);
+                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+                controller.Move(transform.forward * Time.deltaTime * v * rate);
             }
             else if (isBack)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(-transform.forward * Time.deltaTime * v);
+                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+                controller.Move(-transform.forward * Time.deltaTime * v * rate);
             }
             if (isLeft)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(-transform.right * Time.deltaTime * v);
+                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+                controller.Move(-transform.right * Time.deltaTime * v * rate);
             }
             else if (isRight)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(transform.right * Time.deltaTime * v);
+                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+                controller.Move(transform.right * Time.deltaTime * v * rate);
             }
         }
+    }
+    public void FOVReset()
+    {
+        camera.fieldOfView = maxFOV;
+        rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
+        //将摄像机对准正下方位置。
+        Quaternion q = cameraTransform.localRotation;
+        q.x = 0f;
+        q = q * Quaternion.Euler(90, 0, 0);
+        cameraTransform.localRotation = q;
     }
 }

@@ -4,32 +4,62 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuPanel : MonoBehaviour {
-    Button btnViewSwitch;
-    Button btnWeatherEffect;
+    //Button btnViewSwitch;
+    //Button btnWeatherEffect;
     Button bttnSelectNewPosition;
-    Button btnMineMap;
+    //Button btnMineMap;
     Button btnHelp;
     Button btnExit;
-	// Use this for initialization
+    Button btnPersonView;
+    Button btnFlyView;
+    Button btnAutoRoam;
+    // Use this for initialization
 	void Start () {
-        btnViewSwitch = transform.Find("BtnViewSwitch").GetComponent<Button>();
-        btnViewSwitch.onClick.AddListener(OnBtnViewSwitchClick);
+        //不改了。把这个隐藏起来
+        //btnViewSwitch = transform.Find("BtnViewSwitch").GetComponent<Button>();
+        //btnViewSwitch.onClick.AddListener(OnBtnViewSwitchClick);
 
-        btnWeatherEffect = transform.Find("BtnWeatherEffect").GetComponent<Button>();
-        btnWeatherEffect.onClick.AddListener(OnBtnWeatherEffectClick);
+        //不改了。把这个隐藏起来
+        //btnWeatherEffect = transform.Find("BtnWeatherEffect").GetComponent<Button>();
+        //btnWeatherEffect.onClick.AddListener(OnBtnWeatherEffectClick);
 
+        //不改了。把这个隐藏起来
+        //btnMineMap = transform.Find("BtnMineMap").GetComponent<Button>();
+        //btnMineMap.onClick.AddListener(OnBtnMineMapClick);
+        
         bttnSelectNewPosition = transform.Find("BtnSelectNewPosition").GetComponent<Button>();
         bttnSelectNewPosition.onClick.AddListener(OnBtnSelectNewPositionClick);
-
-        btnMineMap = transform.Find("BtnMineMap").GetComponent<Button>();
-        btnMineMap.onClick.AddListener(OnBtnMineMapClick);
 
         btnHelp = transform.Find("BtnHelp").GetComponent<Button>();
         btnHelp.onClick.AddListener(OnBtnHelpClick);
 
         btnExit = transform.Find("BtnExit").GetComponent<Button>();
         btnExit.onClick.AddListener(OnBtnExitClick);
+
+        btnPersonView = transform.Find("BtnPersonView").GetComponent<Button>();
+        btnPersonView.onClick.AddListener(OnBtnPersonViewClick);
+
+        btnFlyView = transform.Find("BtnFlyView").GetComponent<Button>();
+        btnFlyView.onClick.AddListener(OnBtnFlyViewClick);
+
+        btnAutoRoam = transform.Find("BtnAutoRoam").GetComponent<Button>();
+        btnAutoRoam.onClick.AddListener(OnBtnAutoRoamClick);
 	}
+
+    private void OnBtnPersonViewClick()
+    {
+        if(MainManager.Instance.curView == ViewMode.flyView)
+            MainManager.Instance.ViewModeSwitch();
+    }
+    void OnBtnFlyViewClick()
+    {
+        if(MainManager.Instance.curView == ViewMode.firstView)
+            MainManager.Instance.ViewModeSwitch();
+    }
+    void OnBtnAutoRoamClick()
+    {
+
+    }
     // Update is called once per frame
 	void Update () 
     {

@@ -8,25 +8,84 @@ public class MoveController : MonoBehaviour {
     public static bool isBack;
     public static bool isLeft;
     public static bool isRight;
-    Vector3 moveDirection;
+    //Vector3 moveDirection;
     public static bool isJump;
     public static bool isJumpDown;
 
-    public float speed;
-    public float rotationHSpeed;
-	public float rotationVSpeed;
-    public float jumpHeight;
+    float walkSpeed;
+    float runSpeed;
+    float rotationHSpeed;
+	float rotationVSpeed;
+    float jumpHeight;
+
+    float minFOV;
+    float maxFOV;
+    float FOVSpeed;
+
+    float rate = 1f;
+
+    bool isZoomIn;
+    bool isZoomOut;
 
     CharacterController controller;
-    Transform camera;
+    Transform cameraTransform;
+    Camera camera;
 	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         controller = GetComponent<CharacterController>();
-        camera = transform.Find("Main Camera");
+        cameraTransform = transform.Find("Main Camera");
+        camera = cameraTransform.GetComponent<Camera>();
+    }
+    public void Initial()
+    {
+        walkSpeed = MainManager.Instance.walkSpeed;
+        runSpeed = MainManager.Instance.runSpeed;
+
+        rotationHSpeed = MainManager.Instance.rotationHSpeed;
+        rotationVSpeed = MainManager.Instance.rotationVSpeed;
+
+        minFOV = MainManager.Instance.minFOV_firstPerson;
+        maxFOV = MainManager.Instance.maxFOV_firstPerson;
+
+        FOVSpeed = MainManager.Instance.FOVSpeed_firstPerson;
+        //第一次初始化位置，旋转和视距
+        transform.position = MainManager.Instance.initialPosition_firstPerson;
+        transform.rotation = MainManager.Instance.initialDir_firstPerson;
+
+        FOVReset();
+    }
+	void Start () 
+    {
 		//Cursor.visible = false;//隐藏鼠标
 	}
 	
 	// Update is called once per frame
+    void FixedUpdate()
+    {
+        if (isZoomIn)
+        {
+            isZoomIn = false;
+            if (maxFOV == minFOV) return;
+            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, minFOV, Time.fixedDeltaTime * FOVSpeed);
+            if(camera.fieldOfView < minFOV + 1f)
+            {
+                camera.fieldOfView = minFOV;
+            }
+            rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
+        }
+        if (isZoomOut)
+        {
+            isZoomOut = false;
+            if (maxFOV == minFOV) return;
+            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, maxFOV, Time.fixedDeltaTime * FOVSpeed);
+            if(camera.fieldOfView > maxFOV -1f)
+            {
+                camera.fieldOfView = maxFOV;
+            }
+            rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
+        }
+    }
 	void Update () {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -36,6 +95,7 @@ public class MoveController : MonoBehaviour {
                 Rotation();
             }
         }
+        FOVChange(Input.GetAxis("Mouse ScrollWheel"));
 	}
     void Direction()
     {
@@ -85,11 +145,24 @@ public class MoveController : MonoBehaviour {
         float y = Input.GetAxis("Mouse Y");
         if(x != 0)
         {
-            transform.Rotate(transform.up, x * rotationHSpeed, Space.World);
+            transform.Rotate(transform.up, x * rotationHSpeed * rate, Space.World);
         }
         if(y != 0)
         {
-            camera.Rotate(camera.right, -y * rotationVSpeed, Space.World);
+            cameraTransform.Rotate(cameraTransform.right, -y * rotationVSpeed * rate, Space.World);
+        }
+    }
+    void FOVChange(float w)
+    {
+        if (w == 0f) return;
+        print(w);
+        if (w > 0)
+        {
+            isZoomIn = true;
+        }
+        else if (w < 0)
+        {
+            isZoomOut = true;
         }
     }
     void LateUpdate()
@@ -98,59 +171,26 @@ public class MoveController : MonoBehaviour {
         {
             if (isForward)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
                 controller.SimpleMove(transform.forward * Time.deltaTime * v);
             }
             else if (isBack)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
                 controller.SimpleMove(-transform.forward * Time.deltaTime * v);
             }
             if (isLeft)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
                 controller.SimpleMove(-transform.right * Time.deltaTime * v);
             }
             else if (isRight)
             {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
+                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
                 controller.SimpleMove(transform.right * Time.deltaTime * v);
             }
         }
-        else
-        {
-            if (isForward)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(Vector3.forward * Time.deltaTime * v);
-            }
-            else if (isBack)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(-Vector3.forward * Time.deltaTime * v);
-            }
-            if (isLeft)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(-Vector3.right * Time.deltaTime * v);
-            }
-            else if (isRight)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-                controller.Move(Vector3.right * Time.deltaTime * v);
-            }
-        }
-        //if(MainManager.Instance.curView == ViewMode.firstView)
-        //{
-        //    float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-        //    controller.SimpleMove(moveDirection * v * Time.deltaTime);
-        //}
-        //else
-        //{
-        //    float v = Input.GetKey(KeyCode.LeftShift) ? 2f * speed : speed;
-        //    controller.Move(moveDirection * v * Time.deltaTime);
-        //}
-
+    }
         //if(isJump)
         //{
         //    if (!isJumpDown)
@@ -181,5 +221,21 @@ public class MoveController : MonoBehaviour {
         //{
         //    isJump = false;
         //}
+    //}
+    //这个改是是否可以落下，在空中垂直于地面的位置没超出地面范围，就可以落下。
+    //public bool IsGround()
+    //{
+
+
+        //return 
+    //}
+    public void FOVReset()
+    {
+        camera.fieldOfView = maxFOV;
+        rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
+        //将摄像机放平。
+        Quaternion q = cameraTransform.localRotation;
+        q.x = 0;
+        cameraTransform.localRotation = q;
     }
 }

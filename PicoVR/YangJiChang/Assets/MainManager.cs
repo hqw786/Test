@@ -13,31 +13,74 @@ public enum ViewMode
 public class MainManager : MonoBehaviour 
 {
     public static MainManager Instance;
-	Transform person;
-
-    MoveController firstPerson;
-    FlyController flyController;
-
+	Transform person;//人物
+    MoveController firstPerson;//第一人称脚本
+    FlyController flyController;//飞行脚本
+    [HideInInspector]
 	public ViewMode curView;
+    [HideInInspector]
     public ViewMode lastView;
     Rigidbody rb;
+
+    [Header("地面移动数值")]
+    public Vector3 initialPosition_firstPerson;
+    public Quaternion initialDir_firstPerson;
+    public float walkSpeed;
+    public float runSpeed;
+    public float minFOV_firstPerson;
+    public float maxFOV_firstPerson;
+    [Range(2,10)]
+    public float FOVSpeed_firstPerson;
     
-	// Use this for initialization
+    [Header("飞行移动数值")]
+    public Quaternion initialDir_Fly;
+    public float flyYHeight;
+    public float walkSpeed_Fly;
+    public float runSpeed_Fly;
+    public float minFOV_Fly;
+    public float maxFOV_Fly;
+    [Range(2, 10)]
+    public float FOVSpeed_Fly;
+    [Range(0, 5)]
+    public float rotationHSpeed;
+    [Range(0, 5)]
+    public float rotationVSpeed;
+	
+    //[Header("前往目的地地图背景")]
+    // Use this for initialization
 	void Awake()
 	{
         Instance = this;
         person = transform.Find("/Person");
         rb = person.GetComponent<Rigidbody>();
+        flyController = person.GetComponent<FlyController>();
         firstPerson = person.GetComponent<MoveController>();
-		flyController = person.GetComponent<FlyController>();
         curView = ViewMode.firstView;
-        
-	}
+        InitialMap();
+    }
+    void InitialMap()
+    {
+        Transform t1 = transform.Find("/BoundaryPoints/Point1");
+        Transform t2 = transform.Find("/BoundaryPoints/Point2");
+        float w = Mathf.Abs(t2.position.z - t1.position.z);
+        float h = Mathf.Abs(t2.position.x - t1.position.x);
+        if(w >= h)
+        {
+            //前往目的地的背景图片大小设置
+            //小地图的背景图片大小设置
+        }
+        else
+        {
+            //前往目的地的背景图片大小设置
+            //小地图的背景图片大小设置
+        }
+    }
 	void Start () {
+        flyController.Initial();
 		flyController.enabled = false;
+        firstPerson.Initial();
 		firstPerson.enabled = true;
-        //Application.runInBackground = true;
-        
+                
 	}
 	
 	// Update is called once per frame
@@ -55,32 +98,37 @@ public class MainManager : MonoBehaviour
 		{
 			firstPerson.enabled = true;
 			flyController.enabled = false;
-            positionSwitch(curView);
+            positionSwitch_FirstPerson();
             rb.useGravity = true;
-            //rb.isKinematic = true;
+            firstPerson.FOVReset();//FOV设置一下。
 		}
 		else
 		{
 			firstPerson.enabled = false;
 			flyController.enabled = true;
-            positionSwitch(curView);
+            positionSwitch_Fly();
             rb.useGravity = false;
-            //rb.isKinematic = true;
+            flyController.FOVReset();//FOV设置一下。
 		}
+
+        
 	}
     /// <summary>
     /// 位置切换
     /// </summary>
     /// <param name="view">视角模式</param>
-	void positionSwitch(ViewMode view)
+	void positionSwitch_Fly()
 	{
-		if(view == ViewMode.firstView)
-		{
-			person.position = new Vector3(person.position.x, 1f, person.position.z);
-		}
-		else
-		{
-			person.position = new Vector3(person.position.x, 50f, person.position.z);
-		}
+		person.position = new Vector3(person.position.x, flyYHeight, person.position.z);
 	}
+    void positionSwitch_FirstPerson()
+    {
+        //这边落地：是落到相近的预置点，还是物体所在的正下方，物体向下发射一个射线，落到碰撞体上
+        person.position = new Vector3(person.position.x, 1f, person.position.z);
+    }
+    public void WarpToNewPosition(Transform point)
+    {
+        person.position = point.position + Vector3.up;
+        person.rotation = point.rotation;
+    }
 }
