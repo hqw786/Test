@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/since/day/day.unity
+  isLoaded: 1
+  isActive: 1

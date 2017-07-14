@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
+    
+
     Image image;
 	Text text;
 
@@ -12,11 +14,30 @@ public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
     bool isHide;
 
 	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         image = transform.Find("Image").GetComponent<Image>();
 		text = image.transform.Find("Text").GetComponent<Text>();
+    }
+	void Start () {
+        
 	}
-	
+    public void OnEnable()
+    {
+        //透明，隐藏
+        TextDefault();
+    }
+    void TextDefault()
+    {
+        Color ci = image.color;
+        Color ct = text.color;
+        ci.a = 0f;
+        ct.a = 0f;
+        image.color = ci;
+        text.color = ct;
+        image.gameObject.SetActive(false);
+        text.gameObject.SetActive(false);
+    }
 	// Update is called once per frame
 	void Update () {
 		if(isShow)

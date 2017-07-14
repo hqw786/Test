@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class MenuPanel : MonoBehaviour {
     //Button btnViewSwitch;
     //Button btnWeatherEffect;
-    Button bttnSelectNewPosition;
+    Button btnSelectNewPosition;
     //Button btnMineMap;
     Button btnHelp;
     Button btnExit;
     Button btnPersonView;
     Button btnFlyView;
     Button btnAutoRoam;
+
+    List<Button> viewKind = new List<Button>();
     // Use this for initialization
 	void Start () {
         //不改了。把这个隐藏起来
@@ -27,8 +29,8 @@ public class MenuPanel : MonoBehaviour {
         //btnMineMap = transform.Find("BtnMineMap").GetComponent<Button>();
         //btnMineMap.onClick.AddListener(OnBtnMineMapClick);
         
-        bttnSelectNewPosition = transform.Find("BtnSelectNewPosition").GetComponent<Button>();
-        bttnSelectNewPosition.onClick.AddListener(OnBtnSelectNewPositionClick);
+        btnSelectNewPosition = transform.Find("BtnSelectNewPosition").GetComponent<Button>();
+        btnSelectNewPosition.onClick.AddListener(OnBtnSelectNewPositionClick);
 
         btnHelp = transform.Find("BtnHelp").GetComponent<Button>();
         btnHelp.onClick.AddListener(OnBtnHelpClick);
@@ -44,21 +46,32 @@ public class MenuPanel : MonoBehaviour {
 
         btnAutoRoam = transform.Find("BtnAutoRoam").GetComponent<Button>();
         btnAutoRoam.onClick.AddListener(OnBtnAutoRoamClick);
+
+        viewKind.Add(btnPersonView);
+        viewKind.Add(btnFlyView);
+        viewKind.Add(btnAutoRoam);
 	}
 
     private void OnBtnPersonViewClick()
     {
-        if(MainManager.Instance.curView == ViewMode.flyView)
+        if (MainManager.Instance.curView != ViewMode.firstView)
+        {
             MainManager.Instance.ViewModeSwitch();
+        }
     }
     void OnBtnFlyViewClick()
     {
-        if(MainManager.Instance.curView == ViewMode.firstView)
+        if (MainManager.Instance.curView != ViewMode.flyView)
+        {
             MainManager.Instance.ViewModeSwitch();
+        }
     }
     void OnBtnAutoRoamClick()
     {
-
+        if(MainManager.Instance.curView != ViewMode.autoRoam)
+        {
+            MainManager.Instance.ViewModeSwitch();
+        }
     }
     // Update is called once per frame
 	void Update () 

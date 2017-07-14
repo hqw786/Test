@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,6 +77,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="YangJiChang.CSharp.Plugins.csproj">
@@ -83,6 +91,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ConfigData.cs" />
     <Compile Include="Assets\ExitPanel.cs" />
     <Compile Include="Assets\FirstPersonMove.cs" />
     <Compile Include="Assets\FlyController.cs" />
@@ -93,7 +102,10 @@
     <Compile Include="Assets\MenuPanel.cs" />
     <Compile Include="Assets\MoveController.cs" />
     <Compile Include="Assets\NewPositionPanel.cs" />
+    <Compile Include="Assets\NodeInfo.cs" />
+    <Compile Include="Assets\RoamInfo.cs" />
     <Compile Include="Assets\Scripts\Tools\Define.cs" />
+    <Compile Include="Assets\ShowPathInfo.cs" />
     <Compile Include="Assets\ShowText.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\WeatherPanel.cs" />

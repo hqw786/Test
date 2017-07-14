@@ -6,8 +6,8 @@ using UnityEngine.Video;
 public enum ViewMode
 {
     firstView,
-    //thirdView,
-    flyView
+    flyView,
+    autoRoam
 }
 
 public class MainManager : MonoBehaviour 
@@ -102,16 +102,19 @@ public class MainManager : MonoBehaviour
             rb.useGravity = true;
             firstPerson.FOVReset();//FOV设置一下。
 		}
-		else
-		{
-			firstPerson.enabled = false;
-			flyController.enabled = true;
+        else if (curView == ViewMode.flyView)
+        {
+            firstPerson.enabled = false;
+            flyController.enabled = true;
             positionSwitch_Fly();
             rb.useGravity = false;
             flyController.FOVReset();//FOV设置一下。
-		}
+        }
+        else
+        {
+            //切换到自动漫游，先移到第一个位置然后自动向后面前进
 
-        
+        }
 	}
     /// <summary>
     /// 位置切换
