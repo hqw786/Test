@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     //GameObject mineMapPanel;
     GameObject helpPanel;
     GameObject exitPanel;
+    GameObject roamPanel;
     List<GameObject> uis = new List<GameObject>();
 
 	// Use this for initialization
@@ -28,6 +29,8 @@ public class UIManager : MonoBehaviour
         //mineMapPanel = transform.Find("MineMapPanel").gameObject;
         helpPanel = transform.Find("HelpPanel").gameObject;
         exitPanel = transform.Find("ExitPanel").gameObject;
+        roamPanel = transform.Find("RoamPanel").gameObject;
+        uis.Add(roamPanel);
         uis.Add(menuPanel);
         //uis.Add(weatherPanel);
         uis.Add(newPositionPanel);

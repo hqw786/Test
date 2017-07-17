@@ -70,10 +70,7 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnAutoRoamClick()
     {
-        if(MainManager.Instance.curView != ViewMode.autoRoam)
-        {
-            MainManager.Instance.ViewModeSwitch();
-        }
+        UIManager.Instance.ShowUI(Define.uiPanelRoam);
     }
     // Update is called once per frame
 	void Update () 
@@ -86,14 +83,14 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnWeatherEffectClick()
     {
-        if (UIManager.Instance.ActiveUI(Define.uiPanelWeather))
-        {
-            UIManager.Instance.HideUI(Define.uiPanelWeather);
-        }
-        else
-        {
-            UIManager.Instance.ShowUI(Define.uiPanelWeather);
-        }
+        //if (UIManager.Instance.ActiveUI(Define.uiPanelWeather))
+        //{
+        //    UIManager.Instance.HideUI(Define.uiPanelWeather);
+        //}
+        //else
+        //{
+        //    UIManager.Instance.ShowUI(Define.uiPanelWeather);
+        //}
     }
     void OnBtnSelectNewPositionClick()
     {
@@ -101,7 +98,7 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnMineMapClick()
     {
-        UIManager.Instance.ShowUI(Define.uiPanelMineMap);
+        //UIManager.Instance.ShowUI(Define.uiPanelMineMap);
     }
     void OnBtnHelpClick()
     {

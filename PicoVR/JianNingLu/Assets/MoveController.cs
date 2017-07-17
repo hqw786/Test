@@ -30,6 +30,12 @@ public class MoveController : MonoBehaviour {
     CharacterController controller;
     Transform cameraTransform;
     Camera camera;
+
+    Transform autoRoamStart;
+    Transform autoRoamEnd;
+    Vector3 AutoRoamDir;
+    int startNum;
+    int endNum;
 	// Use this for initialization
     void Awake()
     {
@@ -94,8 +100,16 @@ public class MoveController : MonoBehaviour {
             {
                 Rotation();
             }
+            FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
-        FOVChange(Input.GetAxis("Mouse ScrollWheel"));
+        if(Input.anyKey)
+        {
+            MainManager.Instance.isAutoRoam = false;
+        }
+        if(MainManager.Instance.isAutoRoam)
+        {
+            AutoRoaming();
+        }
 	}
     void Direction()
     {
@@ -163,6 +177,20 @@ public class MoveController : MonoBehaviour {
         else if (w < 0)
         {
             isZoomOut = true;
+        }
+    }
+    void AutoRoaming()
+    {
+        //这种方式，先快后慢，不匀速
+        //transform.position = Vector3.Lerp(transform.position, autoRoamEnd.position, Time.deltaTime * 0.1f);
+        //第二种方式，匀速
+        transform.Translate(AutoRoamDir * Time.deltaTime * 5f);
+        if(Vector3.Distance(transform.position,autoRoamEnd.position) <= 1f)
+        {
+            if (!HasNextPosition())
+            {
+                MainManager.Instance.isAutoRoam = false;
+            }
         }
     }
     void LateUpdate()
@@ -237,5 +265,31 @@ public class MoveController : MonoBehaviour {
         Quaternion q = cameraTransform.localRotation;
         q.x = 0;
         cameraTransform.localRotation = q;
+    }
+    public void SetAutoRoamStartAndEndPoint(int s, int e)
+    {
+        if (s >= 0)
+        {
+            startNum = s;
+            endNum = e;
+            HasNextPosition();
+        }
+    }
+    public bool HasNextPosition()
+    {
+        if(endNum == startNum)
+        {
+            return false;
+        }
+        autoRoamStart = ConfigData.Instance.roamPath[startNum];
+        autoRoamEnd = ConfigData.Instance.roamPath[endNum];
+        MainManager.Instance.isAutoRoam = true;
+        transform.position = autoRoamStart.position;
+        AutoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+        AutoRoamDir = AutoRoamDir.normalized;
+        //可能要旋转一些
+
+        startNum++;
+        return true;
     }
 }

@@ -10,26 +10,22 @@ public class RoamPoints : MonoBehaviour
 
 	public GameObject mapBG;
 
-	//float mapW;
-	//float mapH;
+
 	Vector2 mapSize;
-	//float mapOriginH;
-	//float mapOriginW;
 	Vector2 mapOrigin;
-	//float flagH;
-	//float flagV;
 	Vector2 flagPosition;
+    float rate;
 	// Use this for initialization
 	void Awake()
 	{
 		//取得UI
-
+        mapBG = rootNode.Find("MapBG").gameObject;
 	}
 	void SetMap()
 	{
 		//根据边界，决定MapBG的图片的大小
 		float w = Mathf.Abs(pointRightUp.position.x - pointLeftDown.position.x);
-		float h = Mathf.Abs(pointRightUp.position.z - pointLeftDown.position.x);
+		float h = Mathf.Abs(pointRightUp.position.z - pointLeftDown.position.z);
 		if (w >= h)
 		{
 			mapSize = new Vector2(w, h);
@@ -38,7 +34,15 @@ public class RoamPoints : MonoBehaviour
 		{
 			mapSize = new Vector2(h, w);
 		}
-
+        float w1, h1;
+        w1 = 1024f;
+        rate = w1 / mapSize.x;//把比率保存下来
+        h1 = rate * mapSize.y;
+        mapSize = new Vector2(w1, h1);
+        //设置MapBG的大小
+        mapBG.GetComponent<RectTransform>().sizeDelta = mapSize;
+        //设置MapBG的原点为左下角点
+        mapOrigin = new Vector2(-mapSize.x * 0.5f, -mapSize.y * 0.5f);
 	}
 	void Start()
 	{
@@ -51,72 +55,60 @@ public class RoamPoints : MonoBehaviour
 		}
 		//保存漫游点路径节点信息
 		GetPathNodeInfo();
+        PathNodeMapToMap();
 	}
 	void GetPathNodeInfo()
 	{
-		foreach (Transform t in ConfigData.Instance.roamPath)
-		{
-			NodeInfo ni = new NodeInfo();
-			RoamInfo ri = t.GetComponent<RoamInfo>();
-			if (ri.nodeInfo == RoamNodeInfo.start)
-			{//起点
-				ni.isStart = true;
-				ni.isMain = true;
-				ni.startNum = -1;
-				ni.endNum = 0;
-				string s = ri.nodeName.ToString();
-				s = s.Substring(s.IndexOf(".") + 1);
-				ni.showContext = s;
-			}
-			else if (ri.nodeInfo == RoamNodeInfo.end)
-			{//终点
-				ni.isEnd = true;
-				ni.isMain = true;
-				ni.endNum = t.childCount;
-				string s = ri.nodeName.ToString();
-				s = s.Substring(s.IndexOf(".") + 1);
-				string s1 = LastNodeName(t.childCount, out ni.startNum);
-				ni.showContext = s1 + " 到 " + s;
-			}
-			else if (ri.nodeInfo == RoamNodeInfo.main)
-			{//主节点
-				ni.isMain = true;
-				ni.endNum = t.childCount;
-				string s = ri.nodeName.ToString();
-				s = s.Substring(s.IndexOf(".") + 1);
-				string s1 = LastNodeName(t.childCount, out ni.startNum);
-				ni.showContext = s1 + " 到 " + s;
-			}
-			else
-			{//辅节点
-				ni.isAssist = true;
-			}
-			//实例一个新图片，图片的位置
-			GameObject temp = Resources.Load<GameObject>("Prefabs/RoamFlagImg");
-			GameObject g = Instantiate(temp);
-			g.transform.parent = this.transform.parent;
-			g.GetComponent<RectTransform>().position = WorldToUI(t.position);
-			//文字内容显示
-
-		}
+		//foreach (Transform t in ConfigData.Instance.roamPath)
+        for (int i = 0; i < ConfigData.Instance.roamPath.Count;i++)
+        {
+            NodeInfo ni = new NodeInfo();
+            RoamInfo ri = ConfigData.Instance.roamPath[i].GetComponent<RoamInfo>();
+            ni.transform = ConfigData.Instance.roamPath[i];
+            if (ri.nodeInfo == RoamNodeInfo.start)
+            {//起点
+                ni.isStart = true;
+                ni.isMain = true;
+                ni.startNum = -1;
+                ni.endNum = 0;
+                string s = ri.nodeName.ToString();
+                s = s.Substring(s.IndexOf(".") + 1);
+                ni.showContext = "起点：" + s;
+            }
+            else if (ri.nodeInfo == RoamNodeInfo.end)
+            {//终点
+                ni.isEnd = true;
+                ni.isMain = true;
+                ni.endNum = i;
+                string s = ri.nodeName.ToString();
+                s = s.Substring(s.IndexOf(".") + 1);
+                string s1 = LastNodeName(i, out ni.startNum);
+                ni.showContext = s1 + " 到 终点：" + s;
+            }
+            else if (ri.nodeInfo == RoamNodeInfo.main)
+            {//主节点
+                ni.isMain = true;
+                ni.endNum = i;
+                string s = ri.nodeName.ToString();
+                s = s.Substring(s.IndexOf(".") + 1);
+                string s1 = LastNodeName(i, out ni.startNum);
+                ni.showContext = s1 + " 到 " + s;
+            }
+            else
+            {//辅节点
+                ni.isAssist = true;
+            }
+            ConfigData.Instance.pathNodeInfo.Add(ni);
+        }
 	}
-	void WorldToUI(Vector3 point)
+	Vector3 WorldToUI(Vector3 point)
 	{
-		//根据边界，决定MapBG的图片的大小
-		float w = Mathf.Abs(pointRightUp.position.x - pointLeftDown.position.x);
-		float h = Mathf.Abs(pointRightUp.position.z - pointLeftDown.position.x);
+		//计算距左下角点的距离
+        float x = Mathf.Abs(point.x - pointLeftDown.position.x) * rate;
+        float y = Mathf.Abs(point.z - pointLeftDown.position.z) * rate;
 
-		if (w >= h)
-		{
-			this.GetComponent<RectTransform>().sizeDelta = new Vector2();
-		}
-		else
-		{
-
-		}
-
-		//Vector3 = 
-		//return 
+        Vector3 pos = new Vector3(mapOrigin.x + x, mapOrigin.y + y, 0);
+        return pos;
 	}
 	string LastNodeName(int index, out int num)
 	{
@@ -130,12 +122,36 @@ public class RoamPoints : MonoBehaviour
 			{
 				s = ri.nodeName.ToString();
 				n = i;
+                break;
 			}
 		}
 		num = n;
 		s = s.Substring(s.IndexOf(".") + 1);
 		return s;
 	}
+    void PathNodeMapToMap()
+    {
+        foreach (NodeInfo ni in ConfigData.Instance.pathNodeInfo)
+        {
+            if (!ni.isAssist)
+            {
+
+                //实例一个新图片，图片的位置
+                GameObject temp = Resources.Load<GameObject>("Prefabs/BtnRoamFlagImg");
+                GameObject g = Instantiate(temp);
+                g.transform.parent = rootNode;
+                g.transform.localScale = Vector3.one;
+                g.GetComponent<RectTransform>().localPosition = WorldToUI(ni.transform.position);
+                //文字内容显示
+                UpdateContext(g,ni);
+            }
+        }
+    }
+    void UpdateContext(GameObject g,NodeInfo ni)
+    {
+        g.GetComponent<ShowPathInfo>().SetPathNodeInfo(ni);
+        //如果脚本不执行，再想办法
+    }
 	// Update is called once per frame
 	void Update()
 	{

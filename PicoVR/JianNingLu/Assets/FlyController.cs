@@ -94,15 +94,12 @@ public class FlyController : MonoBehaviour {
             {
                 Rotation();
             }
+            FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
         
-        FOVChange(Input.GetAxis("Mouse ScrollWheel"));
+        
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            print(cameraTransform.rotation);
-        }
-        
+       
     }
     void Direction()
     {

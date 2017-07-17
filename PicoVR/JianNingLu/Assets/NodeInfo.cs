@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class NodeInfo
 {
@@ -13,4 +11,5 @@ public class NodeInfo
     public bool isAssist;//辅助节点（在地图上不显示）
     public string showContext;//显示内容
     public int showContextLength;//显示内容的长度
+    public Transform transform;//漫游点Transform
 }

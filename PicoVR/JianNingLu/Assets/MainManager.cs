@@ -14,8 +14,8 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 	Transform person;//人物
-    MoveController firstPerson;//第一人称脚本
-    FlyController flyController;//飞行脚本
+    public MoveController firstPerson;//第一人称脚本
+    public FlyController flyController;//飞行脚本
     [HideInInspector]
 	public ViewMode curView;
     [HideInInspector]
@@ -45,7 +45,9 @@ public class MainManager : MonoBehaviour
     public float rotationHSpeed;
     [Range(0, 5)]
     public float rotationVSpeed;
-	
+
+    [HideInInspector]
+    public bool isAutoRoam;
     //[Header("前往目的地地图背景")]
     // Use this for initialization
 	void Awake()
@@ -60,20 +62,20 @@ public class MainManager : MonoBehaviour
     }
     void InitialMap()
     {
-        Transform t1 = transform.Find("/BoundaryPoints/LeftDown");
-        Transform t2 = transform.Find("/BoundaryPoints/RightUp");
-        float w = Mathf.Abs(t2.position.z - t1.position.z);
-        float h = Mathf.Abs(t2.position.x - t1.position.x);
-        if(w >= h)
-        {
-            //前往目的地的背景图片大小设置
-            //小地图的背景图片大小设置
-        }
-        else
-        {
-            //前往目的地的背景图片大小设置
-            //小地图的背景图片大小设置
-        }
+        //Transform t1 = transform.Find("/BoundaryPoints/LeftDown");
+        //Transform t2 = transform.Find("/BoundaryPoints/RightUp");
+        //float w = Mathf.Abs(t2.position.z - t1.position.z);
+        //float h = Mathf.Abs(t2.position.x - t1.position.x);
+        //if(w >= h)
+        //{
+        //    //前往目的地的背景图片大小设置
+        //    //小地图的背景图片大小设置
+        //}
+        //else
+        //{
+        //    //前往目的地的背景图片大小设置
+        //    //小地图的背景图片大小设置
+        //}
     }
 	void Start () {
         flyController.Initial();
@@ -99,7 +101,6 @@ public class MainManager : MonoBehaviour
 			firstPerson.enabled = true;
 			flyController.enabled = false;
             positionSwitch_FirstPerson();
-            //rb.useGravity = true;
             firstPerson.FOVReset();//FOV设置一下。
 		}
         else if (curView == ViewMode.flyView)
@@ -107,15 +108,14 @@ public class MainManager : MonoBehaviour
             firstPerson.enabled = false;
             flyController.enabled = true;
             positionSwitch_Fly();
-            //rb.useGravity = false;
             flyController.FOVReset();//FOV设置一下。
         }
-        else
-        {
-            //切换到自动漫游，先移到第一个位置然后自动向后面前进
-
-        }
 	}
+    public void SetAutoRoam()
+    {
+        //切换到自动漫游，先移到第一个位置然后自动向后面前进
+        isAutoRoam = true;
+    }
     /// <summary>
     /// 位置切换
     /// </summary>
