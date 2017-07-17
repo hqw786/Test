@@ -184,7 +184,7 @@ public class MoveController : MonoBehaviour {
         //这种方式，先快后慢，不匀速
         //transform.position = Vector3.Lerp(transform.position, autoRoamEnd.position, Time.deltaTime * 0.1f);
         //第二种方式，匀速
-        transform.Translate(AutoRoamDir * Time.deltaTime * 5f);
+		transform.Translate(AutoRoamDir * Time.deltaTime * 10f, Space.World);
         if(Vector3.Distance(transform.position,autoRoamEnd.position) <= 1f)
         {
             if (!HasNextPosition())
@@ -282,13 +282,20 @@ public class MoveController : MonoBehaviour {
             return false;
         }
         autoRoamStart = ConfigData.Instance.roamPath[startNum];
-        autoRoamEnd = ConfigData.Instance.roamPath[endNum];
+		autoRoamEnd = ConfigData.Instance.roamPath[startNum+1];
         MainManager.Instance.isAutoRoam = true;
         transform.position = autoRoamStart.position;
+		
         AutoRoamDir = autoRoamEnd.position - autoRoamStart.position;
         AutoRoamDir = AutoRoamDir.normalized;
+		print(AutoRoamDir);
+		transform.rotation = Quaternion.identity;
         //可能要旋转一些
-
+		Quaternion q = transform.rotation;
+		float a = Vector3.Angle(Vector3.forward, AutoRoamDir);
+		print(a);
+		q = q * Quaternion.Euler(0, 90 - a, 0);
+		transform.rotation = q;
         startNum++;
         return true;
     }

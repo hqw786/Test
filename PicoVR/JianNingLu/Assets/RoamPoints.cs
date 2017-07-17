@@ -143,7 +143,7 @@ public class RoamPoints : MonoBehaviour
                 g.transform.localScale = Vector3.one;
                 g.GetComponent<RectTransform>().localPosition = WorldToUI(ni.transform.position);
                 //文字内容显示
-                UpdateContext(g,ni);
+				UpdateContext(g, ni);
             }
         }
     }

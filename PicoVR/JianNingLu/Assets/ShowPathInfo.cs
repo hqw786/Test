@@ -205,7 +205,6 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
         }
         text.text = ni.showContext;
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         SetPointerEnter();
@@ -216,52 +215,28 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
         SetPointerExit();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        //Transform temp = null;
-        ShowPathInfo spi = null;
-        //if (eventData.pointerEnter.name.Contains("BtnRoamFlagImg"))
-        //{
-        //    temp = eventData.pointerEnter.transform;
-        //}
-        //else if(eventData.pointerEnter.transform.parent.name.Contains("BtnRoamFlagImg"))
-        //{
-        //    temp = eventData.pointerEnter.transform.parent;
-        //}
-        //else if(eventData.pointerEnter.transform.parent.parent.name.Contains("BtnRoamFlagImg")) 
-        //{
-        //    temp = eventData.pointerEnter.transform.parent.parent;
-        //}
-        //if(temp != null)
-        //{
-        //    spi = temp.GetComponent<ShowPathInfo>();
-        //}
-        //if (spi == null)
-        //{
-        //    Debug.LogError("ShowPathInfo脚本没有找到！");
-        //}
-        //else
-        {
-            BtnColorDefault();
-            Button b = GetComponent<Button>();
-            b.image.color = Color.red;
-            //将图标和文字等恢复默认状态
-            RestoreDefault();
-            
-            spi = GetComponent<ShowPathInfo>();
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		ShowPathInfo spi = null;
+		BtnColorDefault();
+		Button b = GetComponent<Button>();
+		b.image.color = Color.red;
+		//将图标和文字等恢复默认状态
+		RestoreDefault();
 
-            if(MainManager.Instance.curView == ViewMode.firstView)
-            {
-                MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(spi.ni.startNum, spi.ni.endNum);
-            }
-            else if(MainManager.Instance.curView == ViewMode.flyView)
-            {
+		spi = GetComponent<ShowPathInfo>();
 
-            }
+		if (MainManager.Instance.curView == ViewMode.firstView)
+		{
+			MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(spi.ni.startNum, spi.ni.endNum);
+		}
+		else if (MainManager.Instance.curView == ViewMode.flyView)
+		{
 
-            transform.parent.gameObject.SetActive(false);
-        }
-    }
+		}
+
+		transform.parent.gameObject.SetActive(false);
+	}
     void BtnColorDefault()
     {
         foreach(Transform t in this.transform.parent)

@@ -15,7 +15,11 @@ public class RoamPanel : MonoBehaviour ,IPointerClickHandler
 	void Update () {
 		
 	}
-
+	public void OnBtnWholeClick()
+	{
+		MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+		gameObject.SetActive(false);
+	}
     public void OnPointerClick(PointerEventData eventData)
     {
         gameObject.SetActive(false);
