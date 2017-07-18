@@ -14,13 +14,15 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
 	Transform person;//人物
+    [HideInInspector]
     public MoveController firstPerson;//第一人称脚本
+    [HideInInspector]
     public FlyController flyController;//飞行脚本
     [HideInInspector]
 	public ViewMode curView;
     [HideInInspector]
     public ViewMode lastView;
-    Rigidbody rb;
+    //Rigidbody rb;
 
     [Header("地面移动数值")]
     public Vector3 initialPosition_firstPerson;
@@ -48,13 +50,16 @@ public class MainManager : MonoBehaviour
 
     [HideInInspector]
     public bool isAutoRoam;
+    [HideInInspector]
+    public RoamView roamView;
     //[Header("前往目的地地图背景")]
     // Use this for initialization
 	void Awake()
 	{
         Instance = this;
+        roamView = RoamView.fix;
         person = transform.Find("/Person");
-        rb = person.GetComponent<Rigidbody>();
+        //rb = person.GetComponent<Rigidbody>();
         flyController = person.GetComponent<FlyController>();
         firstPerson = person.GetComponent<MoveController>();
         curView = ViewMode.firstView;
@@ -131,7 +136,7 @@ public class MainManager : MonoBehaviour
     }
     public void WarpToNewPosition(Transform point)
     {
-        person.position = point.position + Vector3.up;
+        person.position = point.position;
         person.rotation = point.rotation;
     }
 }

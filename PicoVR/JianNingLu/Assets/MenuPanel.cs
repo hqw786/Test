@@ -9,12 +9,13 @@ public class MenuPanel : MonoBehaviour {
     Button btnSelectNewPosition;
     //Button btnMineMap;
     Button btnHelp;
-    Button btnExit;
+    //Button btnExit;
     Button btnPersonView;
     Button btnFlyView;
     Button btnAutoRoam;
 
     List<Button> viewKind = new List<Button>();
+    List<Button> functionKind = new List<Button>();
     // Use this for initialization
 	void Start () {
 		GetComponent<RectTransform>().rect.size.Set(GetComponent<RectTransform>().rect.width*0.1f,GetComponent<RectTransform>().rect.height * Screen.width / 1920);
@@ -37,8 +38,8 @@ public class MenuPanel : MonoBehaviour {
 		btnHelp = transform.Find("BtnHelp").GetComponent<Button>();
 		btnHelp.onClick.AddListener(OnBtnHelpClick);
 
-		btnExit = transform.Find("BtnExit").GetComponent<Button>();
-		btnExit.onClick.AddListener(OnBtnExitClick);
+        //btnExit = transform.Find("BtnExit").GetComponent<Button>();
+        //btnExit.onClick.AddListener(OnBtnExitClick);
 
 		btnPersonView = transform.Find("BtnPersonView").GetComponent<Button>();
 		btnPersonView.onClick.AddListener(OnBtnPersonViewClick);
@@ -51,32 +52,69 @@ public class MenuPanel : MonoBehaviour {
 
 		viewKind.Add(btnPersonView);
 		viewKind.Add(btnFlyView);
-		viewKind.Add(btnAutoRoam);
-	}
 
+        functionKind.Add(btnAutoRoam);
+        functionKind.Add(btnSelectNewPosition);
+        functionKind.Add(btnHelp);
+        btnPersonView.transform.Find("Image").gameObject.SetActive(true);
+	}
+    // Update is called once per frame
+    void Update () 
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //按下ESC键
+            //判断是否漫游状态
+            if (MainManager.Instance.isAutoRoam)
+            {
+                MainManager.Instance.isAutoRoam = false;
+                UIManager.Instance.HideUI(Define.uiPanelRoamView);
+            }
+            else//判断是否有UI打开
+            {
+                GameObject temp = UIManager.Instance.IsActive();
+                if (temp != null)
+                {
+                    temp.SetActive(false);
+                }
+                else//打开退出画面
+                {
+                    OnBtnExitClick();
+                }
+            }
+        }
+	}
     private void OnBtnPersonViewClick()
     {
         if (MainManager.Instance.curView != ViewMode.firstView)
         {
+            ButtonRestoreDefault(viewKind);
             MainManager.Instance.ViewModeSwitch();
+            btnPersonView.transform.Find("Image").gameObject.SetActive(true);
         }
     }
     void OnBtnFlyViewClick()
     {
         if (MainManager.Instance.curView != ViewMode.flyView)
         {
+            ButtonRestoreDefault(viewKind);
             MainManager.Instance.ViewModeSwitch();
+            btnFlyView.transform.Find("Image").gameObject.SetActive(true);
+        }
+    }
+    void ButtonRestoreDefault(List<Button> kind)
+    {
+        foreach(Button b in kind)
+        {
+            b.transform.Find("Image").gameObject.SetActive(false);
         }
     }
     void OnBtnAutoRoamClick()
     {
+        ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelRoam);
+        btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
     }
-    // Update is called once per frame
-	void Update () 
-    {
-		
-	}
     private void OnBtnViewSwitchClick()
     {
         MainManager.Instance.ViewModeSwitch();
@@ -94,7 +132,9 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnSelectNewPositionClick()
     {
+        ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelNewPosition);
+        btnSelectNewPosition.transform.Find("Image").gameObject.SetActive(true);
     }
     void OnBtnMineMapClick()
     {
@@ -102,11 +142,30 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnHelpClick()
     {
+
+        ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelHelp);
+        btnHelp.transform.Find("Image").gameObject.SetActive(true);
+    }
+    void CloseAutoRoam()
+    {
+        if(MainManager.Instance.isAutoRoam)
+        {
+            //自动漫游的参数恢复到默认值
+            MainManager.Instance.isAutoRoam = false;
+            UIManager.Instance.HideUI(Define.uiPanelRoamView);
+            MainManager.Instance.roamView = RoamView.fix;
+        }
     }
     void OnBtnExitClick()
     {
-        UIManager.Instance.ShowUI(Define.uiPanelExit);
-        UIManager.Instance.HideUI(Define.uiPanelMenu);
+        if (!UIManager.Instance.IsActive(Define.uiPanelExit))
+        {
+            UIManager.Instance.ShowUI(Define.uiPanelExit);
+        }
+        else
+        {
+            UIManager.Instance.HideUI(Define.uiPanelExit);
+        }
     }
 }

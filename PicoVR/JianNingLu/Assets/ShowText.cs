@@ -92,12 +92,12 @@ public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
     public void OnPointerEnter(PointerEventData eventData)
     {
 		FadeShow();
-		print("enter");
+		//print("enter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
 		FadeHide();
-		print("exit");
+		//print("exit");
     }
 }

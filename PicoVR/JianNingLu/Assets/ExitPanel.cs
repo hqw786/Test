@@ -9,15 +9,18 @@ public class ExitPanel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        btnExit = transform.Find("BtnExit").GetComponent<Button>();
-        btnReturn = transform.Find("BtnReturn").GetComponent<Button>();
+        btnExit = transform.Find("Panel/BtnExit").GetComponent<Button>();
+        btnReturn = transform.Find("Panel/BtnReturn").GetComponent<Button>();
         btnExit.onClick.AddListener(OnBtnExitClick);
         btnReturn.onClick.AddListener(OnBtnReturnClick);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            OnBtnExitClick();
+        }
 	}
     void OnBtnExitClick()
     {
@@ -26,6 +29,6 @@ public class ExitPanel : MonoBehaviour {
     void OnBtnReturnClick()
     {
         this.gameObject.SetActive(false);
-        UIManager.Instance.ShowUI(Define.uiPanelMenu);
+        //UIManager.Instance.ShowUI(Define.uiPanelMenu);
     }
 }

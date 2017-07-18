@@ -103,7 +103,7 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
                     ct.a = 1f;
                     isTextEnter = true;
                 }
-                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.2f,0.05f);
+                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * 1.2f,0.15f);
                 if (isImageEnter && isTextEnter)
                 {
                     isPointerEnter = false;
@@ -136,7 +136,7 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
                     isTextExit = true;
                     
                 }
-                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 0.05f);
+                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 0.15f);
                 if (isImageExit && isTextExit)
                 {
                     isPointerExit = false;
@@ -234,7 +234,10 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
 		{
 
 		}
-
+        if (!UIManager.Instance.IsActive(Define.uiPanelRoamView))
+        {
+            UIManager.Instance.ShowUI(Define.uiPanelRoamView);
+        }
 		transform.parent.gameObject.SetActive(false);
 	}
     void BtnColorDefault()

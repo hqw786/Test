@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     GameObject helpPanel;
     GameObject exitPanel;
     GameObject roamPanel;
+    GameObject roamViewPanel;
     List<GameObject> uis = new List<GameObject>();
 
 	// Use this for initialization
@@ -30,6 +31,7 @@ public class UIManager : MonoBehaviour
         helpPanel = transform.Find("HelpPanel").gameObject;
         exitPanel = transform.Find("ExitPanel").gameObject;
         roamPanel = transform.Find("RoamPanel").gameObject;
+        roamViewPanel = transform.Find("RoamViewPanel").gameObject;
         uis.Add(roamPanel);
         uis.Add(menuPanel);
         //uis.Add(weatherPanel);
@@ -37,6 +39,7 @@ public class UIManager : MonoBehaviour
         //uis.Add(mineMapPanel);
         uis.Add(helpPanel);
         uis.Add(exitPanel);
+        uis.Add(roamViewPanel);
     }
 	void Start () {
 		
@@ -87,5 +90,51 @@ public class UIManager : MonoBehaviour
                 g.SetActive(false);
             }
         }
+    }
+    public bool IsActive(string s)
+    {
+        foreach(GameObject g in uis)
+        {
+            if(g.name.Contains(s))
+            {
+                return g.activeInHierarchy;
+            }
+        }
+        return false;
+    }
+    public GameObject IsActive()
+    {
+        foreach(GameObject g in uis)
+        {
+            switch(g.name)
+            {
+                case "RoamPanel":
+                    {
+                        if (g.activeInHierarchy)
+                        {
+                            return g;
+                        }
+                    }
+                    break;
+                case "NewPositionPanel":
+                    {
+                        if (g.activeInHierarchy)
+                        {
+                            return g;
+                        }
+                    }
+                    break;
+                case "HelpPanel":
+                    {
+                        if (g.activeInHierarchy)
+                        {
+                            return g;
+                        }
+                    }
+                    break;
+            }
+            
+        }
+        return null;
     }
 }

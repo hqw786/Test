@@ -105,11 +105,26 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +167,25 @@
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Editor\Utils\EditorResources.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Editor\Utils\FxStyles.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\GlyphInfoDrawer.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\KerningPairDrawer.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\SpriteInfoDrawer.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMP_UIStyleManager.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_ContextMenus.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_CreateObjectMenu.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_CreateSpriteAssetMenu.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_EditorPanel.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_EditorShaderUtilities.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_EditorUtility.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_FontAssetCreatorWindow.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_FontEditor.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_FontPlugin.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_SDFMaterialEditor.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_SortingLayerHelper.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_SpriteAssetEditor.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_TextContainerEditor.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_TexturePostProcessor.cs" />
+    <Compile Include="Assets\Plug\TextMesh Pro\Editor\TMPro_uiEditorPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\APP\Resources\Menu.txt" />
@@ -197,6 +231,22 @@
     <None Include="Assets\Plug\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\Plug\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\Plug\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Character List.txt" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Sample Text - Japanese.txt" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_Bitmap-Mobile.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_Bitmap.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF Overlay.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF-Mobile II.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF-Mobile.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF-Surface.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_SDF.shader" />
+    <None Include="Assets\Plug\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

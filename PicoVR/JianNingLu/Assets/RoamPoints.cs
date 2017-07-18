@@ -9,6 +9,7 @@ public class RoamPoints : MonoBehaviour
 	public Transform rootNode;
 
 	public GameObject mapBG;
+    public GameObject mapBG1;
 
 
 	Vector2 mapSize;
@@ -20,6 +21,7 @@ public class RoamPoints : MonoBehaviour
 	{
 		//取得UI
         mapBG = rootNode.Find("MapBG").gameObject;
+        mapBG1 = rootNode.parent.Find("NewPositionPanel").Find("MapBG").gameObject;
 	}
 	void SetMap()
 	{
@@ -41,6 +43,7 @@ public class RoamPoints : MonoBehaviour
         mapSize = new Vector2(w1, h1);
         //设置MapBG的大小
         mapBG.GetComponent<RectTransform>().sizeDelta = mapSize;
+        mapBG1.GetComponent<RectTransform>().sizeDelta = mapSize;
         //设置MapBG的原点为左下角点
         mapOrigin = new Vector2(-mapSize.x * 0.5f, -mapSize.y * 0.5f);
 	}

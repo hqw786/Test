@@ -18,6 +18,10 @@ public class RoamPanel : MonoBehaviour ,IPointerClickHandler
 	public void OnBtnWholeClick()
 	{
 		MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+        if (!UIManager.Instance.IsActive(Define.uiPanelRoamView))
+        {
+            UIManager.Instance.ShowUI(Define.uiPanelRoamView);
+        }
 		gameObject.SetActive(false);
 	}
     public void OnPointerClick(PointerEventData eventData)

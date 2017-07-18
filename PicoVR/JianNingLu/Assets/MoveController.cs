@@ -33,9 +33,13 @@ public class MoveController : MonoBehaviour {
 
     Transform autoRoamStart;
     Transform autoRoamEnd;
-    Vector3 AutoRoamDir;
+    Vector3 autoRoamDir;
+    Quaternion endRotation;
     int startNum;
     int endNum;
+    [HideInInspector]
+    public bool isRotation;
+
 	// Use this for initialization
     void Awake()
     {
@@ -95,20 +99,39 @@ public class MoveController : MonoBehaviour {
 	void Update () {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Direction();
+            if (!MainManager.Instance.isAutoRoam)
+            {
+                Direction();
+            }
             if (Input.GetMouseButton(1))
             {
-                Rotation();
+                if (MainManager.Instance.roamView == RoamView.custom)
+                {
+                    Rotation();
+                }
             }
             FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
-        if(Input.anyKey)
-        {
-            MainManager.Instance.isAutoRoam = false;
-        }
+
+        //if(Input.anyKey)
+        //{
+        //    MainManager.Instance.isAutoRoam = false;
+        //}
+
         if(MainManager.Instance.isAutoRoam)
         {
             AutoRoaming();
+            if (MainManager.Instance.roamView == RoamView.fix)
+            {
+                if (isRotation)
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, Time.deltaTime);
+                    if (transform.rotation == endRotation)
+                    {
+                        isRotation = false;
+                    }
+                }
+            }
         }
 	}
     void Direction()
@@ -129,6 +152,7 @@ public class MoveController : MonoBehaviour {
         {
             isRight = true;
         }
+
         //moveDirection = new Vector3(Input.GetAxis("Horizontal"), transform.position.y, Input.GetAxis("Vertical"));
         //航拍模式不能跳
         //if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
@@ -184,12 +208,13 @@ public class MoveController : MonoBehaviour {
         //这种方式，先快后慢，不匀速
         //transform.position = Vector3.Lerp(transform.position, autoRoamEnd.position, Time.deltaTime * 0.1f);
         //第二种方式，匀速
-		transform.Translate(AutoRoamDir * Time.deltaTime * 10f, Space.World);
+		transform.Translate(autoRoamDir * Time.deltaTime * 10f, Space.World);
         if(Vector3.Distance(transform.position,autoRoamEnd.position) <= 1f)
         {
             if (!HasNextPosition())
             {
                 MainManager.Instance.isAutoRoam = false;
+                UIManager.Instance.HideUI(Define.uiPanelRoamView);
             }
         }
     }
@@ -285,17 +310,18 @@ public class MoveController : MonoBehaviour {
 		autoRoamEnd = ConfigData.Instance.roamPath[startNum+1];
         MainManager.Instance.isAutoRoam = true;
         transform.position = autoRoamStart.position;
-		
-        AutoRoamDir = autoRoamEnd.position - autoRoamStart.position;
-        AutoRoamDir = AutoRoamDir.normalized;
-		print(AutoRoamDir);
-		transform.rotation = Quaternion.identity;
+        
+        autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+        autoRoamDir = autoRoamDir.normalized;
+		//print(autoRoamDir);
+		transform.rotation = Quaternion.identity;//不加这行，会变成增量旋转
         //可能要旋转一些
 		Quaternion q = transform.rotation;
-		float a = Vector3.Angle(Vector3.forward, AutoRoamDir);
-		print(a);
+		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+		//print(a);
 		q = q * Quaternion.Euler(0, 90 - a, 0);
-		transform.rotation = q;
+		isRotation = true;
+        endRotation = q;
         startNum++;
         return true;
     }

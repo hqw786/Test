@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RoamView
+{
+    fix,custom
+}
 public class ConfigData : MonoBehaviour {
     public static ConfigData Instance;
 

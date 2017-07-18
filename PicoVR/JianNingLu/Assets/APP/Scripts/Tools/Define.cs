@@ -10,5 +10,6 @@ public class Define
     public static string uiPanelHelp = "HelpPanel";
     public static string uiPanelExit = "ExitPanel";
     public static string uiPanelRoam = "RoamPanel";
+    public static string uiPanelRoamView = "RoamViewPanel";
 }
 
