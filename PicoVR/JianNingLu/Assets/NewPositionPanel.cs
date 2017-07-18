@@ -42,6 +42,7 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
     }
     public void OnBtnPoint1Click()
     {
+		MainManager.Instance.CloseAutoRoam();
         MainManager.Instance.WarpToNewPosition(point1);
         //其他按钮恢复默认
         ButtonsDefault();
@@ -52,6 +53,7 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
     }
     public void OnBtnPoint2Click()
     {
+		MainManager.Instance.CloseAutoRoam();
         MainManager.Instance.WarpToNewPosition(point2);
         //其他按钮恢复默认
         ButtonsDefault();

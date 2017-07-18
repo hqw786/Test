@@ -57,7 +57,7 @@ public class MainManager : MonoBehaviour
 	void Awake()
 	{
         Instance = this;
-        roamView = RoamView.fix;
+        roamView = RoamView.custom;
         person = transform.Find("/Person");
         //rb = person.GetComponent<Rigidbody>();
         flyController = person.GetComponent<FlyController>();
@@ -139,4 +139,14 @@ public class MainManager : MonoBehaviour
         person.position = point.position;
         person.rotation = point.rotation;
     }
+	public void CloseAutoRoam()
+	{
+		if (MainManager.Instance.isAutoRoam)
+		{
+			//自动漫游的参数恢复到默认值
+			MainManager.Instance.isAutoRoam = false;
+			UIManager.Instance.HideUI(Define.uiPanelRoamView);
+			MainManager.Instance.roamView = RoamView.fix;
+		}
+	}
 }

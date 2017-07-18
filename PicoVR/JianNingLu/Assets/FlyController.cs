@@ -29,6 +29,18 @@ public class FlyController : MonoBehaviour {
     Camera camera;
     CharacterController controller;
     Transform cameraTransform;
+
+	Transform autoRoamStart;
+	Transform autoRoamEnd;
+	Vector3 autoRoamDir;
+	Quaternion endHRotation;
+	Quaternion endVRotation;
+	int startNum;
+	int endNum;
+	[HideInInspector]
+	public bool isHRotation;
+	[HideInInspector]
+	public bool isVRotation;
     // Use this for initialization
     void Awake()
     {
@@ -89,17 +101,46 @@ public class FlyController : MonoBehaviour {
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Direction();
+			if (!MainManager.Instance.isAutoRoam)
+			{
+				Direction();
+			}
+
             if (Input.GetMouseButton(1))
             {
-                Rotation();
+				if (MainManager.Instance.roamView == RoamView.custom)
+				{
+					Rotation();
+				}
             }
             FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
         
-        
-
-       
+        if(MainManager.Instance.isAutoRoam)
+		{
+			AutoRoaming();
+			if(MainManager.Instance.roamView == RoamView.fix)
+			{
+				if(isHRotation)
+				{
+					transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
+					if(transform.rotation == endHRotation)
+					{
+						isHRotation = false;
+						isVRotation = true;
+						endVRotation = GetEndVRotation();
+					}
+				}
+				if(isVRotation)
+				{
+					transform.rotation = Quaternion.Lerp(transform.rotation, endVRotation, Time.deltaTime);
+					if(transform.rotation == endVRotation)
+					{
+						isVRotation = false;
+					}
+				}
+			}
+		}
     }
     void Direction()
     {
@@ -162,6 +203,18 @@ public class FlyController : MonoBehaviour {
             isZoomOut = true;
         }
     }
+	void AutoRoaming()
+	{
+		transform.Translate(autoRoamDir * Time.deltaTime * 10f, Space.World);
+		if(Vector3.Distance(transform.position,autoRoamEnd.position) <= 1f)
+		{
+			if(!HasNextPosition())
+			{
+				MainManager.Instance.isAutoRoam = false;
+				UIManager.Instance.HideUI(Define.uiPanelRoamView);
+			}
+		}
+	}
     void LateUpdate()
     {
         if (MainManager.Instance.curView == ViewMode.flyView)
@@ -198,4 +251,46 @@ public class FlyController : MonoBehaviour {
         q = q * Quaternion.Euler(90, 0, 0);
         cameraTransform.localRotation = q;
     }
+	public void SetAutoRoamStartAndEndPoint(int s, int e)
+	{
+		if(s>=0)
+		{
+			startNum = s;
+			endNum = e;
+			HasNextPosition();
+		}
+	}
+	public bool HasNextPosition()
+	{
+		if (endNum == startNum) return false;
+
+		autoRoamStart = ConfigData.Instance.roamPath[startNum];
+		Vector3 temp = autoRoamStart.position;
+		autoRoamStart.position = new Vector3(temp.x, yHeight, temp.z);
+		autoRoamEnd = ConfigData.Instance.roamPath[startNum + 1];
+		temp = autoRoamEnd.position;
+		autoRoamEnd.position = new Vector3(temp.x, yHeight, temp.z);
+		MainManager.Instance.isAutoRoam = true;
+		transform.position = autoRoamStart.position;
+
+		autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+		autoRoamDir = autoRoamDir.normalized;
+		transform.rotation = Quaternion.identity;
+		Quaternion q = transform.rotation;
+		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+		q = q * Quaternion.Euler(0, 90 - a, 0);
+		isHRotation = true;
+		isVRotation = false;
+		endHRotation = q;
+		startNum++;
+		return true;
+	}
+	Quaternion GetEndVRotation()
+	{
+		Quaternion q = transform.rotation;
+		float a = Vector3.Angle(Vector3.forward, transform.forward);
+		print(a);
+		q = q * Quaternion.Euler(a, 0, 0);
+		return q;
+	}
 }

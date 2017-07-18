@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuPanel : MonoBehaviour {
-    //Button btnViewSwitch;
     //Button btnWeatherEffect;
     Button btnSelectNewPosition;
     //Button btnMineMap;
     Button btnHelp;
-    //Button btnExit;
     Button btnPersonView;
     Button btnFlyView;
     Button btnAutoRoam;
@@ -19,10 +17,6 @@ public class MenuPanel : MonoBehaviour {
     // Use this for initialization
 	void Start () {
 		GetComponent<RectTransform>().rect.size.Set(GetComponent<RectTransform>().rect.width*0.1f,GetComponent<RectTransform>().rect.height * Screen.width / 1920);
-
-        //不改了。把这个隐藏起来
-        //btnViewSwitch = transform.Find("BtnViewSwitch").GetComponent<Button>();
-        //btnViewSwitch.onClick.AddListener(OnBtnViewSwitchClick);
 
         //不改了。把这个隐藏起来
         //btnWeatherEffect = transform.Find("BtnWeatherEffect").GetComponent<Button>();
@@ -37,9 +31,6 @@ public class MenuPanel : MonoBehaviour {
 
 		btnHelp = transform.Find("BtnHelp").GetComponent<Button>();
 		btnHelp.onClick.AddListener(OnBtnHelpClick);
-
-        //btnExit = transform.Find("BtnExit").GetComponent<Button>();
-        //btnExit.onClick.AddListener(OnBtnExitClick);
 
 		btnPersonView = transform.Find("BtnPersonView").GetComponent<Button>();
 		btnPersonView.onClick.AddListener(OnBtnPersonViewClick);
@@ -132,6 +123,7 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnSelectNewPositionClick()
     {
+		//CloseAutoRoam();
         ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelNewPosition);
         btnSelectNewPosition.transform.Find("Image").gameObject.SetActive(true);
@@ -142,20 +134,10 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnHelpClick()
     {
-
+		//CloseAutoRoam();
         ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelHelp);
         btnHelp.transform.Find("Image").gameObject.SetActive(true);
-    }
-    void CloseAutoRoam()
-    {
-        if(MainManager.Instance.isAutoRoam)
-        {
-            //自动漫游的参数恢复到默认值
-            MainManager.Instance.isAutoRoam = false;
-            UIManager.Instance.HideUI(Define.uiPanelRoamView);
-            MainManager.Instance.roamView = RoamView.fix;
-        }
     }
     void OnBtnExitClick()
     {

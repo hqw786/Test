@@ -17,7 +17,17 @@ public class RoamPanel : MonoBehaviour ,IPointerClickHandler
 	}
 	public void OnBtnWholeClick()
 	{
-		MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+		MainManager.Instance.roamView = RoamView.fix;
+
+		if (MainManager.Instance.curView == ViewMode.firstView)
+		{
+			MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+		}
+		else
+		{
+			MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+		}
+
         if (!UIManager.Instance.IsActive(Define.uiPanelRoamView))
         {
             UIManager.Instance.ShowUI(Define.uiPanelRoamView);

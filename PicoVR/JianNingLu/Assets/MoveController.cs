@@ -34,12 +34,14 @@ public class MoveController : MonoBehaviour {
     Transform autoRoamStart;
     Transform autoRoamEnd;
     Vector3 autoRoamDir;
-    Quaternion endRotation;
+    Quaternion endHRotation;
+	Quaternion endVRotation;
     int startNum;
     int endNum;
     [HideInInspector]
-    public bool isRotation;
-
+    public bool isHRotation;
+	[HideInInspector]
+	public bool isVRotation;
 	// Use this for initialization
     void Awake()
     {
@@ -123,14 +125,24 @@ public class MoveController : MonoBehaviour {
             AutoRoaming();
             if (MainManager.Instance.roamView == RoamView.fix)
             {
-                if (isRotation)
+                if (isHRotation)
                 {
-                    transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, Time.deltaTime);
-                    if (transform.rotation == endRotation)
+                    transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
+                    if (transform.rotation == endHRotation)
                     {
-                        isRotation = false;
+                        isHRotation = false;
+						isVRotation = true;
+						endVRotation = GetEndVRotation();
                     }
                 }
+				if(isVRotation)
+				{
+					transform.rotation = Quaternion.Lerp(transform.rotation, endVRotation, Time.deltaTime);
+					if (transform.rotation == endVRotation)
+					{
+						isVRotation = false;
+					}
+				}
             }
         }
 	}
@@ -320,9 +332,18 @@ public class MoveController : MonoBehaviour {
 		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
 		//print(a);
 		q = q * Quaternion.Euler(0, 90 - a, 0);
-		isRotation = true;
-        endRotation = q;
+		isHRotation = true;
+		isVRotation = false;
+        endHRotation = q;
         startNum++;
         return true;
     }
+	Quaternion GetEndVRotation()
+	{
+		Quaternion q = transform.rotation;
+		float a = Vector3.Angle(Vector3.forward, transform.forward);
+		print(a);
+		q = q * Quaternion.Euler(a, 0, 0);
+		return q;
+	}
 }

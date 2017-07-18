@@ -224,6 +224,8 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
 		//将图标和文字等恢复默认状态
 		RestoreDefault();
 
+		MainManager.Instance.roamView = RoamView.fix;
+
 		spi = GetComponent<ShowPathInfo>();
 
 		if (MainManager.Instance.curView == ViewMode.firstView)
@@ -232,12 +234,13 @@ public class ShowPathInfo : MonoBehaviour,IPointerEnterHandler,IPointerExitHandl
 		}
 		else if (MainManager.Instance.curView == ViewMode.flyView)
 		{
-
+			MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(spi.ni.startNum, spi.ni.endNum);
 		}
         if (!UIManager.Instance.IsActive(Define.uiPanelRoamView))
         {
             UIManager.Instance.ShowUI(Define.uiPanelRoamView);
         }
+
 		transform.parent.gameObject.SetActive(false);
 	}
     void BtnColorDefault()
