@@ -7,21 +7,28 @@ public class RoamPoints : MonoBehaviour
 	public Transform pointLeftDown;
 	public Transform pointRightUp;
 	public Transform rootNode;
-
+    [HideInInspector]
 	public GameObject mapBG;
+    [HideInInspector]
     public GameObject mapBG1;
+    [HideInInspector]
+    public GameObject mapBG2;
 
 
 	Vector2 mapSize;
 	Vector2 mapOrigin;
-	Vector2 flagPosition;
-    float rate;
+	//Vector2 flagPosition;
+    [HideInInspector]
+    public float rate;
+    [HideInInspector]
+    public float mineRate;
 	// Use this for initialization
 	void Awake()
 	{
 		//取得UI
         mapBG = rootNode.Find("MapBG").gameObject;
         mapBG1 = rootNode.parent.Find("NewPositionPanel").Find("MapBG").gameObject;
+        mapBG2 = rootNode.parent.Find("MineMapPanel").Find("MapBG").gameObject;
 	}
 	void SetMap()
 	{
@@ -36,16 +43,25 @@ public class RoamPoints : MonoBehaviour
 		{
 			mapSize = new Vector2(h, w);
 		}
+        //设置MapBG的大小
         float w1, h1;
         w1 = 1024f;
         rate = w1 / mapSize.x;//把比率保存下来
         h1 = rate * mapSize.y;
-        mapSize = new Vector2(w1, h1);
-        //设置MapBG的大小
-        mapBG.GetComponent<RectTransform>().sizeDelta = mapSize;
-        mapBG1.GetComponent<RectTransform>().sizeDelta = mapSize;
+        Vector2 temp = new Vector2(w1, h1);
+        mapBG.GetComponent<RectTransform>().sizeDelta = temp;
+        mapBG1.GetComponent<RectTransform>().sizeDelta = temp;
+        //设置小地图MapBG的大小 
+        w1 = 320f;
+        mineRate = w1 / mapSize.x;
+        h1 = mineRate * mapSize.y;
+        Vector2 tempMine = new Vector2(w1, h1);
+        mapBG2.GetComponent<RectTransform>().sizeDelta = tempMine;
         //设置MapBG的原点为左下角点
-        mapOrigin = new Vector2(-mapSize.x * 0.5f, -mapSize.y * 0.5f);
+        mapOrigin = new Vector2(-temp.x * 0.5f, -temp.y * 0.5f);
+        //把比率保存起来
+        MainManager.Instance.rate = rate;
+        MainManager.Instance.mineRate = mineRate;
 	}
 	void Start()
 	{
@@ -104,15 +120,15 @@ public class RoamPoints : MonoBehaviour
             ConfigData.Instance.pathNodeInfo.Add(ni);
         }
 	}
-	Vector3 WorldToUI(Vector3 point)
-	{
-		//计算距左下角点的距离
+    Vector3 WorldToUI(Vector3 point)
+    {
+        //计算距左下角点的距离
         float x = Mathf.Abs(point.x - pointLeftDown.position.x) * rate;
         float y = Mathf.Abs(point.z - pointLeftDown.position.z) * rate;
 
         Vector3 pos = new Vector3(mapOrigin.x + x, mapOrigin.y + y, 0);
         return pos;
-	}
+    }
 	string LastNodeName(int index, out int num)
 	{
 		string s = null;
@@ -138,13 +154,13 @@ public class RoamPoints : MonoBehaviour
         {
             if (!ni.isAssist)
             {
-
                 //实例一个新图片，图片的位置
                 GameObject temp = Resources.Load<GameObject>("Prefabs/BtnRoamFlagImg");
                 GameObject g = Instantiate(temp);
                 g.transform.parent = rootNode;
                 g.transform.localScale = Vector3.one;
                 g.GetComponent<RectTransform>().localPosition = WorldToUI(ni.transform.position);
+                    //= Tools.WorldToUI(ni.transform.position, pointLeftDown.position, mapOrigin, MainManager.Instance.rate);
                 //文字内容显示
 				UpdateContext(g, ni);
             }

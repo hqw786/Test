@@ -7,11 +7,15 @@ using UnityEngine.UI;
 public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
 {
     List<Button> buttonList = new List<Button>();
+    
     Button btnPoint1;
     public Transform point1;
     Button btnPoint2;
     public Transform point2;
-	
+
+    Button btnMineMap;
+    Text mineMapName;
+
     // Use this for initialization
     void Awake()
     {
@@ -22,6 +26,10 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
         btnPoint2 = transform.Find("BtnPoint2").GetComponent<Button>();
         btnPoint2.onClick.AddListener(OnBtnPoint2Click);
         buttonList.Add(btnPoint2);
+
+        btnMineMap = transform.Find("MapBG").transform.Find("BtnMineMap").GetComponent<Button>();
+        btnMineMap.onClick.AddListener(OnBtnMineMapClick);
+        mineMapName = btnMineMap.transform.Find("Text").GetComponent<Text>();
     }
 	void Start () {
 		
@@ -65,7 +73,27 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.pointerEnter.name.Contains("BtnMineMap") || eventData.pointerEnter.transform.parent.name.Contains("BtnMineMap"))
+        {
+            return;
+        }
         if(eventData.pointerEnter.name == this.name || eventData.pointerEnter.transform.parent.name == this.name)
             gameObject.SetActive(false);
+    }
+    void OnBtnMineMapClick()
+    {
+        if (mineMapName.text.Equals("显示小地图"))
+        {
+            MainManager.Instance.isShowMineMap = true;
+            UIManager.Instance.ShowUI(Define.uiPanelMineMap, true);
+            mineMapName.text = "隐藏小地图";
+        }
+        else
+        {
+            MainManager.Instance.isShowMineMap = false;
+            UIManager.Instance.HideUI(Define.uiPanelMineMap);
+            mineMapName.text = "显示小地图";
+        }
+        //mineMapName.text = mineMapName.text.Equals("显示小地图") ? "隐藏小地图" : "显示小地图";
     }
 }

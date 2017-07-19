@@ -6,8 +6,7 @@ using UnityEngine.Video;
 public enum ViewMode
 {
     firstView,
-    flyView,
-    autoRoam
+    flyView
 }
 
 public class MainManager : MonoBehaviour 
@@ -26,7 +25,7 @@ public class MainManager : MonoBehaviour
 
     [Header("地面移动数值")]
     public Vector3 initialPosition_firstPerson;
-    public Quaternion initialDir_firstPerson;
+    public Vector3 initialDir_firstPerson;
     public float walkSpeed;
     public float runSpeed;
     public float minFOV_firstPerson;
@@ -52,6 +51,12 @@ public class MainManager : MonoBehaviour
     public bool isAutoRoam;
     [HideInInspector]
     public RoamView roamView;
+    [HideInInspector]
+    public bool isShowMineMap;
+    [HideInInspector]
+    public float rate;
+    [HideInInspector]
+    public float mineRate;
     //[Header("前往目的地地图背景")]
     // Use this for initialization
 	void Awake()

@@ -60,6 +60,7 @@ public class MenuPanel : MonoBehaviour {
             {
                 MainManager.Instance.isAutoRoam = false;
                 UIManager.Instance.HideUI(Define.uiPanelRoamView);
+                MainManager.Instance.roamView = RoamView.custom;
             }
             else//判断是否有UI打开
             {
@@ -82,6 +83,11 @@ public class MenuPanel : MonoBehaviour {
             ButtonRestoreDefault(viewKind);
             MainManager.Instance.ViewModeSwitch();
             btnPersonView.transform.Find("Image").gameObject.SetActive(true);
+            if(MainManager.Instance.isAutoRoam)
+            {
+                MainManager.Instance.flyController.SwitchToPerson();
+                //MainManager下面有些参数要设置一下，如：固定视角等
+            }
         }
     }
     void OnBtnFlyViewClick()
@@ -91,6 +97,10 @@ public class MenuPanel : MonoBehaviour {
             ButtonRestoreDefault(viewKind);
             MainManager.Instance.ViewModeSwitch();
             btnFlyView.transform.Find("Image").gameObject.SetActive(true);
+            if (MainManager.Instance.isAutoRoam)
+            {
+                MainManager.Instance.firstPerson.SwitchToFly();
+            }
         }
     }
     void ButtonRestoreDefault(List<Button> kind)
@@ -106,35 +116,33 @@ public class MenuPanel : MonoBehaviour {
         UIManager.Instance.ShowUI(Define.uiPanelRoam);
         btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
     }
-    private void OnBtnViewSwitchClick()
-    {
-        MainManager.Instance.ViewModeSwitch();
-    }
-    void OnBtnWeatherEffectClick()
-    {
-        //if (UIManager.Instance.ActiveUI(Define.uiPanelWeather))
-        //{
-        //    UIManager.Instance.HideUI(Define.uiPanelWeather);
-        //}
-        //else
-        //{
-        //    UIManager.Instance.ShowUI(Define.uiPanelWeather);
-        //}
-    }
+    //private void OnBtnViewSwitchClick()
+    //{
+    //    MainManager.Instance.ViewModeSwitch();
+    //}
+    //void OnBtnWeatherEffectClick()
+    //{
+    //    //if (UIManager.Instance.ActiveUI(Define.uiPanelWeather))
+    //    //{
+    //    //    UIManager.Instance.HideUI(Define.uiPanelWeather);
+    //    //}
+    //    //else
+    //    //{
+    //    //    UIManager.Instance.ShowUI(Define.uiPanelWeather);
+    //    //}
+    //}
     void OnBtnSelectNewPositionClick()
     {
-		//CloseAutoRoam();
         ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelNewPosition);
         btnSelectNewPosition.transform.Find("Image").gameObject.SetActive(true);
     }
-    void OnBtnMineMapClick()
-    {
-        //UIManager.Instance.ShowUI(Define.uiPanelMineMap);
-    }
+    //void OnBtnMineMapClick()
+    //{
+    //    //UIManager.Instance.ShowUI(Define.uiPanelMineMap);
+    //}
     void OnBtnHelpClick()
     {
-		//CloseAutoRoam();
         ButtonRestoreDefault(functionKind);
         UIManager.Instance.ShowUI(Define.uiPanelHelp);
         btnHelp.transform.Find("Image").gameObject.SetActive(true);

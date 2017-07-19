@@ -16,7 +16,14 @@ public class RoamViewPanel : MonoBehaviour {
     public void OnToggleFixChange()
     {
         MainManager.Instance.roamView = RoamView.fix;
-        MainManager.Instance.firstPerson.isHRotation = true;
+        if (MainManager.Instance.curView == ViewMode.firstView)
+        {
+            MainManager.Instance.firstPerson.isVRotation = true;
+        }
+        else
+        {
+            MainManager.Instance.flyController.isVRotation = true;
+        }
     }
     public void OnToggleCustomChange()
     {

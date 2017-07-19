@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     GameObject menuPanel;
     //GameObject weatherPanel;
     GameObject newPositionPanel;
-    //GameObject mineMapPanel;
+    GameObject mineMapPanel;
     GameObject helpPanel;
     GameObject exitPanel;
     GameObject roamPanel;
@@ -27,16 +27,17 @@ public class UIManager : MonoBehaviour
         menuPanel = transform.Find("MenuPanel").gameObject;
         //weatherPanel = transform.Find("WeatherPanel").gameObject;
         newPositionPanel = transform.Find("NewPositionPanel").gameObject;
-        //mineMapPanel = transform.Find("MineMapPanel").gameObject;
+        mineMapPanel = transform.Find("MineMapPanel").gameObject;
         helpPanel = transform.Find("HelpPanel").gameObject;
         exitPanel = transform.Find("ExitPanel").gameObject;
         roamPanel = transform.Find("RoamPanel").gameObject;
         roamViewPanel = transform.Find("RoamViewPanel").gameObject;
+
         uis.Add(roamPanel);
         uis.Add(menuPanel);
         //uis.Add(weatherPanel);
         uis.Add(newPositionPanel);
-        //uis.Add(mineMapPanel);
+        uis.Add(mineMapPanel);
         uis.Add(helpPanel);
         uis.Add(exitPanel);
         uis.Add(roamViewPanel);
@@ -47,7 +48,21 @@ public class UIManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(MainManager.Instance.isAutoRoam)
+        {
+            if (!roamViewPanel.activeInHierarchy)
+            {
+                roamViewPanel.SetActive(true);
+
+            }
+        }
+        else
+        {
+            if (roamViewPanel.activeInHierarchy)
+            {
+                roamViewPanel.SetActive(false);
+            }
+        }
 	}
     public bool ActiveUI(string s)
     {
@@ -60,7 +75,7 @@ public class UIManager : MonoBehaviour
         }
         return false;
     }
-    public void ShowUI(string s)
+    public void ShowUI(string s,bool b = false)
     {
         foreach(GameObject g in uis)
         {
@@ -72,12 +87,22 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    g.SetActive(false);
+                    if (g.name.Contains(Define.uiPanelMineMap))
+                    {
+                        if (!MainManager.Instance.isShowMineMap)
+                        {
+                            g.SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if(!b) g.SetActive(false);
+                    }
                 }
             }
             else
             {
-                g.SetActive(true);
+                //g.SetActive(true);
             }
         }
     }

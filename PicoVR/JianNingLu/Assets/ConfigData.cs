@@ -6,6 +6,10 @@ public enum RoamView
 {
     fix,custom
 }
+public enum MapType
+{
+    normal,mine
+}
 public class ConfigData : MonoBehaviour {
     public static ConfigData Instance;
 

@@ -30,13 +30,20 @@ public class FlyController : MonoBehaviour {
     CharacterController controller;
     Transform cameraTransform;
 
-	Transform autoRoamStart;
-	Transform autoRoamEnd;
-	Vector3 autoRoamDir;
-	Quaternion endHRotation;
-	Quaternion endVRotation;
-	int startNum;
-	int endNum;
+    [HideInInspector]
+	public Transform autoRoamStart;
+	[HideInInspector]
+    public Transform autoRoamEnd;
+	[HideInInspector]
+    public Vector3 autoRoamDir;
+	[HideInInspector]
+    public Quaternion endHRotation;
+	[HideInInspector]
+    public Quaternion endVRotation;
+	[HideInInspector]
+    public int startNum;
+	[HideInInspector]
+    public int endNum;
 	[HideInInspector]
 	public bool isHRotation;
 	[HideInInspector]
@@ -121,22 +128,21 @@ public class FlyController : MonoBehaviour {
 			AutoRoaming();
 			if(MainManager.Instance.roamView == RoamView.fix)
 			{
-				if(isHRotation)
+				if(isVRotation)
+				{
+                    cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
+                    if (cameraTransform.localRotation == endVRotation)
+					{
+						isVRotation = false;
+                        isHRotation = true;
+					}
+				}
+                if(isHRotation)
 				{
 					transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
 					if(transform.rotation == endHRotation)
 					{
 						isHRotation = false;
-						isVRotation = true;
-						endVRotation = GetEndVRotation();
-					}
-				}
-				if(isVRotation)
-				{
-					transform.rotation = Quaternion.Lerp(transform.rotation, endVRotation, Time.deltaTime);
-					if(transform.rotation == endVRotation)
-					{
-						isVRotation = false;
 					}
 				}
 			}
@@ -257,6 +263,8 @@ public class FlyController : MonoBehaviour {
 		{
 			startNum = s;
 			endNum = e;
+            isHRotation = false;
+            isVRotation = true;
 			HasNextPosition();
 		}
 	}
@@ -279,18 +287,52 @@ public class FlyController : MonoBehaviour {
 		Quaternion q = transform.rotation;
 		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
 		q = q * Quaternion.Euler(0, 90 - a, 0);
-		isHRotation = true;
-		isVRotation = false;
-		endHRotation = q;
+        endHRotation = q;
+        endVRotation = GetEndVRotation();
+
+        isVRotation = true;
+        isHRotation = false;
+
 		startNum++;
 		return true;
 	}
 	Quaternion GetEndVRotation()
 	{
-		Quaternion q = transform.rotation;
-		float a = Vector3.Angle(Vector3.forward, transform.forward);
-		print(a);
-		q = q * Quaternion.Euler(a, 0, 0);
+        Quaternion q = Quaternion.identity;
+        q = q * Quaternion.Euler(90, 0, 0);
 		return q;
 	}
+      internal void SwitchToPerson()
+    {
+        //MainManager.Instance.ViewModeSwitch();
+        MainManager.Instance.firstPerson.autoRoamStart = autoRoamStart;
+        MainManager.Instance.firstPerson.autoRoamStart.position = new Vector3(
+            autoRoamStart.position.x,
+            0f,
+            autoRoamStart.position.z);
+        MainManager.Instance.firstPerson.autoRoamEnd = autoRoamEnd;
+        MainManager.Instance.firstPerson.autoRoamEnd.position = new Vector3(
+            autoRoamEnd.position.x,
+            0f,
+            autoRoamEnd.position.z);
+        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        SwitchModeModifyRotation();
+
+        //以下不用修改
+        MainManager.Instance.firstPerson.autoRoamDir = autoRoamDir;
+        MainManager.Instance.firstPerson.startNum = startNum;
+        MainManager.Instance.firstPerson.endNum = endNum;
+        MainManager.Instance.firstPerson.isHRotation = false;
+        MainManager.Instance.firstPerson.isVRotation = true;
+    }
+      public void SwitchModeModifyRotation()
+      {
+          transform.rotation = Quaternion.identity;
+          Quaternion q = transform.rotation;
+          float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+          q = q * Quaternion.Euler(0, 90 - a, 0);
+          MainManager.Instance.firstPerson.endHRotation = q;
+
+          MainManager.Instance.firstPerson.endVRotation = Quaternion.identity;
+      }
 }

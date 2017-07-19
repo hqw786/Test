@@ -31,13 +31,20 @@ public class MoveController : MonoBehaviour {
     Transform cameraTransform;
     Camera camera;
 
-    Transform autoRoamStart;
-    Transform autoRoamEnd;
-    Vector3 autoRoamDir;
-    Quaternion endHRotation;
-	Quaternion endVRotation;
-    int startNum;
-    int endNum;
+    [HideInInspector]
+    public Transform autoRoamStart;
+    [HideInInspector]
+    public Transform autoRoamEnd;
+    [HideInInspector]
+    public Vector3 autoRoamDir;
+    [HideInInspector]
+    public Quaternion endHRotation;
+    [HideInInspector]
+    public Quaternion endVRotation;
+    [HideInInspector]
+    public int startNum;
+    [HideInInspector]
+    public int endNum;
     [HideInInspector]
     public bool isHRotation;
 	[HideInInspector]
@@ -63,7 +70,8 @@ public class MoveController : MonoBehaviour {
         FOVSpeed = MainManager.Instance.FOVSpeed_firstPerson;
         //第一次初始化位置，旋转和视距
         transform.position = MainManager.Instance.initialPosition_firstPerson;
-        transform.rotation = MainManager.Instance.initialDir_firstPerson;
+        Quaternion q = Quaternion.identity;
+        transform.rotation = q * Quaternion.Euler(MainManager.Instance.initialDir_firstPerson);
 
         FOVReset();
     }
@@ -125,24 +133,23 @@ public class MoveController : MonoBehaviour {
             AutoRoaming();
             if (MainManager.Instance.roamView == RoamView.fix)
             {
+				if(isVRotation)
+				{
+                    cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
+                    if (cameraTransform.localRotation == endVRotation)
+					{
+						isVRotation = false;
+                        isHRotation = true;
+					}
+				}
                 if (isHRotation)
                 {
                     transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
                     if (transform.rotation == endHRotation)
                     {
                         isHRotation = false;
-						isVRotation = true;
-						endVRotation = GetEndVRotation();
                     }
                 }
-				if(isVRotation)
-				{
-					transform.rotation = Quaternion.Lerp(transform.rotation, endVRotation, Time.deltaTime);
-					if (transform.rotation == endVRotation)
-					{
-						isVRotation = false;
-					}
-				}
             }
         }
 	}
@@ -309,6 +316,8 @@ public class MoveController : MonoBehaviour {
         {
             startNum = s;
             endNum = e;
+            isHRotation = false;
+		    isVRotation = true;
             HasNextPosition();
         }
     }
@@ -332,18 +341,51 @@ public class MoveController : MonoBehaviour {
 		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
 		//print(a);
 		q = q * Quaternion.Euler(0, 90 - a, 0);
-		isHRotation = true;
-		isVRotation = false;
         endHRotation = q;
+        endVRotation = GetEndVRotation();
+
+        isVRotation = true;
+        isHRotation = false;
         startNum++;
         return true;
     }
 	Quaternion GetEndVRotation()
 	{
-		Quaternion q = transform.rotation;
-		float a = Vector3.Angle(Vector3.forward, transform.forward);
-		print(a);
-		q = q * Quaternion.Euler(a, 0, 0);
-		return q;
+        return Quaternion.identity;
 	}
+    internal void SwitchToFly()
+    {
+        //MainManager.Instance.ViewModeSwitch();
+        MainManager.Instance.flyController.autoRoamStart = autoRoamStart;
+        MainManager.Instance.flyController.autoRoamStart.position = new Vector3(
+            autoRoamStart.position.x,
+            MainManager.Instance.flyYHeight,
+            autoRoamStart.position.z);
+        MainManager.Instance.flyController.autoRoamEnd = autoRoamEnd;
+        MainManager.Instance.flyController.autoRoamEnd.position = new Vector3(
+            autoRoamEnd.position.x,
+            MainManager.Instance.flyYHeight,
+            autoRoamEnd.position.z);
+        transform.position = new Vector3(transform.position.x, MainManager.Instance.flyYHeight, transform.position.z);
+        SwitchModeModifyRotation();
+        
+        //以下不用修改
+        MainManager.Instance.flyController.autoRoamDir = autoRoamDir;
+        MainManager.Instance.flyController.startNum = startNum;
+        MainManager.Instance.flyController.endNum = endNum;
+        MainManager.Instance.flyController.isHRotation = false;
+        MainManager.Instance.flyController.isVRotation = true;
+    }
+    public void SwitchModeModifyRotation()
+    {
+        transform.rotation = Quaternion.identity;
+        Quaternion q = transform.rotation;
+        float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+        q = q * Quaternion.Euler(0, 90 - a, 0);
+        MainManager.Instance.flyController.endHRotation = q;
+
+        q = Quaternion.identity;
+        q = q * Quaternion.Euler(90, 0, 0);
+        MainManager.Instance.flyController.endVRotation = q;
+    }
 }

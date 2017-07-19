@@ -5,10 +5,13 @@ using UnityEngine.EventSystems;
 
 public class RoamPanel : MonoBehaviour ,IPointerClickHandler
 {
+    // Use this for initialization
+    void Awake()
+    {
 
-	// Use this for initialization
+    }
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
