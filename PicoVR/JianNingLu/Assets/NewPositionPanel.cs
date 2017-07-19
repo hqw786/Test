@@ -77,8 +77,16 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
         {
             return;
         }
-        if(eventData.pointerEnter.name == this.name || eventData.pointerEnter.transform.parent.name == this.name)
-            gameObject.SetActive(false);
+		if (eventData.pointerEnter.name == this.name || eventData.pointerEnter.transform.parent.name == this.name)
+		{
+			if(MainManager.Instance.isAutoRoam)
+			{
+				transform.parent.Find("MenuPanel/BtnAutoRoam").transform.Find("Image").gameObject.SetActive(true);
+				transform.parent.Find("MenuPanel/BtnSelectNewPosition").transform.Find("Image").gameObject.SetActive(false);
+			}
+			transform.parent.Find("MenuPanel/BtnSelectNewPosition").transform.Find("Image").gameObject.SetActive(false);
+			gameObject.SetActive(false);
+		}
     }
     void OnBtnMineMapClick()
     {

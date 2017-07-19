@@ -39,6 +39,10 @@ public class RoamPanel : MonoBehaviour ,IPointerClickHandler
 	}
     public void OnPointerClick(PointerEventData eventData)
     {
+		if(!MainManager.Instance.isAutoRoam)
+		{
+			transform.parent.Find("MenuPanel/BtnAutoRoam").transform.Find("Image").gameObject.SetActive(false);
+		}
         gameObject.SetActive(false);
     }
 }

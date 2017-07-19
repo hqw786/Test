@@ -19,6 +19,12 @@ public class HelpPanel : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+		if (MainManager.Instance.isAutoRoam)
+		{
+			transform.parent.Find("MenuPanel/BtnAutoRoam").transform.Find("Image").gameObject.SetActive(true);
+			transform.parent.Find("MenuPanel/BtnHelp").transform.Find("Image").gameObject.SetActive(false);
+		}
+		transform.parent.Find("MenuPanel/BtnHelp").transform.Find("Image").gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }
 }

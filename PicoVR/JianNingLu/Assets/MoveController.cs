@@ -234,6 +234,9 @@ public class MoveController : MonoBehaviour {
             {
                 MainManager.Instance.isAutoRoam = false;
                 UIManager.Instance.HideUI(Define.uiPanelRoamView);
+				transform.Find("/Canvas/MenuPanel/BtnAutoRoam/Image").gameObject.SetActive(false);
+				//显示一个结束提示
+
             }
         }
     }
