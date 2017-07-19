@@ -131,27 +131,30 @@ public class MoveController : MonoBehaviour {
         if(MainManager.Instance.isAutoRoam)
         {
             AutoRoaming();
-            if (MainManager.Instance.roamView == RoamView.fix)
-            {
-				if(isVRotation)
-				{
-                    cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
-                    if (cameraTransform.localRotation == endVRotation)
-					{
-						isVRotation = false;
-                        isHRotation = true;
-					}
-				}
-                if (isHRotation)
-                {
-                    transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
-                    if (transform.rotation == endHRotation)
-                    {
-                        isHRotation = false;
-                    }
-                }
-            }
-        }
+			//DONE:简化，先注释掉
+			#region 简化，先注释掉
+			//if (MainManager.Instance.roamView == RoamView.fix)
+			//{
+			//	if(isVRotation)
+			//	{
+			//		cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
+			//		if (cameraTransform.localRotation == endVRotation)
+			//		{
+			//			isVRotation = false;
+			//			isHRotation = true;
+			//		}
+			//	}
+			//	if (isHRotation)
+			//	{
+			//		transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
+			//		if (transform.rotation == endHRotation)
+			//		{
+			//			isHRotation = false;
+			//		}
+			//	}
+			//}
+			#endregion
+		}
 	}
     void Direction()
     {
@@ -235,7 +238,8 @@ public class MoveController : MonoBehaviour {
                 MainManager.Instance.isAutoRoam = false;
                 UIManager.Instance.HideUI(Define.uiPanelRoamView);
 				transform.Find("/Canvas/MenuPanel/BtnAutoRoam/Image").gameObject.SetActive(false);
-				//显示一个结束提示
+				MainManager.Instance.roamView = RoamView.custom;
+				//TODO: 显示一个结束提示
 
             }
         }
@@ -319,8 +323,9 @@ public class MoveController : MonoBehaviour {
         {
             startNum = s;
             endNum = e;
-            isHRotation = false;
-		    isVRotation = true;
+			//DONE:简化，先注释掉
+			//isHRotation = false;
+			//isVRotation = true;
             HasNextPosition();
         }
     }
@@ -334,9 +339,10 @@ public class MoveController : MonoBehaviour {
 		autoRoamEnd = ConfigData.Instance.roamPath[startNum+1];
         MainManager.Instance.isAutoRoam = true;
         transform.position = autoRoamStart.position;
-        
-        autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+		autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
         autoRoamDir = autoRoamDir.normalized;
+		//DONE:简化，先注释掉
+		#region 简化，先注释掉
 		//print(autoRoamDir);
 		transform.rotation = Quaternion.identity;//不加这行，会变成增量旋转
         //可能要旋转一些
@@ -349,7 +355,13 @@ public class MoveController : MonoBehaviour {
 
         isVRotation = true;
         isHRotation = false;
-        startNum++;
+		#endregion
+
+		//TODO:简化，如果要启用固定和可控视角。这一段就注释掉
+		#region 简化，如果要启用固定和可控视角。这一段就注释掉
+
+		#endregion
+		startNum++;
         return true;
     }
 	Quaternion GetEndVRotation()

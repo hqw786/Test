@@ -151,7 +151,8 @@ public class MainManager : MonoBehaviour
 			//自动漫游的参数恢复到默认值
 			MainManager.Instance.isAutoRoam = false;
 			UIManager.Instance.HideUI(Define.uiPanelRoamView);
-			MainManager.Instance.roamView = RoamView.fix;
+			//TODO:这个到底是fix还是custom
+			MainManager.Instance.roamView = RoamView.custom;
 		}
 	}
 }

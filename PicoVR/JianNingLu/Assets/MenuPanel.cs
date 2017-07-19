@@ -61,6 +61,7 @@ public class MenuPanel : MonoBehaviour {
                 MainManager.Instance.isAutoRoam = false;
                 UIManager.Instance.HideUI(Define.uiPanelRoamView);
                 MainManager.Instance.roamView = RoamView.custom;
+				transform.Find("BtnAutoRoam/Image").gameObject.SetActive(false);
             }
             else//判断是否有UI打开
             {
@@ -112,9 +113,24 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnAutoRoamClick()
     {
-        ButtonRestoreDefault(functionKind);
-        UIManager.Instance.ShowUI(Define.uiPanelRoam);
-        btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
+		ButtonRestoreDefault(functionKind);
+		//DONE:简化，先注释掉
+		//UIManager.Instance.ShowUI(Define.uiPanelRoam);
+		//DONE：简化，如果上面一行启用。这一段就注释掉
+		#region 简化，如果要启用固定和可控视角。这一段就注释掉
+		MainManager.Instance.isAutoRoam = true;
+		MainManager.Instance.roamView = RoamView.fix;
+		if (MainManager.Instance.curView == ViewMode.firstView)
+		{
+			MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+		}
+		else
+		{
+			MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+		}
+		#endregion
+
+		btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
     }
     //private void OnBtnViewSwitchClick()
     //{

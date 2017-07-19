@@ -73,7 +73,7 @@ namespace TMPro
         
         protected override void OnFillVBO(List<UIVertex> vbo)
         {
-            //DONE:注释了一行
+            //DONE:注释了一行，不用管，这是字体效果插件
            // base.OnFillVBO(vbo);
             //Debug.Log("OnFillVBO called.");
 

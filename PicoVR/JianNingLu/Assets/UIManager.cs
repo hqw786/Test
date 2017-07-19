@@ -48,21 +48,21 @@ public class UIManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if(MainManager.Instance.isAutoRoam)
-        {
-            if (!roamViewPanel.activeInHierarchy)
-            {
-                roamViewPanel.SetActive(true);
-
-            }
-        }
-        else
-        {
-            if (roamViewPanel.activeInHierarchy)
-            {
-                roamViewPanel.SetActive(false);
-            }
-        }
+		//DONE:简化，先注释掉
+		//if(MainManager.Instance.isAutoRoam)
+		//{
+		//	if (!roamViewPanel.activeInHierarchy)
+		//	{
+		//		roamViewPanel.SetActive(true);
+		//	}
+		//}
+		//else
+		//{
+		//	if (roamViewPanel.activeInHierarchy)
+		//	{
+		//		roamViewPanel.SetActive(false);
+		//	}
+		//}
 	}
     public bool ActiveUI(string s)
     {
