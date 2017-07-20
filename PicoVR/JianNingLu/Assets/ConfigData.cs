@@ -10,6 +10,14 @@ public enum MapType
 {
     normal,mine
 }
+public enum WarpName
+{
+    传送点1,
+    传送点2,
+    传送点3,
+    传送点4,
+    传送点5
+}
 public class ConfigData : MonoBehaviour {
     public static ConfigData Instance;
 

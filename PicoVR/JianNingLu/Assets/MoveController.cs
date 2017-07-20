@@ -8,6 +8,8 @@ public class MoveController : MonoBehaviour {
     public static bool isBack;
     public static bool isLeft;
     public static bool isRight;
+    [HideInInspector]
+    public bool isInput;
     //Vector3 moveDirection;
     public static bool isJump;
     public static bool isJumpDown;
@@ -106,7 +108,8 @@ public class MoveController : MonoBehaviour {
             rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
         }
     }
-	void Update () {
+    void Update()
+    {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (!MainManager.Instance.isAutoRoam)
@@ -123,56 +126,75 @@ public class MoveController : MonoBehaviour {
             FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
 
-        //if(Input.anyKey)
-        //{
-        //    MainManager.Instance.isAutoRoam = false;
-        //}
-
-        if(MainManager.Instance.isAutoRoam)
+        if (MainManager.Instance.isAutoRoam)
         {
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)
+                || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow)
+                || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                isInput = true;
+            }
             AutoRoaming();
-			//DONE:简化，先注释掉
-			#region 简化，先注释掉
-			//if (MainManager.Instance.roamView == RoamView.fix)
-			//{
-			//	if(isVRotation)
-			//	{
-			//		cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
-			//		if (cameraTransform.localRotation == endVRotation)
-			//		{
-			//			isVRotation = false;
-			//			isHRotation = true;
-			//		}
-			//	}
-			//	if (isHRotation)
-			//	{
-			//		transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
-			//		if (transform.rotation == endHRotation)
-			//		{
-			//			isHRotation = false;
-			//		}
-			//	}
-			//}
-			#endregion
-		}
-	}
+            if (MainManager.Instance.roamView == RoamView.fix)
+            {
+                //DONE:简化，先注释掉
+                if (isVRotation)
+                {
+                    cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
+                    if (cameraTransform.localRotation == endVRotation)
+                    {
+                        isVRotation = false;
+                        isHRotation = true;
+                    }
+                }
+                if (isHRotation)
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
+                    if (transform.rotation == endHRotation)
+                    {
+                        isHRotation = false;
+                    }
+                }
+            }
+            if (isInput)
+            {
+                if (MainManager.Instance.isAutoRoam)
+                {
+                    transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
+                    isInput = false;
+                }
+            }
+        }
+    }
     void Direction()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            isForward = true;
+            //isForward = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            controller.SimpleMove(transform.forward * Time.deltaTime * v);
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            isBack = true;
+            //isBack = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            controller.SimpleMove(-transform.forward * Time.deltaTime * v);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            isLeft = true;
+            //isLeft = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            controller.SimpleMove(-transform.right * Time.deltaTime * v);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            isRight = true;
+            //isRight = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            controller.SimpleMove(transform.right * Time.deltaTime * v);
         }
 
         //moveDirection = new Vector3(Input.GetAxis("Horizontal"), transform.position.y, Input.GetAxis("Vertical"));
@@ -181,23 +203,6 @@ public class MoveController : MonoBehaviour {
         //{
         //    isJump = true;
         //}
-
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            isForward = false;
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            isBack = false;
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            isLeft = false;
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            isRight = false;
-        }
     }
     void Rotation()
     {
@@ -235,41 +240,44 @@ public class MoveController : MonoBehaviour {
         {
             if (!HasNextPosition())
             {
-                MainManager.Instance.isAutoRoam = false;
-                UIManager.Instance.HideUI(Define.uiPanelRoamView);
-				transform.Find("/Canvas/MenuPanel/BtnAutoRoam/Image").gameObject.SetActive(false);
-				MainManager.Instance.roamView = RoamView.custom;
+                //DONE:如果要循环漫游这边就要改一下。
+                //MainManager.Instance.isAutoRoam = false;
+                //UIManager.Instance.HideUI(Define.uiPanelRoamView);
+                //transform.Find("/Canvas/MenuPanel/BtnAutoRoam/Image").gameObject.SetActive(false);
+                //MainManager.Instance.roamView = RoamView.custom;
 				//TODO: 显示一个结束提示
 
+                //TODO:改成循环漫游
+                SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
             }
         }
     }
-    void LateUpdate()
-    {
-        if (MainManager.Instance.curView == ViewMode.firstView)
-        {
-            if (isForward)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-                controller.SimpleMove(transform.forward * Time.deltaTime * v);
-            }
-            else if (isBack)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-				controller.SimpleMove(-transform.forward * Time.deltaTime * v);
-            }
-            if (isLeft)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-				controller.SimpleMove(-transform.right * Time.deltaTime * v);
-            }
-            else if (isRight)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-				controller.SimpleMove(transform.right * Time.deltaTime * v);
-            }
-        }
-    }
+    //void LateUpdate()
+    //{
+    //    if (MainManager.Instance.curView == ViewMode.firstView)
+    //    {
+    //        if (isForward)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+    //            controller.SimpleMove(transform.forward * Time.deltaTime * v);
+    //        }
+    //        else if (isBack)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+    //            controller.SimpleMove(-transform.forward * Time.deltaTime * v);
+    //        }
+    //        if (isLeft)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+    //            controller.SimpleMove(-transform.right * Time.deltaTime * v);
+    //        }
+    //        else if (isRight)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+    //            controller.SimpleMove(transform.right * Time.deltaTime * v);
+    //        }
+    //    }
+    //}
         //if(isJump)
         //{
         //    if (!isJumpDown)
@@ -324,8 +332,8 @@ public class MoveController : MonoBehaviour {
             startNum = s;
             endNum = e;
 			//DONE:简化，先注释掉
-			//isHRotation = false;
-			//isVRotation = true;
+			isHRotation = false;
+			isVRotation = true;
             HasNextPosition();
         }
     }
@@ -343,24 +351,24 @@ public class MoveController : MonoBehaviour {
         autoRoamDir = autoRoamDir.normalized;
 		//DONE:简化，先注释掉
 		#region 简化，先注释掉
-		//print(autoRoamDir);
-		transform.rotation = Quaternion.identity;//不加这行，会变成增量旋转
-        //可能要旋转一些
-		Quaternion q = transform.rotation;
-		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
-		//print(a);
-		q = q * Quaternion.Euler(0, 90 - a, 0);
-        endHRotation = q;
-        endVRotation = GetEndVRotation();
+        //transform.rotation = Quaternion.identity;//不加这行，会变成增量旋转
+        //Quaternion q = transform.rotation;
+        //float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+        //q = q * Quaternion.Euler(0, 90 - a, 0);
+        //endHRotation = q;
+        //endVRotation = GetEndVRotation();
 
-        isVRotation = true;
-        isHRotation = false;
+        //isVRotation = true;
+        //isHRotation = false;
 		#endregion
 
 		//TODO:简化，如果要启用固定和可控视角。这一段就注释掉
 		#region 简化，如果要启用固定和可控视角。这一段就注释掉
-
+        endHRotation = autoRoamStart.rotation;
+        endVRotation = GetEndVRotation();
+        isHRotation = true;
 		#endregion
+
 		startNum++;
         return true;
     }
@@ -393,13 +401,17 @@ public class MoveController : MonoBehaviour {
     }
     public void SwitchModeModifyRotation()
     {
-        transform.rotation = Quaternion.identity;
-        Quaternion q = transform.rotation;
-        float a = Vector3.Angle(Vector3.forward, autoRoamDir);
-        q = q * Quaternion.Euler(0, 90 - a, 0);
-        MainManager.Instance.flyController.endHRotation = q;
+        //DONE:简化，先注释掉
+        //transform.rotation = Quaternion.identity;
+        //Quaternion q = transform.rotation;
+        //float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+        //q = q * Quaternion.Euler(0, 90 - a, 0);
+        //MainManager.Instance.flyController.endHRotation = q;
 
-        q = Quaternion.identity;
+        //DONE:简化，如果要改过来请注释掉下面一段代码
+        MainManager.Instance.flyController.endHRotation = ConfigData.Instance.roamPath[startNum - 1].rotation;
+
+        Quaternion q = Quaternion.identity;
         q = q * Quaternion.Euler(90, 0, 0);
         MainManager.Instance.flyController.endVRotation = q;
     }

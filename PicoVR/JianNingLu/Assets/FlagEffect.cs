@@ -19,12 +19,6 @@ public class FlagEffect : MonoBehaviour {
     {
         if(isTime)
         {
-            //time += Time.fixedDeltaTime;
-            //if (time >= timer)
-            //{
-            //    isTime = !isTime;
-            //    time = 0f;
-            //}
             ci = image.color;
             ci.a = Mathf.Lerp(ci.a, 1f, Time.fixedDeltaTime*3f);
             if(ci.a >= 0.95f)
@@ -36,12 +30,6 @@ public class FlagEffect : MonoBehaviour {
         }
         else
         {
-            //time += Time.fixedDeltaTime;
-            //if(time >= timer)
-            //{
-            //    isTime = !isTime;
-            //    time = 0f;
-            //}
             ci = image.color;
             ci.a = Mathf.Lerp(ci.a, 0f, Time.fixedDeltaTime);
             if (ci.a <= 0.3f)

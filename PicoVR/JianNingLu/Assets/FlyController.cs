@@ -8,6 +8,8 @@ public class FlyController : MonoBehaviour {
     public static bool isBack;
     public static bool isLeft;
     public static bool isRight;
+    [HideInInspector]
+    public bool isInput;
     //Vector3 moveDirection;
     public static bool isJump;
     public static bool isJumpDown;
@@ -122,66 +124,75 @@ public class FlyController : MonoBehaviour {
             }
             FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
-        
-        if(MainManager.Instance.isAutoRoam)
-		{
-			AutoRoaming();
-			if(MainManager.Instance.roamView == RoamView.fix)
-			{
-				if(isVRotation)
-				{
+
+        if (MainManager.Instance.isAutoRoam)
+        {
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S)
+                || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow)
+                || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                isInput = true;
+            }
+            AutoRoaming();
+            if (MainManager.Instance.roamView == RoamView.fix)
+            {
+                if (isVRotation)
+                {
                     cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
                     if (cameraTransform.localRotation == endVRotation)
-					{
-						isVRotation = false;
+                    {
+                        isVRotation = false;
                         isHRotation = true;
-					}
-				}
-                if(isHRotation)
-				{
-					transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
-					if(transform.rotation == endHRotation)
-					{
-						isHRotation = false;
-					}
-				}
-			}
-		}
+                    }
+                }
+                if (isHRotation)
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
+                    if (transform.rotation == endHRotation)
+                    {
+                        isHRotation = false;
+                    }
+                }
+            }
+            if (isInput)
+            {
+                if (MainManager.Instance.isAutoRoam)
+                {
+                    transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
+                    isInput = false;
+                }
+            }
+        }
     }
     void Direction()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            isForward = true;
+            //isForward = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            controller.Move(transform.forward * Time.deltaTime * v * rate);
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            isBack = true;
+            //isBack = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            controller.Move(-transform.forward * Time.deltaTime * v * rate);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            isLeft = true;
+            //isLeft = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            controller.Move(-transform.right * Time.deltaTime * v * rate);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            isRight = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            isForward = false;
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            isBack = false;
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            isLeft = false;
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            isRight = false;
+            //isRight = true;
+            //isInput = true;
+            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            controller.Move(transform.right * Time.deltaTime * v * rate);
         }
     }
     void Rotation()
@@ -221,32 +232,32 @@ public class FlyController : MonoBehaviour {
 			}
 		}
 	}
-    void LateUpdate()
-    {
-        if (MainManager.Instance.curView == ViewMode.flyView)
-        {
-            if (isForward)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-                controller.Move(transform.forward * Time.deltaTime * v * rate);
-            }
-            else if (isBack)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-                controller.Move(-transform.forward * Time.deltaTime * v * rate);
-            }
-            if (isLeft)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-                controller.Move(-transform.right * Time.deltaTime * v * rate);
-            }
-            else if (isRight)
-            {
-                float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-                controller.Move(transform.right * Time.deltaTime * v * rate);
-            }
-        }
-    }
+    //void LateUpdate()
+    //{
+    //    if (MainManager.Instance.curView == ViewMode.flyView)
+    //    {
+    //        if (isForward)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+    //            controller.Move(transform.forward * Time.deltaTime * v * rate);
+    //        }
+    //        else if (isBack)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+    //            controller.Move(-transform.forward * Time.deltaTime * v * rate);
+    //        }
+    //        if (isLeft)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+    //            controller.Move(-transform.right * Time.deltaTime * v * rate);
+    //        }
+    //        else if (isRight)
+    //        {
+    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+    //            controller.Move(transform.right * Time.deltaTime * v * rate);
+    //        }
+    //    }
+    //}
     public void FOVReset()
     {
         camera.fieldOfView = maxFOV;
@@ -283,17 +294,27 @@ public class FlyController : MonoBehaviour {
 
 		autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
 		autoRoamDir = autoRoamDir.normalized;
-		transform.rotation = Quaternion.identity;
-		Quaternion q = transform.rotation;
-		float a = Vector3.Angle(Vector3.forward, autoRoamDir);
-		q = q * Quaternion.Euler(0, 90 - a, 0);
-        endHRotation = q;
+        //DONE:简化，先注释掉
+        #region 简化，先注释掉
+        //transform.rotation = Quaternion.identity;
+        //Quaternion q = transform.rotation;
+        //float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+        //q = q * Quaternion.Euler(0, 90 - a, 0);
+        //endHRotation = q;
+        //endVRotation = GetEndVRotation();
+
+        //isVRotation = true;
+        //isHRotation = false;
+        #endregion
+
+        //TODO:简化，如果要启用固定和可控视角。这一段就注释掉
+        #region 简化，如果要启用固定和可控视角。这一段就注释掉
+        endHRotation = autoRoamStart.rotation;
         endVRotation = GetEndVRotation();
+        isHRotation = true;
+        #endregion
 
-        isVRotation = true;
-        isHRotation = false;
-
-		startNum++;
+        startNum++;
 		return true;
 	}
 	Quaternion GetEndVRotation()
@@ -327,11 +348,15 @@ public class FlyController : MonoBehaviour {
     }
       public void SwitchModeModifyRotation()
       {
-          transform.rotation = Quaternion.identity;
-          Quaternion q = transform.rotation;
-          float a = Vector3.Angle(Vector3.forward, autoRoamDir);
-          q = q * Quaternion.Euler(0, 90 - a, 0);
-          MainManager.Instance.firstPerson.endHRotation = q;
+          //DONE:简化，先注释掉
+          //transform.rotation = Quaternion.identity;
+          //Quaternion q = transform.rotation;
+          //float a = Vector3.Angle(Vector3.forward, autoRoamDir);
+          //q = q * Quaternion.Euler(0, 90 - a, 0);
+          //MainManager.Instance.firstPerson.endHRotation = q;
+
+          //DONE:简化，要恢复请注释下面一段代码
+          MainManager.Instance.firstPerson.endHRotation = ConfigData.Instance.roamPath[startNum - 1].rotation;
 
           MainManager.Instance.firstPerson.endVRotation = Quaternion.identity;
       }

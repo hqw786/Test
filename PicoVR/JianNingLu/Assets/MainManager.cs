@@ -12,7 +12,8 @@ public enum ViewMode
 public class MainManager : MonoBehaviour 
 {
     public static MainManager Instance;
-	Transform person;//人物
+    [HideInInspector]
+	public Transform person;//人物
     [HideInInspector]
     public MoveController firstPerson;//第一人称脚本
     [HideInInspector]
@@ -141,8 +142,17 @@ public class MainManager : MonoBehaviour
     }
     public void WarpToNewPosition(Transform point)
     {
-        person.position = point.position;
-        person.rotation = point.rotation;
+        //TODO:根据视角决定高度
+        if (curView == ViewMode.firstView)
+        {
+            person.position = point.position;
+            person.rotation = point.rotation;
+        }
+        else
+        {
+            person.position = new Vector3(point.position.x, flyYHeight, point.position.z);
+            person.rotation = point.rotation;
+        }
     }
 	public void CloseAutoRoam()
 	{

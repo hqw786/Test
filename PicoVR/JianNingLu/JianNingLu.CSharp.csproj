@@ -75,6 +75,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\APP\Scripts\Tools\Define.cs" />
@@ -182,7 +188,9 @@
     <Compile Include="Assets\RoamViewPanel.cs" />
     <Compile Include="Assets\ShowPathInfo.cs" />
     <Compile Include="Assets\ShowText.cs" />
+    <Compile Include="Assets\TipsTextEffect.cs" />
     <Compile Include="Assets\UIManager.cs" />
+    <Compile Include="Assets\WarpInfo.cs" />
     <Compile Include="Assets\WarpPoints.cs" />
     <Compile Include="Assets\WeatherPanel.cs" />
   </ItemGroup>

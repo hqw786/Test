@@ -14,6 +14,7 @@ public class RoamPoints : MonoBehaviour
     [HideInInspector]
     public GameObject mapBG2;
 
+    WarpPoints warpPoints;
 
 	Vector2 mapSize;
 	Vector2 mapOrigin;
@@ -29,6 +30,7 @@ public class RoamPoints : MonoBehaviour
         mapBG = rootNode.Find("MapBG").gameObject;
         mapBG1 = rootNode.parent.Find("NewPositionPanel").Find("MapBG").gameObject;
         mapBG2 = rootNode.parent.Find("MineMapPanel").Find("MapBG").gameObject;
+        warpPoints = transform.Find("/WarpPoints").GetComponent<WarpPoints>();
 	}
 	void SetMap()
 	{
@@ -65,8 +67,16 @@ public class RoamPoints : MonoBehaviour
 	}
 	void Start()
 	{
-		//MapBG大小
-		SetMap();
+        //MapBG大小
+        SetMap();
+
+        //映射传送点到地图
+        warpPoints.pointLeftDown = pointLeftDown;
+        warpPoints.mapBG = mapBG1;
+        warpPoints.mapOrigin = mapOrigin;
+        warpPoints.rate = rate;
+        warpPoints.MapWarpToMap();
+
 		//保存漫游点
 		foreach (Transform t in transform)
 		{

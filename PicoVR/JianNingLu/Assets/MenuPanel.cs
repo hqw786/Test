@@ -58,10 +58,7 @@ public class MenuPanel : MonoBehaviour {
             //判断是否漫游状态
             if (MainManager.Instance.isAutoRoam)
             {
-                MainManager.Instance.isAutoRoam = false;
-                UIManager.Instance.HideUI(Define.uiPanelRoamView);
-                MainManager.Instance.roamView = RoamView.custom;
-				transform.Find("BtnAutoRoam/Image").gameObject.SetActive(false);
+                ExitRoam();
             }
             else//判断是否有UI打开
             {
@@ -77,6 +74,13 @@ public class MenuPanel : MonoBehaviour {
             }
         }
 	}
+    public void ExitRoam()
+    {
+        MainManager.Instance.isAutoRoam = false;
+        UIManager.Instance.HideUI(Define.uiPanelRoamView);
+        MainManager.Instance.roamView = RoamView.custom;
+        transform.Find("BtnAutoRoam/Image").gameObject.SetActive(false);
+    }
     private void OnBtnPersonViewClick()
     {
         if (MainManager.Instance.curView != ViewMode.firstView)
@@ -113,24 +117,57 @@ public class MenuPanel : MonoBehaviour {
     }
     void OnBtnAutoRoamClick()
     {
-		ButtonRestoreDefault(functionKind);
-		//DONE:简化，先注释掉
-		//UIManager.Instance.ShowUI(Define.uiPanelRoam);
-		//DONE：简化，如果上面一行启用。这一段就注释掉
-		#region 简化，如果要启用固定和可控视角。这一段就注释掉
-		MainManager.Instance.isAutoRoam = true;
-		MainManager.Instance.roamView = RoamView.fix;
-		if (MainManager.Instance.curView == ViewMode.firstView)
-		{
-			MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
-		}
-		else
-		{
-			MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
-		}
-		#endregion
+        if (!MainManager.Instance.isAutoRoam)
+        {
+            ButtonRestoreDefault(functionKind);
+            //DONE:简化，先注释掉
+            //UIManager.Instance.ShowUI(Define.uiPanelRoam);
+            //DONE：简化，如果上面一行启用。这一段就注释掉
+            #region 简化，如果要启用固定和可控视角。这一段就注释掉
+            //MainManager.Instance.isAutoRoam = true;
+            MainManager.Instance.roamView = RoamView.fix;
+            if (MainManager.Instance.curView == ViewMode.firstView)
+            {
+                //从起点漫游
+                //MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+                //匹配到最近的点开始漫游
+                MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
+            }
+            else
+            {
+                //从起点漫游
+                // MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
+                //匹配到最近的点开始漫游
+                MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
+            }
+            #endregion
 
-		btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
+            btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
+        }
+        else
+        {
+            ExitRoam();
+        }
+    }
+    int MateLateRoamPoint(Vector3 position)
+    {
+        float dis = 0f;
+        float minDis = 0f;
+        int temp = 0;
+        for (int i = 0; i < ConfigData.Instance.roamPath.Count; i++)
+        {
+            dis = Vector3.Distance(position, ConfigData.Instance.roamPath[i].position);
+            if(i == 0)
+            {
+                minDis = dis;
+            }
+            if (minDis > dis)
+            {
+                minDis = dis;
+                temp = i;
+            }
+        }
+        return temp;
     }
     //private void OnBtnViewSwitchClick()
     //{

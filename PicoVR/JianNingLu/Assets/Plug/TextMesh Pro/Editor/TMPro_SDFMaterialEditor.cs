@@ -265,7 +265,6 @@ public class TMPro_SDFMaterialEditor : MaterialEditor
         m_inspectorStartRegion = GUILayoutUtility.GetRect(0f, 0f, GUILayout.ExpandWidth(true));
 
         // Check if Shader selection is compatible with Font Asset
-        // TODO
 
 
         EditorGUIUtility.LookLikeControls(130, 50);

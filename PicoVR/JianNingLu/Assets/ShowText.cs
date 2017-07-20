@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
-    
+    public Transform point;
 
     Image image;
 	Text text;
@@ -20,7 +20,7 @@ public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
 		text = image.transform.Find("Text").GetComponent<Text>();
     }
 	void Start () {
-        
+        GetComponent<Button>().onClick.AddListener(OnBtnPointClick);
 	}
     public void OnEnable()
     {
@@ -69,6 +69,7 @@ public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
 				text.color = ct;
 				isHide = false;
 				image.gameObject.SetActive(false);
+                print("Image隐藏");
 				text.gameObject.SetActive(false);
 			}
 			image.color = ci;
@@ -80,6 +81,7 @@ public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
         isShow = true;
         isHide = false;
 		image.gameObject.SetActive(true);
+        print("Image 显示");
 		text.gameObject.SetActive(true);
     }
     public void FadeHide()
@@ -87,17 +89,30 @@ public class ShowText : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler{
         isShow = false;
         isHide = true;
     }
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
 		FadeShow();
 		//print("enter");
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
 		FadeHide();
 		//print("exit");
+    }
+    public void SetContext(string s)
+    {
+        string ss = s.Substring(s.IndexOf(".") + 1);
+        text.text = ss;
+    }
+    public void OnBtnPointClick()
+    {
+        MainManager.Instance.CloseAutoRoam();
+        MainManager.Instance.WarpToNewPosition(point);
+        //其他按钮恢复默认
+        transform.parent.GetComponent<NewPositionPanel>().ButtonsDefault();
+        //点击的按钮变成红色
+        //btnPoint1.image.sprite = btnPoint1.spriteState.pressedSprite;
+        GetComponent<Button>().image.color = Color.red;
+        transform.parent.gameObject.SetActive(false);
     }
 }

@@ -19,13 +19,22 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
     // Use this for initialization
     void Awake()
     {
-        btnPoint1 = transform.Find("BtnPoint1").GetComponent<Button>();
-        btnPoint1.onClick.AddListener(OnBtnPoint1Click);
-        buttonList.Add(btnPoint1);
+        //btnPoint1 = transform.Find("BtnPoint1").GetComponent<Button>();
+        //btnPoint1.onClick.AddListener(OnBtnPoint1Click);
+        //buttonList.Add(btnPoint1);
 
-        btnPoint2 = transform.Find("BtnPoint2").GetComponent<Button>();
-        btnPoint2.onClick.AddListener(OnBtnPoint2Click);
-        buttonList.Add(btnPoint2);
+        //btnPoint2 = transform.Find("BtnPoint2").GetComponent<Button>();
+        //btnPoint2.onClick.AddListener(OnBtnPoint2Click);
+        //buttonList.Add(btnPoint2);
+
+        foreach(Transform t in transform)
+        {
+            if(t.name.Contains("Point"))
+            {
+                Button b = t.GetComponent<Button>();
+                buttonList.Add(b);
+            }
+        }
 
         btnMineMap = transform.Find("MapBG").transform.Find("BtnMineMap").GetComponent<Button>();
         btnMineMap.onClick.AddListener(OnBtnMineMapClick);
@@ -39,7 +48,7 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
 	void Update () {
 		
 	}
-    void ButtonsDefault()
+    public void ButtonsDefault()
     {
         foreach(Button b in buttonList)
         {
