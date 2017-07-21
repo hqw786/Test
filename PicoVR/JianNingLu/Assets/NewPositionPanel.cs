@@ -52,9 +52,9 @@ public class NewPositionPanel : MonoBehaviour ,IPointerClickHandler
     {
         foreach(Button b in buttonList)
         {
-			if (b.image.sprite != b.spriteState.disabledSprite)
-				//b.image.sprite = b.spriteState.disabledSprite;
-				b.image.color = Color.white;
+			//if (b.image.sprite != b.spriteState.disabledSprite)
+				b.image.sprite = b.spriteState.disabledSprite;
+				//b.image.color = Color.white;
         }
     }
     public void OnBtnPoint1Click()

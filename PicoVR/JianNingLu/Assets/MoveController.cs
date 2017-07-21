@@ -158,42 +158,39 @@ public class MoveController : MonoBehaviour {
             }
             if (isInput)
             {
-                if (MainManager.Instance.isAutoRoam)
-                {
-                    transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
-                    isInput = false;
-                }
+                transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
+                isInput = false;
             }
         }
     }
     void Direction()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             //isForward = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(transform.forward * Time.deltaTime * v);
         }
-        else if (Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             //isBack = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(-transform.forward * Time.deltaTime * v);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             //isLeft = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(-transform.right * Time.deltaTime * v);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             //isRight = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(transform.right * Time.deltaTime * v);
         }
 
@@ -370,6 +367,11 @@ public class MoveController : MonoBehaviour {
 		#endregion
 
 		startNum++;
+        MainManager.Instance.roamPauseNum = startNum;
+        if(MainManager.Instance.roamPauseNum == ConfigData.Instance.roamPath.Count -1)
+        {
+            MainManager.Instance.roamPauseNum = 0;
+        }
         return true;
     }
 	Quaternion GetEndVRotation()

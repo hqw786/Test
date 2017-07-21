@@ -156,11 +156,8 @@ public class FlyController : MonoBehaviour {
             }
             if (isInput)
             {
-                if (MainManager.Instance.isAutoRoam)
-                {
-                    transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
-                    isInput = false;
-                }
+                transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
+                isInput = false;
             }
         }
     }
@@ -170,28 +167,28 @@ public class FlyController : MonoBehaviour {
         {
             //isForward = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(transform.forward * Time.deltaTime * v * rate);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             //isBack = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(-transform.forward * Time.deltaTime * v * rate);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             //isLeft = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(-transform.right * Time.deltaTime * v * rate);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             //isRight = true;
             //isInput = true;
-            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
+            float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(transform.right * Time.deltaTime * v * rate);
         }
     }
@@ -315,6 +312,11 @@ public class FlyController : MonoBehaviour {
         #endregion
 
         startNum++;
+        MainManager.Instance.roamPauseNum = startNum;
+        if (MainManager.Instance.roamPauseNum == ConfigData.Instance.roamPath.Count - 1)
+        {
+            MainManager.Instance.roamPauseNum = 0;
+        }
 		return true;
 	}
 	Quaternion GetEndVRotation()

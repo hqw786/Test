@@ -73,6 +73,21 @@ public class MenuPanel : MonoBehaviour {
                 }
             }
         }
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(MainManager.Instance.curView == ViewMode.firstView)
+            {
+                OnBtnFlyViewClick();
+            }
+            else
+            {
+                OnBtnPersonViewClick();
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            OnBtnAutoRoamClick();
+        }
 	}
     public void ExitRoam()
     {
@@ -131,14 +146,18 @@ public class MenuPanel : MonoBehaviour {
                 //从起点漫游
                 //MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
                 //匹配到最近的点开始漫游
-                MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
+                //MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
+                //断点重游
+                MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MainManager.Instance.roamPauseNum, ConfigData.Instance.roamPath.Count - 1);
             }
             else
             {
                 //从起点漫游
                 // MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
                 //匹配到最近的点开始漫游
-                MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
+                //MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
+                //断点重游
+                MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MainManager.Instance.roamPauseNum, ConfigData.Instance.roamPath.Count - 1);
             }
             #endregion
 
@@ -166,6 +185,10 @@ public class MenuPanel : MonoBehaviour {
                 minDis = dis;
                 temp = i;
             }
+        }
+        if(temp == ConfigData.Instance.roamPath.Count - 1)
+        {
+            temp = 0;
         }
         return temp;
     }

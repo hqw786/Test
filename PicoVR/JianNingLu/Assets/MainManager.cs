@@ -58,6 +58,8 @@ public class MainManager : MonoBehaviour
     public float rate;
     [HideInInspector]
     public float mineRate;
+    [HideInInspector]
+    public int roamPauseNum;  
     //[Header("前往目的地地图背景")]
     // Use this for initialization
 	void Awake()
