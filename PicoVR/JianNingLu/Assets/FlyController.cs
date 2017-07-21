@@ -219,7 +219,7 @@ public class FlyController : MonoBehaviour {
     }
 	void AutoRoaming()
 	{
-		transform.Translate(autoRoamDir * Time.deltaTime * 10f, Space.World);
+		transform.Translate(autoRoamDir * Time.deltaTime * MainManager.Instance.roamSpeed * 3f, Space.World);
 		if(Vector3.Distance(transform.position,autoRoamEnd.position) <= 1f)
 		{
 			if(!HasNextPosition())

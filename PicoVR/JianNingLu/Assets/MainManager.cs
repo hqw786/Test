@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
+//using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public enum ViewMode
 {
@@ -11,6 +12,22 @@ public enum ViewMode
 
 public class MainManager : MonoBehaviour 
 {
+    public void OnGUI()
+    {
+        if(GUI.Button(new Rect(0f,0f,100f,40f),"昼夜切换"))
+        {
+            int a = SceneManager.GetActiveScene().buildIndex;
+            if(a == 1)
+            {
+                SceneManager.LoadScene(2);
+            }
+            else if(a == 2)
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
+    }
+
     public static MainManager Instance;
     [HideInInspector]
 	public Transform person;//人物
@@ -59,8 +76,9 @@ public class MainManager : MonoBehaviour
     [HideInInspector]
     public float mineRate;
     [HideInInspector]
-    public int roamPauseNum;  
-    //[Header("前往目的地地图背景")]
+    public int roamPauseNum;
+    [Header("自动漫游数值")]
+    public float roamSpeed;
     // Use this for initialization
 	void Awake()
 	{

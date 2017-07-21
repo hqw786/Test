@@ -232,7 +232,7 @@ public class MoveController : MonoBehaviour {
         //这种方式，先快后慢，不匀速
         //transform.position = Vector3.Lerp(transform.position, autoRoamEnd.position, Time.deltaTime * 0.1f);
         //第二种方式，匀速
-		transform.Translate(autoRoamDir * Time.deltaTime * 10f, Space.World);
+		transform.Translate(autoRoamDir * Time.deltaTime * MainManager.Instance.roamSpeed, Space.World);
         if(Vector3.Distance(transform.position,autoRoamEnd.position) <= 1f)
         {
             if (!HasNextPosition())

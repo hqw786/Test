@@ -1,0 +1,234 @@
+fileFormatVersion: 2
+guid: d23f63eaac7ec794d83bdc8ae21b7d76
+timeCreated: 1500529727
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: light_01
+    100002: light_02
+    100004: light_03
+    100006: light_04
+    100008: light_05
+    100010: light_06
+    100012: //RootNode
+    100014: lou117_shop_01
+    100016: lou117_shop_02
+    100018: lou117_shop_03
+    100020: lou117_shop_04
+    100022: lou117_shop_05
+    100024: lou117_shop_06
+    100026: lou117_shop_07
+    100028: lou117_shop_08
+    100030: lou117_shop_09
+    100032: lou117_shop_11
+    100034: lou117_shop_12
+    100036: lou117_shop_13
+    100038: lou117_shop_14
+    100040: lou117_shop_15
+    100042: lou117_shop_16
+    100044: lou117_shop_17
+    100046: lou117_shop_18
+    100048: lou117_shop_19
+    100050: lou117_shop_20
+    100052: lou117_shop_21
+    100054: lou117_shop_24
+    100056: lou117_shop_25
+    100058: lou117_shop_26
+    100060: lou117_shop_27
+    100062: lou117_shop_28
+    400000: light_01
+    400002: light_02
+    400004: light_03
+    400006: light_04
+    400008: light_05
+    400010: light_06
+    400012: //RootNode
+    400014: lou117_shop_01
+    400016: lou117_shop_02
+    400018: lou117_shop_03
+    400020: lou117_shop_04
+    400022: lou117_shop_05
+    400024: lou117_shop_06
+    400026: lou117_shop_07
+    400028: lou117_shop_08
+    400030: lou117_shop_09
+    400032: lou117_shop_11
+    400034: lou117_shop_12
+    400036: lou117_shop_13
+    400038: lou117_shop_14
+    400040: lou117_shop_15
+    400042: lou117_shop_16
+    400044: lou117_shop_17
+    400046: lou117_shop_18
+    400048: lou117_shop_19
+    400050: lou117_shop_20
+    400052: lou117_shop_21
+    400054: lou117_shop_24
+    400056: lou117_shop_25
+    400058: lou117_shop_26
+    400060: lou117_shop_27
+    400062: lou117_shop_28
+    2300000: light_01
+    2300002: light_02
+    2300004: light_03
+    2300006: light_04
+    2300008: light_05
+    2300010: light_06
+    2300012: lou117_shop_01
+    2300014: lou117_shop_02
+    2300016: lou117_shop_03
+    2300018: lou117_shop_04
+    2300020: lou117_shop_05
+    2300022: lou117_shop_06
+    2300024: lou117_shop_07
+    2300026: lou117_shop_08
+    2300028: lou117_shop_09
+    2300030: lou117_shop_11
+    2300032: lou117_shop_12
+    2300034: lou117_shop_13
+    2300036: lou117_shop_14
+    2300038: lou117_shop_15
+    2300040: lou117_shop_16
+    2300042: lou117_shop_17
+    2300044: lou117_shop_18
+    2300046: lou117_shop_19
+    2300048: lou117_shop_20
+    2300050: lou117_shop_21
+    2300052: lou117_shop_24
+    2300054: lou117_shop_25
+    2300056: lou117_shop_26
+    2300058: lou117_shop_27
+    2300060: lou117_shop_28
+    3300000: light_01
+    3300002: light_02
+    3300004: light_03
+    3300006: light_04
+    3300008: light_05
+    3300010: light_06
+    3300012: lou117_shop_01
+    3300014: lou117_shop_02
+    3300016: lou117_shop_03
+    3300018: lou117_shop_04
+    3300020: lou117_shop_05
+    3300022: lou117_shop_06
+    3300024: lou117_shop_07
+    3300026: lou117_shop_08
+    3300028: lou117_shop_09
+    3300030: lou117_shop_11
+    3300032: lou117_shop_12
+    3300034: lou117_shop_13
+    3300036: lou117_shop_14
+    3300038: lou117_shop_15
+    3300040: lou117_shop_16
+    3300042: lou117_shop_17
+    3300044: lou117_shop_18
+    3300046: lou117_shop_19
+    3300048: lou117_shop_20
+    3300050: lou117_shop_21
+    3300052: lou117_shop_24
+    3300054: lou117_shop_25
+    3300056: lou117_shop_26
+    3300058: lou117_shop_27
+    3300060: lou117_shop_28
+    4300000: lou117_shop_04
+    4300002: light_01
+    4300004: light_02
+    4300006: lou117_shop_01
+    4300008: lou117_shop_02
+    4300010: lou117_shop_06
+    4300012: lou117_shop_07
+    4300014: lou117_shop_05
+    4300016: lou117_shop_03
+    4300018: lou117_shop_09
+    4300020: lou117_shop_12
+    4300022: lou117_shop_21
+    4300024: lou117_shop_20
+    4300026: lou117_shop_17
+    4300028: lou117_shop_15
+    4300030: light_06
+    4300032: lou117_shop_08
+    4300034: lou117_shop_18
+    4300036: lou117_shop_19
+    4300038: lou117_shop_16
+    4300040: lou117_shop_25
+    4300042: lou117_shop_24
+    4300044: lou117_shop_28
+    4300046: lou117_shop_26
+    4300048: lou117_shop_27
+    4300050: light_04
+    4300052: light_03
+    4300054: light_05
+    4300056: lou117_shop_14
+    4300058: lou117_shop_13
+    4300060: lou117_shop_11
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
