@@ -47,7 +47,7 @@ public class MenuPanel : MonoBehaviour {
         functionKind.Add(btnAutoRoam);
         functionKind.Add(btnSelectNewPosition);
         functionKind.Add(btnHelp);
-        btnPersonView.transform.Find("Image").gameObject.SetActive(true);
+        //btnPersonView.transform.Find("Image").gameObject.SetActive(true);
 	}
     // Update is called once per frame
     void Update () 
@@ -148,6 +148,8 @@ public class MenuPanel : MonoBehaviour {
                 //匹配到最近的点开始漫游
                 //MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
                 //断点重游
+                //MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MainManager.Instance.roamPauseNum, ConfigData.Instance.roamPath.Count - 1);
+                //Demo临时用
                 MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MainManager.Instance.roamPauseNum, ConfigData.Instance.roamPath.Count - 1);
             }
             else
@@ -157,6 +159,8 @@ public class MenuPanel : MonoBehaviour {
                 //匹配到最近的点开始漫游
                 //MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MateLateRoamPoint(MainManager.Instance.person.position), ConfigData.Instance.roamPath.Count - 1);
                 //断点重游
+                //MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MainManager.Instance.roamPauseNum, ConfigData.Instance.roamPath.Count - 1);
+                //Demo临时用
                 MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MainManager.Instance.roamPauseNum, ConfigData.Instance.roamPath.Count - 1);
             }
             #endregion

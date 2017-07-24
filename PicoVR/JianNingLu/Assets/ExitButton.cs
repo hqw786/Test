@@ -16,6 +16,7 @@ public class ExitButton : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        MainManager.Instance.SavePositionAndRotation(Vector3.zero, Quaternion.identity, Quaternion.identity, 0);
         image.SetActive(false);
     }
 

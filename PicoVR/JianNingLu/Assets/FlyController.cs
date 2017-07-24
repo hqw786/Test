@@ -75,6 +75,31 @@ public class FlyController : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, yHeight, transform.position.z);
         FOVReset();
     }
+    public void Initial(Vector3 position, Quaternion rotation, Quaternion cameraRotation)
+    {
+        yHeight = MainManager.Instance.flyYHeight;
+        normalSpeed = MainManager.Instance.walkSpeed_Fly;
+        fastSpeed = MainManager.Instance.runSpeed_Fly;
+
+        rotationHSpeed = MainManager.Instance.rotationHSpeed;
+        rotationVSpeed = MainManager.Instance.rotationVSpeed;
+
+        minFOV = MainManager.Instance.minFOV_Fly;
+        maxFOV = MainManager.Instance.maxFOV_Fly;
+        FOVSpeed = MainManager.Instance.FOVSpeed_Fly;
+
+        //位置旋转视距等改变
+        camera.fieldOfView = maxFOV;
+        transform.position = position;
+        transform.rotation = rotation;
+
+        //FOVReset();
+        camera.fieldOfView = maxFOV;
+        rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
+
+        cameraTransform.localRotation = cameraRotation;
+
+    }
     void Start()
     {
         //Cursor.visible = false;//隐藏鼠标
@@ -262,7 +287,7 @@ public class FlyController : MonoBehaviour {
         //将摄像机对准正下方位置。
         Quaternion q = cameraTransform.localRotation;
         q.x = 0f;
-        q = q * Quaternion.Euler(90, 0, 0);
+        q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
         cameraTransform.localRotation = q;
     }
 	public void SetAutoRoamStartAndEndPoint(int s, int e)
@@ -273,6 +298,7 @@ public class FlyController : MonoBehaviour {
 			endNum = e;
             isHRotation = false;
             isVRotation = true;
+            MainManager.Instance.cameraAngle = 40f;
 			HasNextPosition();
 		}
 	}
@@ -322,7 +348,7 @@ public class FlyController : MonoBehaviour {
 	Quaternion GetEndVRotation()
 	{
         Quaternion q = Quaternion.identity;
-        q = q * Quaternion.Euler(90, 0, 0);
+        q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
 		return q;
 	}
       internal void SwitchToPerson()
@@ -331,14 +357,14 @@ public class FlyController : MonoBehaviour {
         MainManager.Instance.firstPerson.autoRoamStart = autoRoamStart;
         MainManager.Instance.firstPerson.autoRoamStart.position = new Vector3(
             autoRoamStart.position.x,
-            0f,
+            MainManager.Instance.fpYHeight,
             autoRoamStart.position.z);
         MainManager.Instance.firstPerson.autoRoamEnd = autoRoamEnd;
         MainManager.Instance.firstPerson.autoRoamEnd.position = new Vector3(
             autoRoamEnd.position.x,
-            0f,
+            MainManager.Instance.fpYHeight,
             autoRoamEnd.position.z);
-        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, MainManager.Instance.fpYHeight, transform.position.z);
         SwitchModeModifyRotation();
 
         //以下不用修改

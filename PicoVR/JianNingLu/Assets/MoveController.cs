@@ -77,6 +77,28 @@ public class MoveController : MonoBehaviour {
 
         FOVReset();
     }
+    public void Initial(Vector3 position, Quaternion rotation,Quaternion cameraRotation)
+    {
+        walkSpeed = MainManager.Instance.walkSpeed;
+        runSpeed = MainManager.Instance.runSpeed;
+
+        rotationHSpeed = MainManager.Instance.rotationHSpeed;
+        rotationVSpeed = MainManager.Instance.rotationVSpeed;
+
+        minFOV = MainManager.Instance.minFOV_firstPerson;
+        maxFOV = MainManager.Instance.maxFOV_firstPerson;
+
+        FOVSpeed = MainManager.Instance.FOVSpeed_firstPerson;
+        //第一次初始化位置，旋转和视距
+        transform.position = position;
+        transform.rotation = rotation;
+
+        //FOVReset();
+        camera.fieldOfView = maxFOV;
+        rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
+        
+        cameraTransform.localRotation = cameraRotation;
+    }
 	void Start () 
     {
 		//Cursor.visible = false;//隐藏鼠标
@@ -414,7 +436,7 @@ public class MoveController : MonoBehaviour {
         MainManager.Instance.flyController.endHRotation = ConfigData.Instance.roamPath[startNum - 1].rotation;
 
         Quaternion q = Quaternion.identity;
-        q = q * Quaternion.Euler(90, 0, 0);
+        q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
         MainManager.Instance.flyController.endVRotation = q;
     }
 }

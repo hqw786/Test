@@ -19,13 +19,51 @@ public class MainManager : MonoBehaviour
             int a = SceneManager.GetActiveScene().buildIndex;
             if(a == 1)
             {
+                ////保存位置和旋转信息
+                SavePositionAndRotation(person.position, person.rotation, person.Find("Main Camera").localRotation, (int)curView);
                 SceneManager.LoadScene(2);
             }
             else if(a == 2)
             {
+                //保存位置和旋转信息
+                SavePositionAndRotation(person.position, person.rotation, person.Find("Main Camera").localRotation,(int)curView);
                 SceneManager.LoadScene(1);
             }
         }
+    }
+    public void SavePositionAndRotation(Vector3 p,Quaternion r, Quaternion cr, int s)
+    {
+        PlayerPrefs.SetFloat("px", p.x);
+        PlayerPrefs.SetFloat("py", p.y);
+        PlayerPrefs.SetFloat("pz", p.z);
+
+        PlayerPrefs.SetFloat("rx", r.x);
+        PlayerPrefs.SetFloat("ry", r.y);
+        PlayerPrefs.SetFloat("rz", r.z);
+        PlayerPrefs.SetFloat("rw", r.w);
+
+        PlayerPrefs.SetFloat("crx", cr.x);
+        PlayerPrefs.SetFloat("cry", cr.y);
+        PlayerPrefs.SetFloat("crz", cr.z);
+        PlayerPrefs.SetFloat("crw", cr.w);
+
+        PlayerPrefs.SetInt("curView", s);
+    }
+    public Vector3 GetPosition()
+    {
+        return new Vector3(PlayerPrefs.GetFloat("px"), PlayerPrefs.GetFloat("py"), PlayerPrefs.GetFloat("pz"));
+    }
+    public Quaternion GetRotation()
+    {
+        return new Quaternion(PlayerPrefs.GetFloat("rx"), PlayerPrefs.GetFloat("ry"), PlayerPrefs.GetFloat("rz"), PlayerPrefs.GetFloat("rw"));
+    }
+    public Quaternion GetCameraRotation()
+    {
+        return new Quaternion(PlayerPrefs.GetFloat("crx"), PlayerPrefs.GetFloat("cry"), PlayerPrefs.GetFloat("crz"), PlayerPrefs.GetFloat("crw"));
+    }
+    public ViewMode GetViewMode()
+    {
+        return (ViewMode)(PlayerPrefs.GetInt("curView"));
     }
 
     public static MainManager Instance;
@@ -39,11 +77,11 @@ public class MainManager : MonoBehaviour
 	public ViewMode curView;
     [HideInInspector]
     public ViewMode lastView;
-    //Rigidbody rb;
 
     [Header("地面移动数值")]
     public Vector3 initialPosition_firstPerson;
     public Vector3 initialDir_firstPerson;
+    public float fpYHeight;
     public float walkSpeed;
     public float runSpeed;
     public float minFOV_firstPerson;
@@ -53,6 +91,7 @@ public class MainManager : MonoBehaviour
     
     [Header("飞行移动数值")]
     public Quaternion initialDir_Fly;
+    public float cameraAngle;
     public float flyYHeight;
     public float walkSpeed_Fly;
     public float runSpeed_Fly;
@@ -88,8 +127,10 @@ public class MainManager : MonoBehaviour
         //rb = person.GetComponent<Rigidbody>();
         flyController = person.GetComponent<FlyController>();
         firstPerson = person.GetComponent<MoveController>();
-        curView = ViewMode.firstView;
+        //curView = ViewMode.firstView;
         InitialMap();
+        cameraAngle = 0f;
+        roamPauseNum = 3;
     }
     void InitialMap()
     {
@@ -109,11 +150,36 @@ public class MainManager : MonoBehaviour
         //}
     }
 	void Start () {
-        flyController.Initial();
-		flyController.enabled = false;
-        firstPerson.Initial();
-		firstPerson.enabled = true;
-                
+        if (PlayerPrefs.GetFloat("px") == 0 && PlayerPrefs.GetFloat("py") == 0 && PlayerPrefs.GetFloat("pz") == 0)
+        {
+            flyController.Initial();
+            firstPerson.Initial();
+            flyController.enabled = false;
+            firstPerson.enabled = true;
+            transform.Find("/Canvas/MenuPanel/BtnPersonView").transform.Find("Image").gameObject.SetActive(true);
+        }
+        else
+        {
+            flyController.Initial(GetPosition(), GetRotation(), GetCameraRotation());
+            firstPerson.Initial(GetPosition(), GetRotation(), GetCameraRotation());
+
+            curView = GetViewMode();
+
+            if (curView == ViewMode.firstView)
+            {
+                flyController.enabled = false;
+                firstPerson.enabled = true;
+                //菜单按钮
+                transform.Find("/Canvas/MenuPanel/BtnPersonView").transform.Find("Image").gameObject.SetActive(true);
+            }
+            else
+            {
+                flyController.enabled = true;
+                firstPerson.enabled = false;
+                //菜单按钮
+                transform.Find("/Canvas/MenuPanel/BtnFlyView").transform.Find("Image").gameObject.SetActive(true);
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -158,7 +224,7 @@ public class MainManager : MonoBehaviour
     void positionSwitch_FirstPerson()
     {
         //这边落地：是落到相近的预置点，还是物体所在的正下方，物体向下发射一个射线，落到碰撞体上
-        person.position = new Vector3(person.position.x, 1f, person.position.z);
+        person.position = new Vector3(person.position.x, fpYHeight, person.position.z);
     }
     public void WarpToNewPosition(Transform point)
     {
