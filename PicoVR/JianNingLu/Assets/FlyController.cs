@@ -149,6 +149,30 @@ public class FlyController : MonoBehaviour {
             }
             FOVChange(Input.GetAxis("Mouse ScrollWheel"));
         }
+        else
+        {
+            PointerEventData ped = new PointerEventData(EventSystem.current);
+            if (ped != null && ped.selectedObject != null)
+            {
+                if (ped.selectedObject.transform.parent.name.Contains("MenuPanel"))
+                {
+                    //print("ui移动");
+                    if (!MainManager.Instance.isAutoRoam)
+                    {
+                        Direction();
+                    }
+
+                    if (Input.GetMouseButton(1))
+                    {
+                        if (MainManager.Instance.roamView == RoamView.custom)
+                        {
+                            Rotation();
+                        }
+                    }
+                    FOVChange(Input.GetAxis("Mouse ScrollWheel"));
+                }
+            }
+        }
 
         if (MainManager.Instance.isAutoRoam)
         {
@@ -285,9 +309,17 @@ public class FlyController : MonoBehaviour {
         camera.fieldOfView = maxFOV;
         rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
         //将摄像机对准正下方位置。
-        Quaternion q = cameraTransform.localRotation;
-        q.x = 0f;
-        q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
+        //Quaternion q = cameraTransform.localRotation;
+        //q.x = 0f;
+        Quaternion q = Quaternion.identity;
+        if(MainManager.Instance.isAutoRoam)
+        {
+            q = q * Quaternion.Euler(MainManager.Instance.cameraRoamAngle, 0, 0);
+        }
+        else
+        {
+            q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
+        }
         cameraTransform.localRotation = q;
     }
 	public void SetAutoRoamStartAndEndPoint(int s, int e)
@@ -298,7 +330,7 @@ public class FlyController : MonoBehaviour {
 			endNum = e;
             isHRotation = false;
             isVRotation = true;
-            MainManager.Instance.cameraAngle = 40f;
+            //MainManager.Instance.cameraRoamAngle = 40f;
 			HasNextPosition();
 		}
 	}
@@ -348,7 +380,7 @@ public class FlyController : MonoBehaviour {
 	Quaternion GetEndVRotation()
 	{
         Quaternion q = Quaternion.identity;
-        q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
+        q = q * Quaternion.Euler(MainManager.Instance.cameraRoamAngle, 0, 0);
 		return q;
 	}
       internal void SwitchToPerson()

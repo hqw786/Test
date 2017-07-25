@@ -51,12 +51,17 @@ public class MoveController : MonoBehaviour {
     public bool isHRotation;
 	[HideInInspector]
 	public bool isVRotation;
+    EventSystem es;
+    StandaloneInputModule sim;
+    BaseInput bi;
 	// Use this for initialization
     void Awake()
     {
         controller = GetComponent<CharacterController>();
         cameraTransform = transform.Find("Main Camera");
         camera = cameraTransform.GetComponent<Camera>();
+        es = transform.Find("/EventSystem").GetComponent<EventSystem>();
+        sim = transform.Find("/EventSystem").GetComponent<StandaloneInputModule>();
     }
     public void Initial()
     {
@@ -134,6 +139,7 @@ public class MoveController : MonoBehaviour {
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
+            //print("移动");
             if (!MainManager.Instance.isAutoRoam)
             {
                 Direction();
@@ -146,6 +152,29 @@ public class MoveController : MonoBehaviour {
                 }
             }
             FOVChange(Input.GetAxis("Mouse ScrollWheel"));
+        }
+        else
+        {
+            PointerEventData ped = new PointerEventData(EventSystem.current);
+            if (ped != null && ped.selectedObject != null)
+            {
+                if (ped.selectedObject.transform.parent.name.Contains("MenuPanel"))
+                {
+                    //print("ui移动");
+                    if (!MainManager.Instance.isAutoRoam)
+                    {
+                        Direction();
+                    }
+                    if (Input.GetMouseButton(1))
+                    {
+                        if (MainManager.Instance.roamView == RoamView.custom)
+                        {
+                            Rotation();
+                        }
+                    }
+                    FOVChange(Input.GetAxis("Mouse ScrollWheel"));
+                }
+            }
         }
 
         if (MainManager.Instance.isAutoRoam)
@@ -364,6 +393,10 @@ public class MoveController : MonoBehaviour {
         }
         autoRoamStart = ConfigData.Instance.roamPath[startNum];
 		autoRoamEnd = ConfigData.Instance.roamPath[startNum+1];
+
+        autoRoamStart.position = new Vector3(autoRoamStart.position.x, MainManager.Instance.fpYHeight, autoRoamStart.position.z);
+        autoRoamEnd.position = new Vector3(autoRoamEnd.position.x, MainManager.Instance.fpYHeight, autoRoamEnd.position.z);
+
         MainManager.Instance.isAutoRoam = true;
         transform.position = autoRoamStart.position;
 		autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
@@ -436,7 +469,7 @@ public class MoveController : MonoBehaviour {
         MainManager.Instance.flyController.endHRotation = ConfigData.Instance.roamPath[startNum - 1].rotation;
 
         Quaternion q = Quaternion.identity;
-        q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
+        q = q * Quaternion.Euler(MainManager.Instance.cameraRoamAngle, 0, 0);
         MainManager.Instance.flyController.endVRotation = q;
     }
 }

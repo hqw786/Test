@@ -12,25 +12,6 @@ public enum ViewMode
 
 public class MainManager : MonoBehaviour 
 {
-    public void OnGUI()
-    {
-        if(GUI.Button(new Rect(0f,0f,100f,40f),"昼夜切换"))
-        {
-            int a = SceneManager.GetActiveScene().buildIndex;
-            if(a == 1)
-            {
-                ////保存位置和旋转信息
-                SavePositionAndRotation(person.position, person.rotation, person.Find("Main Camera").localRotation, (int)curView);
-                SceneManager.LoadScene(2);
-            }
-            else if(a == 2)
-            {
-                //保存位置和旋转信息
-                SavePositionAndRotation(person.position, person.rotation, person.Find("Main Camera").localRotation,(int)curView);
-                SceneManager.LoadScene(1);
-            }
-        }
-    }
     public void SavePositionAndRotation(Vector3 p,Quaternion r, Quaternion cr, int s)
     {
         PlayerPrefs.SetFloat("px", p.x);
@@ -92,6 +73,7 @@ public class MainManager : MonoBehaviour
     [Header("飞行移动数值")]
     public Quaternion initialDir_Fly;
     public float cameraAngle;
+    public float cameraRoamAngle;
     public float flyYHeight;
     public float walkSpeed_Fly;
     public float runSpeed_Fly;
@@ -129,7 +111,7 @@ public class MainManager : MonoBehaviour
         firstPerson = person.GetComponent<MoveController>();
         //curView = ViewMode.firstView;
         InitialMap();
-        cameraAngle = 0f;
+        //cameraAngle = 0f;
         roamPauseNum = 3;
     }
     void InitialMap()
@@ -191,8 +173,9 @@ public class MainManager : MonoBehaviour
     /// </summary>
 	public void ViewModeSwitch()
 	{
-        lastView = curView;
-        curView = lastView == ViewMode.firstView ? ViewMode.flyView : ViewMode.firstView;
+        //lastView = curView;
+        //curView = lastView == ViewMode.firstView ? ViewMode.flyView : ViewMode.firstView;
+        curView = curView == ViewMode.firstView ? ViewMode.flyView : ViewMode.firstView;
         if (curView == ViewMode.firstView)
 		{
 			firstPerson.enabled = true;

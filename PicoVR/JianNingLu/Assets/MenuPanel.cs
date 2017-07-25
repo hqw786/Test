@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class MenuPanel : MonoBehaviour {
+public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandler {
     //Button btnWeatherEffect;
     Button btnSelectNewPosition;
     //Button btnMineMap;
@@ -11,6 +13,7 @@ public class MenuPanel : MonoBehaviour {
     Button btnPersonView;
     Button btnFlyView;
     Button btnAutoRoam;
+    Button btnTransition;
 
     List<Button> viewKind = new List<Button>();
     List<Button> functionKind = new List<Button>();
@@ -26,12 +29,6 @@ public class MenuPanel : MonoBehaviour {
         //btnMineMap = transform.Find("BtnMineMap").GetComponent<Button>();
         //btnMineMap.onClick.AddListener(OnBtnMineMapClick);
 
-		btnSelectNewPosition = transform.Find("BtnSelectNewPosition").GetComponent<Button>();
-		btnSelectNewPosition.onClick.AddListener(OnBtnSelectNewPositionClick);
-
-		btnHelp = transform.Find("BtnHelp").GetComponent<Button>();
-		btnHelp.onClick.AddListener(OnBtnHelpClick);
-
 		btnPersonView = transform.Find("BtnPersonView").GetComponent<Button>();
 		btnPersonView.onClick.AddListener(OnBtnPersonViewClick);
 
@@ -41,12 +38,22 @@ public class MenuPanel : MonoBehaviour {
 		btnAutoRoam = transform.Find("BtnAutoRoam").GetComponent<Button>();
 		btnAutoRoam.onClick.AddListener(OnBtnAutoRoamClick);
 
+        btnTransition = transform.Find("BtnTransition").GetComponent<Button>();
+        btnTransition.onClick.AddListener(OnBtnTransitionClick);
+
+		btnSelectNewPosition = transform.Find("BtnSelectNewPosition").GetComponent<Button>();
+		btnSelectNewPosition.onClick.AddListener(OnBtnSelectNewPositionClick);
+
+		btnHelp = transform.Find("BtnHelp").GetComponent<Button>();
+		btnHelp.onClick.AddListener(OnBtnHelpClick);
+
 		viewKind.Add(btnPersonView);
 		viewKind.Add(btnFlyView);
 
         functionKind.Add(btnAutoRoam);
         functionKind.Add(btnSelectNewPosition);
         functionKind.Add(btnHelp);
+        functionKind.Add(btnTransition);
         //btnPersonView.transform.Find("Image").gameObject.SetActive(true);
 	}
     // Update is called once per frame
@@ -196,10 +203,28 @@ public class MenuPanel : MonoBehaviour {
         }
         return temp;
     }
-    //private void OnBtnViewSwitchClick()
-    //{
-    //    MainManager.Instance.ViewModeSwitch();
-    //}
+    void OnBtnTransitionClick()
+    {
+        int a = SceneManager.GetActiveScene().buildIndex;
+        if (a == 1)
+        {
+            ////保存位置和旋转信息
+            MainManager.Instance.SavePositionAndRotation(MainManager.Instance.person.position,
+                MainManager.Instance.person.rotation,
+                MainManager.Instance.person.Find("Main Camera").localRotation,
+                (int)MainManager.Instance.curView);
+            SceneManager.LoadScene(2);
+        }
+        else if (a == 2)
+        {
+            //保存位置和旋转信息
+            MainManager.Instance.SavePositionAndRotation(MainManager.Instance.person.position,
+                MainManager.Instance.person.rotation,
+                MainManager.Instance.person.Find("Main Camera").localRotation,
+                (int)MainManager.Instance.curView);
+            SceneManager.LoadScene(1);
+        }
+    }
     //void OnBtnWeatherEffectClick()
     //{
     //    //if (UIManager.Instance.ActiveUI(Define.uiPanelWeather))
@@ -237,5 +262,16 @@ public class MenuPanel : MonoBehaviour {
         {
             UIManager.Instance.HideUI(Define.uiPanelExit);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        EventSystem.current.SetSelectedGameObject(eventData.pointerEnter);
+        //print("鼠标悬停在按钮上");
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
