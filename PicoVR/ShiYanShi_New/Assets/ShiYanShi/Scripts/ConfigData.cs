@@ -20,16 +20,12 @@ public class ConfigData : MonoBehaviour {
     [HideInInspector]
     public List<string[]> DAN = new List<string[]>();
 
-    //[HideInInspector]
-    //public List<string[]> DAN2 = new List<string[]>();
-    //[HideInInspector]
-    //public List<string[]> DAN3 = new List<string[]>();
-
 	// Use this for initialization
     void Awake()
     {
         Instance = this;
         Tools.GetTextData("TextData");
+
     }
 	void Start () 
     {

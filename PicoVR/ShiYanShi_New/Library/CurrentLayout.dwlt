@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 392}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 145
+  controlID: 140
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 11
+  controlID: 48
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_MinSize: {x: 715, y: 392}
   m_MaxSize: {x: 18010, y: 14042}
   vertical: 1
-  controlID: 146
+  controlID: 141
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_MinSize: {x: 715, y: 271}
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
-  controlID: 147
+  controlID: 176
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,8 +252,8 @@ MonoBehaviour:
     y: 0
     width: 236
     height: 654
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.08422166, y: 0.011350992, z: -0.0010756769, w: -0.9966323}
     speed: 2
-    m_Value: {x: -0.08420065, y: 0.011348161, z: -0.0010754085, w: -0.99638367}
+    m_Value: {x: -0.08422166, y: 0.011350992, z: -0.0010756769, w: -0.99663234}
   m_Size:
     m_Target: 4.2911363
     speed: 2
@@ -559,9 +559,9 @@ MonoBehaviour:
     height: 633
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a0b2fcff
-    m_LastClickedID: 0
-    m_ExpandedIDs: 1821fdffe621fdff4a22fdff1e5dfdffd879fdff2096fdff2496fdffec9cfdff98a1fdff80b2fdffe0eefdfffcfcfdff0203ffff2806ffffdcabffff3ebfffff80ccfffff2d4ffff78fbffffdcfbffff00000000282b00000e2c0000803e0000d649000048560000f8560000ce5700009a6b0000cc6b0000f26b0000b06c0000c26c0000e26c0000806d0000926d0000
+    m_SelectedIDs: d2fbffff
+    m_LastClickedID: -1070
+    m_ExpandedIDs: dcfbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -620,19 +620,18 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders:
-    - Assets/ShiYanShi/Resources
+    m_Folders: []
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: F:\Test\PicoVR\ShiYanShi
+  m_LastProjectPath: F:\Test\PicoVR\ShiYanShi_New
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 42250000
     m_LastClickedID: 9538
-    m_ExpandedIDs: 00000000a8250000d8250000ee250000fa2500005e2600006a2600007a260000da260000e8260000262700003c2700004227000070270000ac270000ea270000f82700000c2800007c2800008c280000cc280000d4280000da280000de280000fa280000fe2800001a2900003029000034290000f22e0000f42e0000
+    m_ExpandedIDs: 00000000aa250000da250000f0250000fc250000602600006c2600007c260000b0260000d0260000de2600001c2700003227000038270000662700007c270000a8270000e6270000e8270000f62700000a2800008a2800008c280000dc280000e4280000ea280000ee2800000a2900000e2900002c2900004229000046290000d42d0000d62d0000d82d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -660,7 +659,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a8250000d8250000ee250000fa2500005e2600006a2600007a2600009a260000da260000e8260000262700003c2700004227000070270000ac270000ea270000f82700000c2800007c2800007e280000cc280000d4280000da280000de280000fa280000fe2800001a2900003029000034290000f22e0000f42e00002a3200002c3200002e320000
+    m_ExpandedIDs: 00000000aa250000da250000f0250000fc250000602600006c2600007c260000b0260000d0260000de2600001c2700003227000038270000662700007c270000a8270000e6270000e8270000f62700000a2800008a2800008c280000dc280000e4280000ea280000ee2800000a2900000e2900002c2900004229000046290000d42d0000d62d0000d82d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -741,7 +740,7 @@ MonoBehaviour:
     y: 92
     width: 527
     height: 633
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 84.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 131

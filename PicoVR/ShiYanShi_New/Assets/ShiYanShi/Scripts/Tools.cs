@@ -207,33 +207,9 @@ public class Tools
                     break;
                 case "蛋种类":
                     {
-                        //if (temp[0].Contains("蛋种类2"))
-                        //{
-                        //    str = "蛋种类2";
-                        //}
-                        //else
-                        //{
 							ConfigData.Instance.DAN.Add(temp);
-						//}
                     }
                     break;
-                //case "蛋种类2":
-                //    {
-                //        if (temp[0].Contains("蛋种类3"))
-                //        {
-                //            str = "蛋种类3";
-                //        }
-                //        else
-                //        {
-                //            ConfigData.Instance.DAN2.Add(temp);
-                //        }
-                //    }
-                //    break;
-                //case "蛋种类3":
-                //    {
-                //        ConfigData.Instance.DAN3.Add(temp);
-                //    }
-                //    break;
             }
         }
     }
