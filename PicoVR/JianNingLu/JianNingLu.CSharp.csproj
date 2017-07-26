@@ -90,6 +90,7 @@
     <Compile Include="Assets\ConfigData.cs" />
     <Compile Include="Assets\ExitButton.cs" />
     <Compile Include="Assets\ExitPanel.cs" />
+    <Compile Include="Assets\Fade.cs" />
     <Compile Include="Assets\FirstPersonMove.cs" />
     <Compile Include="Assets\FlagEffect.cs" />
     <Compile Include="Assets\FlyController.cs" />

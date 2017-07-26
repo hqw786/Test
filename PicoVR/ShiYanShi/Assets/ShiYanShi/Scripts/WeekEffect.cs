@@ -21,12 +21,11 @@ public class WeekEffect : MonoBehaviour {
         curPoint = 0;
     }
 	void Start () {
-       //this.transform.GetComponent<Text>().text = "hehe";
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //this.transform.GetComponent<Text>().text = "hehe";
 		if(curPoint == 1)
         {
             Destroy(this.gameObject, 1f);

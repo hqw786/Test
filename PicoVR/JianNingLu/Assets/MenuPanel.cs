@@ -54,7 +54,7 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
         functionKind.Add(btnSelectNewPosition);
         functionKind.Add(btnHelp);
         functionKind.Add(btnTransition);
-        //btnPersonView.transform.Find("Image").gameObject.SetActive(true);
+        btnTransition.transform.Find("Image").gameObject.SetActive(false);
 	}
     // Update is called once per frame
     void Update () 
@@ -203,8 +203,14 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
         }
         return temp;
     }
-    void OnBtnTransitionClick()
+    public void OnBtnTransitionClick()
     {
+        btnTransition.transform.Find("Image").gameObject.SetActive(true);
+
+        Transform t = transform.parent.Find("BG");
+        t.gameObject.SetActive(true);
+        t.GetComponent<Fade>().SetFadeOut();
+
         int a = SceneManager.GetActiveScene().buildIndex;
         if (a == 1)
         {
@@ -213,7 +219,8 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
                 MainManager.Instance.person.rotation,
                 MainManager.Instance.person.Find("Main Camera").localRotation,
                 (int)MainManager.Instance.curView);
-            SceneManager.LoadScene(2);
+            
+            Invoke("TransitionDayToNight", 1.5f);
         }
         else if (a == 2)
         {
@@ -222,8 +229,17 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
                 MainManager.Instance.person.rotation,
                 MainManager.Instance.person.Find("Main Camera").localRotation,
                 (int)MainManager.Instance.curView);
-            SceneManager.LoadScene(1);
+
+            Invoke("TransitionNightToDay", 1.5f);
         }
+    }
+    void TransitionDayToNight()
+    {
+        SceneManager.LoadScene(2);
+    }
+    void TransitionNightToDay()
+    {
+        SceneManager.LoadScene(1);
     }
     //void OnBtnWeatherEffectClick()
     //{

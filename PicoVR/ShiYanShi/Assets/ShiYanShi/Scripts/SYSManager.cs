@@ -149,44 +149,29 @@ public class SYSManager : MonoBehaviour
         dicEggContent.Add("jidan_01", ConfigData.Instance.DAN[2]);
     }
 	void Start () {
-        //isEggTips = PlayerPrefs.GetInt("isEggTips") == 1 ? true : false;
-        //isMenuTips = PlayerPrefs.GetInt("isMenuTips") == 1 ? true : false;
-        
         //将摄像头归为原始位（rotation(0,0,0));
-        float angle = Vector3.Angle(leftEye.transform.parent.parent.forward, Vector3.forward);
-        if(angle<45)
-        {
-            leftEye.transform.parent.parent.rotation = Quaternion.identity;
-            leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
-        }
-        //print(angle);
-        //angle = Vector3.Angle(leftEye.transform.parent.parent.forward, Vector3.forward);
-        //print(angle);
-        //else
+        //float angle = Vector3.Angle(leftEye.transform.parent.parent.forward, Vector3.forward);
+        //if(angle<45)
         //{
-
-        //}
-
-        //if (!Manager.isFirst)
-        //{
-        //    Manager.isFirst = true;
         //    leftEye.transform.parent.parent.rotation = Quaternion.identity;
         //    leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
         //}
-        //else
-        //{
-            
-        //}
-        
+
+        if (Manager.isFirst)
+        {
+            Manager.isFirst = false;
+            leftEye.transform.parent.parent.rotation = Quaternion.identity;
+            leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
+        }
         
         if (Controller.UPvr_GetControllerState() == ControllerState.Connected)
         {
             gazePointer.SetActive(false);
         }
 
-        if(!Manager.isMenuTips)
+        if(Manager.isMenuTips)
         {
-            Manager.isMenuTips = true;
+            Manager.isMenuTips = false;
             transform.Find("Menu/Tips").gameObject.SetActive(true);
         }
         else
@@ -201,14 +186,14 @@ public class SYSManager : MonoBehaviour
 
         //Pvr_UnitySDKAPI.Sensor.UPvr_ResetSensor((int)Pvr_UnitySDKAPI.Sensorindex.Default);
         //重置传感器（以当前方向为原始位置）。
-        if (Pvr_UnitySDKManager.SDK != null)
+        if (Pvr_UnitySDKManager.pvr_UnitySDKSensor != null)
         {
             Pvr_UnitySDKManager.pvr_UnitySDKSensor.ResetUnitySDKSensor();
         }
 
         selectMenu.SetActive(true);
         endMenu.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Shiyanshi");
     }
     public void OnBtnExitClick()
     {

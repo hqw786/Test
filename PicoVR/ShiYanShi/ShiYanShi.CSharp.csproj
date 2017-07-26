@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\EggSelect.cs" />
+    <Compile Include="Assets\Lauch.cs" />
     <Compile Include="Assets\Manager.cs" />
     <Compile Include="Assets\Pvr_Audio3D\API\Pvr_Audio3DAPI.cs" />
     <Compile Include="Assets\Pvr_Audio3D\Scripts\Pvr_Audio3D.cs" />
