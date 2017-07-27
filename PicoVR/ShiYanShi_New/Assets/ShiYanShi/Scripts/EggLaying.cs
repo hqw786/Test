@@ -25,11 +25,6 @@ public class EggLaying : MonoBehaviour {
 
         Debug.DrawRay(transform.position, ray.direction,Color.green);
 
-        //if (gazeInput.CurrentRaycast.gameObject.name.Contains("muji_05"))
-        {
-            //print(gazeInput.CurrentRaycast.gameObject.name);//"射线检测到muji_05");//这个射线是摄像头发出的射线，凝视射线。可以检测出大部分碰撞体。
-
-        }
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
@@ -53,12 +48,10 @@ public class EggLaying : MonoBehaviour {
 		if(Pvr_GazeInputModule.gazeGameObject != null &&　Pvr_GazeInputModule.gazeGameObject.name == "BtnEggLaying")
         {
             print("产蛋");
-            //text.text = "产蛋";
         }
         if(Controller.UPvr_GetKeyDown(Pvr_KeyCode.TOUCHPAD) ||Input.GetMouseButtonDown(0))
         {
             print(target);
-            //text.text = "你在" + target.name + "目标上按了TOUCHPAD键";
         }
 	}
 }

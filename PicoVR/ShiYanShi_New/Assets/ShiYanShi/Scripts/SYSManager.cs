@@ -20,6 +20,31 @@ public enum SYSState
     EggShow,
     END
 }
+
+public enum StageState
+{
+    fuhq,
+    pokq,
+    miaojq,
+    chujq,
+    qingnq,
+    chengnq,
+    chandq,
+    weisq
+}
+public enum AppState
+{
+    Init,
+    Show,
+    EggLaying,
+    EggShow,
+    End
+}
+public enum PlayState
+{
+    auto,
+    once
+}
 public class SYSManager : MonoBehaviour 
 {
     public static SYSManager Instance;
@@ -30,6 +55,10 @@ public class SYSManager : MonoBehaviour
 	public Dictionary<SYSState, List<GameObject>> dicEgg = new Dictionary<SYSState, List<GameObject>>();
     public Dictionary<SYSState, List<string[]>> dicContent = new Dictionary<SYSState, List<string[]>>();
     public Dictionary<string, string[]> dicEggContent = new Dictionary<string, string[]>();
+
+    public AppState curAppStatus;
+    public StageState curStageStatus;
+    public PlayState playStatus;
 
     public GameObject gazePointer;
     public GameObject leftEye;
@@ -45,7 +74,7 @@ public class SYSManager : MonoBehaviour
 
     public bool isFadeIn;
     public bool isFadeOut;
-    public bool isStateStart;//一个新状态开始
+    //public bool isStateStart;//一个新状态开始
     public bool isLastModelAlpha;//可以将上一个模型变透明
     public bool isCurModelAlpha;//可以将当前状态模型显示
     public bool isTempModelAlpha;//临时模型显示
@@ -53,9 +82,12 @@ public class SYSManager : MonoBehaviour
     public bool isContentAlphaHide;
     public bool isContentAlphaDisplay;
 
-	public bool isStateEnterDone;
-	public bool isStateExecDone;
-	public bool isStateExitDone;
+	public bool isFlowEnterDone;
+	public bool isFlowExecDone;
+	//public bool isFlowExitDone;
+    public bool isFlowStart;
+    public bool isFlowEnd;
+
 
     bool isMenuTips;
     bool isEggTips;
@@ -89,6 +121,7 @@ public class SYSManager : MonoBehaviour
         Instance = this;
 	    lastState = SYSState.Init;
         curState = SYSState.Select;
+        playStatus = PlayState.auto;
         endMenu.SetActive(false);
 
         shader1 = Shader.Find("Mobile/Diffuse");
@@ -98,33 +131,10 @@ public class SYSManager : MonoBehaviour
         contentHumi = content.transform.Find("Humi").GetComponent<Text>();
         contentOther = content.transform.Find("Other").GetComponent<Text>();
         contentDes = content.transform.Find("Des").GetComponent<Text>();
-        GameObject g = Resources.Load<GameObject>("ji/jidan_02");
-        dicGameObject.Add(SYSState.FuHQ, Instantiate(g));
-        dicGameObject[SYSState.FuHQ].SetActive(false);
-
-        g = Resources.Load<GameObject>("ji/muji_01");
-        dicGameObject.Add(SYSState.MiaoJ1, Instantiate(g));
-        dicGameObject[SYSState.MiaoJ1].SetActive(false);
-
-        g = Resources.Load<GameObject>("ji/muji_02");
-        dicGameObject.Add(SYSState.MiaoJ2, Instantiate(g));
-        dicGameObject[SYSState.MiaoJ2].SetActive(false);
-
-        g = Resources.Load<GameObject>("ji/muji_03");
-        dicGameObject.Add(SYSState.QingNJ, Instantiate(g));
-        dicGameObject[SYSState.QingNJ].SetActive(false);
-
-        g = Resources.Load<GameObject>("ji/muji_04");
-        dicGameObject.Add(SYSState.ChengNJ, Instantiate(g));
-        dicGameObject[SYSState.ChengNJ].SetActive(false);
-
-        g = Resources.Load<GameObject>("ji/muji_05");
-        dicGameObject.Add(SYSState.ChanDJ, Instantiate(g));
-        dicGameObject[SYSState.ChanDJ].SetActive(false);
 
         //鸡蛋模型
         List<GameObject> egg = new List<GameObject>();
-        g = Resources.Load<GameObject>("ji/jidan_02");
+        GameObject g = Resources.Load<GameObject>("ji/jidan_02");
         egg.Add(Instantiate(g));
         g = Resources.Load<GameObject>("ji/jidan_03");
         egg.Add(Instantiate(g));
@@ -134,41 +144,26 @@ public class SYSManager : MonoBehaviour
         dicEgg[SYSState.EggShow][0].SetActive(false);
         dicEgg[SYSState.EggShow][1].SetActive(false);
         dicEgg[SYSState.EggShow][2].SetActive(false);
-		
-
-	    dicContent.Add(SYSState.FuHQ, ConfigData.Instance.FuHQ);
-		dicContent.Add(SYSState.MiaoJ1, ConfigData.Instance.MiaoJ1);
-        dicContent.Add(SYSState.MiaoJ2, ConfigData.Instance.MiaoJ2);
-		dicContent.Add(SYSState.QingNJ, ConfigData.Instance.QingNJ);
-		dicContent.Add(SYSState.ChengNJ, ConfigData.Instance.ChengNJ);
-		dicContent.Add(SYSState.ChanDJ, ConfigData.Instance.ChanDJ);
 
         //鸡蛋数据
-		dicEggContent.Add("jidan_02", ConfigData.Instance.DAN[0]);
-        dicEggContent.Add("jidan_03", ConfigData.Instance.DAN[1]);
-        dicEggContent.Add("jidan_01", ConfigData.Instance.DAN[2]);
+        //dicEggContent.Add("jidan_02", ConfigData.Instance.DAN[0]);
+        //dicEggContent.Add("jidan_03", ConfigData.Instance.DAN[1]);
+        //dicEggContent.Add("jidan_01", ConfigData.Instance.DAN[2]);
     }
 	void Start () {
-        //将摄像头归为原始位（rotation(0,0,0));
-        //float angle = Vector3.Angle(leftEye.transform.parent.parent.forward, Vector3.forward);
-        //if(angle<45)
-        //{
-        //    leftEye.transform.parent.parent.rotation = Quaternion.identity;
-        //    leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
-        //}
-
+        //第一次将摄像头转到90度。以后不用旋转
         if (Manager.isFirst)
         {
             Manager.isFirst = false;
             leftEye.transform.parent.parent.rotation = Quaternion.identity;
             leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
         }
-        
+        //如果遥控器连接则隐藏凝视（没有效果）
         if (Controller.UPvr_GetControllerState() == ControllerState.Connected)
         {
             gazePointer.SetActive(false);
         }
-
+        //第一次显示提示
         if(Manager.isMenuTips)
         {
             Manager.isMenuTips = false;
@@ -181,10 +176,9 @@ public class SYSManager : MonoBehaviour
 	}
 	public void OnBtnReturnClick()
     {
-        //vr回到原位
+        //vr回到原位 
         leftEye.transform.parent.GetComponent<CameraScale>().ReturnOriginPosition();
 
-        //Pvr_UnitySDKAPI.Sensor.UPvr_ResetSensor((int)Pvr_UnitySDKAPI.Sensorindex.Default);
         //重置传感器（以当前方向为原始位置）。
         if (Pvr_UnitySDKManager.pvr_UnitySDKSensor != null)
         {
@@ -204,7 +198,12 @@ public class SYSManager : MonoBehaviour
     {
         ResetState();
     }
-
+    public void StartShowFlow()
+    {
+        isFlowStart = true;
+        curAppStatus = AppState.Show;
+        curStageStatus = StageState.fuhq;
+    }
 	public void FuHuaXiangAndTV()
 	{
 		Debug.Log("孵化箱上升");
@@ -214,206 +213,105 @@ public class SYSManager : MonoBehaviour
 		content.transform.parent.GetComponent<PingMuTrans>().SetDisplay();
 	}
 
-	void Update () {
-        //if(!isFirst &&　Time.time > 5f)
-        //{
-        //    isFirst = true;
-        //    ClickBook(book);
-        //}
-        //到了最后
-        //if (curState == SYSState.END)
-        //{
-        //    //TODO:再看一遍显示出来
-        //    endMenu.transform.Find("Restart").gameObject.SetActive(true);
-        //    contentDes.gameObject.SetActive(true);
-        //    isContentAlphaDisplay = true;
-        //    contentDes.text = "谢谢观看！";
-        //    return;
-        //}
-        //到了产蛋阶段
-        if(curState == SYSState.EggLaying || curState == SYSState.EggShow)
+	void Update ()
+    {
+        #region 新的主流程
+        if (curAppStatus == AppState.Show)
         {
-            isStateStart = true;//这个设置为真就不会进么状态循环
-            if(curState == SYSState.EggLaying)
-                eggLayingShow();
+            if (isFlowStart)
+            {
+
+            }
+            if(isFlowEnterDone)
+            {
+
+            }
+            if(isFlowExecDone)
+            {
+
+            }
+            if(isFlowEnd)
+            {
+
+            }
+
         }
-		//进入状态前
-		if (!isStateStart)
-		{
-			print("进入" + curState + "状态");
-			isStateStart = true;
-            isStateEnterDone = false;
-            isStateExecDone = false;
-            isStateExitDone = false;
-			//协和执行,完成后isStateEnterDone为True
-			StartCoroutine(EnterState());
-		}
 
-		//执行状态中
-		if (isStateEnterDone)
-		{
-			print(curState + "状态");
-			isStateEnterDone = false;
-			//协和执行，完成后isStateExecDone为True
-			if(curState != SYSState.Select)
-				StartCoroutine(ExecState());
-		}
 
-		//退出状态
-		if (isStateExecDone)
-		{
-			print("退出" + curState + "状态");
-			isStateExecDone = false;
+        #endregion
+        #region 原来的主流程
+        ////if(!isFirst &&　Time.time > 5f)
+        ////{
+        ////    isFirst = true;
+        ////    ClickBook(book);
+        ////}
+        ////到了最后
+        ////if (curState == SYSState.END)
+        ////{
+        ////    //TODO:再看一遍显示出来
+        ////    endMenu.transform.Find("Restart").gameObject.SetActive(true);
+        ////    contentDes.gameObject.SetActive(true);
+        ////    isContentAlphaDisplay = true;
+        ////    contentDes.text = "谢谢观看！";
+        ////    return;
+        ////}
+        ////到了产蛋阶段
+        //if(curState == SYSState.EggLaying || curState == SYSState.EggShow)
+        //{
+        //    isStateStart = true;//这个设置为真就不会进么状态循环
+        //    if(curState == SYSState.EggLaying)
+        //        eggLayingShow();
+        //}
+        ////进入状态前
+        //if (!isStateStart)
+        //{
+        //    print("进入" + curState + "状态");
+        //    isStateStart = true;
+        //    isStateEnterDone = false;
+        //    isStateExecDone = false;
+        //    isStateExitDone = false;
+        //    //协和执行,完成后isStateEnterDone为True
+        //    StartCoroutine(EnterState());
+        //}
+
+        ////执行状态中
+        //if (isStateEnterDone)
+        //{
+        //    print(curState + "状态");
+        //    isStateEnterDone = false;
+        //    //协和执行，完成后isStateExecDone为True
+        //    if(curState != SYSState.Select)
+        //        StartCoroutine(ExecState());
+        //}
+
+        ////退出状态
+        //if (isStateExecDone)
+        //{
+        //    print("退出" + curState + "状态");
+        //    isStateExecDone = false;
 			
-			//切换状态
-			print("切换到下一个状态");
-			comeNextState();
+        //    //切换状态
+        //    print("切换到下一个状态");
+        //    comeNextState();
 
-			//协和执行，完成后isStateExitDone为True
-			StartCoroutine(ExitState());
-		}
+        //    //协和执行，完成后isStateExitDone为True
+        //    StartCoroutine(ExitState());
+        //}
 
-		//切换状态
-		if (isStateExitDone)
-		{
-            isStateEnterDone = false;
-			isStateStart = false;
-            print("可以进入下一个状态");
-		}
-        //模型切换效果
-		TransGameObject();
+        ////切换状态
+        //if (isStateExitDone)
+        //{
+        //    isStateEnterDone = false;
+        //    isStateStart = false;
+        //    print("可以进入下一个状态");
+        //}
+        ////模型切换效果
+        //TransGameObject();
 		#region 调试完成就删除
-		//switch(curState)
-		//{
-		//	case SYSState.Select:
-		//		{
-		//			//第一个状态比较特殊。
-		//			//SelectState();
-		//		}
-		//		break;
-		//	case SYSState.FuHQ:
-		//		{
-		//			FuHQStateTrans();
-		//			//孵化箱动画
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//播放孵化箱上升和下降动画
-		//				fuhuaxiang.transform.parent.GetComponent<Animation>().CrossFade("fuhuaxiang", 3f);
-		//				//电视开机(这边以后可以做成渐渐开机效果，显示LOGO）
-		//				//content.transform.parent.GetComponent<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Materials/glass");
-		//				//content.transform.parent.GetComponent<PingMuTrans>().SetDisplay();
 
-		//				//invoke延时执行下一个过程
-		//				Invoke("FuHQState", 8.5f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.MiaoJ:
-		//		{
-		//			//淡入淡出效果
-		//			MiaoJStateTrans();
-		//			if(!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("MiaoJState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.QingNJ:
-		//		{
-		//			QingNJStateTrans();
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("QingNJState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.ChengNJ:
-		//		{
-		//			ChengNJStateTrans();
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("ChengNJState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.ChanDJ:
-		//		{
-		//			ChanDJStateTrans();
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("ChanDJState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.DAN1:
-		//		{
-		//			DANStateTrans();
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("DANState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.DAN2:
-		//		{
-		//			DANStateTrans();
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("DANState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//	case SYSState.DAN3:
-		//		{
-		//			DANStateTrans();
-		//			if (!isStateStart)
-		//			{
-		//				//淡入淡出效果
-		//				//StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-		//				isStateStart = true;
-		//				//invoke延时执行下一个过程
-		//				Invoke("DANState", 3f);
-		//			}
-		//			TransGameObject();
-		//		}
-		//		break;
-		//}
 		#endregion
-	}
+        #endregion
+    }
 
 	private IEnumerator EnterState()
 	{
@@ -681,7 +579,6 @@ public class SYSManager : MonoBehaviour
     }
     public void HideContent()
     {
-        //contentWeek.gameObject.SetActive(false);
         contentTemp.gameObject.SetActive(false);
         contentHumi.gameObject.SetActive(false);
         contentOther.gameObject.SetActive(false);
@@ -692,11 +589,6 @@ public class SYSManager : MonoBehaviour
         //显示内容
         for (int i = 0; i < con.Length; i++)
         {
-            //if(i == 0)
-            //{
-            //    contentWeek.gameObject.SetActive(true);
-            //    contentWeek.text = con[0];
-            //}
             if(i > 0 && con.Length - 1 == i)
             {
                 contentDes.gameObject.SetActive(true);
@@ -718,5 +610,14 @@ public class SYSManager : MonoBehaviour
                 contentOther.text = con[i];
             }
         }
+    }
+
+    public void AppStatusSwitch()
+    {
+
+    }
+    public void StageStatusSwitch()
+    {
+
     }
 }

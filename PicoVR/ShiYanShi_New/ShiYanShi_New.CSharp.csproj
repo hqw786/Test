@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -74,6 +76,12 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
@@ -169,6 +177,17 @@
     <Compile Include="Assets\ShiYanShi\Scripts\EggLaying.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\EggScale.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\EventTriggerListener.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowBase.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChuJQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowMiaoJQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowQinNQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChengNQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChanDQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowWeiSQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowPoKQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowFuHQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base - 复制.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\OBJFadeEffect_Base.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\FadeInOutEffect.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\FuHuaXiang.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\ImageFadeInOut.cs" />

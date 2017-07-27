@@ -17,45 +17,18 @@ public class Tools
     /// <returns></returns>
     public static IEnumerator FadeInFadeOut(GameObject leftEye, GameObject rightEye, float time)
     {
-        //FadeInOutEffect leftFade = leftEye.GetComponent<FadeInOutEffect>();
-        //FadeInOutEffect rightFade = rightEye.GetComponent<FadeInOutEffect>();
-        //淡出
-        //leftFade.isFadeIn = false;
-        //rightFade.isFadeIn = false;
-
-        //leftFade.isFadeOut = true;
-        //rightFade.isFadeOut = true;
-
         leftEye.transform.Find("Image").GetComponent<ImageFadeInOut>().StartFadeOut();
         yield return new WaitForSeconds(time);
-
-        //float angle = Vector3.Angle(leftEye.transform.parent.parent.forward, Vector3.forward);
-        //if (angle > 45)
-        //{
-        //    Quaternion q = GameObject.Find("/Pvr_UnitySDK").transform.rotation;
-        //    q.y = 0;
-        //    GameObject.Find("/Pvr_UnitySDK").transform.rotation = q;
-        //}
 
         Quaternion q = leftEye.transform.parent.parent.rotation;
         q = q * Quaternion.Euler(0, 90, 0);
         leftEye.transform.parent.parent.rotation = q;
 
-        //执行动作
-        //SYSManager.Instance.isFadeOut = true;
-        
-        //淡入
-        //leftFade.isFadeIn = true;
-        //rightFade.isFadeIn = true;
-
-        //leftFade.isFadeOut = false;
-        //rightFade.isFadeOut = false;
-
         leftEye.transform.Find("Image").GetComponent<ImageFadeInOut>().StartFadeIn();
         leftEye.transform.parent.GetComponent<CameraScale>().ReturnOriginPosition();
 
         yield return new WaitForSeconds(time);
-        //SYSManager.Instance.isFadeIn = true;
+        SYSManager.Instance.StartShowFlow();
     }
     /// <summary>
     /// 显示屏上显示内容
@@ -127,89 +100,23 @@ public class Tools
     /// <param name="content"></param>
     public static void ParseContent(string[] content)
     {
-        string str = "孵化期";
-        for (int i = 1; i < content.Length; i++)
+        int index = -1;
+        for (int i = 0; i < content.Length; i++)
         {
             string[] temp = content[i].Split(","[0]);
-            switch(str)
+
+            if(ConfigData.Instance.strStage.Contains(temp[0].ToString().Substring(0,3)))
             {
-                case "孵化期":
-                    {
-                        if(temp[0].Contains("苗鸡1"))
-                        {
-                            str = "苗鸡1";
-                        }
-                        else
-                        {
-                            ConfigData.Instance.FuHQ.Add(temp);
-                        }
-                    }
-                    break;
-                case "苗鸡1":
-                    {
-                        if (temp[0].Contains("苗鸡2"))
-                        {
-                            str = "苗鸡2";
-                        }
-                        else
-                        {
-                            ConfigData.Instance.MiaoJ1.Add(temp);
-                        }
-                    }
-                    break;
-                case "苗鸡2":
-                    {
-                        if (temp[0].Contains("青年鸡"))
-                        {
-                            str = "青年鸡";
-                        }
-                        else
-                        {
-                            ConfigData.Instance.MiaoJ2.Add(temp);
-                        }
-                    }
-                    break;
-                case "青年鸡":
-                    {
-                        if (temp[0].Contains("成年鸡"))
-                        {
-                            str = "成年鸡";
-                        }
-                        else
-                        {
-                            ConfigData.Instance.QingNJ.Add(temp);
-                        }
-                    }
-                    break;
-                case "成年鸡":
-                    {
-                        if (temp[0].Contains("产蛋鸡"))
-                        {
-                            str = "产蛋鸡";
-                        }
-                        else
-                        {
-                            ConfigData.Instance.ChengNJ.Add(temp);
-                        }
-                    }
-                    break;
-                case "产蛋鸡":
-                    {
-                        if (temp[0].Contains("蛋种类"))
-                        {
-                            str = "蛋种类";
-                        }
-                        else
-                        {
-                            ConfigData.Instance.ChanDJ.Add(temp);
-                        }
-                    }
-                    break;
-                case "蛋种类":
-                    {
-							ConfigData.Instance.DAN.Add(temp);
-                    }
-                    break;
+                index++;
+                StageInfo si = new StageInfo();
+                ConfigData.Instance.Data.Add(si);
+                ConfigData.Instance.Data[index].ID = index;
+                ConfigData.Instance.Data[index].Name = ConfigData.Instance.strStage[index];
+                ConfigData.Instance.Data[index].isLock = index == 0 ? false : true;
+            }
+            else
+            {
+                 ConfigData.Instance.Data[index].Context.Add(temp);
             }
         }
     }
