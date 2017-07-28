@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -100,6 +98,7 @@
     <Compile Include="Assets\EggSelect.cs" />
     <Compile Include="Assets\Lauch.cs" />
     <Compile Include="Assets\Manager.cs" />
+    <Compile Include="Assets\Progress.cs" />
     <Compile Include="Assets\Pvr_Audio3D\API\Pvr_Audio3DAPI.cs" />
     <Compile Include="Assets\Pvr_Audio3D\Scripts\Pvr_Audio3D.cs" />
     <Compile Include="Assets\Pvr_Audio3D\Scripts\Pvr_AudioUnlock.cs" />
@@ -177,30 +176,32 @@
     <Compile Include="Assets\ShiYanShi\Scripts\EggLaying.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\EggScale.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\EventTriggerListener.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowBase.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChuJQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowMiaoJQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowQinNQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChengNQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChanDQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowWeiSQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowPoKQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowFuHQ.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base - 复制.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\OBJFadeEffect_Base.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\FadeInOutEffect.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowBase.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChanDQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChengNQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowChuJQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowFuHQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowMiaoJQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowPoKQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowQinNQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowWeiSQ.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\FuHuaXiang.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\ImageFadeInOut.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\MenuController.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\OBJFadeEffect_Base.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\PingMuTrans.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\RayUI.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\SYSManager.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\SceneFadeInOut.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\Tools.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\UIAlpha.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base - 复制.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\WeekEffect.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\book.cs" />
+    <Compile Include="Assets\StageCoroutineManager.cs" />
     <Compile Include="Assets\StageInfo.cs" />
+    <Compile Include="Assets\StagePanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />

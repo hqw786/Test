@@ -6,21 +6,20 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Pvr_UnitySDKAPI;
-public enum SYSState
-{
-	Init,
-    Select,
-    FuHQ,
-    MiaoJ1,
-    MiaoJ2,
-    QingNJ,
-    ChengNJ,
-    ChanDJ,
-    EggLaying,
-    EggShow,
-    END
-}
-
+//public enum SYSState
+//{
+//    Init,
+//    Select,
+//    FuHQ,
+//    MiaoJ1,
+//    MiaoJ2,
+//    QingNJ,
+//    ChengNJ,
+//    ChanDJ,
+//    EggLaying,
+//    EggShow,
+//    END
+//}
 public enum StageState
 {
     fuhq,
@@ -51,9 +50,7 @@ public class SYSManager : MonoBehaviour
     public const float FADETIME = 1.5f;
     public const float CONTENTTIME = 3f;
     public const float CONTENTALPHATIME = 1f;
-    public Dictionary<SYSState, GameObject> dicGameObject = new Dictionary<SYSState, GameObject>();
-	public Dictionary<SYSState, List<GameObject>> dicEgg = new Dictionary<SYSState, List<GameObject>>();
-    public Dictionary<SYSState, List<string[]>> dicContent = new Dictionary<SYSState, List<string[]>>();
+    public Dictionary<AppState, List<GameObject>> dicEgg = new Dictionary<AppState, List<GameObject>>();
     public Dictionary<string, string[]> dicEggContent = new Dictionary<string, string[]>();
 
     public AppState curAppStatus;
@@ -74,7 +71,6 @@ public class SYSManager : MonoBehaviour
 
     public bool isFadeIn;
     public bool isFadeOut;
-    //public bool isStateStart;//一个新状态开始
     public bool isLastModelAlpha;//可以将上一个模型变透明
     public bool isCurModelAlpha;//可以将当前状态模型显示
     public bool isTempModelAlpha;//临时模型显示
@@ -84,14 +80,12 @@ public class SYSManager : MonoBehaviour
 
 	public bool isFlowEnterDone;
 	public bool isFlowExecDone;
-	//public bool isFlowExitDone;
-    public bool isFlowStart;
+    public bool isFlowStart;//一个新阶段流程开始
     public bool isFlowEnd;
 
 
     bool isMenuTips;
     bool isEggTips;
-    bool isVR90First;
 
     Color curModelColor;
     Color lastModelColor;
@@ -102,30 +96,23 @@ public class SYSManager : MonoBehaviour
 
     BoxCollider bcBook;
 
-    public SYSState curState;
-	private SYSState lastState;
-
-    //Text contentWeek;
     Text contentTemp;
     Text contentHumi;
     Text contentOther;
     Text contentDes;
 
-    bool isFirst;
-
-    public Shader shader1;
-    public Shader shader2;
+    public Shader shaderN;
+    public Shader shaderT;
 	// Use this for initialization
     void Awake()
     {
         Instance = this;
-	    lastState = SYSState.Init;
-        curState = SYSState.Select;
+        curAppStatus = AppState.Init;
         playStatus = PlayState.auto;
         endMenu.SetActive(false);
 
-        shader1 = Shader.Find("Mobile/Diffuse");
-        shader2 = Shader.Find("Legacy Shaders/Transparent/Diffuse");
+        shaderN = Shader.Find("Mobile/Diffuse");
+        shaderT = Shader.Find("Legacy Shaders/Transparent/Diffuse");
         //contentWeek = content.transform.parent.Find("Week").GetComponent<Text>();
         contentTemp = content.transform.Find("Temp").GetComponent<Text>();
         contentHumi = content.transform.Find("Humi").GetComponent<Text>();
@@ -140,15 +127,15 @@ public class SYSManager : MonoBehaviour
         egg.Add(Instantiate(g));
         g = Resources.Load<GameObject>("ji/jidan_01");
         egg.Add(Instantiate(g));
-        dicEgg.Add(SYSState.EggShow, egg);
-        dicEgg[SYSState.EggShow][0].SetActive(false);
-        dicEgg[SYSState.EggShow][1].SetActive(false);
-        dicEgg[SYSState.EggShow][2].SetActive(false);
+        dicEgg.Add(AppState.EggShow, egg);
+        dicEgg[AppState.EggShow][0].SetActive(false);
+        dicEgg[AppState.EggShow][1].SetActive(false);
+        dicEgg[AppState.EggShow][2].SetActive(false);
 
         //鸡蛋数据
-        //dicEggContent.Add("jidan_02", ConfigData.Instance.DAN[0]);
-        //dicEggContent.Add("jidan_03", ConfigData.Instance.DAN[1]);
-        //dicEggContent.Add("jidan_01", ConfigData.Instance.DAN[2]);
+        dicEggContent.Add("jidan_02", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[0]);
+        dicEggContent.Add("jidan_03", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[1]);
+        dicEggContent.Add("jidan_01", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[2]);
     }
 	void Start () {
         //第一次将摄像头转到90度。以后不用旋转
@@ -204,15 +191,11 @@ public class SYSManager : MonoBehaviour
         curAppStatus = AppState.Show;
         curStageStatus = StageState.fuhq;
     }
-	public void FuHuaXiangAndTV()
-	{
-		Debug.Log("孵化箱上升");
-		fuhuaxiang.parent.GetComponent<Animation>().CrossFade("fuhuaxiang", 3f);
-		//电视开机(这边以后可以做成渐渐开机效果，显示LOGO）
-		Debug.Log("屏幕打开");
-		content.transform.parent.GetComponent<PingMuTrans>().SetDisplay();
-	}
-
+    public void StartShowFlow(StageState ss)
+    {
+        isFlowStart = true;
+        curStageStatus = ss;
+    }
 	void Update ()
     {
         #region 新的主流程
@@ -220,24 +203,37 @@ public class SYSManager : MonoBehaviour
         {
             if (isFlowStart)
             {
-
+                isFlowStart = false;
+                //进入当前阶段要做的事（前奏，准备工作，一般每个阶段不同）
+                //翻页周数
+                TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Context[0][0]);
+                Debug.Log("SYSManager的流程开始，进入Enter");
+                ConfigData.Instance.dicStage[curStageStatus].Enter();
             }
             if(isFlowEnterDone)
             {
-
+                isFlowEnterDone = false;
+                //当前阶段要做的事（一般是相同的事）
+                Debug.Log("SYSManager的流程准备完成。。。进入Exec");
+                ConfigData.Instance.dicStage[curStageStatus].Exec();
             }
             if(isFlowExecDone)
             {
-
+                isFlowExecDone = false;
+                //退出当前阶段前要做的事（结束工作，一般每个阶段不同）
+                Debug.Log("SYSManager的流程执行结束，进入Exit");
+                ConfigData.Instance.dicStage[curStageStatus].Exit();
             }
             if(isFlowEnd)
             {
-
+                isFlowEnd = false;
+                //切换到下一个状态（自动，手动。手动就恢复默认值状态）
+                Debug.Log("SYSManager的流程结束，切换阶段");
+                
+                StageStatusSwitch();
+                StageStatusReset();
             }
-
         }
-
-
         #endregion
         #region 原来的主流程
         ////if(!isFirst &&　Time.time > 5f)
@@ -313,58 +309,22 @@ public class SYSManager : MonoBehaviour
         #endregion
     }
 
-	private IEnumerator EnterState()
-	{
-		if (curState == SYSState.FuHQ)
-		{
-			yield return StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-            fuhuaxiang.parent.GetComponent<Animation>().CrossFade("fuhuaxiang_001");
-			content.transform.parent.GetComponent<PingMuTrans>().SetDisplay();
-			yield return new WaitForSeconds(4f);
-			SYSManager.Instance.isCurModelAlpha = true;
-		}
-		yield return new WaitForSeconds(1f);
-		isStateEnterDone = true;
-	}
+    //private IEnumerator EnterState()
+    //{
+    //    if (curState == SYSState.FuHQ)
+    //    {
+    //        yield return StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
+    //        fuhuaxiang.parent.GetComponent<Animation>().CrossFade("fuhuaxiang_001");
+    //        content.transform.parent.GetComponent<PingMuTrans>().SetDisplay();
+    //        yield return new WaitForSeconds(4f);
+    //        SYSManager.Instance.isCurModelAlpha = true;
+    //    }
+    //    yield return new WaitForSeconds(1f);
+    //    isFlowEnterDone = true;
+    //}
 
-	IEnumerator ExecState()
-	{
-		yield return StartCoroutine(Tools.DisplayContent(dicContent[curState], CONTENTTIME, CONTENTALPHATIME));
-		yield return new WaitForSeconds(1f);
-		isStateExecDone = true;
-	}
+	
 
-	IEnumerator ExitState()
-	{
-		if (curState == SYSState.MiaoJ1)
-		{
-            //箱子降下去
-			fuhuaxiang.parent.GetComponent<FuHuaXiang>().continuePlay();
-			//TODO:加播一段动画 AddAnAnimation(GAMEOBJECT A,GAMEOBJECT B)
-			//过渡效果从一个渐隐渐现过程(蛋，孵化，苗鸡)
-            if (tempObject == null)
-            {
-                tempObject = Instantiate(Resources.Load<GameObject>("ji/jidan_04"));
-            }
-            changeCurModel(tempObject);
-		}
-
-		yield return StartCoroutine(Tools.TransModelAlpha(1f));
-        if(curState != SYSState.MiaoJ1)
-            isStateExitDone = true;
-        
-		if (curState == SYSState.MiaoJ1)
-        {
-            yield return new WaitForSeconds(5f);
-            changeLastModel(tempObject);
-            changeCurModel(dicGameObject[curState]);
-            yield return StartCoroutine(Tools.TransModelAlpha(1f));
-            yield return new WaitForSeconds(3f);
-            isStateExitDone = true;
-        }
-        yield return new WaitForSeconds(3f);
-		//isStateExitDone = true;
-	}
     //产蛋展示
     void eggLayingShow()
     {
@@ -373,7 +333,7 @@ public class SYSManager : MonoBehaviour
         weekContent.gameObject.SetActive(false);
         //显示产蛋UI
         eggLaying.transform.Find("eggLaying").gameObject.SetActive(true);
-        dicGameObject[SYSState.ChanDJ].GetComponent<MeshRenderer>().material.shader = shader1;
+        //dicGameObject[SYSState.ChanDJ].GetComponent<MeshRenderer>().material.shader = shader1;
         eggLaying.transform.Find("eggLaying").BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
         if(!Manager.isEggTips)
         {
@@ -385,38 +345,38 @@ public class SYSManager : MonoBehaviour
     {
         //产蛋按钮被点击
         //产蛋Panel渐渐隐藏,停止转动展示转盘
-        dicGameObject[SYSState.ChanDJ].GetComponent<MeshRenderer>().material.shader = shader1;
-        eggLaying.transform.Find("eggLaying").BroadcastMessage("SetShadingHide", SendMessageOptions.DontRequireReceiver);
-        curState = SYSState.EggShow;
-        eggLaying.transform.Find("Tips").gameObject.SetActive(false);
-        modelPoint.transform.parent.GetComponent<Around>().enabled = false;
-        //蛋种类Panel渐渐显示,鸡模型隐藏，三种蛋显示出来
-        //eggLaying.transform.Find("Egg").gameObject.SetActive(true);
-        //eggLaying.transform.Find("Egg").BroadcastMessage("SetShadingDisplay",SendMessageOptions.DontRequireReceiver);
-        dicGameObject[SYSState.ChanDJ].SetActive(false);
-        //
-        weekContent.gameObject.SetActive(true);
-        foreach(Transform t in weekContent)
-        {
-            t.gameObject.SetActive(false);
-        }
-        GameObject gg = Instantiate(Resources.Load<GameObject>("Week"));
-        gg.transform.parent = weekContent;
-        gg.transform.localScale = weekContent.localScale;
-        gg.GetComponent<WeekEffect>().setPosition("Mid", "选择鸡蛋了解产蛋信息");
+        //dicGameObject[SYSState.ChanDJ].GetComponent<MeshRenderer>().material.shader = shader1;
+        //eggLaying.transform.Find("eggLaying").BroadcastMessage("SetShadingHide", SendMessageOptions.DontRequireReceiver);
+        //curState = SYSState.EggShow;
+        //eggLaying.transform.Find("Tips").gameObject.SetActive(false);
+        //modelPoint.transform.parent.GetComponent<Around>().enabled = false;
+        ////蛋种类Panel渐渐显示,鸡模型隐藏，三种蛋显示出来
+        ////eggLaying.transform.Find("Egg").gameObject.SetActive(true);
+        ////eggLaying.transform.Find("Egg").BroadcastMessage("SetShadingDisplay",SendMessageOptions.DontRequireReceiver);
+        //dicGameObject[SYSState.ChanDJ].SetActive(false);
+        ////
+        //weekContent.gameObject.SetActive(true);
+        //foreach(Transform t in weekContent)
+        //{
+        //    t.gameObject.SetActive(false);
+        //}
+        //GameObject gg = Instantiate(Resources.Load<GameObject>("Week"));
+        //gg.transform.parent = weekContent;
+        //gg.transform.localScale = weekContent.localScale;
+        //gg.GetComponent<WeekEffect>().setPosition("Mid", "选择鸡蛋了解产蛋信息");
 
-        int index = -1;
-        modelPoint.transform.parent.rotation = Quaternion.identity;
-        foreach(GameObject g in dicEgg[SYSState.EggShow])
-        {
-            g.SetActive(true);
-            g.transform.parent = modelPoint.transform;
-            g.transform.rotation = Quaternion.identity;
-            g.transform.localPosition = Vector3.zero + new Vector3(0.15f * index, 0f, 0f);
-            g.transform.localScale = modelPoint.transform.localScale;
-            g.AddComponent<BoxCollider>();
-            index++;
-        }
+        //int index = -1;
+        //modelPoint.transform.parent.rotation = Quaternion.identity;
+        //foreach(GameObject g in dicEgg[SYSState.EggShow])
+        //{
+        //    g.SetActive(true);
+        //    g.transform.parent = modelPoint.transform;
+        //    g.transform.rotation = Quaternion.identity;
+        //    g.transform.localPosition = Vector3.zero + new Vector3(0.15f * index, 0f, 0f);
+        //    g.transform.localScale = modelPoint.transform.localScale;
+        //    g.AddComponent<BoxCollider>();
+        //    index++;
+        //}
     }
     void tipsHide()
     {
@@ -468,104 +428,103 @@ public class SYSManager : MonoBehaviour
         g.transform.parent = modelPoint.transform;
         g.transform.localPosition = Vector3.zero;
         curModelMaterial = g.GetComponent<MeshRenderer>().material;
-        curModelMaterial.shader = shader2;
+        curModelMaterial.shader = shaderT;
         curModelColor = curModelMaterial.color;
         curModelColor.a = 0;
         curModelMaterial.color = curModelColor;
         
     }
-    void changeLastModel(GameObject g)
-    {
-        lastGameObject = g;
+    //void changeLastModel(GameObject g)
+    //{
+    //    lastGameObject = g;
 
-        lastModelMaterial = g.GetComponent<MeshRenderer>().material;
-        lastModelMaterial.shader = shader2;
-        lastModelColor = lastModelMaterial.color;
+    //    lastModelMaterial = g.GetComponent<MeshRenderer>().material;
+    //    lastModelMaterial.shader = shader2;
+    //    lastModelColor = lastModelMaterial.color;
         
-    }
+    //}
     public void ClickBook()
     {
         //进入下一个流程
-        comeNextState();
+        //comeNextState();
+        //AppStatusSwitch(AppState.Show);
         //转到实验室，在协和里转了。以后要不要分离淡出，转向，淡入，这些步骤，有待观察
         selectMenu.transform.parent.Find("Tips").gameObject.SetActive(false);
         selectMenu.SetActive(false);
         endMenu.SetActive(true);
+        StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
     }
     
-    void TransGameObject()
-    {
-        if (curState != SYSState.EggLaying)
-        //将上一个模型变透明
-        {
-            if (isLastModelAlpha)
-            {
-                if (lastModelMaterial != null)
-                {
-                    lastModelColor.a = Mathf.Lerp(lastModelColor.a, 0, 0.02f);
-                    lastModelMaterial.color = lastModelColor;
-                    if (lastModelColor.a < 0.05f)
-                    {
-                        isLastModelAlpha = false;
-                        lastModelColor.a = 0f;
-                        lastModelMaterial.color = lastModelColor;
-                        lastGameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        //将当前状态模型显示
-        if (SYSState.EggLaying != curState)
-        {
-            if (isCurModelAlpha)
-            {
-                curModelColor.a = Mathf.Lerp(curModelColor.a, 1, 0.02f);
-                curModelMaterial.color = curModelColor;
-                if (curModelColor.a > 0.95f)
-                {
-                    isCurModelAlpha = false;
-                    curModelColor.a = 1f;
-                    curModelMaterial.color = curModelColor;
-                    curModelMaterial.shader = shader1;
-                }
-            }
-        }
-    }
+    //void TransGameObject()
+    //{
+    //    if (curState != SYSState.EggLaying)
+    //    //将上一个模型变透明
+    //    {
+    //        if (isLastModelAlpha)
+    //        {
+    //            if (lastModelMaterial != null)
+    //            {
+    //                lastModelColor.a = Mathf.Lerp(lastModelColor.a, 0, 0.02f);
+    //                lastModelMaterial.color = lastModelColor;
+    //                if (lastModelColor.a < 0.05f)
+    //                {
+    //                    isLastModelAlpha = false;
+    //                    lastModelColor.a = 0f;
+    //                    lastModelMaterial.color = lastModelColor;
+    //                    lastGameObject.SetActive(false);
+    //                }
+    //            }
+    //        }
+    //    }
+    //    //将当前状态模型显示
+    //    if (SYSState.EggLaying != curState)
+    //    {
+    //        if (isCurModelAlpha)
+    //        {
+    //            curModelColor.a = Mathf.Lerp(curModelColor.a, 1, 0.02f);
+    //            curModelMaterial.color = curModelColor;
+    //            if (curModelColor.a > 0.95f)
+    //            {
+    //                isCurModelAlpha = false;
+    //                curModelColor.a = 1f;
+    //                curModelMaterial.color = curModelColor;
+    //                curModelMaterial.shader = shader1;
+    //            }
+    //        }
+    //    }
+    //}
     
-    public void comeNextState()
-    {
-        //将上一个状态的模型的颜色和材质数据保存出来
-        if (dicGameObject.ContainsKey(curState))// && sState != SYSState.FuHQ)
-        {
-            changeLastModel(dicGameObject[curState]);
-        }
-	    lastState = curState;
-        int a = (int)curState;
-        a++;
-        curState = (SYSState)(a);
-        if (curState == SYSState.FuHQ) 
-            isStateStart = false;
+    //public void comeNextState()
+    //{
+    //    //将上一个状态的模型的颜色和材质数据保存出来
+    //    if (dicGameObject.ContainsKey(curState))// && sState != SYSState.FuHQ)
+    //    {
+    //        //changeLastModel(dicGameObject[curState]);
+    //    }
+    //    int a = (int)curState;
+    //    a++;
+    //    curState = (SYSState)(a);
+    //    if (curState == SYSState.FuHQ) 
+    //        isFlowStart = false;
 		
 
-        //将当前状态的模型的颜色和材质数据保存出来
-        if (dicGameObject.ContainsKey(curState))
-        {
-            if(curState != SYSState.MiaoJ1)
-                changeCurModel(dicGameObject[curState]);
-        }
-    }
+    //    //将当前状态的模型的颜色和材质数据保存出来
+    //    if (dicGameObject.ContainsKey(curState))
+    //    {
+    //        if(curState != SYSState.MiaoJ1)
+    //            changeCurModel(dicGameObject[curState]);
+    //    }
+    //}
 
     public void ResetState()
     {
-        curState = SYSState.Select;
-	    //lastState = SYSState.Select;
-        isStateStart = true;
+        isFlowStart = true;
         StopAllCoroutines();
         isFadeIn = isFadeOut = false;
         HideContent();
-	    isStateEnterDone = false;
-	    isStateExecDone = false;
-	    isStateExitDone = false;
+	    isFlowEnterDone= false;
+	    isFlowExecDone = false;
+	    isFlowEnd = false;
     }
 	public void TransWeek(string s, string con)
     {
@@ -612,12 +571,35 @@ public class SYSManager : MonoBehaviour
         }
     }
 
-    public void AppStatusSwitch()
+    public void AppStatusSwitch(AppState s)
     {
-
+        curAppStatus = s;
     }
     public void StageStatusSwitch()
     {
-
+        int s = (int)curStageStatus;
+        s++;
+        curStageStatus = (StageState)s;
+    }
+    public void StageStatusSwitch(StageState ss)
+    {
+        curStageStatus = ss;
+        StageStatusReset();
+    }
+    public void StageStatusReset()
+    {
+        if (playStatus == PlayState.auto)
+        {
+            isFlowStart = true;
+        }
+        else
+        {
+            isFlowStart = false;
+        }
+        isFlowEnd = false;
+        isFlowEnterDone = false;
+        isFlowExecDone = false;
+        StopAllCoroutines();
+        HideContent();
     }
 }

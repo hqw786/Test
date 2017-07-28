@@ -48,8 +48,8 @@ public class Tools
             SYSManager.Instance.HideContent();
 
             yield return new WaitForSeconds(1f);//淡出淡入的1S停顿
-            //翻页周数
-            SYSManager.Instance.TransWeek("Bottom", cons[i][0]);
+            ////翻页周数
+            //SYSManager.Instance.TransWeek("Bottom", cons[i][0]);
 
             //显示屏内容的淡入
             SYSManager.Instance.contentDisplay(cons[i]);
@@ -63,6 +63,7 @@ public class Tools
 		yield return new WaitForSeconds(alphaTime);
 		SYSManager.Instance.isContentAlphaHide = false;
         SYSManager.Instance.HideContent();
+        SYSManager.Instance.isFlowExecDone = true;
     }
 
     public static IEnumerator TransModelAlpha(float time)

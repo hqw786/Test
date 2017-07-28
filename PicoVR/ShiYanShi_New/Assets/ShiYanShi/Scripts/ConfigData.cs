@@ -20,11 +20,10 @@ public class ConfigData : MonoBehaviour {
     {
         Instance = this;
         Tools.GetTextData("TextData");
-        SaveStageDataToDIC();
     }
 	void Start () 
     {
-		
+		SaveStageDataToDIC();
 	}
 	
 	// Update is called once per frame
@@ -36,10 +35,13 @@ public class ConfigData : MonoBehaviour {
     {
         foreach(StageInfo si in data)
         {
-            StageState ss = (StageState)si.ID;
-            SwitchObject(ss, si);
-            dicStage[ss].SetData(si);
-            si.MainModel.SetActive(false);
+            if (si.ID < strStage.Length - 1)
+            {
+                StageState ss = (StageState)si.ID;
+                SwitchObject(ss, si);
+                dicStage[ss].SetData(si);
+                si.MainModel.SetActive(false);
+            }
         }
     }
     void SwitchObject(StageState ss,StageInfo si)
@@ -48,43 +50,45 @@ public class ConfigData : MonoBehaviour {
         switch(ss)
         {
             case StageState.fuhq:
-                dicStage.Add(StageState.fuhq, new FlowFuHQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowFuHQ());
+                g = Resources.Load<GameObject>("ji/jidan_02");
                 si.MainModel = Instantiate(g);
+                dicStage[ss].enterTransform.Add(SYSManager.Instance.fuhuaxiang);
+                dicStage[ss].enterTransform.Add(SYSManager.Instance.content.transform);
                 break;
             case StageState.pokq:
-                dicStage.Add(StageState.pokq, new FlowPoKQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowPoKQ());
+                g = Resources.Load<GameObject>("ji/jidan_04");
                 si.MainModel = Instantiate(g);
                 break;
             case StageState.miaojq:
-                dicStage.Add(StageState.miaojq, new FlowMiaoJQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowMiaoJQ());
+                g = Resources.Load<GameObject>("ji/muji_01");
                 si.MainModel = Instantiate(g);
                 break;
             case StageState.chujq:
-                dicStage.Add(StageState.chujq, new FlowChuJQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowChuJQ());
+                g = Resources.Load<GameObject>("ji/muji_02");
                 si.MainModel = Instantiate(g);
                 break;
             case StageState.qingnq:
-                dicStage.Add(StageState.qingnq, new FlowQinNQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowQinNQ());
+                g = Resources.Load<GameObject>("ji/muji_03");
                 si.MainModel = Instantiate(g);
                 break;
             case StageState.chengnq:
-                dicStage.Add(StageState.chengnq, new FlowChengNQ());
+                dicStage.Add(ss, new FlowChengNQ());
                 g = Resources.Load<GameObject>("ji/muji_04");
                 si.MainModel = Instantiate(g);
                 break;
             case StageState.chandq:
-                dicStage.Add(StageState.chandq, new FlowChanDQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowChanDQ());
+                g = Resources.Load<GameObject>("ji/muji_05");
                 si.MainModel = Instantiate(g);
                 break;
             case StageState.weisq:
-                dicStage.Add(StageState.weisq, new FlowWeiSQ());
-                g = Resources.Load<GameObject>("ji/muji_04");
+                dicStage.Add(ss, new FlowWeiSQ());
+                g = Resources.Load<GameObject>("ji/muji_01");
                 si.MainModel = Instantiate(g);
                 break;
         }

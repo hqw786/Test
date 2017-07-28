@@ -20,10 +20,10 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
     protected Color color;//颜色（主要控制透明通道）
     protected Vector3 scale;
     protected GameObject obj;
-    protected Material material;
+    protected Material mat;
 
     protected Shader shaderT;
-    protected Shader shader;
+    protected Shader shaderN;
 
     float timerColor;
     float timerScale;
@@ -34,18 +34,18 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
     }
     protected void Start()
     {
-
+        
     }
     protected void Update()
     {
-        if (material == null) return;
+        if (mat == null) return;
         if(isShow)
         {
             ColorTransition(1f, ref isShow, true);
         }
         if(isHide)
         {
-            ColorTransition(0f, ref isHide, false);
+            ColorTransition(0f, ref isHide, false, true);
         }
         if(isBig)
         {
@@ -74,7 +74,8 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
                 timerColor = 0f;
                 value = false;
                 color.a = alpha;
-                material.color = color;
+                mat.color = color;
+                mat.shader = shaderN;
             }
         }
         else
@@ -84,7 +85,8 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
                 timerColor = 0f;
                 value  = false;
                 color.a = alpha;
-                material.color = color;
+                mat.color = color;
+                //material.shader = shaderN;
                 if(hide)
                 {
                     obj.SetActive(false);
@@ -123,52 +125,71 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
     }
 
     #region 基础功能
-    protected void SetObject(GameObject g)
+    protected void SetObject()
     {
-        obj = g;
-        material = obj.GetComponent<MeshRenderer>().material;
-        color = material.color;
+        shaderN = SYSManager.Instance.shaderN;
+        shaderT = SYSManager.Instance.shaderT;
+
+        obj = this.gameObject;
+        mat = obj.GetComponent<MeshRenderer>().material;
+        mat.shader = shaderT;
+        if (mat == null) Debug.LogError("材质为空");
+        color = mat.color;
         scale = obj.transform.localScale;
     }
-    protected void SetShow()
+    protected void SetObject(GameObject g)
+    {
+        shaderN = SYSManager.Instance.shaderN;
+        shaderT = SYSManager.Instance.shaderT;
+
+        obj = g;
+        mat = obj.GetComponent<MeshRenderer>().material;
+        mat.shader = shaderT;
+        if (mat == null) Debug.LogError("材质为空");
+        color = mat.color;
+        scale = obj.transform.localScale;
+    }
+    public void SetShow()
     {
         isShow = true;
         isHide = false;
+        mat.shader = shaderT;
     }
-    protected void SetHide()
+    public void SetHide()
     {
         isHide = true;
         isShow = false;
+        mat.shader = shaderT;
     }
     protected void SetDefaultShow()
     {
         color.a = 1f;
-        material.color = color;
+        mat.color = color;
     }
     protected void SetDefaultShow(Color c)
     {
         color = c;
         color.a = 1f;
-        material.color = color;
+        mat.color = color;
     }
     protected void SetDefaultHide()
     {
         color.a = 0f;
-        material.color = color;
+        mat.color = color;
     }
     protected void SetDefaultHide(Color c)
     {
         color = c;
         color.a = 0f;
-        material.color = color;
+        mat.color = color;
     }
 
-    protected void SetBig()
+    public void SetBig()
     {
         isBig = true;
         isSmall = false;
     }
-    protected void SetSmall()
+    public void SetSmall()
     {
         isBig = false;
         isSmall = true;
