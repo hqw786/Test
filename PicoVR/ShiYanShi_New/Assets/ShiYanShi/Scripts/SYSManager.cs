@@ -132,13 +132,16 @@ public class SYSManager : MonoBehaviour
         dicEgg[AppState.EggShow][1].SetActive(false);
         dicEgg[AppState.EggShow][2].SetActive(false);
 
-        //鸡蛋数据
+        
+    }
+	void Start () {
+		//鸡蛋数据
+		print(ConfigData.Instance.Data.Count);
         dicEggContent.Add("jidan_02", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[0]);
         dicEggContent.Add("jidan_03", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[1]);
         dicEggContent.Add("jidan_01", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[2]);
-    }
-	void Start () {
-        //第一次将摄像头转到90度。以后不用旋转
+        
+		//第一次将摄像头转到90度。以后不用旋转
         if (Manager.isFirst)
         {
             Manager.isFirst = false;
@@ -308,22 +311,6 @@ public class SYSManager : MonoBehaviour
 		#endregion
         #endregion
     }
-
-    //private IEnumerator EnterState()
-    //{
-    //    if (curState == SYSState.FuHQ)
-    //    {
-    //        yield return StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
-    //        fuhuaxiang.parent.GetComponent<Animation>().CrossFade("fuhuaxiang_001");
-    //        content.transform.parent.GetComponent<PingMuTrans>().SetDisplay();
-    //        yield return new WaitForSeconds(4f);
-    //        SYSManager.Instance.isCurModelAlpha = true;
-    //    }
-    //    yield return new WaitForSeconds(1f);
-    //    isFlowEnterDone = true;
-    //}
-
-	
 
     //产蛋展示
     void eggLayingShow()

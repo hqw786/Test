@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class StagePanel : MonoBehaviour , IPointerClickHandler
+public class StagePanel : MonoBehaviour
 {
     List<Button> btnList = new List<Button>();
     List<Image> imgList = new List<Image>();
@@ -29,12 +29,14 @@ public class StagePanel : MonoBehaviour , IPointerClickHandler
         ButtonResetDefault();
         transform.Find("BtnFuHQ/Text").GetComponent<Text>().color = Color.red;
         SYSManager.Instance.StageStatusSwitch(StageState.fuhq);
-        SYSManager.Instance.StartShowFlow();
+        SYSManager.Instance.StartShowFlow(StageState.fuhq);
     }
     public void OnBtnPoKQClick()
     {
         ButtonResetDefault();
         transform.Find("BtnPoKQ/Text").GetComponent<Text>().color = Color.red;
+		SYSManager.Instance.StageStatusSwitch(StageState.pokq);
+		SYSManager.Instance.StartShowFlow(StageState.pokq);
     }
     public void OnBtnMiaoJQClick()
     {
