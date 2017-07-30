@@ -28,7 +28,7 @@ public class Tools
         leftEye.transform.parent.GetComponent<CameraScale>().ReturnOriginPosition();
 
         yield return new WaitForSeconds(time);
-        SYSManager.Instance.StartShowFlow();
+        SYSManager.Instance.StartShowFlow(StageState.fuhq);
     }
     /// <summary>
     /// 显示屏上显示内容

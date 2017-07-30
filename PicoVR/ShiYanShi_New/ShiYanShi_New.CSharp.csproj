@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -179,6 +181,7 @@
     <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowMiaoJQ.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowPoKQ.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowQinNQ.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowEgg.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\Flow\FlowWeiSQ.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\FuHuaXiang.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\ImageFadeInOut.cs" />
@@ -193,6 +196,7 @@
     <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base - 复制.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\WeekEffect.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\book.cs" />
+    <Compile Include="Assets\StageButton.cs" />
     <Compile Include="Assets\StageCoroutineManager.cs" />
     <Compile Include="Assets\StageInfo.cs" />
     <Compile Include="Assets\StagePanel.cs" />

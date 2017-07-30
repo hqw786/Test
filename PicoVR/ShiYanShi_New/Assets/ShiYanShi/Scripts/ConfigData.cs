@@ -35,12 +35,13 @@ public class ConfigData : MonoBehaviour {
     {
         foreach(StageInfo si in data)
         {
-            if (si.ID < strStage.Length - 1)
+            if (si.ID < strStage.Length)
             {
                 StageState ss = (StageState)si.ID;
                 SwitchObject(ss, si);
                 dicStage[ss].SetData(si);
-                si.MainModel.SetActive(false);
+                if(si.MainModel != null)
+                    si.MainModel.SetActive(false);
             }
         }
     }
@@ -88,8 +89,9 @@ public class ConfigData : MonoBehaviour {
                 break;
             case StageState.weisq:
                 dicStage.Add(ss, new FlowWeiSQ());
-                g = Resources.Load<GameObject>("ji/muji_01");
-                si.MainModel = Instantiate(g);
+                break;
+            case StageState.egg:
+                dicStage.Add(ss, new FlowEgg());
                 break;
         }
     }

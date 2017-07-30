@@ -6,20 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Pvr_UnitySDKAPI;
-//public enum SYSState
-//{
-//    Init,
-//    Select,
-//    FuHQ,
-//    MiaoJ1,
-//    MiaoJ2,
-//    QingNJ,
-//    ChengNJ,
-//    ChanDJ,
-//    EggLaying,
-//    EggShow,
-//    END
-//}
+
 public enum StageState
 {
     fuhq,
@@ -29,13 +16,14 @@ public enum StageState
     qingnq,
     chengnq,
     chandq,
-    weisq
+    weisq,
+    egg
 }
 public enum AppState
 {
     Init,
     Show,
-    EggLaying,
+    Feeding,
     EggShow,
     End
 }
@@ -52,6 +40,8 @@ public class SYSManager : MonoBehaviour
     public const float CONTENTALPHATIME = 1f;
     public Dictionary<AppState, List<GameObject>> dicEgg = new Dictionary<AppState, List<GameObject>>();
     public Dictionary<string, string[]> dicEggContent = new Dictionary<string, string[]>();
+
+    public event System.Action FlowEndEvent;
 
     public AppState curAppStatus;
     public StageState curStageStatus;
@@ -108,7 +98,7 @@ public class SYSManager : MonoBehaviour
     {
         Instance = this;
         curAppStatus = AppState.Init;
-        playStatus = PlayState.auto;
+        playStatus = PlayState.once;
         endMenu.SetActive(false);
 
         shaderN = Shader.Find("Mobile/Diffuse");
@@ -188,16 +178,15 @@ public class SYSManager : MonoBehaviour
     {
         ResetState();
     }
-    public void StartShowFlow()
-    {
-        isFlowStart = true;
-        curAppStatus = AppState.Show;
-        curStageStatus = StageState.fuhq;
-    }
     public void StartShowFlow(StageState ss)
     {
         isFlowStart = true;
+        curAppStatus = AppState.Show;
         curStageStatus = ss;
+    }
+    public void StartShowFlow()
+    {
+        isFlowStart = true;
     }
 	void Update ()
     {
@@ -237,6 +226,10 @@ public class SYSManager : MonoBehaviour
                 StageStatusReset();
             }
         }
+        if(curAppStatus == AppState.EggShow || curAppStatus == AppState.Feeding)
+        {
+
+        }
         #endregion
         #region 原来的主流程
         ////if(!isFirst &&　Time.time > 5f)
@@ -247,7 +240,7 @@ public class SYSManager : MonoBehaviour
         ////到了最后
         ////if (curState == SYSState.END)
         ////{
-        ////    //TODO:再看一遍显示出来
+        ////    //再看一遍显示出来
         ////    endMenu.transform.Find("Restart").gameObject.SetActive(true);
         ////    contentDes.gameObject.SetActive(true);
         ////    isContentAlphaDisplay = true;
@@ -567,6 +560,29 @@ public class SYSManager : MonoBehaviour
         int s = (int)curStageStatus;
         s++;
         curStageStatus = (StageState)s;
+        if (s == ConfigData.Instance.Data.Count - 2)
+        {
+            //TODO:执行到流程结束的事件
+            if(FlowEndEvent != null)
+            {
+                FlowEndEvent();
+            }
+            s++;
+            curStageStatus = (StageState)s;
+            //TODO:执行到流程结束的事件
+            if (FlowEndEvent != null)
+            {
+                FlowEndEvent();
+            }
+        }
+        else if(s < ConfigData.Instance.Data.Count - 2)
+        {
+            //TODO:执行到流程结束的事件
+            if (FlowEndEvent != null)
+            {
+                FlowEndEvent();
+            }
+        }
     }
     public void StageStatusSwitch(StageState ss)
     {
