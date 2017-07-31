@@ -12,7 +12,13 @@ public class ConfigData : MonoBehaviour {
     private List<StageInfo> data = new List<StageInfo>();
     //阶段数据
     public List<StageInfo> Data { get { return data; } set { data = value; } }
-
+    //蛋种类
+    public Dictionary<StageState, List<GameObject>> dicEgg = new Dictionary<StageState, List<GameObject>>();
+    public Dictionary<string, string[]> dicEggContent = new Dictionary<string, string[]>();
+    //喂食种类
+    public Dictionary<StageState, List<GameObject>> dicFodder = new Dictionary<StageState, List<GameObject>>();
+    public Dictionary<string, string[]> dicFodderContent = new Dictionary<string, string[]>();
+   
     //现有的阶段(和TXT文本中保持一致）
     public string[] strStage = new string[] { "孵化期", "破壳期", "苗鸡期", "雏鸡期", "青年期", "成年期", "产蛋期", "喂食期", "蛋种类" };
 	// Use this for initialization
@@ -20,12 +26,59 @@ public class ConfigData : MonoBehaviour {
     {
         Instance = this;
         Tools.GetTextData("TextData");
+
+        SetEggModel();
+        SetFodderModel();
+    }
+    void SetEggModel()
+    {
+        //鸡蛋模型
+        List<GameObject> egg = new List<GameObject>();
+        GameObject g = Resources.Load<GameObject>("ji/jidan_02");
+        egg.Add(Instantiate(g));
+        g = Resources.Load<GameObject>("ji/jidan_03");
+        egg.Add(Instantiate(g));
+        g = Resources.Load<GameObject>("ji/jidan_01");
+        egg.Add(Instantiate(g));
+        dicEgg.Add(StageState.egg, egg);
+        dicEgg[StageState.egg][0].SetActive(false);
+        dicEgg[StageState.egg][1].SetActive(false);
+        dicEgg[StageState.egg][2].SetActive(false);
+    }
+    void SetFodderModel()
+    {
+        List<GameObject> fodder = new List<GameObject>();
+        GameObject g = Resources.Load<GameObject>("ji/fodder1");
+        fodder.Add(Instantiate(g));
+        g = Resources.Load<GameObject>("ji/fodder2");
+        fodder.Add(Instantiate(g));
+        g = Resources.Load<GameObject>("ji/fodder3");
+        fodder.Add(Instantiate(g));
+        dicFodder.Add(StageState.weisq, fodder);
+        dicFodder[StageState.weisq][0].SetActive(false);
+        dicFodder[StageState.weisq][1].SetActive(false);
+        dicFodder[StageState.weisq][2].SetActive(false);
     }
 	void Start () 
     {
 		SaveStageDataToDIC();
+        SetEggData();
+        SetFodderData();
 	}
-	
+	void SetEggData()
+    {
+        //鸡蛋数据
+        dicEggContent.Add("jidan_02", Data[Data.Count - 1].Context[0]);
+        dicEggContent.Add("jidan_03", Data[Data.Count - 1].Context[1]);
+        dicEggContent.Add("jidan_01", Data[Data.Count - 1].Context[2]);
+    }
+    void SetFodderData()
+    {
+        //饲料数据
+        dicFodderContent.Add("fodder1", Data[Data.Count - 2].Context[0]);
+        dicFodderContent.Add("fodder2", Data[Data.Count - 2].Context[1]);
+        dicFodderContent.Add("fodder3", Data[Data.Count - 2].Context[2]);
+    }
 	// Update is called once per frame
 	void Update () 
     {

@@ -91,5 +91,31 @@ public class EggScale : MonoBehaviour {
         }
     }
 
-
+    public void OnFodder1Click()
+    {
+        //SYSManager.Instance.OnBtnPinkClick();
+        Transform t = transform.Find("/shiyanshi/Menu");
+        if (t)
+        {
+            t.GetComponent<RayUI>().SetFodderPress(this.gameObject);
+        }
+    }
+    public void OnFodder2Click()
+    {
+        //SYSManager.Instance.OnBtnRedClick();
+        Transform t = transform.Find("/shiyanshi/Menu");
+        if (t)
+        {
+            t.GetComponent<RayUI>().SetFodderPress(this.gameObject);
+        }
+    }
+    public void OnFodder3Click()
+    {
+        //SYSManager.Instance.OnBtnGreenClick();
+        Transform t = transform.Find("/shiyanshi/Menu");
+        if (t)
+        {
+            t.GetComponent<RayUI>().SetFodderPress(this.gameObject);
+        }
+    }
 }

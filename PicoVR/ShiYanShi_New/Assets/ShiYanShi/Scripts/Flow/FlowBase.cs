@@ -12,7 +12,7 @@ public abstract class FlowBase
     public List<Transform> execTransform = new List<Transform>();
     public List<Transform> exitTransform = new List<Transform>();
 
-    private StageInfo data;
+    protected StageInfo data;
     public virtual void Enter()
     {
         //一定有的，模型慢慢显示出来

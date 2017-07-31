@@ -11,13 +11,19 @@ public class Around : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(isStartRotation)
+        if (SYSManager.Instance.curAppStatus == AppState.Show)
         {
-            transform.Rotate(transform.up, 1f, Space.Self);
+            if (isStartRotation)
+            {
+                transform.Rotate(transform.up, 1f, Space.Self);
+            }
         }
-        if(this.name.Contains("jidan"))
+        if(SYSManager.Instance.curAppStatus == AppState.FeedingAndEgg)
         {
-            transform.Rotate(transform.up, 1f, Space.Self);
+            if(this.name.Contains("jidan"))
+            {
+                transform.Rotate(transform.up, 1f, Space.Self);
+            }
         }
 	}
     void StartRotation()

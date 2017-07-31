@@ -194,4 +194,38 @@ public class RayUI : MonoBehaviour {
             }
         }
     }
+
+    public void SetFodderPress(GameObject g)
+    {
+        if (g.name.Contains("fodder1"))
+        {
+            PressFodder(g);
+            SYSManager.Instance.OnBtnFodder1Click();
+        }
+        else if (g.name.Contains("fodder2"))
+        {
+            PressFodder(g);
+            SYSManager.Instance.OnBtnFodder2Click();
+        }
+        else if (g.name.Contains("fodder3"))
+        {
+            PressFodder(g);
+            SYSManager.Instance.OnBtnFodder3Click();
+        }
+    }
+    void PressFodder(GameObject g)
+    {
+        foreach (Transform t in g.transform.parent)
+        {
+            if (t.gameObject.name == g.name)
+            {
+                t.GetComponent<EggScale>().keepScale();
+            }
+            else
+            {
+                if (t.gameObject.activeInHierarchy)
+                    t.GetComponent<EggScale>().resetKeeyScale();
+            }
+        }
+    }
 }

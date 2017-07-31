@@ -74,9 +74,9 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
                 timerColor = 0f;
                 value = false;
                 color.a = alpha;
-                mat.color = color;
                 mat.shader = shaderN;
             }
+            mat.color = color;
         }
         else
         {
@@ -85,13 +85,12 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
                 timerColor = 0f;
                 value  = false;
                 color.a = alpha;
-                mat.color = color;
-                //material.shader = shaderN;
                 if(hide)
                 {
                     obj.SetActive(false);
                 }
             }
+            mat.color = color;
         }
     }
     /// <summary>
@@ -108,19 +107,19 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
         {
             if(obj.transform.localScale.x >= scale.x)
             {
-                obj.transform.localScale = scale;
                 value = false;
                 timerScale = 0f;
             }
+            obj.transform.localScale = scale;
         }
         else
         {
             if(obj.transform.localScale.x  <= scale.x)
             {
-                obj.transform.localScale = scale;
                 value = false;
                 timerScale = 0f;
             }
+            obj.transform.localScale = scale;
         }
     }
 
@@ -154,6 +153,8 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
         isShow = true;
         isHide = false;
         mat.shader = shaderT;
+        color.a = 0f;
+        mat.color = color;
     }
     public void SetHide()
     {

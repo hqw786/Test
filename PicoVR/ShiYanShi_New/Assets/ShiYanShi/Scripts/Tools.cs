@@ -113,7 +113,8 @@ public class Tools
                 ConfigData.Instance.Data.Add(si);
                 ConfigData.Instance.Data[index].ID = index;
                 ConfigData.Instance.Data[index].Name = ConfigData.Instance.strStage[index];
-                ConfigData.Instance.Data[index].isLock = index == 0 ? false : true;
+                //TODO:可以预编译一下
+                ConfigData.Instance.Data[index].isLock = false;//index == 0 ? false : true;
             }
             else
             {

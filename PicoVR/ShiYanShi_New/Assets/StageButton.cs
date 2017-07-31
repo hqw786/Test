@@ -70,14 +70,34 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     {
         print("你按了阶段按钮： " + eventData.pointerEnter.name);
         //按下了阶段按钮，取得对象
+        //int sn = (int)status;
+        if (status <= StageState.chandq)
+        {
+            OnButtonClick();
+        }
+        else
+        {
+            OnShowButtonClick();
+        }
+    }
 
-        OnButtonClick();
+    private void OnShowButtonClick()
+    {
+        if(!stage.isLock)
+        {
+            SYSManager.Instance.AppStatusSwitch(AppState.FeedingAndEgg);
+            panel.ButtonResetDefault();
+            text.color = Color.red;
+            SYSManager.Instance.StageStatusSwitch(status);
+            SYSManager.Instance.StartShowFlow();
+        }
     }
 
     void OnButtonClick()
     {
         if(!stage.isLock)
         {
+            SYSManager.Instance.AppStatusSwitch(AppState.Show);
             panel.ButtonResetDefault();
             text.color = Color.red;
             SYSManager.Instance.StageStatusSwitch(status);

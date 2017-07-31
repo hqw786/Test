@@ -23,8 +23,7 @@ public enum AppState
 {
     Init,
     Show,
-    Feeding,
-    EggShow,
+    FeedingAndEgg,
     End
 }
 public enum PlayState
@@ -38,9 +37,7 @@ public class SYSManager : MonoBehaviour
     public const float FADETIME = 1.5f;
     public const float CONTENTTIME = 3f;
     public const float CONTENTALPHATIME = 1f;
-    public Dictionary<AppState, List<GameObject>> dicEgg = new Dictionary<AppState, List<GameObject>>();
-    public Dictionary<string, string[]> dicEggContent = new Dictionary<string, string[]>();
-
+    
     public event System.Action FlowEndEvent;
 
     public AppState curAppStatus;
@@ -52,6 +49,7 @@ public class SYSManager : MonoBehaviour
     public GameObject rightEye;
     public GameObject endMenu;
     public GameObject selectMenu;
+    public GameObject stageMenu;
     public Transform fuhuaxiang;
     public GameObject modelPoint;
     public GameObject content;
@@ -108,29 +106,9 @@ public class SYSManager : MonoBehaviour
         contentHumi = content.transform.Find("Humi").GetComponent<Text>();
         contentOther = content.transform.Find("Other").GetComponent<Text>();
         contentDes = content.transform.Find("Des").GetComponent<Text>();
-
-        //鸡蛋模型
-        List<GameObject> egg = new List<GameObject>();
-        GameObject g = Resources.Load<GameObject>("ji/jidan_02");
-        egg.Add(Instantiate(g));
-        g = Resources.Load<GameObject>("ji/jidan_03");
-        egg.Add(Instantiate(g));
-        g = Resources.Load<GameObject>("ji/jidan_01");
-        egg.Add(Instantiate(g));
-        dicEgg.Add(AppState.EggShow, egg);
-        dicEgg[AppState.EggShow][0].SetActive(false);
-        dicEgg[AppState.EggShow][1].SetActive(false);
-        dicEgg[AppState.EggShow][2].SetActive(false);
-
-        
     }
 	void Start () {
-		//鸡蛋数据
-		print(ConfigData.Instance.Data.Count);
-        dicEggContent.Add("jidan_02", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[0]);
-        dicEggContent.Add("jidan_03", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[1]);
-        dicEggContent.Add("jidan_01", ConfigData.Instance.Data[ConfigData.Instance.Data.Count - 1].Context[2]);
-        
+		
 		//第一次将摄像头转到90度。以后不用旋转
         if (Manager.isFirst)
         {
@@ -167,6 +145,7 @@ public class SYSManager : MonoBehaviour
 
         selectMenu.SetActive(true);
         endMenu.SetActive(false);
+        stageMenu.SetActive(false);
         SceneManager.LoadScene("Shiyanshi");
     }
     public void OnBtnExitClick()
@@ -226,9 +205,36 @@ public class SYSManager : MonoBehaviour
                 StageStatusReset();
             }
         }
-        if(curAppStatus == AppState.EggShow || curAppStatus == AppState.Feeding)
+        if(curAppStatus == AppState.FeedingAndEgg)
         {
-
+            if(isFlowStart)
+            {
+                isFlowStart = false;
+                //TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Name);
+                if(curStageStatus == StageState.egg)
+                {
+                    TransWeek("Bottom", "选择鸡蛋了解产蛋信息");
+                }
+                else if(curStageStatus == StageState.weisq)
+                {
+                    TransWeek("Bottom", "选择饲料了解喂食饲料信息");
+                }
+                ConfigData.Instance.dicStage[curStageStatus].Enter();
+            }
+            if(isFlowEnterDone)
+            {
+                isFlowEnterDone = false;
+                ConfigData.Instance.dicStage[curStageStatus].Exec();
+            }
+            if(isFlowExecDone)
+            {
+                isFlowExecDone = false;
+                ConfigData.Instance.dicStage[curStageStatus].Exit();
+            }
+            if(isFlowEnd)
+            {
+                isFlowEnd = false;
+            }
         }
         #endregion
         #region 原来的主流程
@@ -306,21 +312,21 @@ public class SYSManager : MonoBehaviour
     }
 
     //产蛋展示
-    void eggLayingShow()
-    {
-        //过程：显示UI，点击显示蛋分类，点击不同的蛋显示相应的介绍
-        //周数隐藏，
-        weekContent.gameObject.SetActive(false);
-        //显示产蛋UI
-        eggLaying.transform.Find("eggLaying").gameObject.SetActive(true);
-        //dicGameObject[SYSState.ChanDJ].GetComponent<MeshRenderer>().material.shader = shader1;
-        eggLaying.transform.Find("eggLaying").BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
-        if(!Manager.isEggTips)
-        {
-            Manager.isEggTips = true;
-            eggLaying.transform.Find("Tips").gameObject.SetActive(true);
-        }
-    }
+    //void eggLayingShow()
+    //{
+    //    //过程：显示UI，点击显示蛋分类，点击不同的蛋显示相应的介绍
+    //    //周数隐藏，
+    //    weekContent.gameObject.SetActive(false);
+    //    //显示产蛋UI
+    //    eggLaying.transform.Find("eggLaying").gameObject.SetActive(true);
+    //    //dicGameObject[SYSState.ChanDJ].GetComponent<MeshRenderer>().material.shader = shader1;
+    //    eggLaying.transform.Find("eggLaying").BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+    //    if(!Manager.isEggTips)
+    //    {
+    //        Manager.isEggTips = true;
+    //        eggLaying.transform.Find("Tips").gameObject.SetActive(true);
+    //    }
+    //}
     public void OnBtnEggLayingClick()
     {
         //产蛋按钮被点击
@@ -358,49 +364,92 @@ public class SYSManager : MonoBehaviour
         //    index++;
         //}
     }
+    #region 蛋种类
     void tipsHide()
     {
-        if(weekContent.gameObject.activeInHierarchy)
+        if (curAppStatus != AppState.FeedingAndEgg)
         {
-            weekContent.gameObject.SetActive(false);
+            if (weekContent.gameObject.activeInHierarchy)
+            {
+                weekContent.gameObject.SetActive(false);
+            }
         }
     }
     public void OnBtnRedClick()
     {
         tipsHide();
         content.BroadcastMessage("SetShadingHide", SendMessageOptions.DontRequireReceiver);
-        //content.BroadcastMessage("SetTextColor",Color.black,SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetTextColor",Color.black,SendMessageOptions.DontRequireReceiver);
         Invoke("RedEggShading", 1f);
     }
     void RedEggShading()
     {
-        contentDisplay(dicEggContent["jidan_02"]);
+        contentDisplay(ConfigData.Instance.dicEggContent["jidan_02"]);
         content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
     }
     public void OnBtnGreenClick()
     {
         tipsHide();
         HideContent();
-        //content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
         Invoke("GreenEggShading", 1f);
     }
     void GreenEggShading()
     {
-        contentDisplay(dicEggContent["jidan_03"]);
+        contentDisplay(ConfigData.Instance.dicEggContent["jidan_03"]);
         content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
     }
     public void OnBtnPinkClick()
     {
         tipsHide();
         HideContent();
-        //content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
         Invoke("PinkEggShading", 1f);
     }
     void PinkEggShading()
     {
-        contentDisplay(dicEggContent["jidan_01"]);
+        contentDisplay(ConfigData.Instance.dicEggContent["jidan_01"]);
         content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
     }
+#endregion
+    #region 饲料
+    public void OnBtnFodder1Click()
+    {
+        tipsHide();
+        content.BroadcastMessage("SetShadingHide", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        Invoke("Fodder1Shading", 1f);
+    }
+    void Fodder1Shading()
+    {
+        contentDisplay(ConfigData.Instance.dicFodderContent["fodder1"]);
+        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+    }
+    public void OnBtnFodder2Click()
+    {
+        tipsHide();
+        HideContent();
+        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        Invoke("Fodder2Shading", 1f);
+    }
+    void Fodder2Shading()
+    {
+        contentDisplay(ConfigData.Instance.dicFodderContent["fodder2"]);
+        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+    }
+    public void OnBtnFodder3Click()
+    {
+        tipsHide();
+        HideContent();
+        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        Invoke("Fodder3Shading", 1f);
+    }
+    void Fodder3Shading()
+    {
+        contentDisplay(ConfigData.Instance.dicFodderContent["fodder3"]);
+        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+    }
+    #endregion
     void changeCurModel(GameObject g)
     {
         g.SetActive(true);
@@ -432,6 +481,7 @@ public class SYSManager : MonoBehaviour
         selectMenu.transform.parent.Find("Tips").gameObject.SetActive(false);
         selectMenu.SetActive(false);
         endMenu.SetActive(true);
+        stageMenu.SetActive(true);
         StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
     }
     
@@ -562,14 +612,14 @@ public class SYSManager : MonoBehaviour
         curStageStatus = (StageState)s;
         if (s == ConfigData.Instance.Data.Count - 2)
         {
-            //TODO:执行到流程结束的事件
+            //DONE:执行到流程结束的事件
             if(FlowEndEvent != null)
             {
                 FlowEndEvent();
             }
             s++;
             curStageStatus = (StageState)s;
-            //TODO:执行到流程结束的事件
+            //DONE:执行到流程结束的事件
             if (FlowEndEvent != null)
             {
                 FlowEndEvent();
@@ -577,7 +627,7 @@ public class SYSManager : MonoBehaviour
         }
         else if(s < ConfigData.Instance.Data.Count - 2)
         {
-            //TODO:执行到流程结束的事件
+            //DONE:执行到流程结束的事件
             if (FlowEndEvent != null)
             {
                 FlowEndEvent();

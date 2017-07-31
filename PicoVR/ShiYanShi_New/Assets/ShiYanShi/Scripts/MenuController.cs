@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
     public GameObject btnExit;
     public GameObject btnSelect;
     public GameObject btnReturn;
+    public GameObject stageMenu;
     //public GameObject btnRestart;
 
     public bool isRayUISelect;
