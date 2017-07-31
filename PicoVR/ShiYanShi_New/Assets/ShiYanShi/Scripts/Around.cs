@@ -20,7 +20,7 @@ public class Around : MonoBehaviour {
         }
         if(SYSManager.Instance.curAppStatus == AppState.FeedingAndEgg)
         {
-            if(this.name.Contains("jidan"))
+            if(this.name.Contains("jidan") || this.name.Contains("fodder"))
             {
                 transform.Rotate(transform.up, 1f, Space.Self);
             }

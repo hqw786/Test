@@ -21,6 +21,8 @@ public class RayUI : MonoBehaviour {
     Ray ray;
 
     List<RaycastResult> result = new List<RaycastResult>();
+    private GameObject targetFodder;
+    private bool isFodderTarget;
 	// Use this for initialization
 	void Start () {
         //camera = GetComponent<Camera>();
@@ -58,7 +60,7 @@ public class RayUI : MonoBehaviour {
             {
                 if(hit.collider.tag.Contains("Egg"))
                 {
-                    print(hit.collider.name);
+                    //print(hit.collider.name);
                     dot.position = hit.point;
                     
                     isEggTarget = true;
@@ -66,12 +68,29 @@ public class RayUI : MonoBehaviour {
 
                     targetEgg.GetComponent<EggScale>().SetScale();
                 }
+                else if (hit.collider.tag.Contains("Fodder"))
+                {
+                    //print(hit.collider.name);
+                    dot.position = hit.point;
+
+                    isFodderTarget = true;
+                    targetFodder = hit.collider.gameObject;
+
+                    targetFodder.GetComponent<EggScale>().SetScale();
+                }
             }
             if(isEggTarget)
             {
                 if (Controller.UPvr_GetKeyDown(Pvr_KeyCode.TOUCHPAD) || Input.GetMouseButtonDown(0))
                 {
                     SetEggPress(targetEgg);
+                }
+            }
+            if (isFodderTarget)
+            {
+                if (Controller.UPvr_GetKeyDown(Pvr_KeyCode.TOUCHPAD) || Input.GetMouseButtonDown(0))
+                {
+                    SetFodderPress(targetFodder);
                 }
             }
         }
