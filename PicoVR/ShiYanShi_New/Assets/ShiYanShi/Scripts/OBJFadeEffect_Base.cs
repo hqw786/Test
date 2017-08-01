@@ -13,7 +13,8 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
 
     protected bool isBig;//变大
     protected bool isSmall;//变小
-
+    private bool isKeepScale;//保持缩放
+    
     protected Vector3 minScale = Vector3.zero;
     protected Vector3 maxScale = Vector3.zero;
 
@@ -27,6 +28,7 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
 
     float timerColor;
     float timerScale;
+    
 
     protected void Awake()
     {
@@ -124,6 +126,10 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
     }
 
     #region 基础功能
+    #region 设置对象
+    /// <summary>
+    /// 设置对象为所挂物体
+    /// </summary>
     protected void SetObject()
     {
         shaderN = SYSManager.Instance.shaderN;
@@ -136,6 +142,10 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
         color = mat.color;
         scale = obj.transform.localScale;
     }
+    /// <summary>
+    /// 设置对象为指定对象
+    /// </summary>
+    /// <param name="g"></param>
     protected void SetObject(GameObject g)
     {
         shaderN = SYSManager.Instance.shaderN;
@@ -148,6 +158,24 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
         color = mat.color;
         scale = obj.transform.localScale;
     }
+    #endregion
+    /// <summary>
+    /// 保持缩放大小
+    /// </summary>
+    public void SetKeepScale()
+    {
+        isKeepScale = true;
+    }
+    public void resetKeeyScale()
+    {
+        isKeepScale = false;
+        //这个根据情况是否使用
+        //transform.rotation = Quaternion.identity;
+    }
+    #region 设置显示功能
+    /// <summary>
+    /// 显示
+    /// </summary>
     public void SetShow()
     {
         isShow = true;
@@ -156,69 +184,116 @@ public class OBJFadeEffect_Base : MonoBehaviour   // where T : Material
         color.a = 0f;
         mat.color = color;
     }
+    /// <summary>
+    /// 隐藏
+    /// </summary>
     public void SetHide()
     {
         isHide = true;
         isShow = false;
         mat.shader = shaderT;
     }
+    /// <summary>
+    /// 默认显示
+    /// </summary>
     protected void SetDefaultShow()
     {
         color.a = 1f;
         mat.color = color;
     }
+    /// <summary>
+    /// 默认显示颜色
+    /// </summary>
+    /// <param name="c"></param>
     protected void SetDefaultShow(Color c)
     {
         color = c;
         color.a = 1f;
         mat.color = color;
     }
+    /// <summary>
+    /// 默认隐藏
+    /// </summary>
     protected void SetDefaultHide()
     {
         color.a = 0f;
         mat.color = color;
     }
+    /// <summary>
+    /// 默认隐藏颜色
+    /// </summary>
+    /// <param name="c"></param>
     protected void SetDefaultHide(Color c)
     {
         color = c;
         color.a = 0f;
         mat.color = color;
     }
-
+    #endregion
+    #region 设置缩放功能
+    /// <summary>
+    /// 放大
+    /// </summary>
     public void SetBig()
     {
         isBig = true;
         isSmall = false;
     }
+    /// <summary>
+    /// 缩小
+    /// </summary>
     public void SetSmall()
     {
         isBig = false;
         isSmall = true;
     }
+    /// <summary>
+    /// 恢复到默认大小
+    /// </summary>
     protected void SetDefaultScale()
     {
         obj.transform.localScale = scale;
     }
+    /// <summary>
+    /// 默认放大
+    /// </summary>
     protected void SetDefaultBig()
     {
         obj.transform.localScale = maxScale;
     }
+    /// <summary>
+    /// 默认放大到指定大小
+    /// </summary>
+    /// <param name="max"></param>
     protected void SetDefaultBig(Vector3 max)
     {
         obj.transform.localScale = max;
     }
+    /// <summary>
+    /// 默认缩小
+    /// </summary>
     protected void SetDefaultSmall()
     {
         obj.transform.localScale = minScale;
     }
+    /// <summary>
+    /// 默认缩小到指定大小
+    /// </summary>
+    /// <param name="min"></param>
     protected void SetDefaultSmall(Vector3 min)
     {
         obj.transform.localScale = min;
     }
+    /// <summary>
+    /// 设置缩放的最大最小值
+    /// </summary>
+    /// <param name="min"></param>
+    /// <param name="max"></param>
     protected void SetMinAndMaxScale(Vector3 min, Vector3 max)
     {
         minScale = min;
         maxScale = max;
     }
+    #endregion
     #endregion
 }

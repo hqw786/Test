@@ -58,7 +58,10 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     }
 	void Start () 
     {
+        //切换流程是执行
         SYSManager.Instance.FlowEndEvent += SetLock;
+        //计算整个流程大约需要的时间
+
 	}
 	
 	// Update is called once per frame
@@ -77,16 +80,16 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         }
         else
         {
-            OnShowButtonClick();
+            OnOperationButtonClick();
         }
     }
 
-    private void OnShowButtonClick()
+    private void OnOperationButtonClick()
     {
         if(!stage.isLock)
         {
-            SYSManager.Instance.AppStatusSwitch(AppState.FeedingAndEgg);
             panel.ButtonResetDefault();
+            SYSManager.Instance.AppStatusSwitch(AppState.FeedingAndEgg);
             text.color = Color.red;
             SYSManager.Instance.StageStatusSwitch(status);
             SYSManager.Instance.StartShowFlow();
@@ -97,8 +100,8 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     {
         if(!stage.isLock)
         {
-            SYSManager.Instance.AppStatusSwitch(AppState.Show);
             panel.ButtonResetDefault();
+            SYSManager.Instance.AppStatusSwitch(AppState.Show);
             text.color = Color.red;
             SYSManager.Instance.StageStatusSwitch(status);
             SYSManager.Instance.StartShowFlow();

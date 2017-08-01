@@ -36,6 +36,10 @@ public class FlowWeiSQ : FlowBase
     }
     public override void Exit()
     {
-        base.Exit();
+        //屏蔽基类的功能
+        //base.Enter();
+
+        //新的功能
+
     }
 }

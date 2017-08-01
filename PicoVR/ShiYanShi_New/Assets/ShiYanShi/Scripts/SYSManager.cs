@@ -31,18 +31,30 @@ public enum PlayState
     auto,
     once
 }
+public enum StagePlayState
+{
+    none,
+    start,
+    playing,
+    end
+}
 public class SYSManager : MonoBehaviour 
 {
     public static SYSManager Instance;
     public const float FADETIME = 1.5f;
     public const float CONTENTTIME = 3f;
     public const float CONTENTALPHATIME = 1f;
-    
-    public event System.Action FlowEndEvent;
+
+    public event System.Action FlowEnterEvent;//进入阶段事件
+    public event System.Action FlowExecEvent;//阶段中事件
+    public event System.Action FlowExitEvent;//退出阶段事件
+    public event System.Action FlowEndEvent;//阶段结束事件
+    public event System.Action FlowSwitchEvent;//切换阶段事件
 
     public AppState curAppStatus;
     public StageState curStageStatus;
     public PlayState playStatus;
+    public StagePlayState curStagePlayStatus;
 
     public GameObject gazePointer;
     public GameObject leftEye;
@@ -97,6 +109,7 @@ public class SYSManager : MonoBehaviour
         Instance = this;
         curAppStatus = AppState.Init;
         playStatus = PlayState.once;
+        curStagePlayStatus = StagePlayState.none;
         endMenu.SetActive(false);
 
         shaderN = Shader.Find("Mobile/Diffuse");
@@ -108,6 +121,7 @@ public class SYSManager : MonoBehaviour
         contentDes = content.transform.Find("Des").GetComponent<Text>();
     }
 	void Start () {
+        //TODO:刚进入的时候旋转90度，对准菜单
 		
 		//第一次将摄像头转到90度。以后不用旋转
         if (Manager.isFirst)
@@ -176,6 +190,7 @@ public class SYSManager : MonoBehaviour
             {
                 isFlowStart = false;
                 //进入当前阶段要做的事（前奏，准备工作，一般每个阶段不同）
+                curStagePlayStatus = StagePlayState.start;
                 //翻页周数
                 TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Context[0][0]);
                 Debug.Log("SYSManager的流程开始，进入Enter");
@@ -185,6 +200,7 @@ public class SYSManager : MonoBehaviour
             {
                 isFlowEnterDone = false;
                 //当前阶段要做的事（一般是相同的事）
+                curStagePlayStatus = StagePlayState.playing;
                 Debug.Log("SYSManager的流程准备完成。。。进入Exec");
                 ConfigData.Instance.dicStage[curStageStatus].Exec();
             }
@@ -192,6 +208,7 @@ public class SYSManager : MonoBehaviour
             {
                 isFlowExecDone = false;
                 //退出当前阶段前要做的事（结束工作，一般每个阶段不同）
+                curStagePlayStatus = StagePlayState.end;
                 Debug.Log("SYSManager的流程执行结束，进入Exit");
                 ConfigData.Instance.dicStage[curStageStatus].Exit();
             }
@@ -199,9 +216,10 @@ public class SYSManager : MonoBehaviour
             {
                 isFlowEnd = false;
                 //切换到下一个状态（自动，手动。手动就恢复默认值状态）
+                curStagePlayStatus = StagePlayState.none;
                 Debug.Log("SYSManager的流程结束，切换阶段");
                 
-                StageStatusSwitch();
+                StageEndSwitch();
                 StageStatusReset();
             }
         }
@@ -450,28 +468,7 @@ public class SYSManager : MonoBehaviour
         content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
     }
     #endregion
-    void changeCurModel(GameObject g)
-    {
-        g.SetActive(true);
-        curGameObject = g;
-        g.transform.parent = modelPoint.transform;
-        g.transform.localPosition = Vector3.zero;
-        curModelMaterial = g.GetComponent<MeshRenderer>().material;
-        curModelMaterial.shader = shaderT;
-        curModelColor = curModelMaterial.color;
-        curModelColor.a = 0;
-        curModelMaterial.color = curModelColor;
-        
-    }
-    //void changeLastModel(GameObject g)
-    //{
-    //    lastGameObject = g;
 
-    //    lastModelMaterial = g.GetComponent<MeshRenderer>().material;
-    //    lastModelMaterial.shader = shader2;
-    //    lastModelColor = lastModelMaterial.color;
-        
-    //}
     public void ClickBook()
     {
         //进入下一个流程
@@ -485,67 +482,6 @@ public class SYSManager : MonoBehaviour
         StartCoroutine(Tools.FadeInFadeOut(leftEye, rightEye, FADETIME));
     }
     
-    //void TransGameObject()
-    //{
-    //    if (curState != SYSState.EggLaying)
-    //    //将上一个模型变透明
-    //    {
-    //        if (isLastModelAlpha)
-    //        {
-    //            if (lastModelMaterial != null)
-    //            {
-    //                lastModelColor.a = Mathf.Lerp(lastModelColor.a, 0, 0.02f);
-    //                lastModelMaterial.color = lastModelColor;
-    //                if (lastModelColor.a < 0.05f)
-    //                {
-    //                    isLastModelAlpha = false;
-    //                    lastModelColor.a = 0f;
-    //                    lastModelMaterial.color = lastModelColor;
-    //                    lastGameObject.SetActive(false);
-    //                }
-    //            }
-    //        }
-    //    }
-    //    //将当前状态模型显示
-    //    if (SYSState.EggLaying != curState)
-    //    {
-    //        if (isCurModelAlpha)
-    //        {
-    //            curModelColor.a = Mathf.Lerp(curModelColor.a, 1, 0.02f);
-    //            curModelMaterial.color = curModelColor;
-    //            if (curModelColor.a > 0.95f)
-    //            {
-    //                isCurModelAlpha = false;
-    //                curModelColor.a = 1f;
-    //                curModelMaterial.color = curModelColor;
-    //                curModelMaterial.shader = shader1;
-    //            }
-    //        }
-    //    }
-    //}
-    
-    //public void comeNextState()
-    //{
-    //    //将上一个状态的模型的颜色和材质数据保存出来
-    //    if (dicGameObject.ContainsKey(curState))// && sState != SYSState.FuHQ)
-    //    {
-    //        //changeLastModel(dicGameObject[curState]);
-    //    }
-    //    int a = (int)curState;
-    //    a++;
-    //    curState = (SYSState)(a);
-    //    if (curState == SYSState.FuHQ) 
-    //        isFlowStart = false;
-		
-
-    //    //将当前状态的模型的颜色和材质数据保存出来
-    //    if (dicGameObject.ContainsKey(curState))
-    //    {
-    //        if(curState != SYSState.MiaoJ1)
-    //            changeCurModel(dicGameObject[curState]);
-    //    }
-    //}
-
     public void ResetState()
     {
         isFlowStart = true;
@@ -581,11 +517,13 @@ public class SYSManager : MonoBehaviour
             if(i > 0 && con.Length - 1 == i)
             {
                 contentDes.gameObject.SetActive(true);
+
                 contentDes.text = con[i];
             }
             if(i == 1 && i > 0 && i < con.Length - 1)
             {
                 contentTemp.gameObject.SetActive(true);
+
                 contentTemp.text = con[i];
             }
             if (i == 2 && i > 0 && i < con.Length - 1)
@@ -605,7 +543,7 @@ public class SYSManager : MonoBehaviour
     {
         curAppStatus = s;
     }
-    public void StageStatusSwitch()
+    public void StageEndSwitch()
     {
         int s = (int)curStageStatus;
         s++;
@@ -634,6 +572,23 @@ public class SYSManager : MonoBehaviour
             }
         }
     }
+    //public void StageExecingSwitch()
+    //{
+    //    switch(curStagePlayStatus)
+    //    {
+    //        case StagePlayState.start:
+    //            goto case StagePlayState.playing;
+    //        case StagePlayState.playing:
+
+    //            break;
+    //        case StagePlayState.end:
+
+    //            break;
+    //        case StagePlayState.none:
+
+    //            break;
+    //    }
+    //}
     public void StageStatusSwitch(StageState ss)
     {
         curStageStatus = ss;
@@ -652,7 +607,12 @@ public class SYSManager : MonoBehaviour
         isFlowEnd = false;
         isFlowEnterDone = false;
         isFlowExecDone = false;
+        content.BroadcastMessage("SetShadingDefault", SendMessageOptions.DontRequireReceiver);
         StopAllCoroutines();
         HideContent();
+        if(curStageStatus == StageState.egg)
+        {
+            SYSManager.Instance.eggLaying.transform.Find("Egg").gameObject.SetActive(false);
+        }
     }
 }

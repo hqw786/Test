@@ -45,58 +45,6 @@ public class StagePanel : MonoBehaviour
 	void Update () {
 		
 	}
-    //public void OnBtnFuHQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnFuHQ/Text").GetComponent<Text>().color = Color.red;
-    //    SYSManager.Instance.StageStatusSwitch(StageState.fuhq);
-    //    SYSManager.Instance.StartShowFlow(StageState.fuhq);
-    //}
-    //public void OnBtnPoKQClick()
-    //{
-    //    if (!ConfigData.Instance.dicStage[StageState.chujq].GetData().isLock)
-    //    {
-    //        ButtonResetDefault();
-    //        transform.Find("BtnPoKQ/Text").GetComponent<Text>().color = Color.red;
-    //        SYSManager.Instance.StageStatusSwitch(StageState.pokq);
-    //        SYSManager.Instance.StartShowFlow(StageState.pokq);
-    //    }
-    //}
-    //public void OnBtnMiaoJQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnMiaoJQ/Text").GetComponent<Text>().color = Color.red;
-    //}
-    //public void OnBtnChuJQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnChuJQ/Text").GetComponent<Text>().color = Color.red;
-    //}
-    //public void OnBtnQinNQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnQinNQ/Text").GetComponent<Text>().color = Color.red;
-    //}
-    //public void OnBtnChengNQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnChengNQ/Text").GetComponent<Text>().color = Color.red;
-    //}
-    //public void OnBtnChanDQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnChanDQ/Text").GetComponent<Text>().color = Color.red;
-    //}
-    //public void OnBtnWeiSQClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnWeiSQ/Text").GetComponent<Text>().color = Color.red;
-    //}
-    //public void OnBtnEggClick()
-    //{
-    //    ButtonResetDefault();
-    //    transform.Find("BtnEgg/Text").GetComponent<Text>().color = Color.red;
-    //}
 
     public void ButtonResetDefault()
     {
@@ -109,19 +57,57 @@ public class StagePanel : MonoBehaviour
         {
             i.fillAmount = 0f;
         }
-        foreach(StageInfo si in ConfigData.Instance.Data)
+        //foreach(StageInfo si in ConfigData.Instance.Data)
+        //{
+        //    if(si.StartModel != null)
+        //    {
+        //        si.StartModel.SetActive(false);
+        //    }
+        //    if (si.MainModel != null)
+        //    {
+        //        si.MainModel.SetActive(false);
+        //    }
+        //    if (si.EndModel != null)
+        //    {
+        //        si.EndModel.SetActive(false);
+        //    }
+        //}
+        
+
+        if (SYSManager.Instance.curAppStatus == AppState.Show)
         {
-            if(si.StartModel != null)
+            if (ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().StartModel != null)
             {
-                si.StartModel.SetActive(false);
+                ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().StartModel.SetActive(false);
             }
-            if (si.MainModel != null)
+            if (ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().MainModel != null)
             {
-                si.MainModel.SetActive(false);
+                ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().MainModel.SetActive(false);
             }
-            if (si.EndModel != null)
+            if (ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().EndModel != null)
             {
-                si.EndModel.SetActive(false);
+                ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().EndModel.SetActive(false);
+            }
+            if(SYSManager.Instance.curStageStatus == StageState.fuhq)
+            {
+                SYSManager.Instance.fuhuaxiang.parent.GetComponent<FuHuaXiang>().ResetBox();
+            }
+        }
+        if(SYSManager.Instance.curAppStatus == AppState.FeedingAndEgg)
+        {
+            if (SYSManager.Instance.curStageStatus == StageState.weisq)
+            {
+                foreach (var v in ConfigData.Instance.dicFodder[StageState.weisq])
+                {
+                    v.SetActive(false);
+                }
+            }
+            if (SYSManager.Instance.curStageStatus == StageState.egg)
+            {
+                foreach (var v in ConfigData.Instance.dicEgg[StageState.egg])
+                {
+                    v.SetActive(false);
+                }
             }
         }
     }

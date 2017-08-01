@@ -22,9 +22,12 @@ public class ContentAlpha : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
+        //协程中设定内容透明度隐藏
 		if (SYSManager.Instance.isContentAlphaHide)
         {
+            //
 			if(isHide)
 			{
 				isHide = false;
@@ -38,6 +41,7 @@ public class ContentAlpha : MonoBehaviour {
                 SYSManager.Instance.isContentAlphaHide = false;
             }
         }
+        //协程中设定内容透明度明显
 		if (SYSManager.Instance.isContentAlphaDisplay)
         {
 			if (isDisplay)
@@ -79,13 +83,13 @@ public class ContentAlpha : MonoBehaviour {
         }
     }
 
-    void SetHide()
+    public void SetHide()
     {
         isHide = true;
 		color.a = 1f;
 		text.color = color;
     }
-    void SetDisplay()
+    public void SetDisplay()
     {
         isDisplay = true;
 	    color.a = 0f;
@@ -107,6 +111,13 @@ public class ContentAlpha : MonoBehaviour {
         isShadingDisplay = true;
         isShadingHide = false;
         color.a = 0.1f;
+        text.color = color;
+    }
+    void SetShadingDefault()
+    {
+        isShadingDisplay = false;
+        isShadingHide = false;
+        color.a = 0f;
         text.color = color;
     }
 }

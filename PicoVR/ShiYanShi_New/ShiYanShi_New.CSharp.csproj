@@ -75,6 +75,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
     </Reference>
@@ -191,7 +197,7 @@
     <Compile Include="Assets\ShiYanShi\Scripts\SceneFadeInOut.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\Tools.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\UIAlpha.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base - 复制.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\WeekEffect.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\book.cs" />
     <Compile Include="Assets\StageButton.cs" />

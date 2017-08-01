@@ -17,14 +17,19 @@ public class FuHuaXiang : MonoBehaviour {
     public void waitState()
     {
         anim["fuhuaxiang_001"].speed = 0;
+        BottomRotation();
     }
     public void continuePlay()
     {
         anim["fuhuaxiang_001"].speed = 1;
-        Invoke("BottomRotation", 3.5f);
+        //Invoke("BottomRotation", 3.5f);
     }
     void BottomRotation()
     {
         BroadcastMessage("StartRotation");
+    }
+    public  void ResetBox()
+    {
+        anim["fuhuaxiang_001"].speed = 10;
     }
 }

@@ -31,4 +31,8 @@ public class FlowFuHQ : FlowBase
         yield return new WaitForSeconds(3f);
         base.Exit();
     }
+    //public override void SetDefault()
+    //{
+    //    SYSManager.Instance.FlowSwitchEvent += Default;
+    //}
 }

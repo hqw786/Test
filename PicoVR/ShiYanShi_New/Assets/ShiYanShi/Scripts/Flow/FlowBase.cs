@@ -5,9 +5,11 @@ using UnityEngine;
 
 public abstract class FlowBase
 {
-    //protected bool isFlowEnter;
-    //protected bool isFlowExec;
-    //protected bool isFlowExit;
+    public event Action enterEvent;
+    public event Action execEvent;
+    public event Action exitEvent;
+    public event Action defaultEvent;
+    
     public List<Transform> enterTransform = new List<Transform>();
     public List<Transform> execTransform = new List<Transform>();
     public List<Transform> exitTransform = new List<Transform>();
@@ -65,6 +67,18 @@ public abstract class FlowBase
     public virtual IEnumerator ExitCoroutine()
     {
         yield return null;
+    }
+
+    public virtual void Default()
+    {
+        if(defaultEvent != null)
+        {
+            defaultEvent();
+        }
+    }
+    public virtual void SetDefault()
+    {
+        SYSManager.Instance.FlowSwitchEvent += Default;
     }
 }
 

@@ -48,6 +48,10 @@ public class FlowEgg : FlowBase
         //base.Exit();
 
         //新的功能
-
+        foreach (GameObject g in ConfigData.Instance.dicEgg[(StageState)data.ID])
+        {
+            g.SetActive(false);
+        }
+        SYSManager.Instance.eggLaying.transform.Find("Egg").gameObject.SetActive(false);
     }
 }

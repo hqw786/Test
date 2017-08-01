@@ -93,6 +93,7 @@ public class ConfigData : MonoBehaviour {
                 StageState ss = (StageState)si.ID;
                 SwitchObject(ss, si);
                 dicStage[ss].SetData(si);
+                dicStage[ss].SetDefault();
                 if(si.MainModel != null)
                     si.MainModel.SetActive(false);
             }
