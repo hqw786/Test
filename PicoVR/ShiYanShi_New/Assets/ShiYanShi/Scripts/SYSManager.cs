@@ -43,7 +43,7 @@ public class SYSManager : MonoBehaviour
     public static SYSManager Instance;
     public const float FADETIME = 1.5f;
     public const float CONTENTTIME = 3f;
-    public const float CONTENTALPHATIME = 1f;
+    public const float CONTENTALPHATIME = 1.5f;
 
     public event System.Action FlowEnterEvent;//进入阶段事件
     public event System.Action FlowExecEvent;//阶段中事件
@@ -607,9 +607,9 @@ public class SYSManager : MonoBehaviour
         isFlowEnd = false;
         isFlowEnterDone = false;
         isFlowExecDone = false;
-        content.BroadcastMessage("SetShadingDefault", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetDefaultHide", SendMessageOptions.DontRequireReceiver);
         StopAllCoroutines();
-        HideContent();
+        //HideContent();
         if(curStageStatus == StageState.egg)
         {
             SYSManager.Instance.eggLaying.transform.Find("Egg").gameObject.SetActive(false);

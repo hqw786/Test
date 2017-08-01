@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class UIFadeEffect_Base<T> : MonoBehaviour where T : Graphic
+public class UITextFadeEffect : MonoBehaviour
 {
     protected bool isShow;//渐显
     protected bool isHide;//渐隐
@@ -19,7 +19,8 @@ public class UIFadeEffect_Base<T> : MonoBehaviour where T : Graphic
 
     protected Color color;//颜色（主要控制透明通道）
     protected Vector3 scale;
-    protected T obj;
+    //protected Image objImage;
+    protected Text obj;
 
     float timerColor;
     float timerScale;
@@ -119,77 +120,115 @@ public class UIFadeEffect_Base<T> : MonoBehaviour where T : Graphic
     }
 
     #region 基础功能
-    protected void SetObject(T t)
+    protected void SetObject()
     {
-        obj = t;
-        color = t.color;
-        scale = t.transform.localScale;
+        obj = GetComponent<Text>();
+        color = obj.color;
+        scale = obj.transform.localScale;
     }
     protected void SetShow()
     {
+        if (obj == null)
+            SetObject();
         isShow = true;
         isHide = false;
+        SetDefaultHide();
     }
     protected void SetHide()
     {
+        if (obj == null)
+            SetObject();
         isHide = true;
         isShow = false;
+        SetDefaultShow();
     }
     protected void SetDefaultShow()
     {
+        if (obj == null)
+            SetObject();
         color.a = 1f;
         obj.color = color;
+        isShow = false;
+        isHide = false;
     }
     protected void SetDefaultShow(Color c)
     {
+        if (obj == null)
+            SetObject();
         color = c;
         color.a = 1f;
         obj.color = color;
+        isShow = false;
+        isHide = false;
     }
     protected void SetDefaultHide()
     {
+        if (obj == null)
+            SetObject();
         color.a = 0f;
         obj.color = color;
+        isShow = false;
+        isHide = false;
     }
     protected void SetDefaultHide(Color c)
     {
+        if (obj == null)
+            SetObject();
         color = c;
         color.a = 0f;
         obj.color = color;
+        isShow = false;
+        isHide = false;
     }
 
     protected void SetBig()
     {
+        if (obj == null)
+            SetObject();
         isBig = true;
         isSmall = false;
     }
     protected void SetSmall()
     {
+        if (obj == null)
+            SetObject();
         isBig = false;
         isSmall = true;
     }
     protected void SetDefaultScale()
     {
+        if (obj == null)
+            SetObject();
         obj.transform.localScale = scale;
     }
     protected void SetDefaultBig()
     {
+        if (obj == null)
+            SetObject();
         obj.transform.localScale = maxScale;
     }
     protected void SetDefaultBig(Vector3 max)
     {
+        if (obj == null)
+            SetObject();
         obj.transform.localScale = max;
     }
     protected void SetDefaultSmall()
     {
+        if (obj == null)
+            SetObject();
         obj.transform.localScale = minScale;
     }
     protected void SetDefaultSmall(Vector3 min)
     {
+        if (obj == null)
+            SetObject();
         obj.transform.localScale = min;
     }
     protected void SetMinAndMaxScale(Vector3 min, Vector3 max)
     {
+        if (obj == null)
+            SetObject();
         minScale = min;
         maxScale = max;
     }

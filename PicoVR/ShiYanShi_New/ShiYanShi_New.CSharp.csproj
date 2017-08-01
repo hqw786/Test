@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -74,12 +76,6 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
@@ -197,7 +193,7 @@
     <Compile Include="Assets\ShiYanShi\Scripts\SceneFadeInOut.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\Tools.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\UIAlpha.cs" />
-    <Compile Include="Assets\ShiYanShi\Scripts\UIFadeEffect_Base.cs" />
+    <Compile Include="Assets\ShiYanShi\Scripts\UITextFadeEffect.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\WeekEffect.cs" />
     <Compile Include="Assets\ShiYanShi\Scripts\book.cs" />
     <Compile Include="Assets\StageButton.cs" />

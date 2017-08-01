@@ -40,41 +40,30 @@ public class Tools
     {
         for (int i = 0; i < cons.Count; i++)
         {
-
-            //显示屏内容的淡出
-            SYSManager.Instance.isContentAlphaHide = true;
-            yield return new WaitForSeconds(alphaTime);
-            SYSManager.Instance.isContentAlphaHide = false;
-            SYSManager.Instance.HideContent();
-
-            yield return new WaitForSeconds(1f);//淡出淡入的1S停顿
-            ////翻页周数
-            //SYSManager.Instance.TransWeek("Bottom", cons[i][0]);
-
             //显示屏内容的淡入
             SYSManager.Instance.contentDisplay(cons[i]);
-            SYSManager.Instance.isContentAlphaDisplay = true;
-            yield return new WaitForSeconds(alphaTime);
-            SYSManager.Instance.isContentAlphaDisplay = false;
+            SYSManager.Instance.content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
+            
             //显示屏内容的显示时间
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(time + alphaTime);
+            
+            //显示屏内容的淡出
+            SYSManager.Instance.content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
+            yield return new WaitForSeconds(1f + alphaTime);//淡出淡入的1S停顿
         }
-		SYSManager.Instance.isContentAlphaHide = true;
-		yield return new WaitForSeconds(alphaTime);
-		SYSManager.Instance.isContentAlphaHide = false;
         SYSManager.Instance.HideContent();
         SYSManager.Instance.isFlowExecDone = true;
     }
 
-    public static IEnumerator TransModelAlpha(float time)
-    {
-	    yield return new WaitForSeconds(0.5f);
-        SYSManager.Instance.isLastModelAlpha = true;
-        yield return new WaitForSeconds(time * 0.8f);
-        SYSManager.Instance.isCurModelAlpha = true;
-        yield return new WaitForSeconds(time * 0.15f);
-        SYSManager.Instance.isModelAlphaDone = true;
-    }
+    //public static IEnumerator TransModelAlpha(float time)
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    SYSManager.Instance.isLastModelAlpha = true;
+    //    yield return new WaitForSeconds(time * 0.8f);
+    //    SYSManager.Instance.isCurModelAlpha = true;
+    //    yield return new WaitForSeconds(time * 0.15f);
+    //    SYSManager.Instance.isModelAlphaDone = true;
+    //}
 
 
     /// <summary>
