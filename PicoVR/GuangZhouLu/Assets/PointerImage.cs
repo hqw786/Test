@@ -11,9 +11,12 @@ public class PointerImage : MonoBehaviour , IPointerClickHandler {
 
     ShowImageInfo sii;
 	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         text = transform.Find("Text").GetComponent<Text>();
         uiImage = transform.Find("/Canvas/ShowImagePanel/Image");
+    }
+	void Start () {
         image = uiImage.GetComponent<Image>();
 	}
 	

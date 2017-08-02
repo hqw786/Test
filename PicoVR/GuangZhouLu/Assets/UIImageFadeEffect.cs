@@ -31,7 +31,7 @@ public class UIImageFadeEffect : MonoBehaviour
 
     protected void Awake()
     {
-        
+        SetObject();
     }
     protected void Start()
     {
@@ -129,12 +129,15 @@ public class UIImageFadeEffect : MonoBehaviour
 
     protected void ColorAlphaTransition()
     {
-        color.a = Mathf.PingPong(color.a, (maxAlpha - minAlpha)) + minAlpha;
+        float a = Mathf.PingPong(Time.time, (maxAlpha - minAlpha)) + minAlpha;
+        color.a = a;
         obj.color = color;    
     }
     #region 基础功能
     public void SetTwoWayTransition(float min, float max)
     {
+        if (obj == null)
+            SetObject();
         isTwoWayAlpha = true;
         minAlpha = min;
         maxAlpha = max;
