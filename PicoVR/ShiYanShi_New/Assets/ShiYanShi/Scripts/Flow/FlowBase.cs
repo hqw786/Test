@@ -25,7 +25,7 @@ public abstract class FlowBase
     {
         //一定有的，执行文字显示
         if (ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].data.Context.Count == 0)
-            Debug.LogError("文字内容为空，请查看原因！");
+            Debug.LogError("文字内容为空，请查找原因！");
         StageCoroutineManager.Instance.StageContentDisplay();
     }
     public virtual void Exit()
@@ -56,8 +56,10 @@ public abstract class FlowBase
     }
     public IEnumerator ModelTransitionHide()
     {//模型渐渐隐藏，向模型发送隐藏消息。
+        Debug.Log("模型隐藏：" + Time.time);
         data.MainModel.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         yield return new WaitForSeconds(1.5f);
+        Debug.Log("模型隐藏结束：" + Time.time);
         SYSManager.Instance.isFlowEnd = true;
     }
     public virtual IEnumerator EnterCoroutine()

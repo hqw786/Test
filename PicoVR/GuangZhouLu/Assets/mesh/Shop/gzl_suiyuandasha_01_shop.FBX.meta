@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 9e13f6955f5e63949a7759ffbce797ac
+timeCreated: 1501578897
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: gzl_suiyuandasha_01_boli
+    100002: gzl_suiyuandasha_01_light_02
+    100004: gzl_suiyuandasha_01_light_03
+    100006: gzl_suiyuandasha_01_light_04
+    100008: gzl_suiyuandasha_01_light_05
+    100010: gzl_suiyuandasha_01_light_08
+    100012: //RootNode
+    100014: gzl_suiyuandasha_01_shop_01
+    100016: gzl_suiyuandasha_01_shop_02
+    100018: gzl_suiyuandasha_01_shop_03
+    100020: gzl_suiyuandasha_01_shop_04
+    100022: gzl_suiyuandasha_01_shop_05
+    100024: gzl_suiyuandasha_01_shop_06
+    100026: gzl_suiyuandasha_01_shop_07
+    100028: gzl_suiyuandasha_01_shop_09
+    100030: gzl_suiyuandasha_01_shop_22
+    100032: gzl_suiyuandasha_01_shop_23
+    100034: gzl_suiyuandasha_01_shop_24
+    100036: gzl_suiyuandasha_01_shop_25
+    100038: gzl_suiyuandasha_01_shop_26
+    100040: gzl_suiyuandasha_01_shop_27
+    100042: gzl_suiyuandasha_01_shop_28
+    100044: gzl_suiyuandasha_01_shop_30
+    100046: gzl_suiyuandasha_01_shop_31
+    400000: gzl_suiyuandasha_01_boli
+    400002: gzl_suiyuandasha_01_light_02
+    400004: gzl_suiyuandasha_01_light_03
+    400006: gzl_suiyuandasha_01_light_04
+    400008: gzl_suiyuandasha_01_light_05
+    400010: gzl_suiyuandasha_01_light_08
+    400012: //RootNode
+    400014: gzl_suiyuandasha_01_shop_01
+    400016: gzl_suiyuandasha_01_shop_02
+    400018: gzl_suiyuandasha_01_shop_03
+    400020: gzl_suiyuandasha_01_shop_04
+    400022: gzl_suiyuandasha_01_shop_05
+    400024: gzl_suiyuandasha_01_shop_06
+    400026: gzl_suiyuandasha_01_shop_07
+    400028: gzl_suiyuandasha_01_shop_09
+    400030: gzl_suiyuandasha_01_shop_22
+    400032: gzl_suiyuandasha_01_shop_23
+    400034: gzl_suiyuandasha_01_shop_24
+    400036: gzl_suiyuandasha_01_shop_25
+    400038: gzl_suiyuandasha_01_shop_26
+    400040: gzl_suiyuandasha_01_shop_27
+    400042: gzl_suiyuandasha_01_shop_28
+    400044: gzl_suiyuandasha_01_shop_30
+    400046: gzl_suiyuandasha_01_shop_31
+    2300000: gzl_suiyuandasha_01_boli
+    2300002: gzl_suiyuandasha_01_light_02
+    2300004: gzl_suiyuandasha_01_light_03
+    2300006: gzl_suiyuandasha_01_light_04
+    2300008: gzl_suiyuandasha_01_light_05
+    2300010: gzl_suiyuandasha_01_light_08
+    2300012: gzl_suiyuandasha_01_shop_01
+    2300014: gzl_suiyuandasha_01_shop_02
+    2300016: gzl_suiyuandasha_01_shop_03
+    2300018: gzl_suiyuandasha_01_shop_04
+    2300020: gzl_suiyuandasha_01_shop_05
+    2300022: gzl_suiyuandasha_01_shop_06
+    2300024: gzl_suiyuandasha_01_shop_07
+    2300026: gzl_suiyuandasha_01_shop_09
+    2300028: gzl_suiyuandasha_01_shop_22
+    2300030: gzl_suiyuandasha_01_shop_23
+    2300032: gzl_suiyuandasha_01_shop_24
+    2300034: gzl_suiyuandasha_01_shop_25
+    2300036: gzl_suiyuandasha_01_shop_26
+    2300038: gzl_suiyuandasha_01_shop_27
+    2300040: gzl_suiyuandasha_01_shop_28
+    2300042: gzl_suiyuandasha_01_shop_30
+    2300044: gzl_suiyuandasha_01_shop_31
+    3300000: gzl_suiyuandasha_01_boli
+    3300002: gzl_suiyuandasha_01_light_02
+    3300004: gzl_suiyuandasha_01_light_03
+    3300006: gzl_suiyuandasha_01_light_04
+    3300008: gzl_suiyuandasha_01_light_05
+    3300010: gzl_suiyuandasha_01_light_08
+    3300012: gzl_suiyuandasha_01_shop_01
+    3300014: gzl_suiyuandasha_01_shop_02
+    3300016: gzl_suiyuandasha_01_shop_03
+    3300018: gzl_suiyuandasha_01_shop_04
+    3300020: gzl_suiyuandasha_01_shop_05
+    3300022: gzl_suiyuandasha_01_shop_06
+    3300024: gzl_suiyuandasha_01_shop_07
+    3300026: gzl_suiyuandasha_01_shop_09
+    3300028: gzl_suiyuandasha_01_shop_22
+    3300030: gzl_suiyuandasha_01_shop_23
+    3300032: gzl_suiyuandasha_01_shop_24
+    3300034: gzl_suiyuandasha_01_shop_25
+    3300036: gzl_suiyuandasha_01_shop_26
+    3300038: gzl_suiyuandasha_01_shop_27
+    3300040: gzl_suiyuandasha_01_shop_28
+    3300042: gzl_suiyuandasha_01_shop_30
+    3300044: gzl_suiyuandasha_01_shop_31
+    4300000: gzl_suiyuandasha_01_light_02
+    4300002: gzl_suiyuandasha_01_light_05
+    4300004: gzl_suiyuandasha_01_shop_01
+    4300006: gzl_suiyuandasha_01_shop_02
+    4300008: gzl_suiyuandasha_01_shop_03
+    4300010: gzl_suiyuandasha_01_shop_04
+    4300012: gzl_suiyuandasha_01_shop_05
+    4300014: gzl_suiyuandasha_01_shop_06
+    4300016: gzl_suiyuandasha_01_shop_07
+    4300018: gzl_suiyuandasha_01_light_03
+    4300020: gzl_suiyuandasha_01_light_04
+    4300022: gzl_suiyuandasha_01_shop_24
+    4300024: gzl_suiyuandasha_01_shop_25
+    4300026: gzl_suiyuandasha_01_shop_26
+    4300028: gzl_suiyuandasha_01_shop_27
+    4300030: gzl_suiyuandasha_01_shop_28
+    4300032: gzl_suiyuandasha_01_boli
+    4300034: gzl_suiyuandasha_01_light_08
+    4300036: gzl_suiyuandasha_01_shop_09
+    4300038: gzl_suiyuandasha_01_shop_22
+    4300040: gzl_suiyuandasha_01_shop_23
+    4300042: gzl_suiyuandasha_01_shop_30
+    4300044: gzl_suiyuandasha_01_shop_31
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

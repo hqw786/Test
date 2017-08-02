@@ -38,4 +38,8 @@ public class StageCoroutineManager : MonoBehaviour {
     {
         StartCoroutine(ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].ModelTransitionHide());
     }
+    public void SetStopAllCoroutine()
+    {
+        StopAllCoroutines();
+    }
 }

@@ -43,13 +43,16 @@ public class Tools
             //显示屏内容的淡入
             SYSManager.Instance.contentDisplay(cons[i]);
             SYSManager.Instance.content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
-            
+            Debug.Log("文本显示：" + Time.time);
+
             //显示屏内容的显示时间
             yield return new WaitForSeconds(time + alphaTime);
+            Debug.Log("文本显示：4.5f" + Time.time);
             
             //显示屏内容的淡出
             SYSManager.Instance.content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
             yield return new WaitForSeconds(1f + alphaTime);//淡出淡入的1S停顿
+            Debug.Log("文本显示：2.5f" + Time.time);
         }
         SYSManager.Instance.HideContent();
         SYSManager.Instance.isFlowExecDone = true;
@@ -103,7 +106,7 @@ public class Tools
                 ConfigData.Instance.Data[index].ID = index;
                 ConfigData.Instance.Data[index].Name = ConfigData.Instance.strStage[index];
                 //TODO:可以预编译一下
-                ConfigData.Instance.Data[index].isLock = false;//index == 0 ? false : true;
+                ConfigData.Instance.Data[index].isLock = index == 0 ? false : true;
             }
             else
             {

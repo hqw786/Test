@@ -20,8 +20,7 @@ public class FlowFuHQ : FlowBase
         //电视开机(这边以后可以做成渐渐开机效果，显示LOGO）
         Debug.Log("屏幕打开");
         enterTransform[1].parent.GetComponent<PingMuTrans>().SetDisplay();
-        yield return new WaitForSeconds(8.4f);
-        //yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         base.Enter();
     }
     public override IEnumerator ExitCoroutine()

@@ -130,17 +130,17 @@ public class UITextFadeEffect : MonoBehaviour
     {
         if (obj == null)
             SetObject();
+        SetDefaultHide();
         isShow = true;
         isHide = false;
-        SetDefaultHide();
     }
     protected void SetHide()
     {
         if (obj == null)
             SetObject();
+        SetDefaultShow();
         isHide = true;
         isShow = false;
-        SetDefaultShow();
     }
     protected void SetDefaultShow()
     {

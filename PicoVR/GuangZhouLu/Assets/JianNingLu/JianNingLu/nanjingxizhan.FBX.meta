@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: c922cc4af9acf074b93dd7a241cfe713
+timeCreated: 1500367779
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: nanjingxizhan_glass_01
+    100004: nanjingxizhan_Jnl_01
+    100006: nanjingxizhan_Jnl_02
+    100008: nanjingxizhan_Jnl_05
+    100010: nanjingxizhan_Jnl_07
+    100012: nanjingxizhan_Jnl_08
+    100014: nanjingxizhan_Jnl_metal_02
+    100016: nanjingxizhan_Jnl_metal_04
+    100018: nanjingxizhan_Jnl_wall_02
+    100020: nanjingxizhan_Jnl_wall_yellow_01
+    400000: //RootNode
+    400002: nanjingxizhan_glass_01
+    400004: nanjingxizhan_Jnl_01
+    400006: nanjingxizhan_Jnl_02
+    400008: nanjingxizhan_Jnl_05
+    400010: nanjingxizhan_Jnl_07
+    400012: nanjingxizhan_Jnl_08
+    400014: nanjingxizhan_Jnl_metal_02
+    400016: nanjingxizhan_Jnl_metal_04
+    400018: nanjingxizhan_Jnl_wall_02
+    400020: nanjingxizhan_Jnl_wall_yellow_01
+    2300000: nanjingxizhan_glass_01
+    2300002: nanjingxizhan_Jnl_01
+    2300004: nanjingxizhan_Jnl_02
+    2300006: nanjingxizhan_Jnl_05
+    2300008: nanjingxizhan_Jnl_07
+    2300010: nanjingxizhan_Jnl_08
+    2300012: nanjingxizhan_Jnl_metal_02
+    2300014: nanjingxizhan_Jnl_metal_04
+    2300016: nanjingxizhan_Jnl_wall_02
+    2300018: nanjingxizhan_Jnl_wall_yellow_01
+    3300000: nanjingxizhan_glass_01
+    3300002: nanjingxizhan_Jnl_01
+    3300004: nanjingxizhan_Jnl_02
+    3300006: nanjingxizhan_Jnl_05
+    3300008: nanjingxizhan_Jnl_07
+    3300010: nanjingxizhan_Jnl_08
+    3300012: nanjingxizhan_Jnl_metal_02
+    3300014: nanjingxizhan_Jnl_metal_04
+    3300016: nanjingxizhan_Jnl_wall_02
+    3300018: nanjingxizhan_Jnl_wall_yellow_01
+    4300000: nanjingxizhan_Jnl_wall_02
+    4300002: nanjingxizhan_Jnl_wall_yellow_01
+    4300004: nanjingxizhan_Jnl_05
+    4300006: nanjingxizhan_Jnl_metal_04
+    4300008: nanjingxizhan_glass_01
+    4300010: nanjingxizhan_Jnl_02
+    4300012: nanjingxizhan_Jnl_01
+    4300014: nanjingxizhan_Jnl_metal_02
+    4300016: nanjingxizhan_Jnl_07
+    4300018: nanjingxizhan_Jnl_08
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

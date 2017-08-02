@@ -1,0 +1,239 @@
+fileFormatVersion: 2
+guid: df4646f4d52683a42b99cbbf7a8e828c
+timeCreated: 1500533836
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: light_01
+    100002: light_02
+    100004: light_03
+    100006: light_04
+    100008: light_05
+    100010: light_06
+    100012: //RootNode
+    100014: nanjingxizhan_shop_01
+    100016: nanjingxizhan_shop_02
+    100018: nanjingxizhan_shop_03
+    100020: nanjingxizhan_shop_04
+    100022: nanjingxizhan_shop_05
+    100024: nanjingxizhan_shop_06
+    100026: nanjingxizhan_shop_07
+    100028: nanjingxizhan_shop_08
+    100030: nanjingxizhan_shop_09
+    100032: nanjingxizhan_shop_10
+    100034: nanjingxizhan_shop_11
+    100036: nanjingxizhan_shop_12
+    100038: nanjingxizhan_shop_13
+    100040: nanjingxizhan_shop_14
+    100042: nanjingxizhan_shop_15
+    100044: nanjingxizhan_shop_16
+    100046: nanjingxizhan_shop_17
+    100048: nanjingxizhan_shop_18
+    100050: nanjingxizhan_shop_19
+    100052: nanjingxizhan_shop_20
+    100054: nanjingxizhan_shop_21
+    100056: nanjingxizhan_shop_24
+    100058: nanjingxizhan_shop_25
+    100060: nanjingxizhan_shop_26
+    100062: nanjingxizhan_shop_27
+    100064: nanjingxizhan_shop_28
+    400000: light_01
+    400002: light_02
+    400004: light_03
+    400006: light_04
+    400008: light_05
+    400010: light_06
+    400012: //RootNode
+    400014: nanjingxizhan_shop_01
+    400016: nanjingxizhan_shop_02
+    400018: nanjingxizhan_shop_03
+    400020: nanjingxizhan_shop_04
+    400022: nanjingxizhan_shop_05
+    400024: nanjingxizhan_shop_06
+    400026: nanjingxizhan_shop_07
+    400028: nanjingxizhan_shop_08
+    400030: nanjingxizhan_shop_09
+    400032: nanjingxizhan_shop_10
+    400034: nanjingxizhan_shop_11
+    400036: nanjingxizhan_shop_12
+    400038: nanjingxizhan_shop_13
+    400040: nanjingxizhan_shop_14
+    400042: nanjingxizhan_shop_15
+    400044: nanjingxizhan_shop_16
+    400046: nanjingxizhan_shop_17
+    400048: nanjingxizhan_shop_18
+    400050: nanjingxizhan_shop_19
+    400052: nanjingxizhan_shop_20
+    400054: nanjingxizhan_shop_21
+    400056: nanjingxizhan_shop_24
+    400058: nanjingxizhan_shop_25
+    400060: nanjingxizhan_shop_26
+    400062: nanjingxizhan_shop_27
+    400064: nanjingxizhan_shop_28
+    2300000: light_01
+    2300002: light_02
+    2300004: light_03
+    2300006: light_04
+    2300008: light_05
+    2300010: light_06
+    2300012: nanjingxizhan_shop_01
+    2300014: nanjingxizhan_shop_02
+    2300016: nanjingxizhan_shop_03
+    2300018: nanjingxizhan_shop_04
+    2300020: nanjingxizhan_shop_05
+    2300022: nanjingxizhan_shop_06
+    2300024: nanjingxizhan_shop_07
+    2300026: nanjingxizhan_shop_08
+    2300028: nanjingxizhan_shop_09
+    2300030: nanjingxizhan_shop_10
+    2300032: nanjingxizhan_shop_11
+    2300034: nanjingxizhan_shop_12
+    2300036: nanjingxizhan_shop_13
+    2300038: nanjingxizhan_shop_14
+    2300040: nanjingxizhan_shop_15
+    2300042: nanjingxizhan_shop_16
+    2300044: nanjingxizhan_shop_17
+    2300046: nanjingxizhan_shop_18
+    2300048: nanjingxizhan_shop_19
+    2300050: nanjingxizhan_shop_20
+    2300052: nanjingxizhan_shop_21
+    2300054: nanjingxizhan_shop_24
+    2300056: nanjingxizhan_shop_25
+    2300058: nanjingxizhan_shop_26
+    2300060: nanjingxizhan_shop_27
+    2300062: nanjingxizhan_shop_28
+    3300000: light_01
+    3300002: light_02
+    3300004: light_03
+    3300006: light_04
+    3300008: light_05
+    3300010: light_06
+    3300012: nanjingxizhan_shop_01
+    3300014: nanjingxizhan_shop_02
+    3300016: nanjingxizhan_shop_03
+    3300018: nanjingxizhan_shop_04
+    3300020: nanjingxizhan_shop_05
+    3300022: nanjingxizhan_shop_06
+    3300024: nanjingxizhan_shop_07
+    3300026: nanjingxizhan_shop_08
+    3300028: nanjingxizhan_shop_09
+    3300030: nanjingxizhan_shop_10
+    3300032: nanjingxizhan_shop_11
+    3300034: nanjingxizhan_shop_12
+    3300036: nanjingxizhan_shop_13
+    3300038: nanjingxizhan_shop_14
+    3300040: nanjingxizhan_shop_15
+    3300042: nanjingxizhan_shop_16
+    3300044: nanjingxizhan_shop_17
+    3300046: nanjingxizhan_shop_18
+    3300048: nanjingxizhan_shop_19
+    3300050: nanjingxizhan_shop_20
+    3300052: nanjingxizhan_shop_21
+    3300054: nanjingxizhan_shop_24
+    3300056: nanjingxizhan_shop_25
+    3300058: nanjingxizhan_shop_26
+    3300060: nanjingxizhan_shop_27
+    3300062: nanjingxizhan_shop_28
+    4300000: nanjingxizhan_shop_04
+    4300002: nanjingxizhan_shop_06
+    4300004: light_02
+    4300006: nanjingxizhan_shop_07
+    4300008: nanjingxizhan_shop_09
+    4300010: nanjingxizhan_shop_11
+    4300012: nanjingxizhan_shop_14
+    4300014: nanjingxizhan_shop_08
+    4300016: nanjingxizhan_shop_10
+    4300018: nanjingxizhan_shop_13
+    4300020: nanjingxizhan_shop_12
+    4300022: light_05
+    4300024: nanjingxizhan_shop_03
+    4300026: nanjingxizhan_shop_02
+    4300028: nanjingxizhan_shop_01
+    4300030: light_01
+    4300032: nanjingxizhan_shop_20
+    4300034: nanjingxizhan_shop_21
+    4300036: nanjingxizhan_shop_17
+    4300038: nanjingxizhan_shop_15
+    4300040: nanjingxizhan_shop_16
+    4300042: nanjingxizhan_shop_18
+    4300044: nanjingxizhan_shop_19
+    4300046: light_06
+    4300048: nanjingxizhan_shop_05
+    4300050: nanjingxizhan_shop_25
+    4300052: nanjingxizhan_shop_24
+    4300054: nanjingxizhan_shop_28
+    4300056: nanjingxizhan_shop_26
+    4300058: nanjingxizhan_shop_27
+    4300060: light_04
+    4300062: light_03
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

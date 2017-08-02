@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: edc7e60ce176bc1438b06e2b95cf983a
+timeCreated: 1501567461
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Lane-White-012
+    100004: Lane-Yellow-002
+    100006: Lane-Yellow-003
+    100008: Lane-Yellow-004
+    100010: Lane-Yellow-006
+    100012: Lane-Yellow-007
+    100014: Lane-Yellow-008
+    100016: Lane-Yellow-009
+    100018: Lane-Yellow-010
+    100020: Lane-Yellow-011
+    100022: Lane-Yellow-012
+    100024: Lane-Yellow-013
+    100026: Lane-Yellow-014
+    100028: Lane-Yellow-015
+    100030: Lane-Yellow-016
+    100032: road_001
+    100034: Road_002
+    100036: Road_003
+    100038: Road_004
+    400000: //RootNode
+    400002: Lane-White-012
+    400004: Lane-Yellow-002
+    400006: Lane-Yellow-003
+    400008: Lane-Yellow-004
+    400010: Lane-Yellow-006
+    400012: Lane-Yellow-007
+    400014: Lane-Yellow-008
+    400016: Lane-Yellow-009
+    400018: Lane-Yellow-010
+    400020: Lane-Yellow-011
+    400022: Lane-Yellow-012
+    400024: Lane-Yellow-013
+    400026: Lane-Yellow-014
+    400028: Lane-Yellow-015
+    400030: Lane-Yellow-016
+    400032: road_001
+    400034: Road_002
+    400036: Road_003
+    400038: Road_004
+    2300000: Lane-White-012
+    2300002: Lane-Yellow-002
+    2300004: Lane-Yellow-003
+    2300006: Lane-Yellow-004
+    2300008: Lane-Yellow-006
+    2300010: Lane-Yellow-007
+    2300012: Lane-Yellow-008
+    2300014: Lane-Yellow-009
+    2300016: Lane-Yellow-010
+    2300018: Lane-Yellow-011
+    2300020: Lane-Yellow-012
+    2300022: Lane-Yellow-013
+    2300024: Lane-Yellow-014
+    2300026: Lane-Yellow-015
+    2300028: Lane-Yellow-016
+    2300030: road_001
+    2300032: Road_002
+    2300034: Road_003
+    2300036: Road_004
+    3300000: Lane-White-012
+    3300002: Lane-Yellow-002
+    3300004: Lane-Yellow-003
+    3300006: Lane-Yellow-004
+    3300008: Lane-Yellow-006
+    3300010: Lane-Yellow-007
+    3300012: Lane-Yellow-008
+    3300014: Lane-Yellow-009
+    3300016: Lane-Yellow-010
+    3300018: Lane-Yellow-011
+    3300020: Lane-Yellow-012
+    3300022: Lane-Yellow-013
+    3300024: Lane-Yellow-014
+    3300026: Lane-Yellow-015
+    3300028: Lane-Yellow-016
+    3300030: road_001
+    3300032: Road_002
+    3300034: Road_003
+    3300036: Road_004
+    4300000: Road_002
+    4300002: road_001
+    4300004: Road_003
+    4300006: Lane-Yellow-009
+    4300008: Lane-Yellow-016
+    4300010: Lane-Yellow-015
+    4300012: Lane-Yellow-011
+    4300014: Lane-Yellow-013
+    4300016: Lane-Yellow-008
+    4300018: Lane-Yellow-014
+    4300020: Lane-Yellow-010
+    4300022: Lane-Yellow-007
+    4300024: Lane-Yellow-006
+    4300026: Lane-Yellow-003
+    4300028: Lane-Yellow-002
+    4300030: Lane-Yellow-004
+    4300032: Lane-Yellow-012
+    4300034: Lane-White-012
+    4300036: Road_004
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

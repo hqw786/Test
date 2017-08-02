@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: a190470e12c94814e9303e966a30eb41
+timeCreated: 1501585573
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: gzl_132_boli
+    100002: gzl_132_light_02
+    100004: gzl_132_light_03
+    100006: gzl_132_light_04
+    100008: gzl_132_light_05
+    100010: gzl_132_light_06
+    100012: gzl_132_light_07
+    100014: gzl_132_light_08
+    100016: gzl_132_light_09
+    100018: //RootNode
+    100020: gzl_132_shop_01
+    100022: gzl_132_shop_02
+    100024: gzl_132_shop_03
+    100026: gzl_132_shop_04
+    100028: gzl_132_shop_05
+    100030: gzl_132_shop_06
+    100032: gzl_132_shop_07
+    100034: gzl_132_shop_08
+    100036: gzl_132_shop_08 1
+    100038: gzl_132_shop_09
+    100040: gzl_132_shop_09 1
+    100042: gzl_132_shop_10
+    100044: gzl_132_shop_11
+    100046: gzl_132_shop_12
+    100048: gzl_132_shop_13
+    100050: gzl_132_shop_14
+    100052: gzl_132_shop_15
+    100054: gzl_132_shop_16
+    100056: gzl_132_shop_17
+    100058: gzl_132_shop_19
+    100060: gzl_132_shop_20
+    100062: gzl_132_shop_21
+    100064: gzl_132_shop_22
+    100066: gzl_132_shop_23
+    100068: gzl_132_shop_24
+    100070: gzl_132_shop_25
+    100072: gzl_132_shop_26
+    100074: gzl_132_shop_27
+    100076: gzl_132_shop_28
+    100078: gzl_132_shop_30
+    100080: gzl_132_shop_31
+    100082: gzl_132_shop_32
+    100084: gzl_132_shop_33
+    100086: gzl_132_shop_34
+    100088: gzl_132_shop_35
+    100090: gzl_132_shop_36
+    400000: gzl_132_boli
+    400002: gzl_132_light_02
+    400004: gzl_132_light_03
+    400006: gzl_132_light_04
+    400008: gzl_132_light_05
+    400010: gzl_132_light_06
+    400012: gzl_132_light_07
+    400014: gzl_132_light_08
+    400016: gzl_132_light_09
+    400018: //RootNode
+    400020: gzl_132_shop_01
+    400022: gzl_132_shop_02
+    400024: gzl_132_shop_03
+    400026: gzl_132_shop_04
+    400028: gzl_132_shop_05
+    400030: gzl_132_shop_06
+    400032: gzl_132_shop_07
+    400034: gzl_132_shop_08
+    400036: gzl_132_shop_08 1
+    400038: gzl_132_shop_09
+    400040: gzl_132_shop_09 1
+    400042: gzl_132_shop_10
+    400044: gzl_132_shop_11
+    400046: gzl_132_shop_12
+    400048: gzl_132_shop_13
+    400050: gzl_132_shop_14
+    400052: gzl_132_shop_15
+    400054: gzl_132_shop_16
+    400056: gzl_132_shop_17
+    400058: gzl_132_shop_19
+    400060: gzl_132_shop_20
+    400062: gzl_132_shop_21
+    400064: gzl_132_shop_22
+    400066: gzl_132_shop_23
+    400068: gzl_132_shop_24
+    400070: gzl_132_shop_25
+    400072: gzl_132_shop_26
+    400074: gzl_132_shop_27
+    400076: gzl_132_shop_28
+    400078: gzl_132_shop_30
+    400080: gzl_132_shop_31
+    400082: gzl_132_shop_32
+    400084: gzl_132_shop_33
+    400086: gzl_132_shop_34
+    400088: gzl_132_shop_35
+    400090: gzl_132_shop_36
+    2300000: gzl_132_boli
+    2300002: gzl_132_light_02
+    2300004: gzl_132_light_03
+    2300006: gzl_132_light_04
+    2300008: gzl_132_light_05
+    2300010: gzl_132_light_06
+    2300012: gzl_132_light_07
+    2300014: gzl_132_light_08
+    2300016: gzl_132_light_09
+    2300018: gzl_132_shop_01
+    2300020: gzl_132_shop_02
+    2300022: gzl_132_shop_03
+    2300024: gzl_132_shop_04
+    2300026: gzl_132_shop_05
+    2300028: gzl_132_shop_06
+    2300030: gzl_132_shop_07
+    2300032: gzl_132_shop_08
+    2300034: gzl_132_shop_08 1
+    2300036: gzl_132_shop_09
+    2300038: gzl_132_shop_09 1
+    2300040: gzl_132_shop_10
+    2300042: gzl_132_shop_11
+    2300044: gzl_132_shop_12
+    2300046: gzl_132_shop_13
+    2300048: gzl_132_shop_14
+    2300050: gzl_132_shop_15
+    2300052: gzl_132_shop_16
+    2300054: gzl_132_shop_17
+    2300056: gzl_132_shop_19
+    2300058: gzl_132_shop_20
+    2300060: gzl_132_shop_21
+    2300062: gzl_132_shop_22
+    2300064: gzl_132_shop_23
+    2300066: gzl_132_shop_24
+    2300068: gzl_132_shop_25
+    2300070: gzl_132_shop_26
+    2300072: gzl_132_shop_27
+    2300074: gzl_132_shop_28
+    2300076: gzl_132_shop_30
+    2300078: gzl_132_shop_31
+    2300080: gzl_132_shop_32
+    2300082: gzl_132_shop_33
+    2300084: gzl_132_shop_34
+    2300086: gzl_132_shop_35
+    2300088: gzl_132_shop_36
+    3300000: gzl_132_boli
+    3300002: gzl_132_light_02
+    3300004: gzl_132_light_03
+    3300006: gzl_132_light_04
+    3300008: gzl_132_light_05
+    3300010: gzl_132_light_06
+    3300012: gzl_132_light_07
+    3300014: gzl_132_light_08
+    3300016: gzl_132_light_09
+    3300018: gzl_132_shop_01
+    3300020: gzl_132_shop_02
+    3300022: gzl_132_shop_03
+    3300024: gzl_132_shop_04
+    3300026: gzl_132_shop_05
+    3300028: gzl_132_shop_06
+    3300030: gzl_132_shop_07
+    3300032: gzl_132_shop_08
+    3300034: gzl_132_shop_08 1
+    3300036: gzl_132_shop_09
+    3300038: gzl_132_shop_09 1
+    3300040: gzl_132_shop_10
+    3300042: gzl_132_shop_11
+    3300044: gzl_132_shop_12
+    3300046: gzl_132_shop_13
+    3300048: gzl_132_shop_14
+    3300050: gzl_132_shop_15
+    3300052: gzl_132_shop_16
+    3300054: gzl_132_shop_17
+    3300056: gzl_132_shop_19
+    3300058: gzl_132_shop_20
+    3300060: gzl_132_shop_21
+    3300062: gzl_132_shop_22
+    3300064: gzl_132_shop_23
+    3300066: gzl_132_shop_24
+    3300068: gzl_132_shop_25
+    3300070: gzl_132_shop_26
+    3300072: gzl_132_shop_27
+    3300074: gzl_132_shop_28
+    3300076: gzl_132_shop_30
+    3300078: gzl_132_shop_31
+    3300080: gzl_132_shop_32
+    3300082: gzl_132_shop_33
+    3300084: gzl_132_shop_34
+    3300086: gzl_132_shop_35
+    3300088: gzl_132_shop_36
+    4300000: gzl_132_light_05
+    4300002: gzl_132_shop_07
+    4300004: gzl_132_light_06
+    4300006: gzl_132_shop_17
+    4300008: gzl_132_shop_20
+    4300010: gzl_132_light_02
+    4300012: gzl_132_light_03
+    4300014: gzl_132_light_04
+    4300016: gzl_132_shop_14
+    4300018: gzl_132_shop_12
+    4300020: gzl_132_shop_11
+    4300022: gzl_132_shop_08
+    4300024: gzl_132_shop_24
+    4300026: gzl_132_shop_06
+    4300028: gzl_132_shop_05
+    4300030: gzl_132_shop_04
+    4300032: gzl_132_shop_03
+    4300034: gzl_132_shop_02
+    4300036: gzl_132_shop_13
+    4300038: gzl_132_shop_21
+    4300040: gzl_132_shop_19
+    4300042: gzl_132_shop_16
+    4300044: gzl_132_shop_08
+    4300046: gzl_132_shop_10
+    4300048: gzl_132_shop_01
+    4300050: gzl_132_shop_25
+    4300052: gzl_132_shop_26
+    4300054: gzl_132_shop_27
+    4300056: gzl_132_shop_28
+    4300058: gzl_132_light_08
+    4300060: gzl_132_shop_09
+    4300062: gzl_132_shop_22
+    4300064: gzl_132_shop_23
+    4300066: gzl_132_shop_30
+    4300068: gzl_132_shop_31
+    4300070: gzl_132_boli
+    4300072: gzl_132_light_07
+    4300074: gzl_132_light_09
+    4300076: gzl_132_shop_09
+    4300078: gzl_132_shop_15
+    4300080: gzl_132_shop_32
+    4300082: gzl_132_shop_33
+    4300084: gzl_132_shop_34
+    4300086: gzl_132_shop_35
+    4300088: gzl_132_shop_36
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

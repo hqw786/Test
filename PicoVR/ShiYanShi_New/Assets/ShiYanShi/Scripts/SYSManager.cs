@@ -609,8 +609,9 @@ public class SYSManager : MonoBehaviour
         isFlowExecDone = false;
         content.BroadcastMessage("SetDefaultHide", SendMessageOptions.DontRequireReceiver);
         StopAllCoroutines();
+        GetComponent<StageCoroutineManager>().SetStopAllCoroutine();
         //HideContent();
-        if(curStageStatus == StageState.egg)
+        if(curStageStatus != StageState.egg)
         {
             SYSManager.Instance.eggLaying.transform.Find("Egg").gameObject.SetActive(false);
         }
