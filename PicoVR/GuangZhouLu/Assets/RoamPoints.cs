@@ -123,6 +123,10 @@ public class RoamPoints : MonoBehaviour
                 string s1 = LastNodeName(i, out ni.startNum);
                 ni.showContext = s1 + " 到 " + s;
             }
+            else if(ri.nodeInfo == RoamNodeInfo.speed)
+            {//加速点
+                ni.isSpeed = true;
+            }
             else
             {//辅节点
                 ni.isAssist = true;

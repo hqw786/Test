@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class FlyController : MonoBehaviour {
-    public static bool isForward;
-    public static bool isBack;
-    public static bool isLeft;
-    public static bool isRight;
     [HideInInspector]
     public bool isInput;
     //Vector3 moveDirection;
@@ -214,29 +210,21 @@ public class FlyController : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            //isForward = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(transform.forward * Time.deltaTime * v * rate);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            //isBack = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(-transform.forward * Time.deltaTime * v * rate);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            //isLeft = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(-transform.right * Time.deltaTime * v * rate);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            //isRight = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? fastSpeed : normalSpeed;
             controller.Move(transform.right * Time.deltaTime * v * rate);
         }
@@ -278,39 +266,11 @@ public class FlyController : MonoBehaviour {
 			}
 		}
 	}
-    //void LateUpdate()
-    //{
-    //    if (MainManager.Instance.curView == ViewMode.flyView)
-    //    {
-    //        if (isForward)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-    //            controller.Move(transform.forward * Time.deltaTime * v * rate);
-    //        }
-    //        else if (isBack)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-    //            controller.Move(-transform.forward * Time.deltaTime * v * rate);
-    //        }
-    //        if (isLeft)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-    //            controller.Move(-transform.right * Time.deltaTime * v * rate);
-    //        }
-    //        else if (isRight)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? fastSpeed : normalSpeed;
-    //            controller.Move(transform.right * Time.deltaTime * v * rate);
-    //        }
-    //    }
-    //}
     public void FOVReset()
     {
         camera.fieldOfView = maxFOV;
         rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
-        //将摄像机对准正下方位置。
-        //Quaternion q = cameraTransform.localRotation;
-        //q.x = 0f;
+
         Quaternion q = Quaternion.identity;
         if(MainManager.Instance.isAutoRoam)
         {

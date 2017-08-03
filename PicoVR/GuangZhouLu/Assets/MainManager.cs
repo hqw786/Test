@@ -100,6 +100,8 @@ public class MainManager : MonoBehaviour
     public int roamPauseNum;
     [Header("自动漫游数值")]
     public float roamSpeed;
+    public float normalRoamSpeed;
+    public float fastRoamSpeed;
     // Use this for initialization
 	void Awake()
 	{
@@ -112,7 +114,7 @@ public class MainManager : MonoBehaviour
         //curView = ViewMode.firstView;
         InitialMap();
         //cameraAngle = 0f;
-        roamPauseNum = 3;
+        roamPauseNum = 0;
     }
     void InitialMap()
     {

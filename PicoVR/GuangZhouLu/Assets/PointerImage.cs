@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PointerImage : MonoBehaviour , IPointerClickHandler {
-    Text text;
+
     Transform uiImage;
     Image image;
 
@@ -13,11 +13,11 @@ public class PointerImage : MonoBehaviour , IPointerClickHandler {
 	// Use this for initialization
     void Awake()
     {
-        text = transform.Find("Text").GetComponent<Text>();
-        uiImage = transform.Find("/Canvas/ShowImagePanel/Image");
+        uiImage = transform.Find("/Canvas/ShowImagePanel/ImagePanel");
+        image = uiImage.Find("Image").GetComponent<Image>();
     }
 	void Start () {
-        image = uiImage.GetComponent<Image>();
+       
 	}
 	
 	// Update is called once per frame
@@ -29,13 +29,12 @@ public class PointerImage : MonoBehaviour , IPointerClickHandler {
     {
         uiImage.gameObject.SetActive(true);
         image.sprite = sii.Img;
-        image.SetNativeSize();
-        eventData.pointerEnter.transform.parent.gameObject.SetActive(false);
+
+        gameObject.SetActive(false);
     }
 
     public void SetShowImageInfo(ShowImageInfo sii)
     {
         this.sii = sii;
-        text.text = this.sii.Name;
     }
 }

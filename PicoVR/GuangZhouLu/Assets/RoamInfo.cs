@@ -7,6 +7,7 @@ public enum RoamNodeInfo
     start,
     main,//主要
     assist,//辅助,用于转向的辅助点,不用在地图上显示出来。
+    speed,//加速，比辅助点多个加速功能。
     end
 }
 public enum RoamNodeName
@@ -18,6 +19,7 @@ public enum RoamNodeName
 }
 public class RoamInfo : MonoBehaviour {
     public RoamNodeInfo nodeInfo;
+    [HideInInspector]
     public RoamNodeName nodeName;
 	// Use this for initialization
 	void Start () {

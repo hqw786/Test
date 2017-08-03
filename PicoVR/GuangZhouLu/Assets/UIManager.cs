@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     GameObject exitPanel;
     GameObject roamPanel;
     GameObject roamViewPanel;
+    GameObject showImagePanel;
     List<GameObject> uis = new List<GameObject>();
 
 	// Use this for initialization
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
         exitPanel = transform.Find("ExitPanel").gameObject;
         roamPanel = transform.Find("RoamPanel").gameObject;
         roamViewPanel = transform.Find("RoamViewPanel").gameObject;
+        showImagePanel = transform.Find("ShowImagePanel").gameObject;
 
         uis.Add(roamPanel);
         uis.Add(menuPanel);
@@ -41,6 +43,7 @@ public class UIManager : MonoBehaviour
         uis.Add(helpPanel);
         uis.Add(exitPanel);
         uis.Add(roamViewPanel);
+        uis.Add(showImagePanel);
     }
 	void Start () {
 		
@@ -155,6 +158,12 @@ public class UIManager : MonoBehaviour
                         {
                             return g;
                         }
+                    }
+                    break;
+                case "ShowImagePanel":
+                    {
+                        if (g.activeInHierarchy)
+                            return g;
                     }
                     break;
             }

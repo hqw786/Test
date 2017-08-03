@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class UITextFadeEffect : MonoBehaviour
 {
+    public bool isFlicker = true;
     protected bool isShow;//渐显
     protected bool isHide;//渐隐
 
@@ -19,19 +17,22 @@ public class UITextFadeEffect : MonoBehaviour
 
     protected Color color;//颜色（主要控制透明通道）
     protected Vector3 scale;
-    //protected Image objImage;
     protected Text obj;
 
     float timerColor;
     float timerScale;
+    private bool isTwoWayAlpha;//
+    private float minAlpha;//
+    private float maxAlpha;//
+    private float twoWayAlphaTimer;//
 
     protected void Awake()
     {
-        
+        SetObject();
     }
     protected void Start()
     {
-
+        SetTwoWayTransition(0.5f,1f,2f);
     }
     protected void Update()
     {
@@ -51,6 +52,17 @@ public class UITextFadeEffect : MonoBehaviour
         if(isSmall)
         {
             ScaleTransition(minScale, ref isSmall, false);
+        }
+        if (isFlicker)
+        {
+            ColorAlphaTransition();
+        }
+        else
+        {
+            if(isTwoWayAlpha)
+            {
+                ColorAlphaTransition();
+            }
         }
     }
     /// <summary>
@@ -118,8 +130,26 @@ public class UITextFadeEffect : MonoBehaviour
             }
         }
     }
+    protected void ColorAlphaTransition()
+    {
+        float a = Mathf.PingPong(Time.time, (maxAlpha - minAlpha)) + minAlpha;
+        color.a = a / twoWayAlphaTimer;
+        obj.color = color;
+
+    }
 
     #region 基础功能
+    public void SetTwoWayTransition(float min, float max, float time)
+    {
+        if (obj == null)
+            SetObject();
+        isTwoWayAlpha = true;
+        minAlpha = min;
+        maxAlpha = max;
+        twoWayAlphaTimer = time;
+        color.a = minAlpha;
+        obj.color = color;
+    }
     protected void SetObject()
     {
         obj = GetComponent<Text>();

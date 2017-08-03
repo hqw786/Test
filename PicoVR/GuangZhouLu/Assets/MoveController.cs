@@ -4,10 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MoveController : MonoBehaviour {
-    public static bool isForward;
-    public static bool isBack;
-    public static bool isLeft;
-    public static bool isRight;
     [HideInInspector]
     public bool isInput;
     //Vector3 moveDirection;
@@ -218,29 +214,21 @@ public class MoveController : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            //isForward = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(transform.forward * Time.deltaTime * v);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            //isBack = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(-transform.forward * Time.deltaTime * v);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            //isLeft = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(-transform.right * Time.deltaTime * v);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            //isRight = true;
-            //isInput = true;
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(transform.right * Time.deltaTime * v);
         }
@@ -300,70 +288,6 @@ public class MoveController : MonoBehaviour {
             }
         }
     }
-    //void LateUpdate()
-    //{
-    //    if (MainManager.Instance.curView == ViewMode.firstView)
-    //    {
-    //        if (isForward)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-    //            controller.SimpleMove(transform.forward * Time.deltaTime * v);
-    //        }
-    //        else if (isBack)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-    //            controller.SimpleMove(-transform.forward * Time.deltaTime * v);
-    //        }
-    //        if (isLeft)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-    //            controller.SimpleMove(-transform.right * Time.deltaTime * v);
-    //        }
-    //        else if (isRight)
-    //        {
-    //            float v = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-    //            controller.SimpleMove(transform.right * Time.deltaTime * v);
-    //        }
-    //    }
-    //}
-        //if(isJump)
-        //{
-        //    if (!isJumpDown)
-        //    {
-        //        float y = transform.position.y;
-        //        y = Mathf.Lerp(y, jumpHeight, 0.05f);
-        //        if (y >= 0.95f * jumpHeight)
-        //        {
-        //            isJumpDown = true;
-        //            y = jumpHeight;
-        //        }
-        //        transform.position = new Vector3(transform.position.x, y, transform.position.z);
-        //    }
-        //    else
-        //    {
-        //        float y = transform.position.y;
-        //        y = Mathf.Lerp(y, 0f, 0.05f);
-        //        if(y<=0.05f * jumpHeight)
-        //        {
-        //            isJump = false;
-        //            isJumpDown = false;
-        //            y = 0f;
-        //        }
-        //        transform.position = new Vector3(transform.position.x, y, transform.position.z);
-        //    }
-        //}
-        //if(controller.isGrounded && isJump)
-        //{
-        //    isJump = false;
-        //}
-    //}
-    //这个改是是否可以落下，在空中垂直于地面的位置没超出地面范围，就可以落下。
-    //public bool IsGround()
-    //{
-
-
-        //return 
-    //}
     public void FOVReset()
     {
         camera.fieldOfView = maxFOV;
@@ -379,7 +303,6 @@ public class MoveController : MonoBehaviour {
         {
             startNum = s;
             endNum = e;
-			//DONE:简化，先注释掉
 			isHRotation = false;
 			isVRotation = true;
             HasNextPosition();
@@ -391,8 +314,20 @@ public class MoveController : MonoBehaviour {
         {
             return false;
         }
+
         autoRoamStart = ConfigData.Instance.roamPath[startNum];
 		autoRoamEnd = ConfigData.Instance.roamPath[startNum+1];
+
+        //是不是要快速漫游
+        RoamInfo ri = autoRoamStart.GetComponent<RoamInfo>();
+        if(ri.nodeInfo == RoamNodeInfo.speed)
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
+        }
+        else
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.normalRoamSpeed;
+        }
 
         autoRoamStart.position = new Vector3(autoRoamStart.position.x, MainManager.Instance.fpYHeight, autoRoamStart.position.z);
         autoRoamEnd.position = new Vector3(autoRoamEnd.position.x, MainManager.Instance.fpYHeight, autoRoamEnd.position.z);

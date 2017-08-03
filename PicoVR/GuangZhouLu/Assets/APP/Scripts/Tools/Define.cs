@@ -11,5 +11,6 @@ public class Define
     public static string uiPanelExit = "ExitPanel";
     public static string uiPanelRoam = "RoamPanel";
     public static string uiPanelRoamView = "RoamViewPanel";
+    public static string uiPanelShowImage = "ShowImagePanel";
 }
 
