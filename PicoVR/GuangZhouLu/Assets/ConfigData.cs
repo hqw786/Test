@@ -12,11 +12,10 @@ public enum MapType
 }
 public enum WarpName
 {
-    传送点1,
-    传送点2,
-    传送点3,
-    传送点4,
-    传送点5
+    江苏科技大厦,
+    五台山体育场入口,
+    脑科医院,
+    广州路227号
 }
 public class ConfigData : MonoBehaviour {
     public static ConfigData Instance;

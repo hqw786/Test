@@ -208,7 +208,7 @@ public class ImageAndTextObject<T> : MonoBehaviour where T : Graphic
 
     
     
-    protected void SetShow()
+    public void SetShow()
     {
         if (obj == null)
             SetObject();
@@ -216,11 +216,13 @@ public class ImageAndTextObject<T> : MonoBehaviour where T : Graphic
         isShowAlpha = true;
         isHideAlpha = false;
     }
-    protected void SetHide()
+    public void SetHide()
     {
         if (obj == null)
             SetObject();
         SetDefaultShow();
+        timerColor = 0f;
+        //color.a = 0.36f;
         isHideAlpha = true;
         isShowAlpha = false;
     }

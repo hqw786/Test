@@ -12,5 +12,6 @@ public class Define
     public static string uiPanelRoam = "RoamPanel";
     public static string uiPanelRoamView = "RoamViewPanel";
     public static string uiPanelShowImage = "ShowImagePanel";
+    public static string uiPanelTitle = "TitlePanel";
 }
 

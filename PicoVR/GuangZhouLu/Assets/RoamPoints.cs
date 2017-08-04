@@ -7,12 +7,21 @@ public class RoamPoints : MonoBehaviour
 	public Transform pointLeftDown;
 	public Transform pointRightUp;
 	public Transform rootNode;
-    [HideInInspector]
-	public GameObject mapBG;
+    /// <summary>
+    /// 漫游的背景地图
+    /// </summary>
+    //[HideInInspector]
+	//public GameObject mapBG;
+    /// <summary>
+    /// 地图的背景地图
+    /// </summary>
     [HideInInspector]
     public GameObject mapBG1;
-    [HideInInspector]
-    public GameObject mapBG2;
+    /// <summary>
+    /// 迷你地图
+    /// </summary>
+    //[HideInInspector]
+    //public GameObject mapBG2;
 
     WarpPoints warpPoints;
 
@@ -27,9 +36,9 @@ public class RoamPoints : MonoBehaviour
 	void Awake()
 	{
 		//取得UI
-        mapBG = rootNode.Find("MapBG").gameObject;
+        //mapBG = rootNode.Find("MapBG").gameObject;
         mapBG1 = rootNode.parent.Find("NewPositionPanel").Find("MapBG").gameObject;
-        mapBG2 = rootNode.parent.Find("MineMapPanel").Find("MapBG").gameObject;
+        //mapBG2 = rootNode.parent.Find("MineMapPanel").Find("MapBG").gameObject;
         warpPoints = transform.Find("/WarpPoints").GetComponent<WarpPoints>();
 	}
 	void SetMap()
@@ -47,18 +56,18 @@ public class RoamPoints : MonoBehaviour
 		}
         //设置MapBG的大小
         float w1, h1;
-        w1 = 1024f;
+        w1 = 1400f;
         rate = w1 / mapSize.x;//把比率保存下来
         h1 = rate * mapSize.y;
         Vector2 temp = new Vector2(w1, h1);
-        mapBG.GetComponent<RectTransform>().sizeDelta = temp;
+        //mapBG.GetComponent<RectTransform>().sizeDelta = temp;
         mapBG1.GetComponent<RectTransform>().sizeDelta = temp;
         //设置小地图MapBG的大小 
         w1 = 320f;
         mineRate = w1 / mapSize.x;
         h1 = mineRate * mapSize.y;
         Vector2 tempMine = new Vector2(w1, h1);
-        mapBG2.GetComponent<RectTransform>().sizeDelta = tempMine;
+        //mapBG2.GetComponent<RectTransform>().sizeDelta = tempMine;
         //设置MapBG的原点为左下角点
         mapOrigin = new Vector2(-temp.x * 0.5f, -temp.y * 0.5f);
         //把比率保存起来

@@ -15,18 +15,30 @@ public class ShowImage : MonoBehaviour
     public string icon;
     public Sprite image;
 
-
-    Transform uiPointerPanel;//查看图片的Panel
-    Image smallImage;//查看图片的小图片
+    /// <summary>
+    /// 小图片的Panel
+    /// </summary>
+    Transform uiPointerPanel;//查看图片的Panel（小图片Panel)
     /// <summary>
     /// 大图片的Panel
     /// </summary>
     Transform uiShowPanel;//点击小图片后显示的大图片的Panel
-    PointerImage pointerImage;//点击小图片的
+    Image smallImage;//查看图片的小图片
+    PointerImage pointerImage;//点击小图片的脚本
     
     public void OnTriggerStay(Collider other)
     {
-        //在触发器范围内，
+        //在触发器范围内，如果大图片没显示就显示小图片提示
+        if(!uiShowPanel.gameObject.activeInHierarchy)
+        {
+            if(!uiPointerPanel.gameObject.activeInHierarchy)
+                uiPointerPanel.gameObject.SetActive(true);
+        }
+        //两种都可以
+        //if(!uiPointerPanel.gameObject.activeInHierarchy)
+        //{
+        //    uiPointerPanel.gameObject.SetActive(!uiShowPanel.gameObject.activeInHierarchy);
+        //}
     }
 
     public void OnTriggerExit(Collider other)
@@ -42,17 +54,17 @@ public class ShowImage : MonoBehaviour
         UIManager.Instance.ShowUI(Define.uiPanelShowImage);
         uiPointerPanel.gameObject.SetActive(true);
         pointerImage.SetShowImageInfo(sii);
-        //ImageAlphaScaleEffect iase = uiPointerPanel.Find("PointerImage").GetComponent<ImageAlphaScaleEffect>();
-        //iase.SetTwoWayTransition(0.2f, 1f, 2f);
     }
 
 	// Use this for initialization
     void Awake()
     {
         //取得相应的物体和组件
-        sii = new ShowImageInfo() { ID = id, Name = name, Icon = icon, Img = image };
+        sii = new ShowImageInfo() { Img = image };
+
         uiPointerPanel = transform.Find("/Canvas/ShowImagePanel/PointerPanel");
         pointerImage = uiPointerPanel.GetComponent<PointerImage>();
+
         uiShowPanel = transform.Find("/Canvas/ShowImagePanel/ImagePanel");
     }
 	void Start () {

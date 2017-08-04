@@ -150,7 +150,7 @@ public class FlyController : MonoBehaviour {
             PointerEventData ped = new PointerEventData(EventSystem.current);
             if (ped != null && ped.selectedObject != null)
             {
-                if (ped.selectedObject.transform.parent.name.Contains("MenuPanel"))
+                if (ped.selectedObject.transform.parent.name.Contains("MenuPanel") || ped.selectedObject.transform.parent.name.Contains("ShowImagePanel"))
                 {
                     //print("ui移动");
                     if (!MainManager.Instance.isAutoRoam)
@@ -304,6 +304,17 @@ public class FlyController : MonoBehaviour {
 		autoRoamEnd = ConfigData.Instance.roamPath[startNum + 1];
 		temp = autoRoamEnd.position;
 		autoRoamEnd.position = new Vector3(temp.x, yHeight, temp.z);
+
+        RoamInfo ri = autoRoamStart.GetComponent<RoamInfo>();
+        if (ri.nodeInfo == RoamNodeInfo.speed)
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
+        }
+        else
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.normalRoamSpeed;
+        }
+
 		MainManager.Instance.isAutoRoam = true;
 		transform.position = autoRoamStart.position;
 

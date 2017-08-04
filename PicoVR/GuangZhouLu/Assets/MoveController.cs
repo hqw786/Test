@@ -154,7 +154,7 @@ public class MoveController : MonoBehaviour {
             PointerEventData ped = new PointerEventData(EventSystem.current);
             if (ped != null && ped.selectedObject != null)
             {
-                if (ped.selectedObject.transform.parent.name.Contains("MenuPanel"))
+                if (ped.selectedObject.transform.parent.name.Contains("MenuPanel") || ped.selectedObject.transform.parent.name.Contains("ShowImagePanel"))
                 {
                     //print("ui移动");
                     if (!MainManager.Instance.isAutoRoam)

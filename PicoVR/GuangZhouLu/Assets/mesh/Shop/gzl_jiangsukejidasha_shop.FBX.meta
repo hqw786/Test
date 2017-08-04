@@ -1,0 +1,504 @@
+fileFormatVersion: 2
+guid: 6508311b216f4894ba47724c1e4a275b
+timeCreated: 1501664176
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 1212121
+    100002: "20\u73BB\u7483"
+    100004: "20\u73BB\u7483 1"
+    100006: gzl_jiangsukejidasha
+    100008: gzl_jiangsukejidasha_boli
+    100010: gzl_jiangsukejidasha_light_02
+    100012: gzl_jiangsukejidasha_light_05
+    100014: gzl_jiangsukejidasha_light_06
+    100016: gzl_jiangsukejidasha_light_07
+    100018: gzl_jiangsukejidasha_light_08
+    100020: gzl_jiangsukejidasha_light_09
+    100022: //RootNode
+    100024: gzl_jiangsukejidasha_shop_01
+    100026: gzl_jiangsukejidasha_shop_02
+    100028: gzl_jiangsukejidasha_shop_03
+    100030: gzl_jiangsukejidasha_shop_04
+    100032: gzl_jiangsukejidasha_shop_05
+    100034: gzl_jiangsukejidasha_shop_06
+    100036: gzl_jiangsukejidasha_shop_07
+    100038: gzl_jiangsukejidasha_shop_08
+    100040: gzl_jiangsukejidasha_shop_09
+    100042: gzl_jiangsukejidasha_shop_10
+    100044: gzl_jiangsukejidasha_shop_11
+    100046: gzl_jiangsukejidasha_shop_12
+    100048: gzl_jiangsukejidasha_shop_13
+    100050: gzl_jiangsukejidasha_shop_14
+    100052: gzl_jiangsukejidasha_shop_15
+    100054: gzl_jiangsukejidasha_shop_16
+    100056: gzl_jiangsukejidasha_shop_17
+    100058: gzl_jiangsukejidasha_shop_19
+    100060: gzl_jiangsukejidasha_shop_20
+    100062: gzl_jiangsukejidasha_shop_21
+    100064: gzl_jiangsukejidasha_shop_22
+    100066: gzl_jiangsukejidasha_shop_23
+    100068: gzl_jiangsukejidasha_shop_30
+    100070: gzl_jiangsukejidasha_shop_31
+    100072: gzl_jiangsukejidasha_shop_32
+    100074: gzl_jiangsukejidasha_shop_33
+    100076: gzl_jiangsukejidasha_shop_34
+    100078: gzl_jiangsukejidasha_shop_35
+    100080: gzl_jiangsukejidasha_shop_36
+    100082: 'Jnl_07 #1'
+    100084: "\u4E2D\u7070\u8272\u589911"
+    100086: "\u4E2D\u7070\u8272\u589911 1"
+    100088: "\u4E2D\u7070\u8272\u589911 10"
+    100090: "\u4E2D\u7070\u8272\u589911 11"
+    100092: "\u4E2D\u7070\u8272\u589911 12"
+    100094: "\u4E2D\u7070\u8272\u589911 13"
+    100096: "\u4E2D\u7070\u8272\u589911 14"
+    100098: "\u4E2D\u7070\u8272\u589911 15"
+    100100: "\u4E2D\u7070\u8272\u589911 16"
+    100102: "\u4E2D\u7070\u8272\u589911 17"
+    100104: "\u4E2D\u7070\u8272\u589911 18"
+    100106: "\u4E2D\u7070\u8272\u589911 2"
+    100108: "\u4E2D\u7070\u8272\u589911 3"
+    100110: "\u4E2D\u7070\u8272\u589911 4"
+    100112: "\u4E2D\u7070\u8272\u589911 5"
+    100114: "\u4E2D\u7070\u8272\u589911 6"
+    100116: "\u4E2D\u7070\u8272\u589911 7"
+    100118: "\u4E2D\u7070\u8272\u589911 8"
+    100120: "\u4E2D\u7070\u8272\u589911 9"
+    100122: "\u53F0\u9636"
+    100124: "\u6728"
+    100126: "\u6D45\u8272\u680F\u6746"
+    100128: "\u7A97\u6846"
+    100130: "\u7A97\u6846 1"
+    100132: "\u7A97\u6846_MeshPart0"
+    100134: "\u7A97\u6846_MeshPart1"
+    100136: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    100138: "\u7C73\u767D\u8272\u65E0\u5206\u52722 1"
+    100140: "\u7C73\u767D\u8272\u65E0\u5206\u52722 2"
+    100142: "\u7C73\u767D\u8272\u65E0\u5206\u52722 3"
+    100144: "\u7C73\u8272\u94DD\u677F"
+    100146: "\u7C73\u8272\u94DD\u677F 1"
+    100148: "\u7EA2\u74E6"
+    100150: "\u7EA2\u82721"
+    100152: "\u7EA2\u82721 1"
+    100154: "\u7EA2\u82721 2"
+    100156: "\u91D1\u5B57"
+    100158: "\u91D1\u5B57 1"
+    100160: "\u91D1\u5B57 2"
+    100162: "\u91D1\u5B57 3"
+    100164: "\u91D1\u5C5E"
+    100166: "\u91D1\u5C5E 1"
+    100168: "\u94A2"
+    100170: "\u94FA\u57301"
+    100172: "\u94FA\u57302"
+    400000: 1212121
+    400002: "20\u73BB\u7483"
+    400004: "20\u73BB\u7483 1"
+    400006: gzl_jiangsukejidasha
+    400008: gzl_jiangsukejidasha_boli
+    400010: gzl_jiangsukejidasha_light_02
+    400012: gzl_jiangsukejidasha_light_05
+    400014: gzl_jiangsukejidasha_light_06
+    400016: gzl_jiangsukejidasha_light_07
+    400018: gzl_jiangsukejidasha_light_08
+    400020: gzl_jiangsukejidasha_light_09
+    400022: //RootNode
+    400024: gzl_jiangsukejidasha_shop_01
+    400026: gzl_jiangsukejidasha_shop_02
+    400028: gzl_jiangsukejidasha_shop_03
+    400030: gzl_jiangsukejidasha_shop_04
+    400032: gzl_jiangsukejidasha_shop_05
+    400034: gzl_jiangsukejidasha_shop_06
+    400036: gzl_jiangsukejidasha_shop_07
+    400038: gzl_jiangsukejidasha_shop_08
+    400040: gzl_jiangsukejidasha_shop_09
+    400042: gzl_jiangsukejidasha_shop_10
+    400044: gzl_jiangsukejidasha_shop_11
+    400046: gzl_jiangsukejidasha_shop_12
+    400048: gzl_jiangsukejidasha_shop_13
+    400050: gzl_jiangsukejidasha_shop_14
+    400052: gzl_jiangsukejidasha_shop_15
+    400054: gzl_jiangsukejidasha_shop_16
+    400056: gzl_jiangsukejidasha_shop_17
+    400058: gzl_jiangsukejidasha_shop_19
+    400060: gzl_jiangsukejidasha_shop_20
+    400062: gzl_jiangsukejidasha_shop_21
+    400064: gzl_jiangsukejidasha_shop_22
+    400066: gzl_jiangsukejidasha_shop_23
+    400068: gzl_jiangsukejidasha_shop_30
+    400070: gzl_jiangsukejidasha_shop_31
+    400072: gzl_jiangsukejidasha_shop_32
+    400074: gzl_jiangsukejidasha_shop_33
+    400076: gzl_jiangsukejidasha_shop_34
+    400078: gzl_jiangsukejidasha_shop_35
+    400080: gzl_jiangsukejidasha_shop_36
+    400082: 'Jnl_07 #1'
+    400084: "\u4E2D\u7070\u8272\u589911"
+    400086: "\u4E2D\u7070\u8272\u589911 1"
+    400088: "\u4E2D\u7070\u8272\u589911 10"
+    400090: "\u4E2D\u7070\u8272\u589911 11"
+    400092: "\u4E2D\u7070\u8272\u589911 12"
+    400094: "\u4E2D\u7070\u8272\u589911 13"
+    400096: "\u4E2D\u7070\u8272\u589911 14"
+    400098: "\u4E2D\u7070\u8272\u589911 15"
+    400100: "\u4E2D\u7070\u8272\u589911 16"
+    400102: "\u4E2D\u7070\u8272\u589911 17"
+    400104: "\u4E2D\u7070\u8272\u589911 18"
+    400106: "\u4E2D\u7070\u8272\u589911 2"
+    400108: "\u4E2D\u7070\u8272\u589911 3"
+    400110: "\u4E2D\u7070\u8272\u589911 4"
+    400112: "\u4E2D\u7070\u8272\u589911 5"
+    400114: "\u4E2D\u7070\u8272\u589911 6"
+    400116: "\u4E2D\u7070\u8272\u589911 7"
+    400118: "\u4E2D\u7070\u8272\u589911 8"
+    400120: "\u4E2D\u7070\u8272\u589911 9"
+    400122: "\u53F0\u9636"
+    400124: "\u6728"
+    400126: "\u6D45\u8272\u680F\u6746"
+    400128: "\u7A97\u6846"
+    400130: "\u7A97\u6846 1"
+    400132: "\u7A97\u6846_MeshPart0"
+    400134: "\u7A97\u6846_MeshPart1"
+    400136: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    400138: "\u7C73\u767D\u8272\u65E0\u5206\u52722 1"
+    400140: "\u7C73\u767D\u8272\u65E0\u5206\u52722 2"
+    400142: "\u7C73\u767D\u8272\u65E0\u5206\u52722 3"
+    400144: "\u7C73\u8272\u94DD\u677F"
+    400146: "\u7C73\u8272\u94DD\u677F 1"
+    400148: "\u7EA2\u74E6"
+    400150: "\u7EA2\u82721"
+    400152: "\u7EA2\u82721 1"
+    400154: "\u7EA2\u82721 2"
+    400156: "\u91D1\u5B57"
+    400158: "\u91D1\u5B57 1"
+    400160: "\u91D1\u5B57 2"
+    400162: "\u91D1\u5B57 3"
+    400164: "\u91D1\u5C5E"
+    400166: "\u91D1\u5C5E 1"
+    400168: "\u94A2"
+    400170: "\u94FA\u57301"
+    400172: "\u94FA\u57302"
+    2300000: 1212121
+    2300002: "20\u73BB\u7483"
+    2300004: "20\u73BB\u7483 1"
+    2300006: gzl_jiangsukejidasha_boli
+    2300008: gzl_jiangsukejidasha_light_02
+    2300010: gzl_jiangsukejidasha_light_05
+    2300012: gzl_jiangsukejidasha_light_06
+    2300014: gzl_jiangsukejidasha_light_07
+    2300016: gzl_jiangsukejidasha_light_08
+    2300018: gzl_jiangsukejidasha_light_09
+    2300020: gzl_jiangsukejidasha_shop_01
+    2300022: gzl_jiangsukejidasha_shop_02
+    2300024: gzl_jiangsukejidasha_shop_03
+    2300026: gzl_jiangsukejidasha_shop_04
+    2300028: gzl_jiangsukejidasha_shop_05
+    2300030: gzl_jiangsukejidasha_shop_06
+    2300032: gzl_jiangsukejidasha_shop_07
+    2300034: gzl_jiangsukejidasha_shop_08
+    2300036: gzl_jiangsukejidasha_shop_09
+    2300038: gzl_jiangsukejidasha_shop_10
+    2300040: gzl_jiangsukejidasha_shop_11
+    2300042: gzl_jiangsukejidasha_shop_12
+    2300044: gzl_jiangsukejidasha_shop_13
+    2300046: gzl_jiangsukejidasha_shop_14
+    2300048: gzl_jiangsukejidasha_shop_15
+    2300050: gzl_jiangsukejidasha_shop_16
+    2300052: gzl_jiangsukejidasha_shop_17
+    2300054: gzl_jiangsukejidasha_shop_19
+    2300056: gzl_jiangsukejidasha_shop_20
+    2300058: gzl_jiangsukejidasha_shop_21
+    2300060: gzl_jiangsukejidasha_shop_22
+    2300062: gzl_jiangsukejidasha_shop_23
+    2300064: gzl_jiangsukejidasha_shop_30
+    2300066: gzl_jiangsukejidasha_shop_31
+    2300068: gzl_jiangsukejidasha_shop_32
+    2300070: gzl_jiangsukejidasha_shop_33
+    2300072: gzl_jiangsukejidasha_shop_34
+    2300074: gzl_jiangsukejidasha_shop_35
+    2300076: gzl_jiangsukejidasha_shop_36
+    2300078: 'Jnl_07 #1'
+    2300080: "\u4E2D\u7070\u8272\u589911"
+    2300082: "\u4E2D\u7070\u8272\u589911 1"
+    2300084: "\u4E2D\u7070\u8272\u589911 10"
+    2300086: "\u4E2D\u7070\u8272\u589911 11"
+    2300088: "\u4E2D\u7070\u8272\u589911 12"
+    2300090: "\u4E2D\u7070\u8272\u589911 13"
+    2300092: "\u4E2D\u7070\u8272\u589911 14"
+    2300094: "\u4E2D\u7070\u8272\u589911 15"
+    2300096: "\u4E2D\u7070\u8272\u589911 16"
+    2300098: "\u4E2D\u7070\u8272\u589911 17"
+    2300100: "\u4E2D\u7070\u8272\u589911 18"
+    2300102: "\u4E2D\u7070\u8272\u589911 2"
+    2300104: "\u4E2D\u7070\u8272\u589911 3"
+    2300106: "\u4E2D\u7070\u8272\u589911 4"
+    2300108: "\u4E2D\u7070\u8272\u589911 5"
+    2300110: "\u4E2D\u7070\u8272\u589911 6"
+    2300112: "\u4E2D\u7070\u8272\u589911 7"
+    2300114: "\u4E2D\u7070\u8272\u589911 8"
+    2300116: "\u4E2D\u7070\u8272\u589911 9"
+    2300118: "\u53F0\u9636"
+    2300120: "\u6728"
+    2300122: "\u6D45\u8272\u680F\u6746"
+    2300124: "\u7A97\u6846 1"
+    2300126: "\u7A97\u6846_MeshPart0"
+    2300128: "\u7A97\u6846_MeshPart1"
+    2300130: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    2300132: "\u7C73\u767D\u8272\u65E0\u5206\u52722 1"
+    2300134: "\u7C73\u767D\u8272\u65E0\u5206\u52722 2"
+    2300136: "\u7C73\u767D\u8272\u65E0\u5206\u52722 3"
+    2300138: "\u7C73\u8272\u94DD\u677F"
+    2300140: "\u7C73\u8272\u94DD\u677F 1"
+    2300142: "\u7EA2\u74E6"
+    2300144: "\u7EA2\u82721"
+    2300146: "\u7EA2\u82721 1"
+    2300148: "\u7EA2\u82721 2"
+    2300150: "\u91D1\u5B57"
+    2300152: "\u91D1\u5B57 1"
+    2300154: "\u91D1\u5B57 2"
+    2300156: "\u91D1\u5B57 3"
+    2300158: "\u91D1\u5C5E"
+    2300160: "\u91D1\u5C5E 1"
+    2300162: "\u94A2"
+    2300164: "\u94FA\u57301"
+    2300166: "\u94FA\u57302"
+    3300000: 1212121
+    3300002: "20\u73BB\u7483"
+    3300004: "20\u73BB\u7483 1"
+    3300006: gzl_jiangsukejidasha_boli
+    3300008: gzl_jiangsukejidasha_light_02
+    3300010: gzl_jiangsukejidasha_light_05
+    3300012: gzl_jiangsukejidasha_light_06
+    3300014: gzl_jiangsukejidasha_light_07
+    3300016: gzl_jiangsukejidasha_light_08
+    3300018: gzl_jiangsukejidasha_light_09
+    3300020: gzl_jiangsukejidasha_shop_01
+    3300022: gzl_jiangsukejidasha_shop_02
+    3300024: gzl_jiangsukejidasha_shop_03
+    3300026: gzl_jiangsukejidasha_shop_04
+    3300028: gzl_jiangsukejidasha_shop_05
+    3300030: gzl_jiangsukejidasha_shop_06
+    3300032: gzl_jiangsukejidasha_shop_07
+    3300034: gzl_jiangsukejidasha_shop_08
+    3300036: gzl_jiangsukejidasha_shop_09
+    3300038: gzl_jiangsukejidasha_shop_10
+    3300040: gzl_jiangsukejidasha_shop_11
+    3300042: gzl_jiangsukejidasha_shop_12
+    3300044: gzl_jiangsukejidasha_shop_13
+    3300046: gzl_jiangsukejidasha_shop_14
+    3300048: gzl_jiangsukejidasha_shop_15
+    3300050: gzl_jiangsukejidasha_shop_16
+    3300052: gzl_jiangsukejidasha_shop_17
+    3300054: gzl_jiangsukejidasha_shop_19
+    3300056: gzl_jiangsukejidasha_shop_20
+    3300058: gzl_jiangsukejidasha_shop_21
+    3300060: gzl_jiangsukejidasha_shop_22
+    3300062: gzl_jiangsukejidasha_shop_23
+    3300064: gzl_jiangsukejidasha_shop_30
+    3300066: gzl_jiangsukejidasha_shop_31
+    3300068: gzl_jiangsukejidasha_shop_32
+    3300070: gzl_jiangsukejidasha_shop_33
+    3300072: gzl_jiangsukejidasha_shop_34
+    3300074: gzl_jiangsukejidasha_shop_35
+    3300076: gzl_jiangsukejidasha_shop_36
+    3300078: 'Jnl_07 #1'
+    3300080: "\u4E2D\u7070\u8272\u589911"
+    3300082: "\u4E2D\u7070\u8272\u589911 1"
+    3300084: "\u4E2D\u7070\u8272\u589911 10"
+    3300086: "\u4E2D\u7070\u8272\u589911 11"
+    3300088: "\u4E2D\u7070\u8272\u589911 12"
+    3300090: "\u4E2D\u7070\u8272\u589911 13"
+    3300092: "\u4E2D\u7070\u8272\u589911 14"
+    3300094: "\u4E2D\u7070\u8272\u589911 15"
+    3300096: "\u4E2D\u7070\u8272\u589911 16"
+    3300098: "\u4E2D\u7070\u8272\u589911 17"
+    3300100: "\u4E2D\u7070\u8272\u589911 18"
+    3300102: "\u4E2D\u7070\u8272\u589911 2"
+    3300104: "\u4E2D\u7070\u8272\u589911 3"
+    3300106: "\u4E2D\u7070\u8272\u589911 4"
+    3300108: "\u4E2D\u7070\u8272\u589911 5"
+    3300110: "\u4E2D\u7070\u8272\u589911 6"
+    3300112: "\u4E2D\u7070\u8272\u589911 7"
+    3300114: "\u4E2D\u7070\u8272\u589911 8"
+    3300116: "\u4E2D\u7070\u8272\u589911 9"
+    3300118: "\u53F0\u9636"
+    3300120: "\u6728"
+    3300122: "\u6D45\u8272\u680F\u6746"
+    3300124: "\u7A97\u6846 1"
+    3300126: "\u7A97\u6846_MeshPart0"
+    3300128: "\u7A97\u6846_MeshPart1"
+    3300130: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    3300132: "\u7C73\u767D\u8272\u65E0\u5206\u52722 1"
+    3300134: "\u7C73\u767D\u8272\u65E0\u5206\u52722 2"
+    3300136: "\u7C73\u767D\u8272\u65E0\u5206\u52722 3"
+    3300138: "\u7C73\u8272\u94DD\u677F"
+    3300140: "\u7C73\u8272\u94DD\u677F 1"
+    3300142: "\u7EA2\u74E6"
+    3300144: "\u7EA2\u82721"
+    3300146: "\u7EA2\u82721 1"
+    3300148: "\u7EA2\u82721 2"
+    3300150: "\u91D1\u5B57"
+    3300152: "\u91D1\u5B57 1"
+    3300154: "\u91D1\u5B57 2"
+    3300156: "\u91D1\u5B57 3"
+    3300158: "\u91D1\u5C5E"
+    3300160: "\u91D1\u5C5E 1"
+    3300162: "\u94A2"
+    3300164: "\u94FA\u57301"
+    3300166: "\u94FA\u57302"
+    4300000: "\u7A97\u6846"
+    4300002: "20\u73BB\u7483"
+    4300004: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    4300006: 'Jnl_07 #1'
+    4300008: "\u7A97\u6846_MeshPart0"
+    4300010: "\u7A97\u6846_MeshPart1"
+    4300012: "\u4E2D\u7070\u8272\u589911"
+    4300014: "\u53F0\u9636"
+    4300016: "\u4E2D\u7070\u8272\u589911"
+    4300018: "\u4E2D\u7070\u8272\u589911"
+    4300020: "\u6D45\u8272\u680F\u6746"
+    4300022: "\u7EA2\u82721"
+    4300024: "\u91D1\u5B57"
+    4300026: "\u91D1\u5C5E"
+    4300028: "\u7EA2\u74E6"
+    4300030: "\u91D1\u5C5E"
+    4300032: "\u7EA2\u82721"
+    4300034: "\u7C73\u8272\u94DD\u677F"
+    4300036: "\u6728"
+    4300038: "\u94FA\u57302"
+    4300040: "\u94FA\u57301"
+    4300042: "\u91D1\u5B57"
+    4300044: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    4300046: "\u7C73\u8272\u94DD\u677F"
+    4300048: "\u7EA2\u82721"
+    4300050: "\u94A2"
+    4300052: "\u4E2D\u7070\u8272\u589911"
+    4300054: "\u4E2D\u7070\u8272\u589911"
+    4300056: "\u4E2D\u7070\u8272\u589911"
+    4300058: "\u4E2D\u7070\u8272\u589911"
+    4300060: "\u4E2D\u7070\u8272\u589911"
+    4300062: "\u4E2D\u7070\u8272\u589911"
+    4300064: "\u4E2D\u7070\u8272\u589911"
+    4300066: "\u4E2D\u7070\u8272\u589911"
+    4300068: "\u4E2D\u7070\u8272\u589911"
+    4300070: "\u4E2D\u7070\u8272\u589911"
+    4300072: "\u4E2D\u7070\u8272\u589911"
+    4300074: "\u4E2D\u7070\u8272\u589911"
+    4300076: "\u4E2D\u7070\u8272\u589911"
+    4300078: "\u4E2D\u7070\u8272\u589911"
+    4300080: "\u4E2D\u7070\u8272\u589911"
+    4300082: "\u4E2D\u7070\u8272\u589911"
+    4300084: 1212121
+    4300086: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    4300088: "20\u73BB\u7483"
+    4300090: "\u7C73\u767D\u8272\u65E0\u5206\u52722"
+    4300092: "\u91D1\u5B57"
+    4300094: "\u91D1\u5B57"
+    4300096: gzl_jiangsukejidasha_light_06
+    4300098: gzl_jiangsukejidasha_shop_07
+    4300100: gzl_jiangsukejidasha_shop_08
+    4300102: gzl_jiangsukejidasha_shop_09
+    4300104: gzl_jiangsukejidasha_shop_12
+    4300106: gzl_jiangsukejidasha_shop_15
+    4300108: gzl_jiangsukejidasha_shop_16
+    4300110: gzl_jiangsukejidasha_shop_17
+    4300112: gzl_jiangsukejidasha_shop_19
+    4300114: gzl_jiangsukejidasha_shop_20
+    4300116: gzl_jiangsukejidasha_shop_21
+    4300118: gzl_jiangsukejidasha_shop_23
+    4300120: gzl_jiangsukejidasha_light_05
+    4300122: gzl_jiangsukejidasha_shop_10
+    4300124: gzl_jiangsukejidasha_shop_11
+    4300126: gzl_jiangsukejidasha_shop_13
+    4300128: gzl_jiangsukejidasha_shop_14
+    4300130: gzl_jiangsukejidasha_boli
+    4300132: gzl_jiangsukejidasha_light_07
+    4300134: gzl_jiangsukejidasha_light_09
+    4300136: gzl_jiangsukejidasha_shop_32
+    4300138: gzl_jiangsukejidasha_shop_33
+    4300140: gzl_jiangsukejidasha_shop_34
+    4300142: gzl_jiangsukejidasha_shop_35
+    4300144: gzl_jiangsukejidasha_shop_36
+    4300146: gzl_jiangsukejidasha_light_02
+    4300148: gzl_jiangsukejidasha_shop_01
+    4300150: gzl_jiangsukejidasha_shop_02
+    4300152: gzl_jiangsukejidasha_shop_03
+    4300154: gzl_jiangsukejidasha_shop_04
+    4300156: gzl_jiangsukejidasha_shop_05
+    4300158: gzl_jiangsukejidasha_shop_06
+    4300160: gzl_jiangsukejidasha_light_08
+    4300162: gzl_jiangsukejidasha_shop_22
+    4300164: gzl_jiangsukejidasha_shop_30
+    4300166: gzl_jiangsukejidasha_shop_31
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

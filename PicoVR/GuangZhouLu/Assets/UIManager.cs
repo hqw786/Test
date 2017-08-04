@@ -18,8 +18,10 @@ public class UIManager : MonoBehaviour
     GameObject roamPanel;
     GameObject roamViewPanel;
     GameObject showImagePanel;
+    GameObject titlePanel;
     List<GameObject> uis = new List<GameObject>();
 
+    bool isFirst = true;
 	// Use this for initialization
     void Awake()
     {
@@ -34,6 +36,7 @@ public class UIManager : MonoBehaviour
         roamPanel = transform.Find("RoamPanel").gameObject;
         roamViewPanel = transform.Find("RoamViewPanel").gameObject;
         showImagePanel = transform.Find("ShowImagePanel").gameObject;
+        titlePanel = transform.Find("TitlePanel").gameObject;
 
         uis.Add(roamPanel);
         uis.Add(menuPanel);
@@ -44,6 +47,7 @@ public class UIManager : MonoBehaviour
         uis.Add(exitPanel);
         uis.Add(roamViewPanel);
         uis.Add(showImagePanel);
+        uis.Add(titlePanel);
     }
 	void Start () {
 		
@@ -66,6 +70,16 @@ public class UIManager : MonoBehaviour
 		//		roamViewPanel.SetActive(false);
 		//	}
 		//}
+
+        //下面这个功能是提示帮助画面，第一次使用时
+        //if (isFirst)
+        //{
+        //    if (!IsActive(Define.uiPanelTitle))
+        //    {
+        //        isFirst = false;
+        //        ShowUI(Define.uiPanelHelp);
+        //    }
+        //}
 	}
     public bool ActiveUI(string s)
     {

@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: 84c74092be2b2074eb4009f397da0975
+timeCreated: 1501641581
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: gzl_252-262_boli
+    100002: gzl_252-262_light_02
+    100004: gzl_252-262_light_05
+    100006: gzl_252-262_light_06
+    100008: gzl_252-262_light_07
+    100010: gzl_252-262_light_08
+    100012: gzl_252-262_light_09
+    100014: //RootNode
+    100016: gzl_252-262_shop_01
+    100018: gzl_252-262_shop_02
+    100020: gzl_252-262_shop_03
+    100022: gzl_252-262_shop_04
+    100024: gzl_252-262_shop_05
+    100026: gzl_252-262_shop_06
+    100028: gzl_252-262_shop_07
+    100030: gzl_252-262_shop_08
+    100032: gzl_252-262_shop_08 1
+    100034: gzl_252-262_shop_09
+    100036: gzl_252-262_shop_09 1
+    100038: gzl_252-262_shop_10
+    100040: gzl_252-262_shop_11
+    100042: gzl_252-262_shop_12
+    100044: gzl_252-262_shop_13
+    100046: gzl_252-262_shop_14
+    100048: gzl_252-262_shop_15
+    100050: gzl_252-262_shop_16
+    100052: gzl_252-262_shop_17
+    100054: gzl_252-262_shop_19
+    100056: gzl_252-262_shop_20
+    100058: gzl_252-262_shop_21
+    100060: gzl_252-262_shop_22
+    100062: gzl_252-262_shop_23
+    100064: gzl_252-262_shop_30
+    100066: gzl_252-262_shop_31
+    100068: gzl_252-262_shop_32
+    100070: gzl_252-262_shop_33
+    100072: gzl_252-262_shop_34
+    100074: gzl_252-262_shop_35
+    100076: gzl_252-262_shop_36
+    400000: gzl_252-262_boli
+    400002: gzl_252-262_light_02
+    400004: gzl_252-262_light_05
+    400006: gzl_252-262_light_06
+    400008: gzl_252-262_light_07
+    400010: gzl_252-262_light_08
+    400012: gzl_252-262_light_09
+    400014: //RootNode
+    400016: gzl_252-262_shop_01
+    400018: gzl_252-262_shop_02
+    400020: gzl_252-262_shop_03
+    400022: gzl_252-262_shop_04
+    400024: gzl_252-262_shop_05
+    400026: gzl_252-262_shop_06
+    400028: gzl_252-262_shop_07
+    400030: gzl_252-262_shop_08
+    400032: gzl_252-262_shop_08 1
+    400034: gzl_252-262_shop_09
+    400036: gzl_252-262_shop_09 1
+    400038: gzl_252-262_shop_10
+    400040: gzl_252-262_shop_11
+    400042: gzl_252-262_shop_12
+    400044: gzl_252-262_shop_13
+    400046: gzl_252-262_shop_14
+    400048: gzl_252-262_shop_15
+    400050: gzl_252-262_shop_16
+    400052: gzl_252-262_shop_17
+    400054: gzl_252-262_shop_19
+    400056: gzl_252-262_shop_20
+    400058: gzl_252-262_shop_21
+    400060: gzl_252-262_shop_22
+    400062: gzl_252-262_shop_23
+    400064: gzl_252-262_shop_30
+    400066: gzl_252-262_shop_31
+    400068: gzl_252-262_shop_32
+    400070: gzl_252-262_shop_33
+    400072: gzl_252-262_shop_34
+    400074: gzl_252-262_shop_35
+    400076: gzl_252-262_shop_36
+    2300000: gzl_252-262_boli
+    2300002: gzl_252-262_light_02
+    2300004: gzl_252-262_light_05
+    2300006: gzl_252-262_light_06
+    2300008: gzl_252-262_light_07
+    2300010: gzl_252-262_light_08
+    2300012: gzl_252-262_light_09
+    2300014: gzl_252-262_shop_01
+    2300016: gzl_252-262_shop_02
+    2300018: gzl_252-262_shop_03
+    2300020: gzl_252-262_shop_04
+    2300022: gzl_252-262_shop_05
+    2300024: gzl_252-262_shop_06
+    2300026: gzl_252-262_shop_07
+    2300028: gzl_252-262_shop_08
+    2300030: gzl_252-262_shop_08 1
+    2300032: gzl_252-262_shop_09
+    2300034: gzl_252-262_shop_09 1
+    2300036: gzl_252-262_shop_10
+    2300038: gzl_252-262_shop_11
+    2300040: gzl_252-262_shop_12
+    2300042: gzl_252-262_shop_13
+    2300044: gzl_252-262_shop_14
+    2300046: gzl_252-262_shop_15
+    2300048: gzl_252-262_shop_16
+    2300050: gzl_252-262_shop_17
+    2300052: gzl_252-262_shop_19
+    2300054: gzl_252-262_shop_20
+    2300056: gzl_252-262_shop_21
+    2300058: gzl_252-262_shop_22
+    2300060: gzl_252-262_shop_23
+    2300062: gzl_252-262_shop_30
+    2300064: gzl_252-262_shop_31
+    2300066: gzl_252-262_shop_32
+    2300068: gzl_252-262_shop_33
+    2300070: gzl_252-262_shop_34
+    2300072: gzl_252-262_shop_35
+    2300074: gzl_252-262_shop_36
+    3300000: gzl_252-262_boli
+    3300002: gzl_252-262_light_02
+    3300004: gzl_252-262_light_05
+    3300006: gzl_252-262_light_06
+    3300008: gzl_252-262_light_07
+    3300010: gzl_252-262_light_08
+    3300012: gzl_252-262_light_09
+    3300014: gzl_252-262_shop_01
+    3300016: gzl_252-262_shop_02
+    3300018: gzl_252-262_shop_03
+    3300020: gzl_252-262_shop_04
+    3300022: gzl_252-262_shop_05
+    3300024: gzl_252-262_shop_06
+    3300026: gzl_252-262_shop_07
+    3300028: gzl_252-262_shop_08
+    3300030: gzl_252-262_shop_08 1
+    3300032: gzl_252-262_shop_09
+    3300034: gzl_252-262_shop_09 1
+    3300036: gzl_252-262_shop_10
+    3300038: gzl_252-262_shop_11
+    3300040: gzl_252-262_shop_12
+    3300042: gzl_252-262_shop_13
+    3300044: gzl_252-262_shop_14
+    3300046: gzl_252-262_shop_15
+    3300048: gzl_252-262_shop_16
+    3300050: gzl_252-262_shop_17
+    3300052: gzl_252-262_shop_19
+    3300054: gzl_252-262_shop_20
+    3300056: gzl_252-262_shop_21
+    3300058: gzl_252-262_shop_22
+    3300060: gzl_252-262_shop_23
+    3300062: gzl_252-262_shop_30
+    3300064: gzl_252-262_shop_31
+    3300066: gzl_252-262_shop_32
+    3300068: gzl_252-262_shop_33
+    3300070: gzl_252-262_shop_34
+    3300072: gzl_252-262_shop_35
+    3300074: gzl_252-262_shop_36
+    4300000: gzl_252-262_light_05
+    4300002: gzl_252-262_shop_07
+    4300004: gzl_252-262_shop_08
+    4300006: gzl_252-262_shop_09
+    4300008: gzl_252-262_shop_10
+    4300010: gzl_252-262_shop_11
+    4300012: gzl_252-262_shop_12
+    4300014: gzl_252-262_shop_13
+    4300016: gzl_252-262_shop_14
+    4300018: gzl_252-262_shop_01
+    4300020: gzl_252-262_boli
+    4300022: gzl_252-262_light_08
+    4300024: gzl_252-262_shop_22
+    4300026: gzl_252-262_shop_23
+    4300028: gzl_252-262_shop_30
+    4300030: gzl_252-262_shop_31
+    4300032: gzl_252-262_light_06
+    4300034: gzl_252-262_shop_08
+    4300036: gzl_252-262_shop_15
+    4300038: gzl_252-262_shop_16
+    4300040: gzl_252-262_shop_17
+    4300042: gzl_252-262_shop_19
+    4300044: gzl_252-262_shop_20
+    4300046: gzl_252-262_shop_21
+    4300048: gzl_252-262_light_02
+    4300050: gzl_252-262_shop_02
+    4300052: gzl_252-262_shop_03
+    4300054: gzl_252-262_shop_04
+    4300056: gzl_252-262_shop_05
+    4300058: gzl_252-262_shop_06
+    4300060: gzl_252-262_light_07
+    4300062: gzl_252-262_light_09
+    4300064: gzl_252-262_shop_09
+    4300066: gzl_252-262_shop_32
+    4300068: gzl_252-262_shop_33
+    4300070: gzl_252-262_shop_34
+    4300072: gzl_252-262_shop_35
+    4300074: gzl_252-262_shop_36
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
