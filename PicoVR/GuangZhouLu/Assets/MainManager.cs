@@ -112,29 +112,13 @@ public class MainManager : MonoBehaviour
         flyController = person.GetComponent<FlyController>();
         firstPerson = person.GetComponent<MoveController>();
         //curView = ViewMode.firstView;
-        InitialMap();
+        //InitialMap();
         //cameraAngle = 0f;
         roamPauseNum = 0;
     }
-    void InitialMap()
-    {
-        //Transform t1 = transform.Find("/BoundaryPoints/LeftDown");
-        //Transform t2 = transform.Find("/BoundaryPoints/RightUp");
-        //float w = Mathf.Abs(t2.position.z - t1.position.z);
-        //float h = Mathf.Abs(t2.position.x - t1.position.x);
-        //if(w >= h)
-        //{
-        //    //前往目的地的背景图片大小设置
-        //    //小地图的背景图片大小设置
-        //}
-        //else
-        //{
-        //    //前往目的地的背景图片大小设置
-        //    //小地图的背景图片大小设置
-        //}
-    }
+
 	void Start () {
-        if (PlayerPrefs.GetFloat("px") == 0 && PlayerPrefs.GetFloat("py") == 0 && PlayerPrefs.GetFloat("pz") == 0)
+        //if (PlayerPrefs.GetFloat("px") == 0 && PlayerPrefs.GetFloat("py") == 0 && PlayerPrefs.GetFloat("pz") == 0)
         {
             flyController.Initial();
             firstPerson.Initial();
@@ -142,28 +126,29 @@ public class MainManager : MonoBehaviour
             firstPerson.enabled = true;
             transform.Find("/Canvas/MenuPanel/BtnPersonView").transform.Find("Image").gameObject.SetActive(true);
         }
-        else
-        {
-            flyController.Initial(GetPosition(), GetRotation(), GetCameraRotation());
-            firstPerson.Initial(GetPosition(), GetRotation(), GetCameraRotation());
+        //以下是昼夜切换要用到的。昼夜切换主角位置不变
+        //else
+        //{
+        //    flyController.Initial(GetPosition(), GetRotation(), GetCameraRotation());
+        //    firstPerson.Initial(GetPosition(), GetRotation(), GetCameraRotation());
 
-            curView = GetViewMode();
+        //    curView = GetViewMode();
 
-            if (curView == ViewMode.firstView)
-            {
-                flyController.enabled = false;
-                firstPerson.enabled = true;
-                //菜单按钮
-                transform.Find("/Canvas/MenuPanel/BtnPersonView").transform.Find("Image").gameObject.SetActive(true);
-            }
-            else
-            {
-                flyController.enabled = true;
-                firstPerson.enabled = false;
-                //菜单按钮
-                transform.Find("/Canvas/MenuPanel/BtnFlyView").transform.Find("Image").gameObject.SetActive(true);
-            }
-        }
+        //    if (curView == ViewMode.firstView)
+        //    {
+        //        flyController.enabled = false;
+        //        firstPerson.enabled = true;
+        //        //菜单按钮
+        //        transform.Find("/Canvas/MenuPanel/BtnPersonView").transform.Find("Image").gameObject.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        flyController.enabled = true;
+        //        firstPerson.enabled = false;
+        //        //菜单按钮
+        //        transform.Find("/Canvas/MenuPanel/BtnFlyView").transform.Find("Image").gameObject.SetActive(true);
+        //    }
+        //}
 	}
 	
 	// Update is called once per frame
