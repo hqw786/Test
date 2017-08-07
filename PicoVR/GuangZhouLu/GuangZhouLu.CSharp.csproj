@@ -75,6 +75,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\APP\Scripts\Effect\ImageAlphaScaleEffect.cs" />
@@ -110,6 +116,7 @@
     <Compile Include="Assets\Old\Scripts\EnumType.cs" />
     <Compile Include="Assets\Old\Scripts\ImageColorr.cs" />
     <Compile Include="Assets\Old\Scripts\UIController.cs" />
+    <Compile Include="Assets\PersonDir.cs" />
     <Compile Include="Assets\PersonMapMap.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Runtime\Attributes\MinAttribute.cs" />

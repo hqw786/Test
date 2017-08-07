@@ -216,6 +216,7 @@ public class MoveController : MonoBehaviour {
         {
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
             controller.SimpleMove(transform.forward * Time.deltaTime * v);
+            //print(v);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {

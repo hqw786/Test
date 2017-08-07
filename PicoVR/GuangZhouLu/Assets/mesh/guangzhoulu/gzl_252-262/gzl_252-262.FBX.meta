@@ -138,6 +138,7 @@ ModelImporter:
     100260: gzl_262_39
     100262: Object001
     100264: Object002
+    100266: Group001
     400000: gzl_252
     400002: //RootNode
     400004: gzl_252_01
@@ -271,6 +272,7 @@ ModelImporter:
     400260: gzl_262_39
     400262: Object001
     400264: Object002
+    400266: Group001
     2300000: gzl_252_01_MeshPart0
     2300002: gzl_252_01_MeshPart1
     2300004: gzl_252_02

@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 205d8db1eb0b3c944b39780cacbfb1a9
+timeCreated: 1501905386
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: __42_11
+    100002: Group52
+    100004: //RootNode
+    100006: Line001
+    100008: Line323
+    100010: Line383
+    100012: Line385
+    100014: Object001
+    100016: Object001_001
+    100018: Object001_004
+    100020: Object001_005
+    100022: Object001_006
+    100024: Object001_007
+    100026: Object001_008
+    100028: Object001_009
+    100030: Object003
+    100032: Object004
+    100034: Object005
+    100036: Object006
+    100038: Rectangle002
+    100040: Rectangle003
+    100042: Rectangle004
+    100044: Rectangle005
+    100046: Rectangle006
+    100048: Rectangle007
+    100050: Rectangle008
+    100052: Rectangle009
+    100054: Rectangle010
+    100056: Rectangle012
+    100058: Rectangle013
+    100060: Rectangle015
+    100062: Rectangle016
+    100064: Rectangle202
+    100066: Shape239
+    400000: __42_11
+    400002: Group52
+    400004: //RootNode
+    400006: Line001
+    400008: Line323
+    400010: Line383
+    400012: Line385
+    400014: Object001
+    400016: Object001_001
+    400018: Object001_004
+    400020: Object001_005
+    400022: Object001_006
+    400024: Object001_007
+    400026: Object001_008
+    400028: Object001_009
+    400030: Object003
+    400032: Object004
+    400034: Object005
+    400036: Object006
+    400038: Rectangle002
+    400040: Rectangle003
+    400042: Rectangle004
+    400044: Rectangle005
+    400046: Rectangle006
+    400048: Rectangle007
+    400050: Rectangle008
+    400052: Rectangle009
+    400054: Rectangle010
+    400056: Rectangle012
+    400058: Rectangle013
+    400060: Rectangle015
+    400062: Rectangle016
+    400064: Rectangle202
+    400066: Shape239
+    2300000: __42_11
+    2300002: Group52
+    2300004: Line001
+    2300006: Line323
+    2300008: Line383
+    2300010: Line385
+    2300012: Object001
+    2300014: Object001_001
+    2300016: Object001_004
+    2300018: Object001_005
+    2300020: Object001_006
+    2300022: Object001_007
+    2300024: Object001_008
+    2300026: Object001_009
+    2300028: Object003
+    2300030: Object004
+    2300032: Object005
+    2300034: Rectangle002
+    2300036: Rectangle003
+    2300038: Rectangle004
+    2300040: Rectangle005
+    2300042: Rectangle006
+    2300044: Rectangle007
+    2300046: Rectangle008
+    2300048: Rectangle009
+    2300050: Rectangle010
+    2300052: Rectangle012
+    2300054: Rectangle013
+    2300056: Rectangle015
+    2300058: Rectangle016
+    2300060: Rectangle202
+    2300062: Shape239
+    3300000: __42_11
+    3300002: Group52
+    3300004: Line001
+    3300006: Line323
+    3300008: Line383
+    3300010: Line385
+    3300012: Object001
+    3300014: Object001_001
+    3300016: Object001_004
+    3300018: Object001_005
+    3300020: Object001_006
+    3300022: Object001_007
+    3300024: Object001_008
+    3300026: Object001_009
+    3300028: Object003
+    3300030: Object004
+    3300032: Object005
+    3300034: Rectangle002
+    3300036: Rectangle003
+    3300038: Rectangle004
+    3300040: Rectangle005
+    3300042: Rectangle006
+    3300044: Rectangle007
+    3300046: Rectangle008
+    3300048: Rectangle009
+    3300050: Rectangle010
+    3300052: Rectangle012
+    3300054: Rectangle013
+    3300056: Rectangle015
+    3300058: Rectangle016
+    3300060: Rectangle202
+    3300062: Shape239
+    4300000: Rectangle002
+    4300002: Group52
+    4300004: __42_11
+    4300006: Object001_001
+    4300008: Object001_004
+    4300010: Object001_005
+    4300012: Object001_006
+    4300014: Object001_007
+    4300016: Object001_008
+    4300018: Object001_009
+    4300020: Object001
+    4300022: Object003
+    4300024: Rectangle003
+    4300026: Rectangle004
+    4300028: Rectangle005
+    4300030: Rectangle006
+    4300032: Rectangle007
+    4300034: Rectangle008
+    4300036: Rectangle009
+    4300038: Rectangle010
+    4300040: Object004
+    4300042: Rectangle012
+    4300044: Rectangle013
+    4300046: Rectangle015
+    4300048: Rectangle016
+    4300050: Line001
+    4300052: Object005
+    4300054: Rectangle202
+    4300056: Line323
+    4300058: Shape239
+    4300060: Line383
+    4300062: Line385
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

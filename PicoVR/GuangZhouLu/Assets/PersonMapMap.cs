@@ -16,7 +16,7 @@ public class PersonMapMap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         person = transform.Find("/Person");
-        pointLeftDown = transform.Find("/BoundaryPoints/LeftDown");
+        pointLeftDown = transform.Find("/BoundaryPoints/RightUp");
         flag = transform.Find("PersonFlag");
         //mapBG = transform.Find("MapBG").gameObject;
         //mapSize = mapBG.GetComponent<RectTransform>().sizeDelta;

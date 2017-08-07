@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
         roamPanel = transform.Find("RoamPanel").gameObject;
         roamViewPanel = transform.Find("RoamViewPanel").gameObject;
         showImagePanel = transform.Find("ShowImagePanel").gameObject;
-        titlePanel = transform.Find("TitlePanel").gameObject;
+        //titlePanel = transform.Find("TitlePanel").gameObject;
 
         uis.Add(roamPanel);
         uis.Add(menuPanel);
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         uis.Add(exitPanel);
         uis.Add(roamViewPanel);
         uis.Add(showImagePanel);
-        uis.Add(titlePanel);
+        //uis.Add(titlePanel);
     }
 	void Start () {
 		
