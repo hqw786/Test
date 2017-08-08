@@ -183,7 +183,7 @@ public class FlyController : MonoBehaviour {
             {
                 if (isVRotation)
                 {
-                    cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime);
+                    cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, endVRotation, Time.deltaTime * 5f);
                     if (cameraTransform.localRotation == endVRotation)
                     {
                         isVRotation = false;
@@ -192,7 +192,7 @@ public class FlyController : MonoBehaviour {
                 }
                 if (isHRotation)
                 {
-                    transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, endHRotation, Time.deltaTime * 2f);
                     if (transform.rotation == endHRotation)
                     {
                         isHRotation = false;
@@ -203,6 +203,7 @@ public class FlyController : MonoBehaviour {
             {
                 transform.Find("/Canvas/MenuPanel").GetComponent<MenuPanel>().ExitRoam();
                 isInput = false;
+                MainManager.Instance.roamStatus = RoamStatus.pause;
             }
         }
     }
@@ -281,6 +282,34 @@ public class FlyController : MonoBehaviour {
             q = q * Quaternion.Euler(MainManager.Instance.cameraAngle, 0, 0);
         }
         cameraTransform.localRotation = q;
+    }
+    public void SetAutoRoamStartAndEndPoint(Transform person, int e)
+    {
+        isHRotation = false;
+        isVRotation = true;
+        //单段的漫游起点和终点
+        autoRoamStart = ConfigData.Instance.roamPath[e - 1];
+        autoRoamEnd = ConfigData.Instance.roamPath[e];
+        //人物视角转成上一个漫游点的方向
+        endHRotation = autoRoamStart.rotation;
+        endVRotation = GetEndVRotation();
+
+        RoamInfo ri = autoRoamStart.GetComponent<RoamInfo>();
+        if (ri.nodeInfo == RoamNodeInfo.speed)
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
+        }
+        else
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.normalRoamSpeed;
+        }
+        autoRoamStart.position = new Vector3(autoRoamStart.position.x, MainManager.Instance.flyYHeight, autoRoamStart.position.z);
+        autoRoamEnd.position = new Vector3(autoRoamEnd.position.x, MainManager.Instance.flyYHeight, autoRoamEnd.position.z);
+
+        MainManager.Instance.isAutoRoam = true;
+        //transform.position = autoRoamStart.position;
+        autoRoamDir = autoRoamEnd.position - transform.position;
+        autoRoamDir = autoRoamDir.normalized;
     }
 	public void SetAutoRoamStartAndEndPoint(int s, int e)
 	{

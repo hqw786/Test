@@ -17,6 +17,12 @@ public enum WarpName
     脑科医院,
     广州路227号
 }
+public enum RoamStatus
+{
+    none,
+    roaming,
+    pause
+}
 public class ConfigData : MonoBehaviour {
     public static ConfigData Instance;
     public const float fadeTime = 1.5f;

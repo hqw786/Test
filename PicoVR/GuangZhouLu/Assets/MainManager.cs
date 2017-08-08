@@ -97,9 +97,11 @@ public class MainManager : MonoBehaviour
     [HideInInspector]
     public float mineRate;
     [HideInInspector]
-    public int roamPauseNum;
+    public int roamPauseNum = -1;
     [HideInInspector]
     public Transform roamPauseEnd;//自动漫游中断后，把每段的终点保存下来
+    [HideInInspector]
+    public RoamStatus roamStatus;
     [Header("自动漫游数值")]
     public float roamSpeed;
     public float normalRoamSpeed;
@@ -117,6 +119,7 @@ public class MainManager : MonoBehaviour
         //InitialMap();
         //cameraAngle = 0f;
         roamPauseNum = 0;
+        roamStatus = RoamStatus.none;
     }
 
 	void Start () {

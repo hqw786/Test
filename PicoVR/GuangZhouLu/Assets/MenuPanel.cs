@@ -102,6 +102,7 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
         UIManager.Instance.HideUI(Define.uiPanelRoamView);
         MainManager.Instance.roamView = RoamView.custom;
         transform.Find("BtnAutoRoam/Image").gameObject.SetActive(false);
+        MainManager.Instance.roamStatus = RoamStatus.pause;
     }
     private void OnBtnPersonViewClick()
     {
@@ -139,8 +140,27 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
     }
     void OnBtnAutoRoamClick()
     {
-        if (!MainManager.Instance.isAutoRoam)
+        if(MainManager.Instance.roamStatus == RoamStatus.pause)
         {
+            ButtonRestoreDefault(functionKind);
+            MainManager.Instance.roamView = RoamView.fix;
+            MainManager.Instance.roamStatus = RoamStatus.roaming;
+            //中断漫游后，继续漫游
+            if (MainManager.Instance.curView == ViewMode.firstView)
+            {
+
+                MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MainManager.Instance.person.transform, MainManager.Instance.roamPauseNum);
+            }
+            else
+            {
+
+                MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MainManager.Instance.person.transform, MainManager.Instance.roamPauseNum);
+            }
+            btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
+        }
+        else if (!MainManager.Instance.isAutoRoam)
+        {
+            //
             ButtonRestoreDefault(functionKind);
             //DONE:简化，先注释掉
             //UIManager.Instance.ShowUI(Define.uiPanelRoam);
@@ -148,6 +168,7 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
             #region 简化，如果要启用固定和可控视角。这一段就注释掉
             //MainManager.Instance.isAutoRoam = true;
             MainManager.Instance.roamView = RoamView.fix;
+            MainManager.Instance.roamStatus = RoamStatus.roaming;
             if (MainManager.Instance.curView == ViewMode.firstView)
             {
                 //从起点漫游
@@ -180,7 +201,7 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
         }
     }
     int MateLateRoamPoint(Vector3 position)
-    {
+    {//匹配最小距离的点作为起点漫游
         float dis = 0f;
         float minDis = 0f;
         int temp = 0;
