@@ -77,13 +77,20 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AppFacade.cs" />
     <Compile Include="Assets\Controller\AddGoodCommand.cs" />
     <Compile Include="Assets\Controller\Controller.cs" />
+    <Compile Include="Assets\Controller\GetGoodCommand.cs" />
     <Compile Include="Assets\Controller\ICommand.cs" />
-    <Compile Include="Assets\Controller\PackController.cs" />
+    <Compile Include="Assets\Del_PackController.cs" />
     <Compile Include="Assets\Controller\RenderToViewCommand.cs" />
     <Compile Include="Assets\Model\GoodsModel.cs" />
     <Compile Include="Assets\Model\ModelBase.cs" />

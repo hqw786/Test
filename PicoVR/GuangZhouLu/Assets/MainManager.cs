@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum ViewMode
 {
@@ -97,15 +98,19 @@ public class MainManager : MonoBehaviour
     [HideInInspector]
     public float mineRate;
     [HideInInspector]
-    public int roamPauseNum = -1;
+    public int roamPauseNum = 0;
     [HideInInspector]
     public Transform roamPauseEnd;//自动漫游中断后，把每段的终点保存下来
     [HideInInspector]
     public RoamStatus roamStatus;
+    [HideInInspector]
+    public int roamPersonNum;
     [Header("自动漫游数值")]
     public float roamSpeed;
     public float normalRoamSpeed;
     public float fastRoamSpeed;
+
+    Text text;
     // Use this for initialization
 	void Awake()
 	{
@@ -120,6 +125,8 @@ public class MainManager : MonoBehaviour
         //cameraAngle = 0f;
         roamPauseNum = 0;
         roamStatus = RoamStatus.none;
+
+        text = transform.Find("/Canvas/DirPanel/Text").GetComponent<Text>();
     }
 
 	void Start () {
@@ -158,7 +165,7 @@ public class MainManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	
+        text.text = roamPersonNum.ToString() + " / " + roamPauseNum.ToString() + " / " + ConfigData.Instance.roamPath.Count.ToString();
 	}
     /// <summary>
     /// 视角切换

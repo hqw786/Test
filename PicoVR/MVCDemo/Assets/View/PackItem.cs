@@ -17,7 +17,7 @@ public class PackItem : MonoBehaviour
     }
 
     private PackModel model;
-
+    //给物体赋值，并显示图片
     public PackModel Model
     {
         get { return model; }

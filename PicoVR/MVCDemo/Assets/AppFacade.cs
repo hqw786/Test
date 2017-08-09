@@ -36,7 +36,11 @@ public class AppFacade : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             //this.Excute("AddGoodCommand");
-            this.Excute(new INotifier("AddGoodCommand",1));
+            this.Excute(new INotifier("AddGoodCommand",2));
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            this.Excute(new INotifier("GetGoodCommand",1));
         }
     }
 

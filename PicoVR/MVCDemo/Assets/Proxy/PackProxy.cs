@@ -6,7 +6,8 @@ using System.Linq;
 public class PackProxy:BaseProxy<PackModel>  {
 
     public PackProxy():base()
-    {
+    {//增加15个格子
+
         for (int i = 0; i < 15; i++)
         {
             this.AddModelToList(new PackModel(i));

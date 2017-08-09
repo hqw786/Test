@@ -5,7 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandler {
+public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandler 
+{
+    
     //Button btnWeatherEffect;
     Button btnSelectNewPosition;
     //Button btnMineMap;
@@ -17,6 +19,9 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
 
     List<Button> viewKind = new List<Button>();
     List<Button> functionKind = new List<Button>();
+
+    bool continuePressRoam;
+    float timeContinuePressRoam;
     // Use this for initialization
 	void Start () {
 		GetComponent<RectTransform>().rect.size.Set(GetComponent<RectTransform>().rect.width*0.1f,GetComponent<RectTransform>().rect.height * Screen.width / 1920);
@@ -55,6 +60,7 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
         functionKind.Add(btnHelp);
         functionKind.Add(btnTransition);
         btnTransition.transform.Find("Image").gameObject.SetActive(false);
+
 	}
     // Update is called once per frame
     void Update () 
@@ -95,9 +101,16 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
         {
             OnBtnAutoRoamClick();
         }
+
 	}
     public void ExitRoam()
     {
+        MainManager.Instance.roamPauseNum++;
+        if(MainManager.Instance.roamPauseNum >= ConfigData.Instance.roamPath.Count)
+        {
+            MainManager.Instance.roamPauseNum = 0;
+        }
+
         MainManager.Instance.isAutoRoam = false;
         UIManager.Instance.HideUI(Define.uiPanelRoamView);
         MainManager.Instance.roamView = RoamView.custom;
