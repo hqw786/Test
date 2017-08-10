@@ -105,11 +105,11 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
 	}
     public void ExitRoam()
     {
-        MainManager.Instance.roamPauseNum++;
-        if(MainManager.Instance.roamPauseNum >= ConfigData.Instance.roamPath.Count)
-        {
-            MainManager.Instance.roamPauseNum = 0;
-        }
+        //MainManager.Instance.roamPauseNum++;
+        //if(MainManager.Instance.roamPauseNum >= ConfigData.Instance.roamPath.Count)
+        //{
+        //    MainManager.Instance.roamPauseNum = 0;
+        //}
 
         MainManager.Instance.isAutoRoam = false;
         UIManager.Instance.HideUI(Define.uiPanelRoamView);
@@ -153,25 +153,26 @@ public class MenuPanel : MonoBehaviour , IPointerEnterHandler ,IPointerExitHandl
     }
     void OnBtnAutoRoamClick()
     {
-        if(MainManager.Instance.roamStatus == RoamStatus.pause)
-        {
-            ButtonRestoreDefault(functionKind);
-            MainManager.Instance.roamView = RoamView.fix;
-            MainManager.Instance.roamStatus = RoamStatus.roaming;
-            //中断漫游后，继续漫游
-            if (MainManager.Instance.curView == ViewMode.firstView)
-            {
+        //if(MainManager.Instance.roamStatus == RoamStatus.pause)
+        //{
+        //    ButtonRestoreDefault(functionKind);
+        //    MainManager.Instance.roamView = RoamView.fix;
+        //    MainManager.Instance.roamStatus = RoamStatus.roaming;
+        //    //中断漫游后，继续漫游
+        //    if (MainManager.Instance.curView == ViewMode.firstView)
+        //    {
 
-                MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MainManager.Instance.person.transform, MainManager.Instance.roamPauseNum);
-            }
-            else
-            {
+        //        MainManager.Instance.firstPerson.SetAutoRoamStartAndEndPoint(MainManager.Instance.person.transform, MainManager.Instance.roamPauseNum);
+        //    }
+        //    else
+        //    {
 
-                MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MainManager.Instance.person.transform, MainManager.Instance.roamPauseNum);
-            }
-            btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
-        }
-        else if (!MainManager.Instance.isAutoRoam)
+        //        MainManager.Instance.flyController.SetAutoRoamStartAndEndPoint(MainManager.Instance.person.transform, MainManager.Instance.roamPauseNum);
+        //    }
+        //    btnAutoRoam.transform.Find("Image").gameObject.SetActive(true);
+        //}
+        //else
+            if (!MainManager.Instance.isAutoRoam)
         {
             //
             ButtonRestoreDefault(functionKind);

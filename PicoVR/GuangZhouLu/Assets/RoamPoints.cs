@@ -92,8 +92,8 @@ public class RoamPoints : MonoBehaviour
 			ConfigData.Instance.roamPath.Add(t);
 		}
 		//保存漫游点路径节点信息
-		GetPathNodeInfo();
-        PathNodeMapToMap();
+		//GetPathNodeInfo();
+        //PathNodeMapToMap();
 	}
 	void GetPathNodeInfo()
 	{

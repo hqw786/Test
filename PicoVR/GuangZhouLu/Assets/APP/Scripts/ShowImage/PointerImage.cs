@@ -7,14 +7,16 @@ using UnityEngine.UI;
 public class PointerImage : MonoBehaviour , IPointerClickHandler {
 
     Transform uiImage;
-    Image image;
+    //Image image;
+    //Image imageE;
 
     ShowImageInfo sii;
 	// Use this for initialization
     void Awake()
     {
         uiImage = transform.Find("/Canvas/ShowImagePanel/ImagePanel");
-        image = uiImage.Find("Image").GetComponent<Image>();
+        //image = uiImage.Find("Image").GetComponent<Image>();
+        //imageE = uiImage.Find("ImageE").GetComponent<Image>();
     }
 	void Start () {
        
@@ -28,7 +30,9 @@ public class PointerImage : MonoBehaviour , IPointerClickHandler {
     public void OnPointerClick(PointerEventData eventData)
     {
         uiImage.gameObject.SetActive(true);
-        image.sprite = sii.Img;
+        ImagePanel ip = uiImage.GetComponent<ImagePanel>();
+        print(sii.ImgE);
+        ip.SetImage(sii.Img, sii.ImgE);
 
         gameObject.SetActive(false);
     }

@@ -368,8 +368,11 @@ public class MoveController : MonoBehaviour {
         autoRoamEnd.position = new Vector3(autoRoamEnd.position.x, MainManager.Instance.fpYHeight, autoRoamEnd.position.z);
 
         MainManager.Instance.isAutoRoam = true;
+        //不要跃传过去
         //transform.position = autoRoamStart.position;
-		autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+		//autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+        //要移动过去
+        autoRoamDir = autoRoamEnd.position - transform.position;
         autoRoamDir = autoRoamDir.normalized;
 		//DONE:简化，先注释掉
 		#region 简化，先注释掉
@@ -391,15 +394,15 @@ public class MoveController : MonoBehaviour {
         isHRotation = true;
 		#endregion
 
-		
+		startNum++;
         MainManager.Instance.roamPauseNum = startNum;
-        MainManager.Instance.roamPersonNum = startNum;
+        //MainManager.Instance.roamPersonNum = startNum;
         if (MainManager.Instance.roamPauseNum >= ConfigData.Instance.roamPath.Count - 1)
         {
             MainManager.Instance.roamPauseNum = 0;
         }
         
-        startNum++;
+        
         return true;
     }
 	Quaternion GetEndVRotation()

@@ -14,6 +14,7 @@ public class ShowImage : MonoBehaviour
     [HideInInspector]
     public string icon;
     public Sprite image;
+    public Sprite imageE;
 
     /// <summary>
     /// 小图片的Panel
@@ -45,6 +46,10 @@ public class ShowImage : MonoBehaviour
     {
         //离开触发器范围，UI隐藏
         uiPointerPanel.gameObject.SetActive(false);
+
+        
+        ImagePanel ip = uiShowPanel.GetComponent<ImagePanel>();
+        ip.OnDefaultSize();
         uiShowPanel.gameObject.SetActive(false);
     }
 
@@ -60,7 +65,7 @@ public class ShowImage : MonoBehaviour
     void Awake()
     {
         //取得相应的物体和组件
-        sii = new ShowImageInfo() { Img = image };
+        sii = new ShowImageInfo() { Img = image, ImgE = imageE };
 
         uiPointerPanel = transform.Find("/Canvas/ShowImagePanel/PointerPanel");
         pointerImage = uiPointerPanel.GetComponent<PointerImage>();

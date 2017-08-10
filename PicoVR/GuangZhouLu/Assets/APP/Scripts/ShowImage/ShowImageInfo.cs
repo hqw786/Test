@@ -11,4 +11,5 @@ public class ShowImageInfo
     public string Name { get; set; }
     public string Icon { get; set; }
     public Sprite Img { get; set; }
+    public Sprite ImgE { get; set; }
 }

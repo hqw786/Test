@@ -171,7 +171,8 @@
     <Compile Include="Assets\ShowPathInfo.cs" />
     <Compile Include="Assets\ShowText.cs" />
     <Compile Include="Assets\TipsTextEffect.cs" />
-    <Compile Include="Assets\TitlePanel.cs" />
+    <Compile Include="Assets\TitleImagePanel.cs" />
+    <Compile Include="Assets\TitleTextPanel.cs" />
     <Compile Include="Assets\UIImageFadeEffect.cs" />
     <Compile Include="Assets\UIManager.cs" />
     <Compile Include="Assets\UITextFadeEffect.cs" />
