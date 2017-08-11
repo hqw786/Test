@@ -31,7 +31,7 @@ public class PointerImage : MonoBehaviour , IPointerClickHandler {
     {
         uiImage.gameObject.SetActive(true);
         ImagePanel ip = uiImage.GetComponent<ImagePanel>();
-        print(sii.ImgE);
+        //print(sii.ImgE);
         ip.SetImage(sii.Img, sii.ImgE);
 
         gameObject.SetActive(false);

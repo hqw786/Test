@@ -96,7 +96,7 @@ public class ImagePanel : MonoBehaviour , IPointerClickHandler {
         }
         else
         {
-            print("IMAGE EFFECT IS NULL");
+            //print("IMAGE EFFECT IS NULL");
         }
     }
 }

@@ -306,28 +306,27 @@ public class MoveController : MonoBehaviour {
         isHRotation = false;
         isVRotation = true;
         //单段的漫游起点和终点
-        //autoRoamStart = ConfigData.Instance.roamPath[e-1];
+        autoRoamStart = ConfigData.Instance.roamPath[e-1];
         autoRoamEnd = ConfigData.Instance.roamPath[e];
         //人物视角转成上一个漫游点的方向
-        endHRotation = person.rotation;
+        endHRotation = autoRoamStart.rotation;
         endVRotation = Quaternion.identity;
 
-        //RoamInfo ri = autoRoamStart.GetComponent<RoamInfo>();
-        //if (ri.nodeInfo == RoamNodeInfo.speed)
-        //{
-        //    MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
-        //}
-        //else
-        //{
-        //    MainManager.Instance.roamSpeed = MainManager.Instance.normalRoamSpeed;
-        //}
-        MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
-        //autoRoamStart.position = new Vector3(autoRoamStart.position.x, MainManager.Instance.fpYHeight, autoRoamStart.position.z);
+        RoamInfo ri = autoRoamStart.GetComponent<RoamInfo>();
+        if (ri.nodeInfo == RoamNodeInfo.speed)
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
+        }
+        else
+        {
+            MainManager.Instance.roamSpeed = MainManager.Instance.normalRoamSpeed;
+        }
+
         autoRoamStart.position = new Vector3(person.position.x, MainManager.Instance.fpYHeight, person.position.z);
         autoRoamEnd.position = new Vector3(autoRoamEnd.position.x, MainManager.Instance.fpYHeight, autoRoamEnd.position.z);
 
         MainManager.Instance.isAutoRoam = true;
-        //transform.position = autoRoamStart.position;
+
         autoRoamDir = autoRoamEnd.position - transform.position;
         autoRoamDir = autoRoamDir.normalized;
     }
@@ -355,7 +354,7 @@ public class MoveController : MonoBehaviour {
 
         //是不是要快速漫游
         RoamInfo ri = autoRoamStart.GetComponent<RoamInfo>();
-        if(ri.nodeInfo == RoamNodeInfo.speed)
+        if (ri.nodeInfo == RoamNodeInfo.speed)
         {
             MainManager.Instance.roamSpeed = MainManager.Instance.fastRoamSpeed;
         }
@@ -369,8 +368,8 @@ public class MoveController : MonoBehaviour {
 
         MainManager.Instance.isAutoRoam = true;
         //不要跃传过去
-        //transform.position = autoRoamStart.position;
-		//autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
+        transform.position = autoRoamStart.position;
+		autoRoamDir = autoRoamEnd.position - autoRoamStart.position;
         //要移动过去
         autoRoamDir = autoRoamEnd.position - transform.position;
         autoRoamDir = autoRoamDir.normalized;
@@ -396,13 +395,10 @@ public class MoveController : MonoBehaviour {
 
 		startNum++;
         MainManager.Instance.roamPauseNum = startNum;
-        //MainManager.Instance.roamPersonNum = startNum;
         if (MainManager.Instance.roamPauseNum >= ConfigData.Instance.roamPath.Count - 1)
         {
             MainManager.Instance.roamPauseNum = 0;
         }
-        
-        
         return true;
     }
 	Quaternion GetEndVRotation()

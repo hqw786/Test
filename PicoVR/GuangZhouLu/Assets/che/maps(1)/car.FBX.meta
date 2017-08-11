@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 7e13b5864f6a8b04098a9e21bfd452a1
+timeCreated: 1502434724
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: benz-class01
+    100002: benz-class02
+    100004: benz-class03
+    100006: black
+    100008: body
+    100010: BORA
+    100012: BORSCHE
+    100014: BORSCHE01
+    100016: bus01
+    100018: bus02
+    100020: bus03
+    100022: bus04
+    100024: //RootNode
+    100026: chrome
+    100028: chrome2
+    100030: chuzu01
+    100032: chuzu02
+    100034: chuzu03
+    100036: chuzu04
+    100038: chuzu05
+    100040: kdlk01
+    100042: kdlk02
+    100044: kdlk03
+    100046: ltmbus
+    100048: ltmbus-a
+    100050: ltmbus-a02
+    100052: passat
+    100054: saturn
+    100056: tyre
+    400000: benz-class01
+    400002: benz-class02
+    400004: benz-class03
+    400006: black
+    400008: body
+    400010: BORA
+    400012: BORSCHE
+    400014: BORSCHE01
+    400016: bus01
+    400018: bus02
+    400020: bus03
+    400022: bus04
+    400024: //RootNode
+    400026: chrome
+    400028: chrome2
+    400030: chuzu01
+    400032: chuzu02
+    400034: chuzu03
+    400036: chuzu04
+    400038: chuzu05
+    400040: kdlk01
+    400042: kdlk02
+    400044: kdlk03
+    400046: ltmbus
+    400048: ltmbus-a
+    400050: ltmbus-a02
+    400052: passat
+    400054: saturn
+    400056: tyre
+    2300000: benz-class01
+    2300002: benz-class02
+    2300004: benz-class03
+    2300006: black
+    2300008: body
+    2300010: BORA
+    2300012: BORSCHE
+    2300014: BORSCHE01
+    2300016: bus01
+    2300018: bus02
+    2300020: bus03
+    2300022: bus04
+    2300024: chrome
+    2300026: chrome2
+    2300028: chuzu01
+    2300030: chuzu02
+    2300032: chuzu03
+    2300034: chuzu04
+    2300036: chuzu05
+    2300038: kdlk01
+    2300040: kdlk02
+    2300042: kdlk03
+    2300044: ltmbus
+    2300046: ltmbus-a
+    2300048: ltmbus-a02
+    2300050: passat
+    2300052: saturn
+    2300054: tyre
+    3300000: benz-class01
+    3300002: benz-class02
+    3300004: benz-class03
+    3300006: black
+    3300008: body
+    3300010: BORA
+    3300012: BORSCHE
+    3300014: BORSCHE01
+    3300016: bus01
+    3300018: bus02
+    3300020: bus03
+    3300022: bus04
+    3300024: chrome
+    3300026: chrome2
+    3300028: chuzu01
+    3300030: chuzu02
+    3300032: chuzu03
+    3300034: chuzu04
+    3300036: chuzu05
+    3300038: kdlk01
+    3300040: kdlk02
+    3300042: kdlk03
+    3300044: ltmbus
+    3300046: ltmbus-a
+    3300048: ltmbus-a02
+    3300050: passat
+    3300052: saturn
+    3300054: tyre
+    4300000: body
+    4300002: chrome
+    4300004: chrome2
+    4300006: tyre
+    4300008: black
+    4300010: BORSCHE
+    4300012: BORA
+    4300014: BORSCHE01
+    4300016: ltmbus
+    4300018: ltmbus-a
+    4300020: ltmbus-a02
+    4300022: bus01
+    4300024: bus02
+    4300026: bus03
+    4300028: bus04
+    4300030: chuzu01
+    4300032: chuzu02
+    4300034: chuzu03
+    4300036: chuzu04
+    4300038: chuzu05
+    4300040: saturn
+    4300042: passat
+    4300044: kdlk01
+    4300046: benz-class01
+    4300048: benz-class02
+    4300050: benz-class03
+    4300052: kdlk02
+    4300054: kdlk03
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
