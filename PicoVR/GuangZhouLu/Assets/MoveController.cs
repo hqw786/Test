@@ -344,7 +344,7 @@ public class MoveController : MonoBehaviour {
     
     public bool HasNextPosition()
     {
-        if(endNum == startNum)
+        if(endNum <= startNum)
         {
             return false;
         }

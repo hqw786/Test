@@ -262,8 +262,10 @@ public class FlyController : MonoBehaviour {
 		{
 			if(!HasNextPosition())
 			{
-				MainManager.Instance.isAutoRoam = false;
-				UIManager.Instance.HideUI(Define.uiPanelRoamView);
+				//MainManager.Instance.isAutoRoam = false;
+				//UIManager.Instance.HideUI(Define.uiPanelRoamView);
+                //TODO:改成循环漫游
+                SetAutoRoamStartAndEndPoint(0, ConfigData.Instance.roamPath.Count - 1);
 			}
 		}
 	}
@@ -325,7 +327,7 @@ public class FlyController : MonoBehaviour {
 	}
 	public bool HasNextPosition()
 	{
-		if (endNum == startNum) return false;
+		if (endNum <= startNum) return false;
 
 		autoRoamStart = ConfigData.Instance.roamPath[startNum];
 		Vector3 temp = autoRoamStart.position;
