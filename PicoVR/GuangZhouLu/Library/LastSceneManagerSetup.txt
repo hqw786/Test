@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/since/GuangZhouLu/GuangZhouLu.unity
+- path: Assets/since/GuangZhouLu/Design_Logo.unity
   isLoaded: 1
   isActive: 1
