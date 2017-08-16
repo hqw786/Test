@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/since/GuangZhouLu/Design_Logo.unity
+- path: Assets/APP/Scenes/Lauch.unity
   isLoaded: 1
   isActive: 1

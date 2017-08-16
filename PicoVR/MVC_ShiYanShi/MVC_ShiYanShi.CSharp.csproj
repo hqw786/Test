@@ -75,12 +75,27 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\APP\Scripts\BaseMVC\BaseModel.cs" />
-    <Compile Include="Assets\APP\Scripts\BaseMVC\BaseUI.cs" />
-    <Compile Include="Assets\APP\Scripts\BaseMVC\BaseView.cs" />
-    <Compile Include="Assets\APP\Scripts\BaseMVC\ICommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Base\Consts.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\BaseApplication.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\BaseModel.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\BaseView.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\CommandNotifierArgs.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\Controller.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\ICommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\MVC.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\Singleton.cs" />
+    <Compile Include="Assets\APP\Scripts\Misc\Lauch.cs" />
+    <Compile Include="Assets\APP\Scripts\Misc\UIImageEffect.cs" />
+    <Compile Include="Assets\APP\Scripts\Misc\UIObjectEffect.cs" />
+    <Compile Include="Assets\APP\Scripts\Misc\UITextEffect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
