@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+public enum MainGameStatus
+{
+    StartUp,
+    Menu,
+    Play,
+    End,
+    Exit
+}
 public static class Consts
 {
     public static readonly string XMLPath = "Config";//XML配置文件存放位置（Resources/Config/*.xml)
@@ -13,7 +21,8 @@ public static class Consts
     public const string C_StartLevel = "命令-开始关卡";
     public const string C_EndLevel = "命令-结束关卡";
     //V
-    public const string V_Start = "视图-开始";
+    public const string V_StartLogo = "视图-开始Logo";
+    public const string V_ShowCompanyLogo = "视图-其他公司Logo";
     //M
     public const string M_StageModel = "模型-阶段";
 }

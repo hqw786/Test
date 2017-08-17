@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -83,6 +85,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\APP\Scripts\Application\01M\StageModel.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\LauchView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\ShowCompanyLogoView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\ShowCompanyLogoCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\StartupCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Args\SceneArgs.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\DataInfo\StageInfo.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Game.cs" />
     <Compile Include="Assets\APP\Scripts\Base\Consts.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\BaseApplication.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\BaseModel.cs" />
@@ -92,7 +102,7 @@
     <Compile Include="Assets\APP\Scripts\Framework\ICommand.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\MVC.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Singleton.cs" />
-    <Compile Include="Assets\APP\Scripts\Misc\Lauch.cs" />
+    <Compile Include="Assets\APP\Scripts\Misc\Sound.cs" />
     <Compile Include="Assets\APP\Scripts\Misc\UIImageEffect.cs" />
     <Compile Include="Assets\APP\Scripts\Misc\UIObjectEffect.cs" />
     <Compile Include="Assets\APP\Scripts\Misc\UITextEffect.cs" />

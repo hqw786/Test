@@ -6,11 +6,14 @@ public abstract class BaseView : MonoBehaviour //需要挂到游戏物体上
 {
 
     //ID标识
-    public abstract int ID { get; set; }
+    //public abstract int ID { get; set; }
+    protected int ID { get; set; }
     //名称
-    public abstract string Name { get; set; }
+    //public abstract string Name { get; set; }
+    public abstract string Name { get; }
     //描述
-    public abstract string Des { get; set; }
+    //public abstract string Des { get; set; }
+    protected string Des { get; set; }
 
     //关心事件列表
     public List<string> AttentionEvents = new List<string>();
