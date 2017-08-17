@@ -16,6 +16,7 @@ public static class Consts
     public static readonly string XMLPath = "Config";//XML配置文件存放位置（Resources/Config/*.xml)
     //C
     public const string C_StartUp = "命令-启动";
+    public const string C_ShowCompanyLogo = "命令-显示公司Logo";
     public const string C_EnterScene = "命令-进入场景";
     public const string C_ExitScene = "命令-退出场景";
     public const string C_StartLevel = "命令-开始关卡";

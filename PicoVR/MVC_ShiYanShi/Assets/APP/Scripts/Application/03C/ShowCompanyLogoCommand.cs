@@ -11,5 +11,7 @@ public class ShowCompanyLogoCommand : Controller, ICommand
     {
         //注册视图
         RegisterView(GameObject.Find("/Canvas/LogoPanel").GetComponent<ShowCompanyLogoView>());
+        ShowCompanyLogoView sclv = GetView<ShowCompanyLogoView>();
+        sclv.RegisterEvents();
     }
 }

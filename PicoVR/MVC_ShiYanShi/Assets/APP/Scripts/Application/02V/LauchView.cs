@@ -33,7 +33,8 @@ public class LauchView : BaseView {
         //当前帧和总帧数相参数5帧时，进入下一个场景
 		if(vplayer.frame >= (long)vplayer.frameCount - 5)
         {
-            SceneManager.LoadScene(1);
+            int i = Game.Instance.NextScene();
+            SceneManager.LoadScene(++i);
         }
         #region VideoPlayer关于帧的属性
         //else

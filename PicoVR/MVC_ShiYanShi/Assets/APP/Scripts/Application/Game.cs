@@ -36,4 +36,8 @@ public class Game : BaseApplication<Game> //挂到一个不销毁的物体上
         e.sceneIndex = level;
         SendEvent(Consts.C_EnterScene, e);
     }
+    public int NextScene()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
 }
