@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class ShowCompanyLogoCommand : Controller, ICommand
+public class ShowCompanyLogoCommand : Control, ICommand
 {
 
     public void Execute(object data)
     {
         //注册视图
         RegisterView(GameObject.Find("/Canvas/LogoPanel").GetComponent<ShowCompanyLogoView>());
-        ShowCompanyLogoView sclv = GetView<ShowCompanyLogoView>();
-        sclv.RegisterEvents();
+        GetView<ShowCompanyLogoView>().RegisterEvents();
     }
 }

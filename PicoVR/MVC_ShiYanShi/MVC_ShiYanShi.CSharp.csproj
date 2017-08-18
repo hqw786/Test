@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,11 +77,32 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Plugins\DOTween\DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Plugins\DOTween\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Plugins\DOTween\DOTween46.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\APP\Scripts\Application\01M\StageModel.cs" />
     <Compile Include="Assets\APP\Scripts\Application\02V\LauchView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\SelectMenuView.cs" />
     <Compile Include="Assets\APP\Scripts\Application\02V\ShowCompanyLogoView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\EnterSceneCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\SelectMenuCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\ShowCompanyLogoCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\StartupCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\Args\SceneArgs.cs" />
@@ -90,7 +113,7 @@
     <Compile Include="Assets\APP\Scripts\Framework\BaseModel.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\BaseView.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\CommandNotifierArgs.cs" />
-    <Compile Include="Assets\APP\Scripts\Framework\Controller.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\Control.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\ICommand.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\MVC.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Singleton.cs" />
@@ -98,6 +121,87 @@
     <Compile Include="Assets\APP\Scripts\Misc\UIImageEffect.cs" />
     <Compile Include="Assets\APP\Scripts\Misc\UIObjectEffect.cs" />
     <Compile Include="Assets\APP\Scripts\Misc\UITextEffect.cs" />
+    <Compile Include="Assets\Pvr_Audio3D\API\Pvr_Audio3DAPI.cs" />
+    <Compile Include="Assets\Pvr_Audio3D\Scripts\Pvr_Audio3D.cs" />
+    <Compile Include="Assets\Pvr_Audio3D\Scripts\Pvr_AudioUnlock.cs" />
+    <Compile Include="Assets\Pvr_Controller\API\Pvr_ControllerAPI.cs" />
+    <Compile Include="Assets\Pvr_Controller\Scenes\Scripts\DemoManager.cs" />
+    <Compile Include="Assets\Pvr_Controller\Scripts\Pvr_Controller.cs" />
+    <Compile Include="Assets\Pvr_Controller\Scripts\Pvr_ControllerLink.cs" />
+    <Compile Include="Assets\Pvr_Controller\Scripts\Pvr_ControllerManager.cs" />
+    <Compile Include="Assets\Pvr_Controller\Scripts\Pvr_ControllerVisual.cs" />
+    <Compile Include="Assets\Pvr_ExtraSensor\Scripts\Pvr_ExtraSensor.cs" />
+    <Compile Include="Assets\Pvr_Haptics\API\Pvr_HapticsAPI.cs" />
+    <Compile Include="Assets\Pvr_Haptics\Scripts\Pvr_Haptics.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\DemoController.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\IJsonWrapper.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\JsonData.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\JsonException.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\JsonMapper.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\JsonReader.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\JsonWriter.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\Lexer.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LitJson\ParserToken.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Scripts\LoadingRatation.cs" />
+    <Compile Include="Assets\Pvr_Payment\Demo\Utils\InputManager.cs" />
+    <Compile Include="Assets\Pvr_Payment\Scripts\Callback.cs" />
+    <Compile Include="Assets\Pvr_Payment\Scripts\CommonDic.cs" />
+    <Compile Include="Assets\Pvr_Payment\Scripts\PicoPaymentSDK.cs" />
+    <Compile Include="Assets\Pvr_TouchPad\API\Pvr_TouchPadAPI.cs" />
+    <Compile Include="Assets\Pvr_TouchPad\Scripts\Pvr_TouchPad.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\API\Pvr_UnitySDKAPI.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Pvr_UnitySDKManager.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\QuitGame.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Render\Pvr_UnitySDKEye.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Render\Pvr_UnitySDKEyeManager.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Render\Pvr_UnitySDKPostRender.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Render\Pvr_UnitySDKPreRender.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Render\Pvr_UnitySDKRender.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Scenes\Examples\Sphere\Scripts\MoveCylinder.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Scenes\Examples\Sphere\Scripts\MoveSphere.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Scenes\Examples\Sphere\Scripts\Resetbutton.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Sensor\Pvr_UnitySDKHeadTrack.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Sensor\Pvr_UnitySDKPose.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\Sensor\Pvr_UnitySDKSensor.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Config\Pvr_UnitySDKConfigProfile.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Config\Pvr_UnitySDKFPSs.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Event\Pvr_GazeFuse.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Event\Pvr_GazeInputModule.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Event\Pvr_GazeInputModuleCrosshair.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Event\Pvr_UnitySDKPluginEvent.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\System\Event\Pvr_UnitySDKSightInputModule.cs" />
+    <Compile Include="Assets\Pvr_UnitySDK\UnityEditor\Pvr_UnitySDKEditor.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scenes\iOS Examples\BLEList.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scenes\iOS Examples\BLEListener.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scenes\iOS Examples\HeadWearButton.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scenes\iOS Examples\HearWearLIst.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Config\FPS_S.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Config\PicoVRConfigProfile.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Device\PicoVRAndroidDevice.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Device\PicoVRBaseDevice.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Device\PicoVRIOSDevice.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Device\PicoVRUnityDevice.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Event\SightInputModule.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Eye\PicoVREye.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Eye\PicoVREyeManager.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\PicoVRManager.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\StereoRender\PicoVRPostRender.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\StereoRender\PicoVRPreRender.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Tracking\PicoVRHeadTrack.cs" />
+    <Compile Include="Assets\Pvr_UnitySDKLegacy\Scripts\Tracking\PicoVRPose.cs" />
+    <Compile Include="Assets\Pvr_VolumePowerBrightness\API\Pvr_VolumePowerBrightnessAPI.cs" />
+    <Compile Include="Assets\Pvr_VolumePowerBrightness\Scripts\Pvr_VolumePowerBrightness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Pvr_Controller\Resources\FillColor.shader" />
+    <None Include="Assets\Pvr_Controller\Resources\Undistortion.shader" />
+    <None Include="Assets\Pvr_TouchPad\API\placeholder.txt" />
+    <None Include="Assets\Pvr_TouchPad\Scenes\placeholder.txt" />
+    <None Include="Assets\Pvr_UnitySDK\Resources\Fade.shader" />
+    <None Include="Assets\Pvr_UnitySDK\Resources\FillColor.shader" />
+    <None Include="Assets\Pvr_UnitySDK\Resources\Undistortion.shader" />
+    <None Include="Assets\Pvr_UnitySDK\Scenes\Examples\Sphere\Resources\Undistortion.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

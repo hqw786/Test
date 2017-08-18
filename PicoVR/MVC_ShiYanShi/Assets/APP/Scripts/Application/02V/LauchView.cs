@@ -25,13 +25,11 @@ public class LauchView : BaseView {
         vplayer = GetComponent<VideoPlayer>();
     }
 	void Start () {
-        RegisterEvents();
-        SendEvent(Consts.V_StartLogo);
 	}
 	// Update is called once per frame
 	void Update () {
         //当前帧和总帧数相参数5帧时，进入下一个场景
-		if(vplayer.frame >= (long)vplayer.frameCount - 5)
+		if(vplayer.frame >= (long)vplayer.clip.frameCount - 5)
         {
             int i = Game.Instance.NextScene();
             SceneManager.LoadScene(++i);
@@ -62,5 +60,6 @@ public class LauchView : BaseView {
     public override void RegisterEvents()
     {
         AttentionEvents.Add(Consts.V_StartLogo);
+        SendEvent(Consts.V_StartLogo);
     }
 }

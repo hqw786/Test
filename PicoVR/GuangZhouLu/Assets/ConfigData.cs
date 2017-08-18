@@ -37,6 +37,9 @@ public class ConfigData : MonoBehaviour {
     void Awake()
     {
         Instance = this;
+        //TODO:读取XML文件并保存;
+        //读取XML文件成流，格式化成XMLDocdment再解析
+        
     }
 	void Start () {
         

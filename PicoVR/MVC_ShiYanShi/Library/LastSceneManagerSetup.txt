@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/APP/Scenes/Lauch.unity
+- path: Assets/APP/Scenes/Stage.unity
   isLoaded: 1
   isActive: 1

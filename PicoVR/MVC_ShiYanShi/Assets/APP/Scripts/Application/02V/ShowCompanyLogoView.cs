@@ -27,8 +27,9 @@ public class ShowCompanyLogoView : BaseView
     }
     void NextScene()
     {
-        int i = Game.Instance.NextScene();
-        Game.Instance.LoadScene(++i);
+        //int i = Game.Instance.NextScene();
+        //Game.Instance.LoadScene(++i);
+        Game.Instance.MainStatusSwitch(MainGameStatus.Menu);
     }
     public override void HandleEvent(string eventName, object data)
     {
@@ -40,6 +41,7 @@ public class ShowCompanyLogoView : BaseView
     public override void RegisterEvents()
     {
         AttentionEvents.Add(Name);
+        SendEvent(Consts.V_ShowCompanyLogo);
     }
 
     public override string Name

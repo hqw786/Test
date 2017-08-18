@@ -21,9 +21,11 @@ public static class Consts
     public const string C_ExitScene = "命令-退出场景";
     public const string C_StartLevel = "命令-开始关卡";
     public const string C_EndLevel = "命令-结束关卡";
+    public const string C_SelectMenu = "命令_选择菜单";
     //V
     public const string V_StartLogo = "视图-开始Logo";
     public const string V_ShowCompanyLogo = "视图-其他公司Logo";
+    public const string V_SelectMenu = "视图_选择菜单";
     //M
     public const string M_StageModel = "模型-阶段";
 }

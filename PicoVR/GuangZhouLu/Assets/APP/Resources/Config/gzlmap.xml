@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<guangzhoulu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<building>
+		<id>1</id>
+		<name>gzl_12 (1)</name>
+		<shape>1</shape>
+		<angle>0</angle>
+		<side_A>132.8</side_A>
+		<side_B>80</side_B>
+		<pic>广州路12号0 </pic>
+		<img>广州路12号0_效果图</img>
+	</building>
+	<building>
+		<id>2</id>
+		<name>gzl_12</name>
+		<shape>1</shape>
+		<angle>0</angle>
+		<side_A>132.8</side_A>
+		<side_B>80</side_B>
+		<pic>广州路12号1</pic>
+		<img>广州路12号0_效果图</img>
+	</building>
+</guangzhoulu>

@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 
 //启动类，相当于初始化（只使用一次）
-public class StartUpCommand : Controller, ICommand
+public class StartUpCommand : Control, ICommand
 {
     public void Execute(object data)
     {
@@ -13,10 +13,13 @@ public class StartUpCommand : Controller, ICommand
         RegisterModel(new StageModel());
         //注册命令（所有的命令都要注册）
         RegisterController(Consts.C_ShowCompanyLogo,new ShowCompanyLogoCommand());
+        RegisterController(Consts.C_SelectMenu, new SelectMenuCommand());
+
         //注册视图（命令要用到的视图在此注册）
         RegisterView(GameObject.Find("/TitlesLogo/Logo").GetComponent<LauchView>());
         //初始化
         StageModel stageModel = GetModel<StageModel>();
         stageModel.Init();
+        GetView<LauchView>().RegisterEvents();
     }
 }

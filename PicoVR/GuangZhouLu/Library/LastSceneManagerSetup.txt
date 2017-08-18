@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/APP/Scenes/Lauch.unity
+- path: Assets/since/GuangZhouLu/GuangZhouLu.unity
   isLoaded: 1
   isActive: 1
