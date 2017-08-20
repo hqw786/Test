@@ -17,7 +17,6 @@ public class ShowCompanyLogoView : BaseView
     }
     void Start()
     {
-        SendEvent(Consts.C_ShowCompanyLogo);
     }
     void Hide()
     {
@@ -27,12 +26,11 @@ public class ShowCompanyLogoView : BaseView
     }
     void NextScene()
     {
-        //int i = Game.Instance.NextScene();
-        //Game.Instance.LoadScene(++i);
         Game.Instance.MainStatusSwitch(MainGameStatus.Menu);
     }
     public override void HandleEvent(string eventName, object data)
     {
+        print("ShowCompanyLogoView.HandleEvent:  " + eventName);
         uiie.SetAlphaOneWay(0f, 1f, 1.5f);
         uite.SetAlphaOneWay(0f, 1f, 1.5f);
         Invoke("Hide",6.5f);
@@ -40,8 +38,8 @@ public class ShowCompanyLogoView : BaseView
 
     public override void RegisterEvents()
     {
-        AttentionEvents.Add(Name);
-        SendEvent(Consts.V_ShowCompanyLogo);
+        print("ShowCompanyLogoView.RegisterEvents:  " + Consts.C_ShowCompanyLogo);
+        AttentionEvents.Add(Consts.C_ShowCompanyLogo);
     }
 
     public override string Name

@@ -27,6 +27,7 @@ public abstract class BaseModel
 
     protected void SendEvent(string eventName,object data = null)
     {
+        Debug.Log("BaseModel.SendEvent:  " + eventName);
         MVC.SendEvent(eventName, data);
     }
 }

@@ -15,7 +15,7 @@ public class LauchView : BaseView {
     {
         get
         {
-            return Consts.V_StartLogo;
+            return Consts.V_StartLogo;//这边返回的是视图字符串
         }
     }
 
@@ -29,10 +29,10 @@ public class LauchView : BaseView {
 	// Update is called once per frame
 	void Update () {
         //当前帧和总帧数相参数5帧时，进入下一个场景
-		if(vplayer.frame >= (long)vplayer.clip.frameCount - 5)
+		if(vplayer.frame >= (long)vplayer.clip.frameCount - 5 && !isFirst)
         {
-            int i = Game.Instance.NextScene();
-            SceneManager.LoadScene(++i);
+            isFirst = true;
+            Game.Instance.MainStatusSwitch(MainGameStatus.Logo);
         }
         #region VideoPlayer关于帧的属性
         //else
@@ -54,12 +54,21 @@ public class LauchView : BaseView {
 
     public override void HandleEvent(string eventName, object data)
     {
-        vplayer.Play();
-        Invoke("BGAlpha", 0.5f);//0.5秒后把背景变成透明（这样做可以黑背景过渡到视频播放，不会有天空盒闪过）
+        print("LauchView.HandleEvent:  " + eventName);
+        switch (eventName)
+        {
+            case Consts.C_ShowMyLogo:
+                {
+                    vplayer.Play();
+                    Invoke("BGAlpha", 0.5f);//0.5秒后把背景变成透明（这样做可以黑背景过渡到视频播放，不会有天空盒闪过）
+                }
+                break;
+        }
     }
     public override void RegisterEvents()
     {
-        AttentionEvents.Add(Consts.V_StartLogo);
-        SendEvent(Consts.V_StartLogo);
+        //这里关心命令，不是视图
+        print("LauchView.RegisterEvents:  " + Consts.C_ShowMyLogo);
+        AttentionEvents.Add(Consts.C_ShowMyLogo);
     }
 }

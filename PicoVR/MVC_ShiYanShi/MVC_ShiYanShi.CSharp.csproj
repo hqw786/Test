@@ -77,23 +77,17 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
       <HintPath>Assets\Plugins\DOTween\DOTween43.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>Assets\Plugins\DOTween\DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\DOTween\DOTween.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\Plugins\DOTween\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Plugins\DOTween\DOTween50.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -102,8 +96,8 @@
     <Compile Include="Assets\APP\Scripts\Application\02V\SelectMenuView.cs" />
     <Compile Include="Assets\APP\Scripts\Application\02V\ShowCompanyLogoView.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\EnterSceneCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\ExitSceneCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\SelectMenuCommand.cs" />
-    <Compile Include="Assets\APP\Scripts\Application\03C\ShowCompanyLogoCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\StartupCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\Args\SceneArgs.cs" />
     <Compile Include="Assets\APP\Scripts\Application\DataInfo\StageInfo.cs" />

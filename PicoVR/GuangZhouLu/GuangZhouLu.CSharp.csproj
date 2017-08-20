@@ -75,12 +75,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\APP\Scripts\Effect\ImageAlphaScaleEffect.cs" />
@@ -181,6 +175,7 @@
     <Compile Include="Assets\WeatherPanel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\APP\Resources\Config\gzlmap.xml" />
     <None Include="Assets\APP\Resources\Menu.txt" />
     <None Include="Assets\APP\Resources\Weather.txt" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml;
 
 public enum RoamView
 {
@@ -39,7 +40,7 @@ public class ConfigData : MonoBehaviour {
         Instance = this;
         //TODO:读取XML文件并保存;
         //读取XML文件成流，格式化成XMLDocdment再解析
-        
+        GetXmlData();
     }
 	void Start () {
         
@@ -49,4 +50,11 @@ public class ConfigData : MonoBehaviour {
 	void Update () {
 		
 	}
+    void GetXmlData()
+    {
+        TextAsset ta = Resources.Load<TextAsset>("Config/gzlmap");
+        string x = ta.ToString();
+        XmlDocument xd = new XmlDocument();
+        xd.LoadXml(x);
+    }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class StageModel : BaseModel
 {
@@ -16,7 +17,7 @@ public class StageModel : BaseModel
     public void Init()
     {
         //将TXT文本内容保存到stageList中
-
+        Debug.Log("StageModel.Init");
     }
 
     

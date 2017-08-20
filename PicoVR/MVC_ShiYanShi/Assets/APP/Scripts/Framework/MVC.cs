@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 //模型和视图都可以发送事件，模型的视图来接收，视图的控制器来接收（优先执行控制器再执行视图）
 public static class MVC  //中间者（用于存储和事件的发送）
@@ -18,6 +19,7 @@ public static class MVC  //中间者（用于存储和事件的发送）
     //注册V
     public static void RegisterView(BaseView view)
     {
+        Debug.Log("MVC.RegisterView:  " + view);
         if(dicViews.ContainsKey(view.Name))
         {
             dicViews.Remove(view.Name);
@@ -28,11 +30,13 @@ public static class MVC  //中间者（用于存储和事件的发送）
     //注册C
     public static void RegisterCommand(string eventName,ICommand c)
     {
+        Debug.Log("MVC.RegisterCommand:  " + eventName);
         dicCommandMap[eventName] = c;
     }
     //获得M
     public static BaseModel GetModel<T>() where T:BaseModel
     {
+        Debug.Log("MVC.GetModel:  ");
         foreach(BaseModel m in dicModels.Values)
         {
             if(m is T)
@@ -45,6 +49,7 @@ public static class MVC  //中间者（用于存储和事件的发送）
     //获得V
     public static BaseView GetView<T>() where T:BaseView
     {
+        Debug.Log("MVC.GetModel:  ");
         foreach(BaseView v in dicViews.Values)
         {
             if(v is T)
@@ -57,6 +62,7 @@ public static class MVC  //中间者（用于存储和事件的发送）
     //执行C
     public static void SendEvent(string eventName, object data = null)
     {
+        Debug.Log("MVC.SendEvent:  " + eventName);
         //先执行C
         if(dicCommandMap.ContainsKey(eventName))
         {

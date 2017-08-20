@@ -10,7 +10,6 @@ public class SelectMenuCommand : Control, ICommand
 
     public void Execute(object data)
     {
-        RegisterView(GameObject.Find("/shiyanshi/Menu").GetComponent<SelectMenuView>());
-
+        Debug.Log("SelectMenuCommand.Execute:  ");
     }
 }
