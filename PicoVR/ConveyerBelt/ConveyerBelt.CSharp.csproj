@@ -83,6 +83,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Bracket.cs" />
+    <Compile Include="Assets\BracketDown.cs" />
+    <Compile Include="Assets\Conveyer.cs" />
+    <Compile Include="Assets\Cylinder.cs" />
     <Compile Include="Assets\PingPong.cs" />
     <Compile Include="Assets\Spawn.cs" />
     <Compile Include="Assets\destroy.cs" />

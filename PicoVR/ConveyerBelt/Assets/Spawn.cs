@@ -16,7 +16,13 @@ public class Spawn : MonoBehaviour {
         {
             g = Instantiate(prefab) as GameObject;
             g.transform.parent = transform;
-            g.transform.localPosition = Vector3.zero + Vector3.right;
+            g.transform.localPosition = Vector3.zero;
+            g.transform.localScale = Vector3.one;
+        }
+        if(Input.GetMouseButtonDown(1))
+        {
+            g = Instantiate(prefab) as GameObject;
+            g.transform.position = new Vector3(0, 4.18f, 10.68f);
             g.transform.localScale = Vector3.one;
         }
 	}

@@ -5,14 +5,17 @@ using UnityEngine;
 public class destroy : MonoBehaviour {
     public void OnCollisionEnter(Collision collision)
     {
-        Destroy(GetComponent<Rigidbody>());
-        transform.parent = collision.collider.transform.parent;
-        transform.localScale = Vector3.one;
+        //Destroy(GetComponent<Rigidbody>());
+        if (collision.collider.name.Contains("Down"))
+        {
+            //transform.parent = collision.collider.transform.parent;
+            //transform.localScale = Vector3.one;
+        }
     }
 
 	// Use this for initialization
 	void Start () {
-        Invoke("d",3f);
+        Invoke("d",15f);
 	}
 	
 	// Update is called once per frame
