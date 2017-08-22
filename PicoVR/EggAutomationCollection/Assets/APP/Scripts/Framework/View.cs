@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class View : MonoBehaviour 
+public abstract class View : MonoBehaviour 
 {
-    public virtual string Name { get; }
+    public abstract string Name { get; }
     
     public List<string> attentionEvents = new List<string>();
     
-    public void RegisterEvents(string eventName)
+    public virtual void RegisterEvents()
     {
-        attentionEvents.Add(eventName);
+        
+    }
+    protected T GetModel<T>() where T : Model
+    {
+        return MVC.GetModel<T>() as T;
+    }
+    protected T GetView<T>() where T : View
+    {
+        return MVC.GetView<T>() as T;
+    }
+    public abstract void HandleEvent(string eventName, object data);
+    protected void SendEvent(string eventName, object data = null)
+    {
+        MVC.SendEvent(eventName, data);
     }
 }

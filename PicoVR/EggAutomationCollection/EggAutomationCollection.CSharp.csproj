@@ -83,14 +83,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\APP\Scripts\Application\01M\XmlModel.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\ShowCompanyLogoView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\ShowMyLogoView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\EnterSceneCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\ExitSceneCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\03C\StartupCommand.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Games.cs" />
     <Compile Include="Assets\APP\Scripts\Consts\Consts.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\ApplicationBase.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\ConfigData.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Control.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\MVC.cs" />
-    <Compile Include="Assets\APP\Scripts\Framework\MainManager.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Model.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Pool.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\Singleton.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Sound.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\SubPool.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\View.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />

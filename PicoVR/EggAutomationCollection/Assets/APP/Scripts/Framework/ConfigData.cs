@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConfigData : MonoBehaviour {
+public class ConfigData : ApplicationBase<ConfigData>
+{
 
 	// Use this for initialization
-	void Start () {
-		
+    void Awake()
+    {
+        base.Awake();
+    }
+	void Start () 
+    {
+
 	}
 	
 	// Update is called once per frame
