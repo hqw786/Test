@@ -64,7 +64,7 @@ public class Games : ApplicationBase<Games>
                 break;
             case MainGameStatus.level:
                 {
-
+                    LoadScene(5);
                 }
                 break;
             case MainGameStatus.end:
@@ -116,7 +116,7 @@ public class Games : ApplicationBase<Games>
                 break;
             case MainGameStatus.level:
                 {
-
+                    SendEvent(Consts.C_SpawnEgg);
                 }
                 break;
             case MainGameStatus.end:

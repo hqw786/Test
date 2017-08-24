@@ -22,7 +22,7 @@ public class ShowTitleView : View {
     }
     void NextScene()
     {
-        Games.Instance.MainStatusSwitch(MainGameStatus.menu);
+        Games.Instance.MainStatusSwitch(MainGameStatus.level);
     }
     public override void HandleEvent(string eventName, object data)
     {
