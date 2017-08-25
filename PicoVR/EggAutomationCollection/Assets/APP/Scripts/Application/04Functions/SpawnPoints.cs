@@ -34,19 +34,16 @@ public class SpawnPoints : View //按预置点生成鸡蛋（还有一种，脚�
     /// </summary>
     IEnumerator SpawnEgg()
     {
-        while(true)
+        while (true)
         {
-            foreach(Transform temp in transform)
+            foreach (Transform t in transform)
             {
-                foreach (Transform t in temp)
+                int r = Random.Range(0, 2);
+                if (r == 1)
                 {
-                    int r = Random.Range(0, 2);
-                    if (r == 1)
-                    {
-                        InstantiationEgg(t);
-                    }
-                    yield return new WaitForSeconds(spawnTime);
+                    InstantiationEgg(t);
                 }
+                yield return new WaitForSeconds(spawnTime);
             }
             yield return new WaitForSeconds(spawnIntervalTime);
         }
@@ -101,4 +98,10 @@ public class SpawnPoints : View //按预置点生成鸡蛋（还有一种，脚�
     {
         attentionEvents.Add(Consts.C_SpawnEgg);
     }
+
+    public void Spawn()
+    {
+        StartCoroutine(SpawnEgg());
+    }
+
 }

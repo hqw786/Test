@@ -31,7 +31,7 @@ public class EnterSceneCommand : Control
                 break;
             case 5:
                 {
-                    RegisterView(GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>());
+                    //RegisterView(GameObject.Find("SpawnPoints").GetComponent<SpawnPoints>());
                 }
                 break;
             case 6:

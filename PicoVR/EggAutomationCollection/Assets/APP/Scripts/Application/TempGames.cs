@@ -23,10 +23,10 @@ public class TempGames : ApplicationBase<TempGames> {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!isFirst)
-        {
-            isFirst = true;
-            SendEvent(Consts.C_SpawnEgg);
-        }
+        //if(!isFirst)
+        //{
+        //    isFirst = true;
+        //    SendEvent(Consts.C_SpawnEgg);
+        //}
 	}
 }
