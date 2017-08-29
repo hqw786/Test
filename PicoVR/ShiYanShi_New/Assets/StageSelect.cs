@@ -8,6 +8,7 @@ public class StageSelect : MonoBehaviour
     List<Button> btnList = new List<Button>();
     List<Image> imgList = new List<Image>();
 
+    Transform stagePanel;
     public bool isRayUI;
 
     // Use this for initialization
@@ -98,11 +99,12 @@ public class StageSelect : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        stagePanel = transform.Find("StagePanel");
         //DONE:按照数据有的阶段，生成按钮，并初始化（）
         CreateButton();
 
         //把所有按钮和进度图片保存起来
-        foreach (Transform t in transform)
+        foreach (Transform t in stagePanel)
         {
             btnList.Add(t.GetComponent<Button>());
             if (!t.name.Contains("BtnWeiSQ") && !t.name.Contains("BtnEgg"))
@@ -118,7 +120,7 @@ public class StageSelect : MonoBehaviour
         {
             GameObject g = Resources.Load<GameObject>("Prefabs/BtnStage");
             g = Instantiate(g);
-            g.transform.parent = transform;
+            g.transform.parent = stagePanel;
             g.transform.localScale = Vector3.one;
             Vector3 temp = g.transform.localPosition;
             temp.z = 0f;

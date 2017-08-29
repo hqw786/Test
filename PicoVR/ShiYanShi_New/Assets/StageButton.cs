@@ -9,6 +9,7 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     StageInfo stage;
     StageState status;
     StagePanel panel;
+    StageSelect stageSelect;
     Text text;
     Image progressImage;
     bool isProgress;
@@ -34,6 +35,7 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         text = transform.Find("Text").GetComponent<Text>();
         progressImage = transform.Find("Image").GetComponent<Image>();
         panel = transform.parent.GetComponent<StagePanel>();
+        stageSelect = panel.transform.parent.GetComponent<StageSelect>();
         //设置阶段状态
         status = ss;
         //取得阶段数据
@@ -166,7 +168,7 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     {
         if(!stage.isLock)
         {
-            panel.ButtonResetDefault();
+            stageSelect.ButtonResetDefault();
             SYSManager.Instance.AppStatusSwitch(AppState.FeedingAndEgg);
             text.color = Color.red;
             SYSManager.Instance.StageStatusSwitch(status);
@@ -178,7 +180,7 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     {
         if(!stage.isLock)
         {
-            panel.ButtonResetDefault();
+            stageSelect.ButtonResetDefault();
             SYSManager.Instance.AppStatusSwitch(AppState.Show);
             text.color = Color.red;
             SYSManager.Instance.StageStatusSwitch(status);

@@ -37,10 +37,11 @@ public class RayUIStage : MonoBehaviour {
             foreach(RaycastResult rr in result)
             {
                 GameObject g = rr.gameObject;
-                SetBool(g);                
+                //SetBool(g);                
                 print("射线检测到UI:"+g.name);
                 isUITarget = true;
                 targetUI = g;
+                print(g);
             }
         }
         else 
@@ -49,7 +50,8 @@ public class RayUIStage : MonoBehaviour {
         {
             if(Controller.UPvr_GetKeyDown(Pvr_KeyCode.TOUCHPAD) || Input.GetMouseButtonDown(0))
             {
-                SetButton(targetUI);
+                //SetButton(targetUI);
+                SetStagePress(targetUI);
             }
         }
         else
@@ -84,7 +86,7 @@ public class RayUIStage : MonoBehaviour {
             {
                 if (Controller.UPvr_GetKeyDown(Pvr_KeyCode.TOUCHPAD) || Input.GetMouseButtonDown(0))
                 {
-                    SetEggPress(targetStage);
+                    SetStagePress(targetStage);
                 }
             }
             //if (isFodderTarget)
@@ -143,61 +145,65 @@ public class RayUIStage : MonoBehaviour {
         graphicRaycaster.Raycast(eventData, list);
         return list;//list.Count > 0;
     }
-    void SetBool(GameObject g)
-    {
-        MenuController mc = g.transform.parent.parent.GetComponent<MenuController>();
-        switch(g.name)
-        {
-            case "btnSelect":
-                mc.isRayUISelect = true;
-                break;
-            case "Return":
-                mc.isRayUIReturn = true;
-                break;
-            case "BtnEggLaying":
-                g.GetComponent<UIAlpha>().isRayUIEggLaying = true;
-                break;
-            case "Exit":
-                mc.isRayUIExit = true;
-                break;
-        }
-    }
-    void SetButton(GameObject g)
-    {
-        switch (g.name)
-        {
-            case "btnSelect":
-                SYSManager.Instance.ClickBook();
-                break;
-            case "Return":
-                SYSManager.Instance.OnBtnReturnClick();
-                break;
-            case "BtnEggLaying":
-                SYSManager.Instance.OnBtnEggLayingClick();
-                break;
-            case "Exit":
-                SYSManager.Instance.OnBtnExitClick();
-                break;
-        }
-    }
+    //void SetBool(GameObject g)
+    //{
+    //    MenuController mc = g.transform.parent.parent.GetComponent<MenuController>();
+    //    switch(g.name)
+    //    {
+    //        case "btnSelect":
+    //            mc.isRayUISelect = true;
+    //            break;
+    //        case "Return":
+    //            mc.isRayUIReturn = true;
+    //            break;
+    //        case "BtnEggLaying":
+    //            g.GetComponent<UIAlpha>().isRayUIEggLaying = true;
+    //            break;
+    //        case "Exit":
+    //            mc.isRayUIExit = true;
+    //            break;
+    //    }
+    //}
+    //void SetButton(GameObject g)
+    //{
+    //    switch (g.name)
+    //    {
+    //        case "btnSelect":
+    //            SYSManager.Instance.ClickBook();
+    //            break;
+    //        case "Return":
+    //            SYSManager.Instance.OnBtnReturnClick();
+    //            break;
+    //        case "BtnEggLaying":
+    //            SYSManager.Instance.OnBtnEggLayingClick();
+    //            break;
+    //        case "Exit":
+    //            SYSManager.Instance.OnBtnExitClick();
+    //            break;
+    //    }
+    //}
     public void SetStagePress(GameObject g)
     {
         StageButton sb = g.GetComponent<StageButton>();
-        if(g.name.Contains("jidan_02"))
-        {
-            PressEgg(g);
-            SYSManager.Instance.OnBtnRedClick();
-        }
-        else if(g.name.Contains("jidan_03"))
-        {
-            PressEgg(g);
-            SYSManager.Instance.OnBtnGreenClick();
-        }
-        else if(g.name.Contains("jidan_01"))
-        {
-            PressEgg(g);
-            SYSManager.Instance.OnBtnPinkClick();
-        }
+        PointerEventData ped = new PointerEventData(EventSystem.current);
+        ped.pointerEnter = g;
+        sb.OnPointerClick(ped);
+
+        //if(g.name.Contains("jidan_02"))
+        //{
+        //    PressEgg(g);
+        //    SYSManager.Instance.OnBtnRedClick();
+        //}
+        //else if(g.name.Contains("jidan_03"))
+        //{
+        //    PressEgg(g);
+        //    SYSManager.Instance.OnBtnGreenClick();
+        //}
+        //else if(g.name.Contains("jidan_01"))
+        //{
+        //    PressEgg(g);
+        //    SYSManager.Instance.OnBtnPinkClick();
+        //}
     }
     void PressEgg(GameObject g)
     {
@@ -215,24 +221,24 @@ public class RayUIStage : MonoBehaviour {
         }
     }
 
-    public void SetFodderPress(GameObject g)
-    {
-        if (g.name.Contains("fodder1"))
-        {
-            PressFodder(g);
-            SYSManager.Instance.OnBtnFodder1Click();
-        }
-        else if (g.name.Contains("fodder2"))
-        {
-            PressFodder(g);
-            SYSManager.Instance.OnBtnFodder2Click();
-        }
-        else if (g.name.Contains("fodder3"))
-        {
-            PressFodder(g);
-            SYSManager.Instance.OnBtnFodder3Click();
-        }
-    }
+    //public void SetFodderPress(GameObject g)
+    //{
+    //    if (g.name.Contains("fodder1"))
+    //    {
+    //        PressFodder(g);
+    //        SYSManager.Instance.OnBtnFodder1Click();
+    //    }
+    //    else if (g.name.Contains("fodder2"))
+    //    {
+    //        PressFodder(g);
+    //        SYSManager.Instance.OnBtnFodder2Click();
+    //    }
+    //    else if (g.name.Contains("fodder3"))
+    //    {
+    //        PressFodder(g);
+    //        SYSManager.Instance.OnBtnFodder3Click();
+    //    }
+    //}
     void PressFodder(GameObject g)
     {
         foreach (Transform t in g.transform.parent)
