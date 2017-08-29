@@ -1,0 +1,516 @@
+[33mcommit 35eb5f0bcb9f198ed904049a9d3d16af323d436e[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Aug 29 08:57:53 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    大于100M的文件删除
+
+[33mcommit 6648bab1bee65fa6239e1e7c00242252bdd338e5[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Aug 29 08:52:37 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    删除一些不用的文件
+
+[33mcommit f090c01e0c5243364926dbb3269022b03401471a[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Aug 28 17:42:31 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    简单的实现了打包（AssetBundle),可以将模型打包，并从包中加载到场景中。OK
+
+[33mcommit c87fd641f792f0957f974c944ef612020d1c4e1e[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Aug 25 13:49:48 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    到哪个设备范围，哪个设备就动作
+
+[33mcommit 04d4f879abad6c8674a948f24354446bff925593[m
+Author: hqw786 <64227010@qq.com>
+Date:   Thu Aug 24 20:10:11 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    开了一下是否能打开，可以打开。没做修改
+
+[33mcommit a7a06dbb109fa314998be70cbe62874396f90986[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Aug 24 17:58:45 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    添加新工程部分模型，传送带，输送带。
+
+[33mcommit 6183388bd781e3bb546bc0f3d7242bbd428d87e2[m
+Author: hqw786 <64227010@qq.com>
+Date:   Wed Aug 23 22:12:04 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    21120120102
+
+[33mcommit cdef4e8ec95320d0aeef9e005b1d8f3d1bf69cf7[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Aug 23 19:31:06 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    工工工工工工工工工工工
+
+[33mcommit 89a744c079200a47acaf9d80872b690e2a91a742[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Aug 23 14:57:06 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    MVC模板完成
+
+[33mcommit 0fb692e52cf50bfa4a4788dacacb7089eb1b326d[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Aug 22 18:01:31 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    做个MVC模板出来
+
+[33mcommit 6ef1dbabcb71816aae66aa7991c98bbe540d0af7[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Aug 21 17:56:30 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    准备养鸡采蛋自动化，新增加一个工程。传输带测试，
+
+[33mcommit b8fc0c6535441b6397183ff0be160b02a7e71a40[m
+Author: hqw786 <64227010@qq.com>
+Date:   Sun Aug 20 20:19:18 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    实验室的框架可以使用。XML文件读取也OK
+
+[33mcommit f3c8b727574ce6d6b21edd93764eba95f508b7e8[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Aug 18 17:56:33 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    练习MVC，测试传送带
+
+[33mcommit 54874ae35d657396efd10bce64651931f1d5d1bb[m
+Author: hqw786 <64227010@qq.com>
+Date:   Thu Aug 17 23:31:12 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    还是不熟练
+
+[33mcommit 3f10e7126f99082106e5b1e9697f7f1bfd20e942[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Aug 17 18:07:50 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    继续练习MVC
+
+[33mcommit 0f774e6844f708c9d7bbd9423c8e524e67e11a6f[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Aug 16 18:02:23 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    练习使用MVC
+
+[33mcommit 058b6e7817857e8907948bd21bc922acb16f56d8[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Aug 15 18:08:21 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    更换随缘大厦模型，设计院LOGO修改白底黑字
+
+[33mcommit f4bb56c6568b4c5028797de0089b1a5895d2e43d[m
+Author: hqw786 <64227010@qq.com>
+Date:   Mon Aug 14 19:45:58 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    MVC_ShiYanShi
+
+[33mcommit a4d3585a242c6f4064beebfa8d733959bd460dbc[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Aug 14 18:09:52 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    小修改一下，航拍视角的循环漫游
+
+[33mcommit f6becf70cc63594eff4327e5c660c7d8885c30b6[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Aug 11 17:19:35 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    1.导入一些树木汽车的新模型。
+    2.自动漫游恢复过来。恢复成按中断位置的上一个点的速度和方向从当前位置继续移到下一个点。
+    3.显示图片，上下图片按左中边界对齐
+
+[33mcommit 08ed1586bd8b30a3f6547818ca8dd753cfda8dec[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Aug 10 17:55:11 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    新需求更改完成（显示图片那边增加效果图图片，自动漫游的方式也改了一下。
+
+[33mcommit bf4cb649887cca86d76779cc78ea2f65398a8b6d[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Aug 9 18:08:37 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    改需求了，自动漫游改需求，连续点击会移动下一个再下一个（依次类推）的漫游点
+
+[33mcommit fd28e08959d30ae1839435113becf310d496330d[m
+Author: hqw786 <64227010@qq.com>
+Date:   Tue Aug 8 23:39:06 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    增加一个MVC的DEMO
+
+[33mcommit d41c16d78b2a3ff607867e475d85d92501a5f47c[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Aug 8 17:34:27 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    断点重漫游修改完成。人物方向也修改完成。
+
+[33mcommit 37bdfc7ded957cad26ca8ee95d01d9c7a19fc247[m
+Author: hqw786 <64227010@qq.com>
+Date:   Tue Aug 8 00:42:36 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    主角方向指示完成，断点漫游功能明天实现
+
+[33mcommit b7e088d5d181b9c22a5be978183c4d2444e22978[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Aug 7 18:31:51 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    又导入新模型了。要上传好长时间
+
+[33mcommit 988132c99e326fd97ef24083f0088f501c01b254[m
+Author: hqw786 <64227010@qq.com>
+Date:   Sun Aug 6 23:06:33 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    没什么修改的
+
+[33mcommit a2a5ba3ff0b3c0adbc215a515f0f135712b75ca6[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Aug 4 17:42:39 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    有新模型导入。整合完成。
+
+[33mcommit e8dbb059222df41c387963db59c362184e36f359[m
+Author: hqw786 <64227010@qq.com>
+Date:   Fri Aug 4 00:57:40 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    工具类 图片和文字的 透明，颜色，缩放的渐变过渡好了，以后可以直接调用
+
+[33mcommit b622c969574727d746d5c533bd174c55a7acdafa[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Aug 3 18:16:47 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    广州路的自动漫游好了，接下来做照片显示
+
+[33mcommit 39581339596c8663d7e7de8860ed4608d24cef95[m
+Author: hqw786 <64227010@qq.com>
+Date:   Wed Aug 2 23:57:56 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    12312
+
+[33mcommit f21bfd4add91057d098d0750fe4e42567e0e9c9b[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Aug 2 17:49:39 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    添加广州路
+    实验室切换阶段完成，还差阶段进度没搞
+
+[33mcommit cb1a3ca1590059bb6df94a3f97bf2930352773e7[m
+Author: hqw786 <64227010@qq.com>
+Date:   Wed Aug 2 01:47:43 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    实验室的好像是协程的问题。导致快速切换阶段时，文字显示不正常，把协和放到SYSManager中。
+
+[33mcommit 912069cbf6e285efee5e2804ee927255ab20efe3[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Aug 1 18:16:43 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    文字显示 那一块的协和有问题 切换太快会出现闪的现象。
+
+[33mcommit 4164b1d2ad42517189651918b9bc8e09538f77e6[m
+Author: hqw786 <64227010@qq.com>
+Date:   Mon Jul 31 23:48:26 2017 +0800
+
+    喂食期和蛋种类的切换的模型隐藏问题没解决。
+
+[33mcommit eb0e46bfe2ab280cdfd4ddfc4b8eb760d9617919[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Jul 31 18:17:20 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    实验室新需求（分阶段浏览）还差进度显示。
+
+[33mcommit b6c44c2305054c72ed1704bc3e90e5dcca363693[m
+Author: hqw786 <64227010@qq.com>
+Date:   Sun Jul 30 23:22:59 2017 +0800
+
+    Signed-off-by: hqw786 <64227010@qq.com>
+    做了一点。基本可以跑了。孵化期的孵化箱上升和下降还有隐藏还原的问题。
+
+[33mcommit 126a9d6cbdbb459ffb8ecfa19e514f3d8c313156[m
+Author: heqiwu <64227010@qq.com>
+Date:   Sat Jul 29 15:14:30 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    r换电脑了
+
+[33mcommit 217d93bd5c054c65a662cc4586c56a38d88d7d18[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Jul 28 18:01:42 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    整体思路通了。慢慢做吧
+
+[33mcommit 32fd42e1911ebbf18c2f780494b7de730813ca9f[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 27 18:18:28 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    数据结构已做好。数据提取保存到对象中。
+
+[33mcommit bce65701d930bdfc019e13c51328d6d9f9414b32[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 27 01:46:35 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    啥也没做
+
+[33mcommit fe3bff4fe5f796f8ad9cbf17f100bdd778e77fe8[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 26 18:14:42 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    开始增加新功能：分阶段观看
+
+[33mcommit ee1a2ee481ef9c28c4647e7b4333975d43924b28[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 26 17:39:59 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    删除了养鸡厂
+    增加了一个实验室新工程
+    增加分支不熟练，怕搞坏了。
+
+[33mcommit 69b609742252453ca469889862993ac6cf221b20[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 26 17:21:45 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    建宁路增加昼夜切换的淡入淡出效果。
+    试验室准备增加分阶段浏览功能。准备增加一个新分支。
+
+[33mcommit 7cbb741da8ab915abbce7a5c7ebe8230f0fa6aba[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Jul 25 16:28:32 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    实验室第一次提交
+
+[33mcommit 94030bcf6f4e76027e5afe31b04d8daa547c419b[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Jul 25 16:19:30 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    修复一个BUG（多次切换后，第一人称的自动漫游会变成航拍的高度，会穿到地下去），昼夜切换放到菜单栏。
+
+[33mcommit 80185f74ba9c85421a0d91e7359d5f1920cc6972[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Jul 24 17:06:59 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    Demo出了。
+
+[33mcommit 0347525d2f54d7f2ff13983bc35aea30309ad9b6[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Jul 21 18:19:23 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    新模型上传后。第一次提交。
+
+[33mcommit f676a25fc56641baae4f60ed14169a51394d2380[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Jul 21 16:27:35 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    建宁路 导入新模型前的备份。
+
+[33mcommit df43fecd66feee50abd4b554728e6857d4d84e7f[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 20 21:33:02 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    
+    我要自学网
+
+[33mcommit 2049dde9b9f514dc3230e60d2aac635a2ace5316[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 20 18:19:48 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    基本完成。接下来就是细节调整
+
+[33mcommit c71e7eb389d0620bdc71a896073156dae3046e78[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 20 00:13:09 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    做了部分简化，到公司把旋转改过来
+
+[33mcommit 7a99a96be04838a01d8dee92602a5d6edde8a6a7[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 19 22:46:18 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    菜单UI问题解决。自动漫游要到公司做简化
+
+[33mcommit 149d5d5de9c795bcd3b7353fd2122d66be95a051[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 19 18:23:44 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    建宁路DEMO.docx更新
+
+[33mcommit f958862a3628b95bf4ad5ab24900a6f8b7c085f2[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 19 18:06:50 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    功能基本完成，但是要减少一些功能
+
+[33mcommit ca0af88fb450a981848e4f1f6078f283694f85a8[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Jul 18 23:29:52 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    自动漫游的水平旋转好了，现在要控制摄像机的垂直旋转正常就OK了
+
+[33mcommit ced36357d00b7ef4a0e1bd6d1b8516421de69571[m
+Author: heqiwu <64227010@qq.com>
+Date:   Tue Jul 18 18:15:54 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    功能差不多了。
+
+[33mcommit 14d7a6970ca4c0ae685a2ac470ef9c9ae559b8c9[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Jul 17 23:25:01 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    自动漫游基本完成
+
+[33mcommit f015b6670af867894af1e7c9160c38c63ea4c65e[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Jul 17 18:07:00 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    自动漫游快要完成了。回去补充一下。
+
+[33mcommit b916e6b090af57a09d292d29d2f7552dff9b17f2[m
+Author: heqiwu <64227010@qq.com>
+Date:   Sun Jul 16 23:37:30 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    有了一点思路，明天完成自动漫游功能
+
+[33mcommit 4d19d3d0ecb7f7a389789466fb595e1f93a547b9[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Jul 14 18:14:02 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    改了一个地面BOXCOLLISION
+
+[33mcommit 91f52060ebaf95194a4b71bf7d8a5df053b0d3b0[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Jul 14 17:28:41 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    建宁路模型导入工程，第一次上传。
+
+[33mcommit fd584813fac27acf0190b5747718ecf78be89486[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 13 22:03:08 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    鼠标移动到地图标志上。弹出文本，并在按下按钮后变红色。
+
+[33mcommit 4a182c418b956deef5cb57d3fafaeec5bdb457cb[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 13 18:25:08 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    人物视角和航拍视角基本完成。少了个垂直角度控制。
+    地图传送点写了一点没有完成。
+
+[33mcommit a7d69f3db58f9cf54abbb0432219dabab32bb371[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 12 21:34:37 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    搞乱了。就以这个为准了。
+
+[33mcommit bb4e0912e89f342c54608c21823f21b76cad491e[m
+Author: heqiwu <64227010@qq.com>
+Date:   Wed Jul 12 15:52:42 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    删除了，重新克隆，再覆盖，不知道能不能上传成功
+
+[33mcommit 05efc247281acff90638cebb7ea176fed811f76a[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Jul 10 23:58:15 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    回来是做了一点点。不知道怎么的没心情做。真烦
+
+[33mcommit e5255ce7132a1d383b96d8820423751d5077b75a[m
+Author: heqiwu <64227010@qq.com>
+Date:   Mon Jul 10 18:50:11 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    增加第一人称角色控制。回家增加第三人称角色控制。
+
+[33mcommit 0df897b1adb7281f39e02fd7213822455bc93b4d[m
+Author: heqiwu <64227010@qq.com>
+Date:   Sun Jul 9 23:19:26 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    20170719在家什么都没做就提交一次
+
+[33mcommit 8d3735cdbc41a730e1529c5f64b6f6695371e75c[m
+Author: heqiwu <64227010@qq.com>
+Date:   Fri Jul 7 17:49:13 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    为地图作准备，先用养鸡场试试，第一次提交
+
+[33mcommit 213644c6b7b3c3cdc2f2db64354ef9a500f3c2d6[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 6 22:49:14 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    回家对射线检测UI加个小圆圈标志进行修改。只能在UI的中心位置显示小圆圈标志。
+
+[33mcommit 6d3a1f49943da3091cc7a77e989e0820ff8ac346[m
+Author: heqiwu <64227010@qq.com>
+Date:   Thu Jul 6 17:54:55 2017 +0800
+
+    Signed-off-by: heqiwu <64227010@qq.com>
+    2017-7-6第一次提交，推送
+
+[33mcommit ec81b3353f8616ab2ce44e39d4dbe1bb64130e8d[m
+Author: hqw786 <64227010@qq.com>
+Date:   Thu Jul 6 17:37:13 2017 +0800
+
+    Initial commit

@@ -1,0 +1,51 @@
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\T_Shirt.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\T_Shirt.pdb
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DemiLib.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween43.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween46.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween50.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTweenPro.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEditor.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.UI.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityScript.Lang.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\Vuforia.UnityExtensions.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\Boo.Lang.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DemiLib.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween43.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween46.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween50.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTweenPro.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEditor.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.UI.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\Vuforia.UnityExtensions.xml
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\obj\Debug\T_Shirt.csprojResolveAssemblyReference.cache
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\obj\Debug\T_Shirt.dll
+D:\Unity Projects\Practical_Project\T_Shirt\T_ShirtDll\ClassLibrary1\obj\Debug\T_Shirt.pdb
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\T_Shirt.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\T_Shirt.pdb
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DemiLib.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween43.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween46.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween50.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTweenPro.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEditor.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.UI.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityScript.Lang.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\Boo.Lang.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DemiLib.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween43.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween46.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTween50.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\DOTweenPro.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEditor.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\bin\Debug\UnityEngine.UI.xml
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\obj\Debug\T_Shirt.dll
+D:\SVN\Magic\T_Shirt\T_ShirtDll\ClassLibrary1\obj\Debug\T_Shirt.pdb
