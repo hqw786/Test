@@ -57,22 +57,6 @@ public class StagePanel : MonoBehaviour
         {
             i.fillAmount = 0f;
         }
-        //foreach(StageInfo si in ConfigData.Instance.Data)
-        //{
-        //    if(si.StartModel != null)
-        //    {
-        //        si.StartModel.SetActive(false);
-        //    }
-        //    if (si.MainModel != null)
-        //    {
-        //        si.MainModel.SetActive(false);
-        //    }
-        //    if (si.EndModel != null)
-        //    {
-        //        si.EndModel.SetActive(false);
-        //    }
-        //}
-        
 
         if (SYSManager.Instance.curAppStatus == AppState.Show)
         {

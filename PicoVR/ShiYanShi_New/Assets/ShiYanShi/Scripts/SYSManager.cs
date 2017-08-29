@@ -195,6 +195,12 @@ public class SYSManager : MonoBehaviour
                 TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Context[0][0]);
                 Debug.Log("SYSManager的流程开始，进入Enter");
                 ConfigData.Instance.dicStage[curStageStatus].Enter();
+
+                //开始计时
+                if(FlowEnterEvent != null)
+                {
+                    FlowEnterEvent();
+                }
             }
             if(isFlowEnterDone)
             {
@@ -385,6 +391,7 @@ public class SYSManager : MonoBehaviour
     #region 蛋种类
     void tipsHide()
     {
+        //这边让提示一直显示的，如果要不显示，改为相等就行
         if (curAppStatus != AppState.FeedingAndEgg)
         {
             if (weekContent.gameObject.activeInHierarchy)
@@ -396,78 +403,80 @@ public class SYSManager : MonoBehaviour
     public void OnBtnRedClick()
     {
         tipsHide();
-        content.BroadcastMessage("SetShadingHide", SendMessageOptions.DontRequireReceiver);
-        content.BroadcastMessage("SetTextColor",Color.black,SendMessageOptions.DontRequireReceiver);
+        HideContent();
+        content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         Invoke("RedEggShading", 1f);
     }
     void RedEggShading()
     {
         contentDisplay(ConfigData.Instance.dicEggContent["jidan_02"]);
-        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
     }
     public void OnBtnGreenClick()
     {
         tipsHide();
         HideContent();
-        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         Invoke("GreenEggShading", 1f);
     }
     void GreenEggShading()
     {
         contentDisplay(ConfigData.Instance.dicEggContent["jidan_03"]);
-        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
     }
     public void OnBtnPinkClick()
     {
         tipsHide();
         HideContent();
-        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         Invoke("PinkEggShading", 1f);
     }
     void PinkEggShading()
     {
         contentDisplay(ConfigData.Instance.dicEggContent["jidan_01"]);
-        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
     }
 #endregion
     #region 饲料
-    public void OnBtnFodder1Click()
+    public void OnBtnFodder1Click() //第一个物体上面点击
     {
         tipsHide();
-        content.BroadcastMessage("SetShadingHide", SendMessageOptions.DontRequireReceiver);
-        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        HideContent();
+        content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         Invoke("Fodder1Shading", 1f);
     }
-    void Fodder1Shading()
+    void Fodder1Shading()   //点击物体后一秒执行显示文字
     {
         contentDisplay(ConfigData.Instance.dicFodderContent["fodder1"]);
-        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
     }
     public void OnBtnFodder2Click()
     {
         tipsHide();
         HideContent();
-        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         Invoke("Fodder2Shading", 1f);
     }
     void Fodder2Shading()
     {
         contentDisplay(ConfigData.Instance.dicFodderContent["fodder2"]);
-        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
     }
     public void OnBtnFodder3Click()
     {
         tipsHide();
         HideContent();
-        content.BroadcastMessage("SetTextColor", Color.black, SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetHide", SendMessageOptions.DontRequireReceiver);
         Invoke("Fodder3Shading", 1f);
     }
     void Fodder3Shading()
     {
         contentDisplay(ConfigData.Instance.dicFodderContent["fodder3"]);
-        content.BroadcastMessage("SetShadingDisplay", SendMessageOptions.DontRequireReceiver);
+        content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
     }
     #endregion
+
+
 
     public void ClickBook()
     {
@@ -517,13 +526,11 @@ public class SYSManager : MonoBehaviour
             if(i > 0 && con.Length - 1 == i)
             {
                 contentDes.gameObject.SetActive(true);
-
                 contentDes.text = con[i];
             }
             if(i == 1 && i > 0 && i < con.Length - 1)
             {
                 contentTemp.gameObject.SetActive(true);
-
                 contentTemp.text = con[i];
             }
             if (i == 2 && i > 0 && i < con.Length - 1)
@@ -531,10 +538,18 @@ public class SYSManager : MonoBehaviour
                 contentHumi.gameObject.SetActive(true);
                 contentHumi.text = con[i];
             }
+            else
+            {
+
+            }
             if (i == 3 && i > 0 && i < con.Length - 1)
             {
                 contentOther.gameObject.SetActive(true);
                 contentOther.text = con[i];
+            }
+            else
+            {
+
             }
         }
     }

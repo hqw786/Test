@@ -20,7 +20,7 @@ public class ConfigData : MonoBehaviour {
     public Dictionary<string, string[]> dicFodderContent = new Dictionary<string, string[]>();
    
     //现有的阶段(和TXT文本中保持一致）
-    public string[] strStage = new string[] { "孵化期", "破壳期", "苗鸡期", "雏鸡期", "青年期", "成年期", "产蛋期", "喂食期", "蛋种类" };
+    public string[] strStage = new string[] { "孵化期", "破壳期", "苗鸡期", "雏鸡期", "青年期", "成年期", "产蛋期", "喂食期", "蛋种类" };// 
 	// Use this for initialization
     void Awake()
     {
@@ -28,7 +28,7 @@ public class ConfigData : MonoBehaviour {
         Tools.GetTextData("TextData");
 
         SetEggModel();
-        SetFodderModel();
+        //SetFodderModel();
     }
     void SetEggModel()
     {
@@ -63,7 +63,7 @@ public class ConfigData : MonoBehaviour {
     {
 		SaveStageDataToDIC();
         SetEggData();
-        SetFodderData();
+        //SetFodderData();
 	}
 	void SetEggData()
     {

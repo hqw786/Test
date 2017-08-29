@@ -10,7 +10,11 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     StageState status;
     StagePanel panel;
     Text text;
-
+    Image progressImage;
+    bool isProgress;
+    bool isProgressDone;
+    float timer = 3f;
+    float time;
     public void SetStageData(StageInfo si)
     {
         stage = si;
@@ -28,11 +32,16 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     public void SetStageState(StageState ss)
     {
         text = transform.Find("Text").GetComponent<Text>();
+        progressImage = transform.Find("Image").GetComponent<Image>();
         panel = transform.parent.GetComponent<StagePanel>();
         //设置阶段状态
         status = ss;
         //取得阶段数据
         SetStageData(ConfigData.Instance.dicStage[status].GetData());
+
+        time = 0;
+        isProgress = false;
+        isProgressDone = false;
     }
     public StageInfo GetStageInfo()
     {
@@ -40,6 +49,11 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     }
     void SetLock()
     {
+        time = 0;
+        isProgress = false;
+        isProgressDone = false;
+        progressImage.fillAmount = 0;
+
         if (SYSManager.Instance.curStageStatus != status) return;
         ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().isLock = false;
         if (ConfigData.Instance.dicStage[SYSManager.Instance.curStageStatus].GetData().isLock)
@@ -49,6 +63,42 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         else
         {
             text.color = Color.white;
+        }
+    }
+    void SetNextStageLock()
+    {
+        time = 0;
+        isProgress = false;
+        isProgressDone = false;
+
+        if (SYSManager.Instance.curStageStatus != status) return;
+
+        int s = (int)status;
+        s++;
+        StageState temp = (StageState)s;
+
+        if (s == ConfigData.Instance.Data.Count - 2)
+        {
+            //DONE:执行到流程结束的事件
+            ConfigData.Instance.dicStage[temp].GetData().isLock = false;
+            s++;
+            temp = (StageState)s;
+            //DONE:执行到流程结束的事件
+            ConfigData.Instance.dicStage[temp].GetData().isLock = false;
+        }
+        else if (s < ConfigData.Instance.Data.Count - 2)
+        {
+            //DONE:执行到流程结束的事件
+            ConfigData.Instance.dicStage[temp].GetData().isLock = false;
+        }
+    }
+    public void SetProgressStart()
+    {
+        if (SYSManager.Instance.curStageStatus != status) return;
+        {
+            time = 0;
+            isProgress = true;
+            isProgressDone = false;
         }
     }
 	// Use this for initialization
@@ -61,12 +111,40 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         //切换流程是执行
         SYSManager.Instance.FlowEndEvent += SetLock;
         //计算整个流程大约需要的时间
+        SYSManager.Instance.FlowEnterEvent += SetProgressStart;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(isProgress)
+        {
+            time += Time.deltaTime;
+            progressImage.fillAmount = time / timer;
+            if(progressImage.fillAmount >= 1f)
+            {
+                progressImage.fillAmount = 1f;
+            }
+            if(time >= timer)
+            {
+                isProgress = false;
+                isProgressDone = true;
+            }
+        }
+        if(isProgressDone)
+        {
+            isProgressDone = false;
+            SetNextStageLock();
+        }
+
+        if (ConfigData.Instance.dicStage[status].GetData().isLock)
+        {
+            text.color = Color.gray;
+        }
+        else
+        {
+            text.color = Color.white;
+        }
 	}
 
     public void OnPointerClick(PointerEventData eventData)

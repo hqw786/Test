@@ -154,7 +154,6 @@ public class RayUI : MonoBehaviour {
                 mc.isRayUIReturn = true;
                 break;
             case "BtnEggLaying":
-                //g.transform.localScale = Vector3.one * 1.2f;
                 g.GetComponent<UIAlpha>().isRayUIEggLaying = true;
                 break;
             case "Exit":
