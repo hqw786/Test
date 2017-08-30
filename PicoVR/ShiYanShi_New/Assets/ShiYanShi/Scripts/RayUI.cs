@@ -58,17 +58,22 @@ public class RayUI : MonoBehaviour {
             RaycastHit hit;
             if(Physics.Raycast(ray,out hit,10f))
             {
-                if(hit.collider.tag.Contains("Egg"))
+                if (hit.collider.tag.Contains("Egg"))
                 {
                     //print(hit.collider.name);
                     dot.position = hit.point;
-                    
+
                     isEggTarget = true;
                     targetEgg = hit.collider.gameObject;
 
                     targetEgg.GetComponent<EggScale>().SetScale();
                 }
-                else if (hit.collider.tag.Contains("Fodder"))
+                else
+                {
+                    isEggTarget = false;
+                }
+
+                if (hit.collider.tag.Contains("Fodder"))
                 {
                     //print(hit.collider.name);
                     dot.position = hit.point;
@@ -77,6 +82,11 @@ public class RayUI : MonoBehaviour {
                     targetFodder = hit.collider.gameObject;
 
                     targetFodder.GetComponent<EggScale>().SetScale();
+                }
+                else
+                {
+                    
+                    isFodderTarget = false;
                 }
             }
             if(isEggTarget)

@@ -28,7 +28,7 @@ public class ConfigData : MonoBehaviour {
         Tools.GetTextData("TextData");
 
         SetEggModel();
-        //SetFodderModel();
+        SetFodderModel();
     }
     void SetEggModel()
     {
@@ -63,7 +63,7 @@ public class ConfigData : MonoBehaviour {
     {
 		SaveStageDataToDIC();
         SetEggData();
-        //SetFodderData();
+        SetFodderData();
 	}
 	void SetEggData()
     {

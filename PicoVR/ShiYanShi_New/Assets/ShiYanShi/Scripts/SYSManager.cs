@@ -121,8 +121,7 @@ public class SYSManager : MonoBehaviour
         contentDes = content.transform.Find("Des").GetComponent<Text>();
     }
 	void Start () {
-        //TODO:刚进入的时候旋转90度，对准菜单
-		
+        //刚进入的时候旋转90度，对准菜单
 		//第一次将摄像头转到90度。以后不用旋转
         if (Manager.isFirst)
         {
@@ -173,7 +172,7 @@ public class SYSManager : MonoBehaviour
     }
     public void StartShowFlow(StageState ss)
     {
-        isFlowStart = true;
+        isFlowStart = false;//是否游戏开始，true是，false否
         curAppStatus = AppState.Show;
         curStageStatus = ss;
     }
@@ -229,6 +228,7 @@ public class SYSManager : MonoBehaviour
                 StageStatusReset();
             }
         }
+        //喂食和产蛋操作
         if(curAppStatus == AppState.FeedingAndEgg)
         {
             if(isFlowStart)
@@ -611,14 +611,15 @@ public class SYSManager : MonoBehaviour
     }
     public void StageStatusReset()
     {
-        if (playStatus == PlayState.auto)
-        {
-            isFlowStart = true;
-        }
-        else
-        {
-            isFlowStart = false;
-        }
+        //if (playStatus == PlayState.auto)
+        //{
+        //    isFlowStart = true;
+        //}
+        //else
+        //{
+        //    isFlowStart = false;
+        //}
+        isFlowStart = false;
         isFlowEnd = false;
         isFlowEnterDone = false;
         isFlowExecDone = false;
@@ -630,5 +631,7 @@ public class SYSManager : MonoBehaviour
         {
             SYSManager.Instance.eggLaying.transform.Find("Egg").gameObject.SetActive(false);
         }
+        //TODO:将所有阶段按钮变成默认颜色
+
     }
 }

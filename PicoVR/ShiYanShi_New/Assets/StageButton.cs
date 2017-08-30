@@ -115,6 +115,8 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         //计算整个流程大约需要的时间
         SYSManager.Instance.FlowEnterEvent += SetProgressStart;
 
+        RayUIStage rayStage = transform.parent.parent.GetComponent<RayUIStage>();
+        rayStage.SelectedStageEvent += PointerEnterButton;
 	}
 	
 	// Update is called once per frame
@@ -139,13 +141,16 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
             SetNextStageLock();
         }
 
-        if (ConfigData.Instance.dicStage[status].GetData().isLock)
+        if (SYSManager.Instance.curStageStatus != status)
         {
-            text.color = Color.gray;
-        }
-        else
-        {
-            text.color = Color.white;
+            if (ConfigData.Instance.dicStage[status].GetData().isLock)
+            {
+                text.color = Color.gray;
+            }
+            else
+            {
+                text.color = Color.white;
+            }
         }
 	}
 
@@ -170,7 +175,7 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         {
             stageSelect.ButtonResetDefault();
             SYSManager.Instance.AppStatusSwitch(AppState.FeedingAndEgg);
-            text.color = Color.red;
+            text.color = Color.green;
             SYSManager.Instance.StageStatusSwitch(status);
             SYSManager.Instance.StartShowFlow();
         }
@@ -182,9 +187,41 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
         {
             stageSelect.ButtonResetDefault();
             SYSManager.Instance.AppStatusSwitch(AppState.Show);
-            text.color = Color.red;
+            text.color = Color.green;
             SYSManager.Instance.StageStatusSwitch(status);
             SYSManager.Instance.StartShowFlow();
+        }
+    }
+    public void scaleButton()
+    {
+        gameObject.transform.localScale = Vector3.one * 1.15f;
+    }
+    public void resetButtonToDefault()
+    {
+        gameObject.transform.localScale = Vector3.one;
+        if (SYSManager.Instance.curStagePlayStatus == StagePlayState.none)
+        {
+            if (ConfigData.Instance.dicStage[status].GetData().isLock)
+            {
+                text.color = Color.gray;
+            }
+            else
+            {
+                text.color = Color.white;
+            }
+        }
+    }
+    public void PointerEnterButton(GameObject g)
+    {
+        if (g == gameObject)
+        {
+            if (!stage.isLock)
+            {
+                if (SYSManager.Instance.curStageStatus != status)
+                {
+                    text.color = Color.red;
+                }
+            }
         }
     }
 }

@@ -34,12 +34,23 @@ public class FlowWeiSQ : FlowBase
         //类似蛋种类的标签
         //SYSManager.Instance.eggLaying.transform.Find("Fodder").gameObject.SetActive(true);
     }
+    public override void Exec()
+    {
+        //屏蔽基类的功能
+        //base.Exec();
+
+        //新的功能
+
+    }
     public override void Exit()
     {
         //屏蔽基类的功能
         //base.Enter();
 
         //新的功能
-
+        foreach (GameObject g in ConfigData.Instance.dicFodder[(StageState)data.ID])
+        {
+            g.SetActive(false);
+        }
     }
 }
