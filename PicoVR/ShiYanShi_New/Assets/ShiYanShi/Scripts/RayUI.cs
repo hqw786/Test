@@ -89,6 +89,12 @@ public class RayUI : MonoBehaviour {
                     isFodderTarget = false;
                 }
             }
+            else
+            {
+                isEggTarget = false;
+                isFodderTarget = false;
+            }
+
             if(isEggTarget)
             {
                 if (Controller.UPvr_GetKeyDown(Pvr_KeyCode.TOUCHPAD) || Input.GetMouseButtonDown(0))
