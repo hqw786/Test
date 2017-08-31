@@ -129,6 +129,20 @@ public class SYSManager : MonoBehaviour
             leftEye.transform.parent.parent.rotation = Quaternion.identity;
             leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
         }
+        else
+        {
+            //这是点击了返回后的面对的方向
+            leftEye.transform.parent.parent.rotation = Quaternion.identity;
+            leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
+
+            //重置传感器（以当前方向为原始位置）。
+            if (Pvr_UnitySDKManager.pvr_UnitySDKSensor != null)
+            {
+                Pvr_UnitySDKManager.pvr_UnitySDKSensor.ResetUnitySDKSensor(); 
+            }
+            //提示头部转正
+            leftEye.transform.parent.Find("TipsTransForward").gameObject.SetActive(true);
+        }
         //如果遥控器连接则隐藏凝视（没有效果）
         if (Controller.UPvr_GetControllerState() == ControllerState.Connected)
         {
@@ -150,11 +164,16 @@ public class SYSManager : MonoBehaviour
         //vr回到原位 
         leftEye.transform.parent.GetComponent<CameraScale>().ReturnOriginPosition();
 
-        //重置传感器（以当前方向为原始位置）。
-        if (Pvr_UnitySDKManager.pvr_UnitySDKSensor != null)
-        {
-            Pvr_UnitySDKManager.pvr_UnitySDKSensor.ResetUnitySDKSensor();
-        }
+        //重置传感器（以当前方向为原始位置）。已放到
+        //if (Pvr_UnitySDKManager.pvr_UnitySDKSensor != null)
+        //{
+        //    //TODO:向左旋转-90度,如果不行的话。放在加载完场景的Start中
+        //    //leftEye.transform.parent.parent.rotation = Quaternion.identity;
+        //    //leftEye.transform.parent.parent.eulerAngles = new Vector3(0, -90, 0);
+
+        //    ////重置传感器（以当前方向为原始位置）。
+        //    //Pvr_UnitySDKManager.pvr_UnitySDKSensor.ResetUnitySDKSensor();
+        //}
 
         selectMenu.SetActive(true);
         endMenu.SetActive(false);
@@ -183,51 +202,11 @@ public class SYSManager : MonoBehaviour
 	void Update ()
     {
         #region 新的主流程
-        if (curAppStatus == AppState.Show)
-        {
-            if (isFlowStart)
-            {
-                isFlowStart = false;
-                //进入当前阶段要做的事（前奏，准备工作，一般每个阶段不同）
-                curStagePlayStatus = StagePlayState.start;
-                //翻页周数
-                TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Context[0][0]);
-                Debug.Log("SYSManager的流程开始，进入Enter");
-                ConfigData.Instance.dicStage[curStageStatus].Enter();
+        //流程自动播放结束，按下阶段按钮，开始新流程。
+        //AutoFlow1();
 
-                //开始计时
-                if(FlowEnterEvent != null)
-                {
-                    FlowEnterEvent();
-                }
-            }
-            if(isFlowEnterDone)
-            {
-                isFlowEnterDone = false;
-                //当前阶段要做的事（一般是相同的事）
-                curStagePlayStatus = StagePlayState.playing;
-                Debug.Log("SYSManager的流程准备完成。。。进入Exec");
-                ConfigData.Instance.dicStage[curStageStatus].Exec();
-            }
-            if(isFlowExecDone)
-            {
-                isFlowExecDone = false;
-                //退出当前阶段前要做的事（结束工作，一般每个阶段不同）
-                curStagePlayStatus = StagePlayState.end;
-                Debug.Log("SYSManager的流程执行结束，进入Exit");
-                ConfigData.Instance.dicStage[curStageStatus].Exit();
-            }
-            if(isFlowEnd)
-            {
-                isFlowEnd = false;
-                //切换到下一个状态（自动，手动。手动就恢复默认值状态）
-                curStagePlayStatus = StagePlayState.none;
-                Debug.Log("SYSManager的流程结束，切换阶段");
-                
-                StageEndSwitch();
-                StageStatusReset();
-            }
-        }
+        //流程自动播放，结束后继续显示模型和文字，按下阶段按钮，模型和文字隐藏，切换到新流程。
+        AutoFlow2();
         //喂食和产蛋操作
         if(curAppStatus == AppState.FeedingAndEgg)
         {
@@ -261,80 +240,104 @@ public class SYSManager : MonoBehaviour
             }
         }
         #endregion
-        #region 原来的主流程
-        ////if(!isFirst &&　Time.time > 5f)
-        ////{
-        ////    isFirst = true;
-        ////    ClickBook(book);
-        ////}
-        ////到了最后
-        ////if (curState == SYSState.END)
-        ////{
-        ////    //再看一遍显示出来
-        ////    endMenu.transform.Find("Restart").gameObject.SetActive(true);
-        ////    contentDes.gameObject.SetActive(true);
-        ////    isContentAlphaDisplay = true;
-        ////    contentDes.text = "谢谢观看！";
-        ////    return;
-        ////}
-        ////到了产蛋阶段
-        //if(curState == SYSState.EggLaying || curState == SYSState.EggShow)
-        //{
-        //    isStateStart = true;//这个设置为真就不会进么状态循环
-        //    if(curState == SYSState.EggLaying)
-        //        eggLayingShow();
-        //}
-        ////进入状态前
-        //if (!isStateStart)
-        //{
-        //    print("进入" + curState + "状态");
-        //    isStateStart = true;
-        //    isStateEnterDone = false;
-        //    isStateExecDone = false;
-        //    isStateExitDone = false;
-        //    //协和执行,完成后isStateEnterDone为True
-        //    StartCoroutine(EnterState());
-        //}
+    }
+    void AutoFlow1()
+    {
+        if (curAppStatus == AppState.Show)
+        {
+            if (isFlowStart)
+            {
+                isFlowStart = false;
+                //进入当前阶段要做的事（前奏，准备工作，一般每个阶段不同）
+                curStagePlayStatus = StagePlayState.start;
+                //翻页周数
+                TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Name);
+                Debug.Log("SYSManager的流程开始，进入Enter");
+                ConfigData.Instance.dicStage[curStageStatus].Enter();
 
-        ////执行状态中
-        //if (isStateEnterDone)
-        //{
-        //    print(curState + "状态");
-        //    isStateEnterDone = false;
-        //    //协和执行，完成后isStateExecDone为True
-        //    if(curState != SYSState.Select)
-        //        StartCoroutine(ExecState());
-        //}
+                //开始计时
+                if (FlowEnterEvent != null)
+                {
+                    FlowEnterEvent();
+                }
+            }
+            if (isFlowEnterDone)
+            {
+                isFlowEnterDone = false;
+                //当前阶段要做的事（一般是相同的事）
+                curStagePlayStatus = StagePlayState.playing;
+                Debug.Log("SYSManager的流程准备完成。。。进入Exec");
+                ConfigData.Instance.dicStage[curStageStatus].Exec();
+            }
+            if (isFlowExecDone)
+            {
+                isFlowExecDone = false;
+                //退出当前阶段前要做的事（结束工作，一般每个阶段不同）
+                curStagePlayStatus = StagePlayState.end;
+                Debug.Log("SYSManager的流程执行结束，进入Exit");
+                ConfigData.Instance.dicStage[curStageStatus].Exit();
+            }
+            if (isFlowEnd)
+            {
+                isFlowEnd = false;
+                //切换到下一个状态（自动，手动。手动就恢复默认值状态）
+                curStagePlayStatus = StagePlayState.none;
+                Debug.Log("SYSManager的流程结束，切换阶段");
 
-        ////退出状态
-        //if (isStateExecDone)
-        //{
-        //    print("退出" + curState + "状态");
-        //    isStateExecDone = false;
-			
-        //    //切换状态
-        //    print("切换到下一个状态");
-        //    comeNextState();
-
-        //    //协和执行，完成后isStateExitDone为True
-        //    StartCoroutine(ExitState());
-        //}
-
-        ////切换状态
-        //if (isStateExitDone)
-        //{
-        //    isStateEnterDone = false;
-        //    isStateStart = false;
-        //    print("可以进入下一个状态");
-        //}
-        ////模型切换效果
-        //TransGameObject();
-		#region 调试完成就删除
-
-		#endregion
-        #endregion
+                StageEndSwitch();
+                StageStatusReset();
+            }
+        }
     }
 
+    void AutoFlow2()
+    {
+        if (curAppStatus == AppState.Show)
+        {
+            if (isFlowStart)
+            {
+                isFlowStart = false;
+                //进入当前阶段要做的事（前奏，准备工作，一般每个阶段不同）
+                curStagePlayStatus = StagePlayState.start;
+                //翻页周数
+                TransWeek("Bottom", ConfigData.Instance.dicStage[curStageStatus].GetData().Name);
+                Debug.Log("SYSManager的流程开始，进入Enter");
+                ConfigData.Instance.dicStage[curStageStatus].Enter();
+
+                //开始计时
+                if (FlowEnterEvent != null)
+                {
+                    FlowEnterEvent();
+                }
+            }
+            if (isFlowEnterDone)
+            {
+                isFlowEnterDone = false;
+                //当前阶段要做的事（一般是相同的事）
+                curStagePlayStatus = StagePlayState.playing;
+                Debug.Log("SYSManager的流程准备完成。。。进入Exec");
+                ConfigData.Instance.dicStage[curStageStatus].Exec();
+            }
+            if (isFlowExecDone)
+            {
+                isFlowExecDone = false;
+                //退出当前阶段前要做的事（结束工作，一般每个阶段不同）
+                curStagePlayStatus = StagePlayState.end;
+                Debug.Log("SYSManager的流程执行结束，进入Exit");
+                ConfigData.Instance.dicStage[curStageStatus].Exit();
+            }
+            if (isFlowEnd)
+            {
+                isFlowEnd = false;
+                //切换到下一个状态（自动，手动。手动就恢复默认值状态）
+                curStagePlayStatus = StagePlayState.none;
+                Debug.Log("SYSManager的流程结束，切换阶段");
+
+                StageEndSwitch();
+                StageStatusReset();
+            }
+        }
+    }
     //产蛋展示
     //void eggLayingShow()
     //{
@@ -606,8 +609,14 @@ public class SYSManager : MonoBehaviour
     //}
     public void StageStatusSwitch(StageState ss)
     {
+        //TODO：这边控制新的切换方式
+        //退出当前流程
+        isFlowExecDone = true;
+        //切换状态
         curStageStatus = ss;
         StageStatusReset();
+        //新状态开始
+        isFlowStart = true;
     }
     public void StageStatusReset()
     {
@@ -631,7 +640,5 @@ public class SYSManager : MonoBehaviour
         {
             SYSManager.Instance.eggLaying.transform.Find("Egg").gameObject.SetActive(false);
         }
-        //TODO:将所有阶段按钮变成默认颜色
-
     }
 }

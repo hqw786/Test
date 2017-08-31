@@ -185,16 +185,12 @@ public class StageButton : MonoBehaviour ,IPointerClickHandler
     {
         if(!stage.isLock)
         {
-            stageSelect.ButtonResetDefault();
-            SYSManager.Instance.AppStatusSwitch(AppState.Show);
-            text.color = Color.green;
-            SYSManager.Instance.StageStatusSwitch(status);
-            SYSManager.Instance.StartShowFlow();
+            stageSelect.ButtonResetDefault();//所有按钮回到默认状态
+            SYSManager.Instance.AppStatusSwitch(AppState.Show);//这个只有在喂食和产蛋状态切换才有用。
+            text.color = Color.green;//
+            SYSManager.Instance.StageStatusSwitch(status);//
+            SYSManager.Instance.StartShowFlow();//
         }
-    }
-    public void scaleButton()
-    {
-        gameObject.transform.localScale = Vector3.one * 1.15f;
     }
     public void resetButtonToDefault()
     {

@@ -40,6 +40,9 @@ public class Tools
     {
         for (int i = 0; i < cons.Count; i++)
         {
+            //显示周数
+            SYSManager.Instance.TransWeek("Bottom", cons[i][0]);
+
             //显示屏内容的淡入
             SYSManager.Instance.contentDisplay(cons[i]);
             SYSManager.Instance.content.BroadcastMessage("SetShow", SendMessageOptions.DontRequireReceiver);
@@ -55,19 +58,9 @@ public class Tools
             Debug.Log("文本显示：2.5f" + Time.time);
         }
         SYSManager.Instance.HideContent();
-        SYSManager.Instance.isFlowExecDone = true;
+        //TODO:新流程需要这边关掉
+        //SYSManager.Instance.isFlowExecDone = true;
     }
-
-    //public static IEnumerator TransModelAlpha(float time)
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //    SYSManager.Instance.isLastModelAlpha = true;
-    //    yield return new WaitForSeconds(time * 0.8f);
-    //    SYSManager.Instance.isCurModelAlpha = true;
-    //    yield return new WaitForSeconds(time * 0.15f);
-    //    SYSManager.Instance.isModelAlphaDone = true;
-    //}
-
 
     /// <summary>
     /// 将指定文件中的内容保存到类中
