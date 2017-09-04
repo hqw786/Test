@@ -8,6 +8,7 @@ public class LatencyHidingCommand : Control
 {
     public override void Execute(object data = null)
     {
-        GameObject.Find("/Canvas/BlackImage").GetComponent<LatencyHiding>().Hide();
+        //GameObject.Find("/Canvas/BlackImage").GetComponent<ShowSolarSystemView>().Hide();
+        //GetView<ShowSolarSystemView>().Hide();
     }
 }

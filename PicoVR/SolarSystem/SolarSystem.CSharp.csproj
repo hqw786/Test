@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -88,6 +86,8 @@
     <Compile Include="Assets\APP\Scripts\Application\01M\XmlModel.cs" />
     <Compile Include="Assets\APP\Scripts\Application\02V\ShowCompanyLogoView.cs" />
     <Compile Include="Assets\APP\Scripts\Application\02V\ShowMyLogoView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\ShowPlanetView.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\02V\ShowSolarSystemView.cs" />
     <Compile Include="Assets\APP\Scripts\Application\02V\ShowTitleView.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\EnterSceneCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\03C\ExitSceneCommand.cs" />
@@ -110,8 +110,8 @@
     <Compile Include="Assets\APP\Scripts\UIEffect\UIObjectEffect.cs" />
     <Compile Include="Assets\APP\Scripts\UIEffect\UITextEffect.cs" />
     <Compile Include="Assets\AnimationAddSpeed.cs" />
-    <Compile Include="Assets\LatencyHiding.cs" />
     <Compile Include="Assets\MainManager.cs" />
+    <Compile Include="Assets\PlanetButton.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\GlobalValues.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\ObjectRotation.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\PlanetInfo.cs" />
@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SolarSystem\Shaders\Atmosphere.shader" />
+    <None Include="Assets\SolarSystem\Shaders\DisplayNightEarthTexture.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />

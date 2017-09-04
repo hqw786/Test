@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SolarSystem\Shaders\Atmosphere.shader" />
+    <None Include="Assets\SolarSystem\Shaders\DisplayNightEarthTexture.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />

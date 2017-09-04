@@ -31,7 +31,9 @@ public class EnterSceneCommand : Control
                 break;
             case 5:
                 {
-
+                    Transform temp = GameObject.Find("/Canvas").transform;
+                    RegisterView(temp.Find("BlackImage").GetComponent<ShowSolarSystemView>());
+                    RegisterView(temp.Find("PlanetPanel").GetComponent<ShowPlanetView>());
                 }
                 break;
             case 6:

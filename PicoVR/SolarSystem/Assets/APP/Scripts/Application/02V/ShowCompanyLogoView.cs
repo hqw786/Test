@@ -27,7 +27,6 @@ public class ShowCompanyLogoView : View {
     }
     public override void HandleEvent(string eventName, object data)
     {
-        print("ShowCompanyLogoView.HandleEvent:  " + eventName);
         uiie.SetAlphaOneWay(0f, 1f, 1.5f);
         uite.SetAlphaOneWay(0f, 1f, 1.5f);
         Invoke("Hide", 6.5f);
@@ -35,7 +34,6 @@ public class ShowCompanyLogoView : View {
 
     public override void RegisterEvents()
     {
-        print("ShowCompanyLogoView.RegisterEvents:  " + Consts.C_ShowCompanyLogo);
         attentionEvents.Add(Consts.C_ShowCompanyLogo);
     }
 
