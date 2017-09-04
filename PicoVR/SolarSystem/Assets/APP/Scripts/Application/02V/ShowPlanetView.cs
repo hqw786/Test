@@ -11,6 +11,8 @@ public class ShowPlanetView : View
 
     Text planetContent;
     Text planetName;
+
+    public static event Action CameraReturnToDefaultEvent;
     void Start()
     {
         foreach(Transform temp in transform)
@@ -55,5 +57,15 @@ public class ShowPlanetView : View
         string[] content = txt.text.Split("\n"[0]);
         this.planetName.text = txt.text.Substring(0, txt.text.IndexOf("\n"));
         planetContent.text = txt.text.Substring(txt.text.IndexOf("\n"));
+    }
+
+    public void OnBtnReturnClick()
+    {
+        gameObject.SetActive(false);
+        //摄像头还原到星系位置
+        if(CameraReturnToDefaultEvent != null)
+        {
+            CameraReturnToDefaultEvent();
+        }
     }
 }

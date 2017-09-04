@@ -7,43 +7,18 @@ using UnityEngine.UI;
 
 public class PlanetInfo : MonoBehaviour {
 
-    private List<string> infoList { get; set; }
-    public Text contentText;
-    public Text planetNameText;
-    private RectTransform rectTransform;
-    public float dpi = 5;
-    private PlanetSwitch planetSwitchScript;
+    public bool isHaveSatellite;//是否有卫星
 
+    public List<Transform> satelliteList = new List<Transform>();
 
+    public event System.Action DisplayPlanetInfoEvent;
+    //TODO:在这边添加继承Model，添加功能如显示信息。
+    //就不用在PlanetButton中有太多内容，执行一下就可以。
 	// Use this for initialization
 	void Start () {
-        rectTransform = contentText.GetComponent<RectTransform>();
-        planetSwitchScript = gameObject.AddComponent<PlanetSwitch>();
-        planetSwitchScript.SunLight = GameObject.Find("SunLight").GetComponent<Light>();
     }
-
-    public void LoadTextToScrollBar(string name)
+    public void AddSatellite(List<Transform> list)
     {
-        object resourceFile = Resources.Load(name);
-        
-        // clear content
-        contentText.text = string.Empty;
-
-        if(resourceFile != null)
-        {
-            // mobile, desktop and webgl
-            resourceFile = resourceFile.ToString().Replace("TAB", "\t");
-            contentText.text += resourceFile;
-            
-            rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, resourceFile.ToString().Length * dpi);
-        }
-        else
-        {
-            // No info for planet - please add PlanetName.txt to SolarSystem/PlanetInfo
-            contentText.text = string.Format("Please add {0}.txt to Resources folder", name);
-        }
-
-        planetNameText.text = name;
-        planetSwitchScript.AssignPlanetCameraCoordinates(name);
+        satelliteList = list;
     }
 }

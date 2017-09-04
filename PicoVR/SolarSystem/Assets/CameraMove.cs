@@ -8,43 +8,53 @@ public enum CameraStatus
     lockPlanet
 }
 public class CameraMove : MonoBehaviour {
-    [HideInInspector]
-    public CameraStatus lockStatus;
-
-    //[HideInInspector]
-    Transform lockPlanet;
-
     [Header("摄像机与行星保持的距离：")]
     public float r_sun;
     public float r_mercury;
     public float r_venus;
     public float r_earth;
+    public float r_moon;
     public float r_mars;
     public float r_jupiter;
     public float r_saturn;
     public float r_uranus;
     public float r_neptune;
+    
+    [HideInInspector]
+    public CameraStatus lockStatus;
+    Transform lockPlanet;//近距离观看的星球
+
+    Vector3 oldPositon;
+    Quaternion oldRotation;
+    
+
+
 	// Use this for initialization
 	void Start () {
         lockStatus = CameraStatus.lockSolar;
+        oldPositon = transform.position;
+        oldRotation = transform.rotation;
+        ShowPlanetView.CameraReturnToDefaultEvent += ReturnToDefaultPosition;
 	}
+
+    private void ReturnToDefaultPosition()
+    {
+        transform.position = oldPositon;
+        transform.rotation = oldRotation;
+        lockStatus = CameraStatus.lockSolar;
+    }
 	
 	// Update is called once per frame
-    void FixedUpdate()
+    //void FixedUpdate()
+    void LateUpdate()
     {
         if(lockStatus == CameraStatus.lockPlanet)
         {
             float dis = GetDistance();
             //可以移动和缩放
-            //Vector3 endPoint = lockPlanet.position - Vector3.forward * dis;
-            //print(Time.fixedDeltaTime);
-            //Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, endPoint, 0.8f);
             Camera.main.transform.position = lockPlanet.position - Vector3.forward * dis;
         }
     }
-	void Update () {
-		
-	}
     
     public void CameraPositionMove(Transform planet)
     {
@@ -88,4 +98,6 @@ public class CameraMove : MonoBehaviour {
         }
         return temp;
     }
+
+
 }

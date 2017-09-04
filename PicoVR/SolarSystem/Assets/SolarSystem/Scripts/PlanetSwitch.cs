@@ -49,10 +49,10 @@ public class PlanetSwitch : MonoBehaviour {
         switch (planet)
         {
             case "Mars":
-                MainCamera.GetComponent<PlanetInfo>().LoadTextToScrollBar(marsSatellites.captionText.text);
+                //MainCamera.GetComponent<PlanetInfo>().LoadTextToScrollBar(marsSatellites.captionText.text);
                 break;
             case "Jupiter":
-                MainCamera.GetComponent<PlanetInfo>().LoadTextToScrollBar(jupiterSatellites.captionText.text);
+                //MainCamera.GetComponent<PlanetInfo>().LoadTextToScrollBar(jupiterSatellites.captionText.text);
                 break;
             default:
                 break;

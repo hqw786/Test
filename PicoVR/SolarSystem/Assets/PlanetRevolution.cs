@@ -24,7 +24,7 @@ public class PlanetRevolution : MonoBehaviour {
         speed = GetRevolutionSpeed();
         centre = GetRevolutionCentre();
         direction = GetRevolutionDirection();
-        if (!this.name.Contains("Moon_"))
+        if (!this.name.Contains("Moon"))
         {
             transform.RotateAround(centre.position, direction, Time.deltaTime * speed * SolarSystem.Instance.rate_Revolution);
         }

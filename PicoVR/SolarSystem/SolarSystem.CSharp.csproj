@@ -111,10 +111,12 @@
     <Compile Include="Assets\APP\Scripts\UIEffect\UITextEffect.cs" />
     <Compile Include="Assets\AnimationAddSpeed.cs" />
     <Compile Include="Assets\CameraMove.cs" />
+    <Compile Include="Assets\LatencyHiding.cs" />
     <Compile Include="Assets\MainManager.cs" />
     <Compile Include="Assets\PlanetButton.cs" />
     <Compile Include="Assets\PlanetRevolution.cs" />
     <Compile Include="Assets\PlanetRotation.cs" />
+    <Compile Include="Assets\SatelliteButton.cs" />
     <Compile Include="Assets\ShowPlanetInfo.cs" />
     <Compile Include="Assets\SolarSystem.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\GlobalValues.cs" />

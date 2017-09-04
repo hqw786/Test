@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class PlanetButton : MonoBehaviour {
+using UnityEngine.EventSystems;
+public class PlanetButton : MonoBehaviour ,IPointerEnterHandler,IPointerExitHandler
+{
     ShowPlanetView parent;
     Button button;
 
@@ -33,6 +34,22 @@ public class PlanetButton : MonoBehaviour {
         parent.DisplayPlanetInfo(planetName);
         //摄像机向所在星球移动
         cameraMove.CameraPositionMove(planet);
+        //检查有没有卫星
+        //有的话显示检查卫星，没有就不显示
+        PlanetInfo pi = planet.GetComponent<PlanetInfo>();
+        if(pi.isHaveSatellite)
+        {
+            Transform temp = parent.transform.Find("ShowPlanetInfo");
+            Transform btnCheck = temp.Find("BtnCheckSatellite");
+            btnCheck.gameObject.SetActive(true);
+            btnCheck.GetComponent<PlanetInfo>().AddSatellite(pi.satelliteList);
+        }
+        else
+        {
+            Transform temp = parent.transform.Find("ShowPlanetInfo");
+            Transform btnCheck = temp.Find("BtnCheckSatellite");
+            btnCheck.gameObject.SetActive(false);
+        }
     }
     string GetString(string name)
     {
@@ -47,6 +64,9 @@ public class PlanetButton : MonoBehaviour {
                 break;
             case "BtnVenus":
                 temp = "Venus";
+                break;
+            case "BtnMoon":
+                temp = "Moon";
                 break;
             case "BtnEarth":
                 temp = "Earth";
@@ -70,4 +90,28 @@ public class PlanetButton : MonoBehaviour {
         return temp;
     }
 
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (eventData.pointerEnter.name.Contains("Btn"))
+        {
+            eventData.pointerEnter.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        if (eventData.pointerEnter.transform.parent.name.Contains("Btn"))
+        {
+            eventData.pointerEnter.transform.parent.localScale = new Vector3(1f, 1f, 1f);
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData.pointerEnter.name.Contains("Btn"))
+        {
+            eventData.pointerEnter.transform.localScale = new Vector3(1.2f, 1f, 1.2f);
+        }
+        if(eventData.pointerEnter.transform.parent.name.Contains("Btn"))
+        {
+            eventData.pointerEnter.transform.parent.localScale = new Vector3(1.2f, 1f, 1.2f);
+        }
+    }
 }
