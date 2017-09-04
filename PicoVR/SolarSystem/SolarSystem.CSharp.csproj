@@ -110,8 +110,13 @@
     <Compile Include="Assets\APP\Scripts\UIEffect\UIObjectEffect.cs" />
     <Compile Include="Assets\APP\Scripts\UIEffect\UITextEffect.cs" />
     <Compile Include="Assets\AnimationAddSpeed.cs" />
+    <Compile Include="Assets\CameraMove.cs" />
     <Compile Include="Assets\MainManager.cs" />
     <Compile Include="Assets\PlanetButton.cs" />
+    <Compile Include="Assets\PlanetRevolution.cs" />
+    <Compile Include="Assets\PlanetRotation.cs" />
+    <Compile Include="Assets\ShowPlanetInfo.cs" />
+    <Compile Include="Assets\SolarSystem.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\GlobalValues.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\ObjectRotation.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\PlanetInfo.cs" />
@@ -161,6 +166,15 @@
     <Compile Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\APP\Resources\Config\Earth.txt" />
+    <None Include="Assets\APP\Resources\Config\Jupiter.txt" />
+    <None Include="Assets\APP\Resources\Config\Mars.txt" />
+    <None Include="Assets\APP\Resources\Config\Mercury.txt" />
+    <None Include="Assets\APP\Resources\Config\Neptune.txt" />
+    <None Include="Assets\APP\Resources\Config\Saturn.txt" />
+    <None Include="Assets\APP\Resources\Config\Sun.txt" />
+    <None Include="Assets\APP\Resources\Config\Uranus.txt" />
+    <None Include="Assets\APP\Resources\Config\Venus.txt" />
     <None Include="Assets\SolarSystem\Shaders\Atmosphere.shader" />
     <None Include="Assets\SolarSystem\Shaders\DisplayNightEarthTexture.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

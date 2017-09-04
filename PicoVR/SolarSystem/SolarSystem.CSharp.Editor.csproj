@@ -149,6 +149,15 @@
     <Compile Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Editor\VignetteAndChromaticAberrationEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\APP\Resources\Config\Earth.txt" />
+    <None Include="Assets\APP\Resources\Config\Jupiter.txt" />
+    <None Include="Assets\APP\Resources\Config\Mars.txt" />
+    <None Include="Assets\APP\Resources\Config\Mercury.txt" />
+    <None Include="Assets\APP\Resources\Config\Neptune.txt" />
+    <None Include="Assets\APP\Resources\Config\Saturn.txt" />
+    <None Include="Assets\APP\Resources\Config\Sun.txt" />
+    <None Include="Assets\APP\Resources\Config\Uranus.txt" />
+    <None Include="Assets\APP\Resources\Config\Venus.txt" />
     <None Include="Assets\SolarSystem\Shaders\Atmosphere.shader" />
     <None Include="Assets\SolarSystem\Shaders\DisplayNightEarthTexture.shader" />
     <None Include="Assets\SolarSystem\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
