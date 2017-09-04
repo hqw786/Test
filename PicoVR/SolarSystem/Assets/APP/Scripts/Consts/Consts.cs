@@ -20,7 +20,7 @@ public static class Consts
     public const string bgMusic = "";
 
     //M
-    public const string M_ = "";
+    public const string M_Planet = "行星";
 
     //V
     //public const string V_Startup = "V_Startup";

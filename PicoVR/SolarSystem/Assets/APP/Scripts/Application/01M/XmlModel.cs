@@ -7,10 +7,10 @@ public class XmlModel : Model
 {
     public override string Name
     {
-        get { return Consts.M_; }
+        get { return Consts.M_Planet; }
     }
     public void Init()
     {
-
+        //TODO:这边可以初始化行星信息
     }
 }

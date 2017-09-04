@@ -13,6 +13,8 @@ public class ShowPlanetView : View
     Text planetName;
 
     public static event Action CameraReturnToDefaultEvent;
+
+    Transform planet;
     void Start()
     {
         foreach(Transform temp in transform)
@@ -51,14 +53,22 @@ public class ShowPlanetView : View
             b.image.sprite = b.spriteState.disabledSprite;
         }
     }
-    public void DisplayPlanetInfo(string planetName)
+    public void DisplayPlanetInfo(Transform planet)
     {
-        TextAsset txt = Resources.Load<TextAsset>("Config/" + planetName);
+        this.planet = planet;
+        TextAsset txt = Resources.Load<TextAsset>("Config/" + planet.name);
         string[] content = txt.text.Split("\n"[0]);
         this.planetName.text = txt.text.Substring(0, txt.text.IndexOf("\n"));
         planetContent.text = txt.text.Substring(txt.text.IndexOf("\n"));
     }
 
+    public void DisplaySatelliteInfo(Transform satellite)
+    {
+        TextAsset txt = Resources.Load<TextAsset>("Config/" + satellite.name);
+        string[] content = txt.text.Split("\n"[0]);
+        this.planetName.text = txt.text.Substring(0, txt.text.IndexOf("\n"));
+        planetContent.text = txt.text.Substring(txt.text.IndexOf("\n"));
+    }
     public void OnBtnReturnClick()
     {
         gameObject.SetActive(false);
@@ -67,5 +77,11 @@ public class ShowPlanetView : View
         {
             CameraReturnToDefaultEvent();
         }
+    }
+    public void DisplaySatelliteInfo()
+    {
+        Transform temp = planet.GetComponent<PlanetInfo>().satelliteList[0];
+        DisplaySatelliteInfo(temp);
+        Camera.main.GetComponent<CameraMove>().CameraPositionMove(temp);
     }
 }

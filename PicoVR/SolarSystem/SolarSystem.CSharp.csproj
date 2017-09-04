@@ -75,12 +75,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\APP\Scripts\Application\01M\XmlModel.cs" />
@@ -95,6 +89,14 @@
     <Compile Include="Assets\APP\Scripts\Application\03C\StartupCommand.cs" />
     <Compile Include="Assets\APP\Scripts\Application\Args\SceneArgs.cs" />
     <Compile Include="Assets\APP\Scripts\Application\Games.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\MainManager.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\CameraMove.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\LatencyHiding.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\PlanetButton.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\PlanetInfo.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\PlanetRevolution.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\PlanetRotation.cs" />
+    <Compile Include="Assets\APP\Scripts\Application\Misc\SolarSystem.cs" />
     <Compile Include="Assets\APP\Scripts\Consts\Consts.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\ApplicationBase.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\ConfigData.cs" />
@@ -110,18 +112,8 @@
     <Compile Include="Assets\APP\Scripts\UIEffect\UIObjectEffect.cs" />
     <Compile Include="Assets\APP\Scripts\UIEffect\UITextEffect.cs" />
     <Compile Include="Assets\AnimationAddSpeed.cs" />
-    <Compile Include="Assets\CameraMove.cs" />
-    <Compile Include="Assets\LatencyHiding.cs" />
-    <Compile Include="Assets\MainManager.cs" />
-    <Compile Include="Assets\PlanetButton.cs" />
-    <Compile Include="Assets\PlanetRevolution.cs" />
-    <Compile Include="Assets\PlanetRotation.cs" />
-    <Compile Include="Assets\SatelliteButton.cs" />
-    <Compile Include="Assets\ShowPlanetInfo.cs" />
-    <Compile Include="Assets\SolarSystem.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\GlobalValues.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\ObjectRotation.cs" />
-    <Compile Include="Assets\SolarSystem\Scripts\PlanetInfo.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\PlanetSwitch.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\RevealNightEarthTexture.cs" />
     <Compile Include="Assets\SolarSystem\Scripts\RevealingLightRotation.cs" />
@@ -172,6 +164,7 @@
     <None Include="Assets\APP\Resources\Config\Jupiter.txt" />
     <None Include="Assets\APP\Resources\Config\Mars.txt" />
     <None Include="Assets\APP\Resources\Config\Mercury.txt" />
+    <None Include="Assets\APP\Resources\Config\Moon.txt" />
     <None Include="Assets\APP\Resources\Config\Neptune.txt" />
     <None Include="Assets\APP\Resources\Config\Saturn.txt" />
     <None Include="Assets\APP\Resources\Config\Sun.txt" />
