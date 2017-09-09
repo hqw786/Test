@@ -1,0 +1,948 @@
+fileFormatVersion: 2
+guid: b43478e50047f2445ad09631d5068c58
+timeCreated: 1504246856
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 089
+    100002: 090
+    100004: Box624
+    100006: Box625
+    100008: Box626
+    100010: Box627
+    100012: Box628
+    100014: Box629
+    100016: Box630
+    100018: Box631
+    100020: Box632
+    100022: Box633
+    100024: Box634
+    100026: Box635
+    100028: Box636
+    100030: Box637
+    100032: Box638
+    100034: Box639
+    100036: Box640
+    100038: Box641
+    100040: Box642
+    100042: Box643
+    100044: Box644
+    100046: Box645
+    100048: Box646
+    100050: Box647
+    100052: Box648
+    100054: Box649
+    100056: Box650
+    100058: Box651
+    100060: Box652
+    100062: Box653
+    100064: Box654
+    100066: Box656
+    100068: Box657
+    100070: Box658
+    100072: Box659
+    100074: Box660
+    100076: Box661
+    100078: Box662
+    100080: Box663
+    100082: Box664
+    100084: Box665
+    100086: Box666
+    100088: Box667
+    100090: Box668
+    100092: Box669
+    100094: Box670
+    100096: Box671
+    100098: Box672
+    100100: Box673
+    100102: Box674
+    100104: Box675
+    100106: Box676
+    100108: Box677
+    100110: Box678
+    100112: Box679
+    100114: Box680
+    100116: Box681
+    100118: Box682
+    100120: Box683
+    100122: Box684
+    100124: Box685
+    100126: Box686
+    100128: Group129
+    100130: Group130
+    100132: Group131
+    100134: Group132
+    100136: Group133
+    100138: Group134
+    100140: Group135
+    100142: Group136
+    100144: Group137
+    100146: Group138
+    100148: Group139
+    100150: Group140
+    100152: Group141
+    100154: Group142
+    100156: Group143
+    100158: Group144
+    100160: Group145
+    100162: Group146
+    100164: Group147
+    100166: Group148
+    100168: Group149
+    100170: Group150
+    100172: Group151
+    100174: Group152
+    100176: Group153
+    100178: Group154
+    100180: Group155
+    100182: Group156
+    100184: Group157
+    100186: Group158
+    100188: Group159
+    100190: Group160
+    100192: Group161
+    100194: Group162
+    100196: Group163
+    100198: Group164
+    100200: Group165
+    100202: Group166
+    100204: Group167
+    100206: Group168
+    100208: Group169
+    100210: Group170
+    100212: Group171
+    100214: Group172
+    100216: Group173
+    100218: Group174
+    100220: Group175
+    100222: Group176
+    100224: Group177
+    100226: Group178
+    100228: Group179
+    100230: Group180
+    100232: Group181
+    100234: Group182
+    100236: Group183
+    100238: Group184
+    100240: Group185
+    100242: Group186
+    100244: Group187
+    100246: Group188
+    100248: Group189
+    100250: Group190
+    100252: Group191
+    100254: Group192
+    100256: Group193
+    100258: Group194
+    100260: Group195
+    100262: Group196
+    100264: Group197
+    100266: Group198
+    100268: Group199
+    100270: Group200
+    100272: Group201
+    100274: Group202
+    100276: //RootNode
+    100278: Line3156
+    100280: Line3157
+    100282: Line3158
+    100284: Line3159
+    100286: Line3160
+    100288: Line3161
+    100290: Line3162
+    100292: Line3163
+    100294: Line3164
+    100296: Line3165
+    100298: Line3166
+    100300: Line3167
+    100302: Line3168
+    100304: Line3169
+    400000: 089
+    400002: 090
+    400004: Box624
+    400006: Box625
+    400008: Box626
+    400010: Box627
+    400012: Box628
+    400014: Box629
+    400016: Box630
+    400018: Box631
+    400020: Box632
+    400022: Box633
+    400024: Box634
+    400026: Box635
+    400028: Box636
+    400030: Box637
+    400032: Box638
+    400034: Box639
+    400036: Box640
+    400038: Box641
+    400040: Box642
+    400042: Box643
+    400044: Box644
+    400046: Box645
+    400048: Box646
+    400050: Box647
+    400052: Box648
+    400054: Box649
+    400056: Box650
+    400058: Box651
+    400060: Box652
+    400062: Box653
+    400064: Box654
+    400066: Box656
+    400068: Box657
+    400070: Box658
+    400072: Box659
+    400074: Box660
+    400076: Box661
+    400078: Box662
+    400080: Box663
+    400082: Box664
+    400084: Box665
+    400086: Box666
+    400088: Box667
+    400090: Box668
+    400092: Box669
+    400094: Box670
+    400096: Box671
+    400098: Box672
+    400100: Box673
+    400102: Box674
+    400104: Box675
+    400106: Box676
+    400108: Box677
+    400110: Box678
+    400112: Box679
+    400114: Box680
+    400116: Box681
+    400118: Box682
+    400120: Box683
+    400122: Box684
+    400124: Box685
+    400126: Box686
+    400128: Group129
+    400130: Group130
+    400132: Group131
+    400134: Group132
+    400136: Group133
+    400138: Group134
+    400140: Group135
+    400142: Group136
+    400144: Group137
+    400146: Group138
+    400148: Group139
+    400150: Group140
+    400152: Group141
+    400154: Group142
+    400156: Group143
+    400158: Group144
+    400160: Group145
+    400162: Group146
+    400164: Group147
+    400166: Group148
+    400168: Group149
+    400170: Group150
+    400172: Group151
+    400174: Group152
+    400176: Group153
+    400178: Group154
+    400180: Group155
+    400182: Group156
+    400184: Group157
+    400186: Group158
+    400188: Group159
+    400190: Group160
+    400192: Group161
+    400194: Group162
+    400196: Group163
+    400198: Group164
+    400200: Group165
+    400202: Group166
+    400204: Group167
+    400206: Group168
+    400208: Group169
+    400210: Group170
+    400212: Group171
+    400214: Group172
+    400216: Group173
+    400218: Group174
+    400220: Group175
+    400222: Group176
+    400224: Group177
+    400226: Group178
+    400228: Group179
+    400230: Group180
+    400232: Group181
+    400234: Group182
+    400236: Group183
+    400238: Group184
+    400240: Group185
+    400242: Group186
+    400244: Group187
+    400246: Group188
+    400248: Group189
+    400250: Group190
+    400252: Group191
+    400254: Group192
+    400256: Group193
+    400258: Group194
+    400260: Group195
+    400262: Group196
+    400264: Group197
+    400266: Group198
+    400268: Group199
+    400270: Group200
+    400272: Group201
+    400274: Group202
+    400276: //RootNode
+    400278: Line3156
+    400280: Line3157
+    400282: Line3158
+    400284: Line3159
+    400286: Line3160
+    400288: Line3161
+    400290: Line3162
+    400292: Line3163
+    400294: Line3164
+    400296: Line3165
+    400298: Line3166
+    400300: Line3167
+    400302: Line3168
+    400304: Line3169
+    2300000: Box624
+    2300002: Box625
+    2300004: Box626
+    2300006: Box627
+    2300008: Box628
+    2300010: Box629
+    2300012: Box630
+    2300014: Box631
+    2300016: Box632
+    2300018: Box633
+    2300020: Box634
+    2300022: Box635
+    2300024: Box636
+    2300026: Box637
+    2300028: Box638
+    2300030: Box639
+    2300032: Box640
+    2300034: Box641
+    2300036: Box642
+    2300038: Box643
+    2300040: Box644
+    2300042: Box645
+    2300044: Box646
+    2300046: Box647
+    2300048: Box648
+    2300050: Box649
+    2300052: Box650
+    2300054: Box651
+    2300056: Box652
+    2300058: Box653
+    2300060: Box654
+    2300062: Box656
+    2300064: Box657
+    2300066: Box658
+    2300068: Box659
+    2300070: Box660
+    2300072: Box661
+    2300074: Box662
+    2300076: Box663
+    2300078: Box664
+    2300080: Box665
+    2300082: Box666
+    2300084: Box667
+    2300086: Box668
+    2300088: Box669
+    2300090: Box670
+    2300092: Box671
+    2300094: Box672
+    2300096: Box673
+    2300098: Box674
+    2300100: Box675
+    2300102: Box676
+    2300104: Box677
+    2300106: Box678
+    2300108: Box679
+    2300110: Box680
+    2300112: Box681
+    2300114: Box682
+    2300116: Box683
+    2300118: Box684
+    2300120: Box685
+    2300122: Box686
+    2300124: Line3156
+    2300126: Line3157
+    2300128: Line3158
+    2300130: Line3159
+    2300132: Line3160
+    2300134: Line3161
+    2300136: Line3162
+    2300138: Line3163
+    2300140: Line3164
+    2300142: Line3165
+    2300144: Line3166
+    2300146: Line3167
+    2300148: Line3168
+    2300150: Line3169
+    3300000: Box624
+    3300002: Box625
+    3300004: Box626
+    3300006: Box627
+    3300008: Box628
+    3300010: Box629
+    3300012: Box630
+    3300014: Box631
+    3300016: Box632
+    3300018: Box633
+    3300020: Box634
+    3300022: Box635
+    3300024: Box636
+    3300026: Box637
+    3300028: Box638
+    3300030: Box639
+    3300032: Box640
+    3300034: Box641
+    3300036: Box642
+    3300038: Box643
+    3300040: Box644
+    3300042: Box645
+    3300044: Box646
+    3300046: Box647
+    3300048: Box648
+    3300050: Box649
+    3300052: Box650
+    3300054: Box651
+    3300056: Box652
+    3300058: Box653
+    3300060: Box654
+    3300062: Box656
+    3300064: Box657
+    3300066: Box658
+    3300068: Box659
+    3300070: Box660
+    3300072: Box661
+    3300074: Box662
+    3300076: Box663
+    3300078: Box664
+    3300080: Box665
+    3300082: Box666
+    3300084: Box667
+    3300086: Box668
+    3300088: Box669
+    3300090: Box670
+    3300092: Box671
+    3300094: Box672
+    3300096: Box673
+    3300098: Box674
+    3300100: Box675
+    3300102: Box676
+    3300104: Box677
+    3300106: Box678
+    3300108: Box679
+    3300110: Box680
+    3300112: Box681
+    3300114: Box682
+    3300116: Box683
+    3300118: Box684
+    3300120: Box685
+    3300122: Box686
+    3300124: Line3156
+    3300126: Line3157
+    3300128: Line3158
+    3300130: Line3159
+    3300132: Line3160
+    3300134: Line3161
+    3300136: Line3162
+    3300138: Line3163
+    3300140: Line3164
+    3300142: Line3165
+    3300144: Line3166
+    3300146: Line3167
+    3300148: Line3168
+    3300150: Line3169
+    4300000: Line3156
+    4300002: Box624
+    4300004: Line3157
+    4300006: Line3158
+    4300008: Line3159
+    4300010: Line3160
+    4300012: Line3161
+    4300014: Box625
+    4300016: Box626
+    4300018: Box627
+    4300020: Box628
+    4300022: Box629
+    4300024: Box630
+    4300026: Box631
+    4300028: Box632
+    4300030: Box633
+    4300032: Box634
+    4300034: Box635
+    4300036: Box636
+    4300038: Box637
+    4300040: Box638
+    4300042: Box639
+    4300044: Box640
+    4300046: Box641
+    4300048: Box642
+    4300050: Box643
+    4300052: Box644
+    4300054: Box645
+    4300056: Box646
+    4300058: Box647
+    4300060: Box648
+    4300062: Box649
+    4300064: Box650
+    4300066: Box651
+    4300068: Box652
+    4300070: Line3162
+    4300072: Box653
+    4300074: Box654
+    4300076: Line3163
+    4300078: Box657
+    4300080: Box658
+    4300082: Box659
+    4300084: Box660
+    4300086: Box661
+    4300088: Box662
+    4300090: Box663
+    4300092: Box664
+    4300094: Box665
+    4300096: Box666
+    4300098: Box667
+    4300100: Box668
+    4300102: Box669
+    4300104: Box670
+    4300106: Box671
+    4300108: Box672
+    4300110: Box673
+    4300112: Box674
+    4300114: Box675
+    4300116: Box676
+    4300118: Box677
+    4300120: Box678
+    4300122: Box679
+    4300124: Line3164
+    4300126: Box680
+    4300128: Box681
+    4300130: Box656
+    4300132: Box683
+    4300134: Line3165
+    4300136: Line3166
+    4300138: Line3167
+    4300140: Line3168
+    4300142: Line3169
+    4300144: Box684
+    4300146: Box685
+    4300148: Box686
+    4300150: Box682
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 600
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 089
+        weight: 1
+      - path: 089/Line3162
+        weight: 1
+      - path: 090
+        weight: 1
+      - path: 090/Line3164
+        weight: 1
+      - path: Group129
+        weight: 1
+      - path: Group129/Line3156
+        weight: 1
+      - path: Group130
+        weight: 1
+      - path: Group130/Box624
+        weight: 1
+      - path: Group131
+        weight: 1
+      - path: Group131/Line3157
+        weight: 1
+      - path: Group132
+        weight: 1
+      - path: Group132/Line3158
+        weight: 1
+      - path: Group133
+        weight: 1
+      - path: Group133/Line3159
+        weight: 1
+      - path: Group134
+        weight: 1
+      - path: Group134/Line3160
+        weight: 1
+      - path: Group135
+        weight: 1
+      - path: Group135/Line3161
+        weight: 1
+      - path: Group136
+        weight: 1
+      - path: Group136/Box625
+        weight: 1
+      - path: Group137
+        weight: 1
+      - path: Group137/Box626
+        weight: 1
+      - path: Group138
+        weight: 1
+      - path: Group138/Box627
+        weight: 1
+      - path: Group139
+        weight: 1
+      - path: Group139/Box628
+        weight: 1
+      - path: Group140
+        weight: 1
+      - path: Group140/Box629
+        weight: 1
+      - path: Group141
+        weight: 1
+      - path: Group141/Box630
+        weight: 1
+      - path: Group142
+        weight: 1
+      - path: Group142/Box631
+        weight: 1
+      - path: Group143
+        weight: 1
+      - path: Group143/Box632
+        weight: 1
+      - path: Group144
+        weight: 1
+      - path: Group144/Box633
+        weight: 1
+      - path: Group145
+        weight: 1
+      - path: Group145/Box634
+        weight: 1
+      - path: Group146
+        weight: 1
+      - path: Group146/Box635
+        weight: 1
+      - path: Group147
+        weight: 1
+      - path: Group147/Box636
+        weight: 1
+      - path: Group148
+        weight: 1
+      - path: Group148/Box637
+        weight: 1
+      - path: Group149
+        weight: 1
+      - path: Group149/Box638
+        weight: 1
+      - path: Group150
+        weight: 1
+      - path: Group150/Box639
+        weight: 1
+      - path: Group151
+        weight: 1
+      - path: Group151/Box640
+        weight: 1
+      - path: Group152
+        weight: 1
+      - path: Group152/Box641
+        weight: 1
+      - path: Group153
+        weight: 1
+      - path: Group153/Box642
+        weight: 1
+      - path: Group154
+        weight: 1
+      - path: Group154/Box643
+        weight: 1
+      - path: Group155
+        weight: 1
+      - path: Group155/Box644
+        weight: 1
+      - path: Group156
+        weight: 1
+      - path: Group156/Box645
+        weight: 1
+      - path: Group157
+        weight: 1
+      - path: Group157/Box646
+        weight: 1
+      - path: Group158
+        weight: 1
+      - path: Group158/Box647
+        weight: 1
+      - path: Group159
+        weight: 1
+      - path: Group159/Box648
+        weight: 1
+      - path: Group160
+        weight: 1
+      - path: Group160/Box649
+        weight: 1
+      - path: Group161
+        weight: 1
+      - path: Group161/Box650
+        weight: 1
+      - path: Group162
+        weight: 1
+      - path: Group162/Box651
+        weight: 1
+      - path: Group163
+        weight: 1
+      - path: Group163/Box652
+        weight: 1
+      - path: Group164
+        weight: 1
+      - path: Group164/Box653
+        weight: 1
+      - path: Group165
+        weight: 1
+      - path: Group165/Box654
+        weight: 1
+      - path: Group166
+        weight: 1
+      - path: Group166/Line3163
+        weight: 1
+      - path: Group167
+        weight: 1
+      - path: Group167/Box657
+        weight: 1
+      - path: Group168
+        weight: 1
+      - path: Group168/Box658
+        weight: 1
+      - path: Group169
+        weight: 1
+      - path: Group169/Box659
+        weight: 1
+      - path: Group170
+        weight: 1
+      - path: Group170/Box660
+        weight: 1
+      - path: Group171
+        weight: 1
+      - path: Group171/Box661
+        weight: 1
+      - path: Group172
+        weight: 1
+      - path: Group172/Box662
+        weight: 1
+      - path: Group173
+        weight: 1
+      - path: Group173/Box663
+        weight: 1
+      - path: Group174
+        weight: 1
+      - path: Group174/Box664
+        weight: 1
+      - path: Group175
+        weight: 1
+      - path: Group175/Box665
+        weight: 1
+      - path: Group176
+        weight: 1
+      - path: Group176/Box666
+        weight: 1
+      - path: Group177
+        weight: 1
+      - path: Group177/Box667
+        weight: 1
+      - path: Group178
+        weight: 1
+      - path: Group178/Box668
+        weight: 1
+      - path: Group179
+        weight: 1
+      - path: Group179/Box669
+        weight: 1
+      - path: Group180
+        weight: 1
+      - path: Group180/Box670
+        weight: 1
+      - path: Group181
+        weight: 1
+      - path: Group181/Box671
+        weight: 1
+      - path: Group182
+        weight: 1
+      - path: Group182/Box672
+        weight: 1
+      - path: Group183
+        weight: 1
+      - path: Group183/Box673
+        weight: 1
+      - path: Group184
+        weight: 1
+      - path: Group184/Box674
+        weight: 1
+      - path: Group185
+        weight: 1
+      - path: Group185/Box675
+        weight: 1
+      - path: Group186
+        weight: 1
+      - path: Group186/Box676
+        weight: 1
+      - path: Group187
+        weight: 1
+      - path: Group187/Box677
+        weight: 1
+      - path: Group188
+        weight: 1
+      - path: Group188/Box678
+        weight: 1
+      - path: Group189
+        weight: 1
+      - path: Group189/Box679
+        weight: 1
+      - path: Group190
+        weight: 1
+      - path: Group190/Box680
+        weight: 1
+      - path: Group191
+        weight: 1
+      - path: Group191/Box681
+        weight: 1
+      - path: Group192
+        weight: 1
+      - path: Group192/Box656
+        weight: 1
+      - path: Group193
+        weight: 1
+      - path: Group193/Box683
+        weight: 1
+      - path: Group194
+        weight: 1
+      - path: Group194/Line3165
+        weight: 1
+      - path: Group195
+        weight: 1
+      - path: Group195/Line3166
+        weight: 1
+      - path: Group196
+        weight: 1
+      - path: Group196/Line3167
+        weight: 1
+      - path: Group197
+        weight: 1
+      - path: Group197/Line3168
+        weight: 1
+      - path: Group198
+        weight: 1
+      - path: Group198/Line3169
+        weight: 1
+      - path: Group199
+        weight: 1
+      - path: Group199/Box684
+        weight: 1
+      - path: Group200
+        weight: 1
+      - path: Group200/Box685
+        weight: 1
+      - path: Group201
+        weight: 1
+      - path: Group201/Box686
+        weight: 1
+      - path: Group202
+        weight: 1
+      - path: Group202/Box682
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
