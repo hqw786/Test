@@ -8,40 +8,70 @@ public enum CameraMode
     Normal,VR
 }
 public class CameraManager : MonoBehaviour {
-    CameraMode mode;
-    GameObject normalCamera;
-    GameObject vrCamera;
+    public static event System.Action<CameraMode, Camera, Camera> CameraModeSwitchEvent;
+    public Transform vrModeText;
+    public CameraMode mode;
+    GameObject normalGameObject;
+    GameObject vrGameObject;
 
+    Transform normalCamera;
+    Transform vrCamera;
+
+    Camera mainCamera;
+    Camera leftCamera;
+    Camera rightCamera;
 	// Use this for initialization
 	void Start () {
         mode = CameraMode.Normal;
-        normalCamera = transform.Find("Main Camera").gameObject;
-        vrCamera = transform.Find("Head").gameObject;
+        normalGameObject = transform.Find("MainCamera").gameObject;
+        vrGameObject = transform.Find("VRCamera").gameObject;
         UIManager.SwitchCameraEvent += SwitchCameraMode;
+
+        normalCamera = normalGameObject.transform.Find("Main Camera");
+        vrCamera = vrGameObject.transform.Find("Head");
+
+        mainCamera = normalCamera.GetComponent<Camera>();
+        leftCamera = vrCamera.Find("LeftCamera").GetComponent<Camera>();
+        rightCamera = vrCamera.Find("RightCamera").GetComponent<Camera>();
 	}
     //切换摄像机
-    private void SwitchCameraMode()
+    public void SwitchCameraMode()
     {
         if(mode == CameraMode.Normal)
         {
             mode = CameraMode.VR;
+            vrModeText.gameObject.SetActive(true);
             SwitchCameraToVR();
         }
         else
         {
             mode = CameraMode.Normal;
+            vrModeText.gameObject.SetActive(false);
             SwitchCameraToNormal();
+        }
+        if(CameraModeSwitchEvent != null)
+        {
+            CameraModeSwitchEvent(mode, mainCamera, rightCamera);
         }
     }
     void SwitchCameraToNormal()
     {
-        normalCamera.SetActive(true);
-        vrCamera.SetActive(false);
+        normalGameObject.SetActive(true);
+        vrGameObject.SetActive(false);
+        //缩放，旋转，跟随上一个状态
+        normalGameObject.transform.rotation = vrGameObject.transform.rotation;
+        normalCamera.transform.rotation = vrCamera.transform.rotation;
+        mainCamera.fieldOfView = leftCamera.fieldOfView;
     }
 	void SwitchCameraToVR()
     {
-        normalCamera.SetActive(false);
-        vrCamera.SetActive(true);
+        normalGameObject.SetActive(false);
+        vrGameObject.SetActive(true);
+        //缩放，旋转，跟随上一个状态
+        vrGameObject.transform.rotation = normalGameObject.transform.rotation;
+        vrCamera.transform.rotation = normalCamera.transform.rotation;
+        leftCamera.fieldOfView = mainCamera.fieldOfView;
+        rightCamera.fieldOfView = mainCamera.fieldOfView;
     }
 
 	// Update is called once per frame

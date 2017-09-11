@@ -7,7 +7,9 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
 {
     protected T obj;//是产生效果的UI对象
     public bool isAlphaFlicker = true;//是否透明闪烁（为真，只要显示就闪烁，为假，手动设置是否闪烁）
+    
     public bool isColorFlicker = true;//是否颜色闪烁
+    
     public bool isScaleFlicker = true;//是否缩放闪烁
 
     protected bool isAlpha;//渐显,透明度
@@ -53,6 +55,10 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
     {
         if (isAlphaFlicker)
             SetAlphaTwoWay(0.2f, 1f, 2f);
+        if (isScaleFlicker)
+            SetScaleTwoWay(Vector3.one, Vector3.one * 1.5f, 2f);
+        if (isColorFlicker)
+            SetColorTwoWay(Color.white, Color.black, 2f);
     }
     protected void Update()
     {
@@ -78,6 +84,28 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
             if (isTwoWayAlpha)
             {
                 AlphaTransitionTwoWay();
+            }
+        }
+        if (isScaleFlicker)
+        {
+            ScaleTransitionTwoWay();
+        }
+        else
+        {
+            if (isTwoWayScale)
+            {
+                ScaleTransitionTwoWay();
+            }
+        }
+        if (isColorFlicker)
+        {
+            ColorTransitionTwoWay();
+        }
+        else
+        {
+            if (isTwoWayColor)
+            {
+                ColorTransitionTwoWay();
             }
         }
     }
@@ -190,7 +218,7 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
         float temp = Mathf.PingPong(Time.time, twoWayColorTimer) / twoWayColorTimer;
         color = Color.Lerp(minColor, maxColor, temp);
         obj.color = color;
-        if(color == maxColor)
+        if (color == maxColor)
         {
             Color c = maxColor;
             maxColor = minColor;
@@ -248,7 +276,7 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
     /// </summary>
     protected void ScaleTransitionTwoWay()
     {
-        float temp = Mathf.PingPong(Time.time, twoWayColorTimer) / twoWayColorTimer;
+        float temp = Mathf.PingPong(Time.time, twoWayScaleTimer) / twoWayScaleTimer;
         scale = Vector3.Lerp(minScale, maxScale, temp);
         obj.transform.localScale = scale;
         if (scale == maxScale)
@@ -260,7 +288,7 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
     }
     public void SetScaleOneWay(Vector3 min, Vector3 max, float transTime)
     {
-        isColor = true;
+        isScale = true;
         minScale = min;
         maxScale = max;
         timerScale = transTime;

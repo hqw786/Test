@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class ShowMyLogoView : View 
 {
@@ -24,6 +25,8 @@ public class ShowMyLogoView : View
     }
     void Start()
     {
+        vplayer.Play();
+        Invoke("BGAlpha", 0.5f);//0.5秒后把背景变成透明（这样做可以黑背景过渡到视频播放，不会有天空盒闪过）
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +35,9 @@ public class ShowMyLogoView : View
         if (vplayer.frame >= (long)vplayer.clip.frameCount - 5 && !isFirst)
         {
             isFirst = true;
-            Games.Instance.MainStatusSwitch(MainGameStatus.showCompanyLogo);
+            //Games.Instance.MainStatusSwitch(MainGameStatus.showCompanyLogo);
+            //暂时改过来。
+            SceneManager.LoadScene(1);
         }
         #region VideoPlayer关于帧的属性
         //else
