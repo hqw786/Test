@@ -53,6 +53,10 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
     {
         if (isAlphaFlicker)
             SetAlphaTwoWay(0.2f, 1f, 2f);
+        if (isScaleFlicker)
+            SetScaleTwoWay(Vector3.one, Vector3.one * 1.5f, 2f);
+        if (isColorFlicker)
+            SetColorTwoWay(Color.white, Color.black, 2f);
     }
     protected void Update()
     {
@@ -78,6 +82,28 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
             if (isTwoWayAlpha)
             {
                 AlphaTransitionTwoWay();
+            }
+        }
+        if (isScaleFlicker)
+        {
+            ScaleTransitionTwoWay();
+        }
+        else
+        {
+            if (isTwoWayScale)
+            {
+                ScaleTransitionTwoWay();
+            }
+        }
+        if (isColorFlicker)
+        {
+            ColorTransitionTwoWay();
+        }
+        else
+        {
+            if (isTwoWayColor)
+            {
+                ColorTransitionTwoWay();
             }
         }
     }
@@ -248,7 +274,7 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
     /// </summary>
     protected void ScaleTransitionTwoWay()
     {
-        float temp = Mathf.PingPong(Time.time, twoWayColorTimer) / twoWayColorTimer;
+        float temp = Mathf.PingPong(Time.time, twoWayScaleTimer) / twoWayScaleTimer;
         scale = Vector3.Lerp(minScale, maxScale, temp);
         obj.transform.localScale = scale;
         if (scale == maxScale)
@@ -260,7 +286,7 @@ public class UIObjectEffect<T> : MonoBehaviour where T : Graphic
     }
     public void SetScaleOneWay(Vector3 min, Vector3 max, float transTime)
     {
-        isColor = true;
+        isScale = true;
         minScale = min;
         maxScale = max;
         timerScale = transTime;

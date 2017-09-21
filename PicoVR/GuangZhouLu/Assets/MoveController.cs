@@ -130,6 +130,8 @@ public class MoveController : MonoBehaviour {
             }
             rate = (camera.fieldOfView - minFOV + 1) / (maxFOV - minFOV);
         }
+
+
     }
     void Update()
     {
@@ -216,23 +218,26 @@ public class MoveController : MonoBehaviour {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
-            controller.SimpleMove(transform.forward * Time.deltaTime * v);
-            //print(v);
+            print("W: " + Time.fixedDeltaTime * v);
+            controller.SimpleMove(transform.forward * Time.fixedDeltaTime * v);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
-            controller.SimpleMove(-transform.forward * Time.deltaTime * v);
+            print("S: " + Time.fixedDeltaTime * v);
+            controller.SimpleMove(-transform.forward * Time.fixedDeltaTime * v);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
-            controller.SimpleMove(-transform.right * Time.deltaTime * v);
+            print("A: " + Time.fixedDeltaTime * v);
+            controller.SimpleMove(-transform.right * Time.fixedDeltaTime * v);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             float v = Input.GetKey(KeyCode.Space) ? runSpeed : walkSpeed;
-            controller.SimpleMove(transform.right * Time.deltaTime * v);
+            print("D: " + Time.fixedDeltaTime * v);
+            controller.SimpleMove(transform.right * Time.fixedDeltaTime * v);
         }
 
         //moveDirection = new Vector3(Input.GetAxis("Horizontal"), transform.position.y, Input.GetAxis("Vertical"));
