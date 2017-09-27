@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.1p4</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -101,8 +103,17 @@
     <Compile Include="Assets\APP\Scripts\Framework\Pool\SubPool.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Singelaton.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Sound\Sound.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\Tool\Tools.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\UI\UIBase.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\UI\UIManager.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\UI\UIMessageArgs.cs" />
+    <Compile Include="Assets\APP\Scripts\Program\Main\Main.cs" />
+    <Compile Include="Assets\APP\Scripts\Program\Main\Manager.cs" />
+    <Compile Include="Assets\APP\Scripts\Program\Main\StatusMachine.cs" />
+    <Compile Include="Assets\APP\Scripts\Test_Program\UI\Test_UIScore.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\APP\Scripts\Readme.txt" />
     <None Include="Assets\Plugin\DOTween\DOTween.XML" />
     <None Include="Assets\Plugin\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugin\DOTween\DOTween46.xml" />
@@ -110,5 +121,6 @@
     <None Include="Assets\Plugin\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugin\DOTween\readme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

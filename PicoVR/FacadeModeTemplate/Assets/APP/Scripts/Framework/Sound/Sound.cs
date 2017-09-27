@@ -4,8 +4,20 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class Sound : Singelation<Sound>
+public class Sound
 {
+    #region 单例
+    private static Sound instance;
+    private Sound() { }
+    public static Sound Instance
+    {
+        get
+        {
+            if (instance == null) instance = new Sound();
+            return instance;
+        }
+    }
+    #endregion;
     AudioClip bgm;
     AudioClip em;
     public void PlayBGM(string bgmName , Transform point = null)

@@ -7,6 +7,7 @@ using UnityEngine;
 public class SubPool
 {
     //预置体对象
+    Transform subpoolParent;
     GameObject prefab;
     //实例化对象集合
     List<GameObject> objects = new List<GameObject>();
@@ -21,7 +22,12 @@ public class SubPool
     //设置预置体
     public void LoadPrefab(string name)
     {
-        if(prefab == null) prefab = Resources.Load<GameObject>("Prefabs/Monsters/" + name);
+        if (prefab == null)
+        {
+            prefab = Resources.Load<GameObject>("Prefabs/Monsters/" + name);
+            subpoolParent = new GameObject(name).transform;
+            subpoolParent.parent = Pool.Instance.poolParent;
+        }
         else
         {
             Debug.LogError("此子对象池也存在，请检查是否重复增加了相同的子对象池");
@@ -35,6 +41,7 @@ public class SubPool
         for (int i = 0; i < num; i++)
         {
             GameObject g = GameObject.Instantiate(prefab);
+            g.transform.parent = subpoolParent;
             g.SetActive(false);
             objects.Add(g);
             if(i == 0)

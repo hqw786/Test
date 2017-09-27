@@ -9,7 +9,8 @@ public abstract class UIBase
     //关联消息
     public List<UIMessageArgs> RelateMessage = new List<UIMessageArgs>();
     //注册关联消息
-    public abstract void RegisterRelateMessage(string message);
+    //public abstract void RegisterRelateMessage(string message);
+    public abstract void RegisterRelateMessage();
     //处理关联消息
     public abstract void HandleMessage(string message);
 }
