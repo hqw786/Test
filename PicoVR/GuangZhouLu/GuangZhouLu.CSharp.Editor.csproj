@@ -108,23 +108,38 @@
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WebGL.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween43.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    <Reference Include="DOTweenEditor">
+      <HintPath>Assets\Plug\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets\Plug\Demigiant\DemiLib\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>Assets\Plug\Demigiant\DemiLib\Editor\DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenProEditor">
+      <HintPath>Assets\Plug\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets\Plug\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween46.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +149,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plug\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
+    <Compile Include="Assets\Plug\Demigiant\Editor\WelcomeScreen.cs" />
     <Compile Include="Assets\Plug\PostProcessing\Editor\Models\DitheringModelEditor.cs" />
     <Compile Include="Assets\Plug\PostProcessing\Editor\Models\FogModelEditor.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
@@ -172,6 +189,18 @@
     <None Include="Assets\APP\Resources\Config\gzlmap.xml" />
     <None Include="Assets\APP\Resources\Menu.txt" />
     <None Include="Assets\APP\Resources\Weather.txt" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween50.xml" />
+    <None Include="Assets\Plug\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Plug\Demigiant\DOTweenPro\DOTweenPro.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTweenPro\Editor\DOTweenProEditor.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Plug\Demigiant\DemiLib\DemiLib.xml" />
+    <None Include="Assets\Plug\Demigiant\DemiLib\Editor\DemiEditor.XML" />
+    <None Include="Assets\Plug\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />

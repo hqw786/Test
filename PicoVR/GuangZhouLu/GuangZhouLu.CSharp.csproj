@@ -75,11 +75,23 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween43.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    <Reference Include="DemiLib">
+      <HintPath>Assets\Plug\Demigiant\DemiLib\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>Assets\Plug\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Plug\Demigiant\DOTween\DOTween46.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +130,7 @@
     <Compile Include="Assets\Old\Scripts\UIController.cs" />
     <Compile Include="Assets\PersonDir.cs" />
     <Compile Include="Assets\PersonMapMap.cs" />
+    <Compile Include="Assets\Plug\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\Plug\PostProcessing\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -164,6 +177,7 @@
     <Compile Include="Assets\Plug\PostProcessing\Runtime\Models\DitheringModel.cs" />
     <Compile Include="Assets\Plug\PostProcessing\Runtime\Models\FogModel.cs" />
     <Compile Include="Assets\Plug\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\RoamDoTweenPath.cs" />
     <Compile Include="Assets\RoamInfo.cs" />
     <Compile Include="Assets\RoamPanel.cs" />
     <Compile Include="Assets\RoamPoints.cs" />
@@ -184,6 +198,18 @@
     <None Include="Assets\APP\Resources\Config\gzlmap.xml" />
     <None Include="Assets\APP\Resources\Menu.txt" />
     <None Include="Assets\APP\Resources\Weather.txt" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Plug\Demigiant\DOTween\DOTween50.xml" />
+    <None Include="Assets\Plug\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Plug\Demigiant\DOTweenPro\DOTweenPro.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTweenPro\Editor\DOTweenProEditor.XML" />
+    <None Include="Assets\Plug\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Plug\Demigiant\DemiLib\DemiLib.xml" />
+    <None Include="Assets\Plug\Demigiant\DemiLib\Editor\DemiEditor.XML" />
+    <None Include="Assets\Plug\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
     <None Include="Assets\Plug\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />

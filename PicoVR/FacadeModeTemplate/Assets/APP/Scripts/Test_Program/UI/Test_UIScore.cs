@@ -4,6 +4,17 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+
+
+/*  
+ * 使用流程说明：
+ *      1  创建新的子功能类，继承UIBase
+ *      2  实现两个抽象方法和一个抽象属性
+ *      3  在Consts中增加新功能类的Panel的字符串，详见Consts类中的示例
+ *      4  在Consts中增加该功能的具体作用字符串，详见Consts类中的示例
+ *      5  构造函数和增加相应的方法，来实现该类的具体作用。
+ */
+
 public class Test_UIScore : UIBase
 {
     Text scoreText;

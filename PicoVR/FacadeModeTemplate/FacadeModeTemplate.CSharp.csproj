@@ -77,12 +77,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugin\DOTween\DOTween.dll</HintPath>
     </Reference>
@@ -98,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\APP\Scripts\Consts.cs" />
+    <Compile Include="Assets\APP\Scripts\Framework\Facade_UI.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Facade.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Pool\Pool.cs" />
     <Compile Include="Assets\APP\Scripts\Framework\Pool\SubPool.cs" />
@@ -121,6 +116,5 @@
     <None Include="Assets\Plugin\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Plugin\DOTween\readme.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

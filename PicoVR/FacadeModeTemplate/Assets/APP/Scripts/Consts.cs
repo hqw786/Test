@@ -15,11 +15,17 @@ public static class Consts
 
     
     //音乐
-    //UI
+    //UI界面
     public const string UI_Score = "Score";//得分
-    //Message
+    
+    #region Message 子功能调用传递的消息，MSG+子功能+具体作用
+
+    //UI具体作用
     public const string Msg_UI_Score = "Msg_UI_统计得分";//统计得分
     //public const string Msg_Pool_GetObject = "Msg_Pool_获得对象池对象";////对象池不用事件，这里改成其他功能的消息
+    
+    # endregion
+    
     //模板
     public const string x = "";
 }

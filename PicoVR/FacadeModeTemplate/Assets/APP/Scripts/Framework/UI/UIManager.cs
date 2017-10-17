@@ -2,28 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : Singelation<UIManager>
+/*
+ *  说明：
+ *  1  在构造函数中实例化子功能对象，并保存起来，最后注册消息
+ *  2  处理消息，转发到子功能的处理消息方法处理，子功能还可以再转发到具体作用类的处理消息处理。
+ *  3  
+ */
+public class UIManager : SingelationT<UIManager>
 {
-    static UIManager instance;
-    public static UIManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new UIManager();
-            }
-            return instance;
-        }
-    }
     //注册消息事件
-    public static event System.Action RegisterMessageEvent;
+    public static event System.Action RegisterMessageEvent;//各子功能类的默认构造函数中添加方法
     //保存各主要UI界面
-    public List<UIBase> uis = new List<UIBase>();
+    public List<UIBase> uis = new List<UIBase>();//把继承自UIBase的主要UI界面都保存下来
     /// <summary>
     /// 默认构造函数
     /// </summary>
-    private UIManager()
+    public UIManager()
     {
         //子模块实例化，并加到保存界面集合中，所有的子模块都要保存
         Test_UIScore score = new Test_UIScore();

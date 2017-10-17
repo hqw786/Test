@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 
 
-public class Manager
+public class Manager : SingelationT<Manager>
 {
     #region 单例
-    private static Manager instance;
-    public static Manager Instance
-    {
-        get
-        {
-            if (instance == null) instance = new Manager();
-            return instance;
-        }
-    }
-    private Manager()
+    //private static Manager instance;
+    //public static Manager Instance
+    //{
+    //    get
+    //    {
+    //        if (instance == null) instance = new Manager();
+    //        return instance;
+    //    }
+    //}
+    public Manager()
     {
         statusMachine = new StatusMachine();
     }
@@ -31,6 +31,7 @@ public class Manager
         Facade.Instance.Init();
         Facade.Instance.HandleMessage(Consts.Msg_UI_Score);
         
+
         statusMachine.SetCurAppStatus(APPStatus.Run);
     }
 }

@@ -4,24 +4,13 @@ using UnityEngine;
 using DG.Tweening;
 
 //完成内部
-public class Facade
+public partial class Facade : SingelationT<Facade>
 {
-    
-    private static Facade instance;
-    public static Facade Instance
-    {
-        get
-        {
-            if (instance == null) instance = new Facade();
-            return instance;
-        }
-    }
-
     Pool pool;
     Sound sound;
-    UIManager uimanager;
+
 	// Use this for initialization
-    private Facade() 
+    public Facade() 
     {
         pool = Pool.Instance;
         sound = Sound.Instance;
@@ -54,16 +43,7 @@ public class Facade
     }
 	public void HandleMessage(string message)
     {
-        if(message.Contains("Msg_UI_"))
-        {
-            uimanager.HandleMessage(message);
-        }
-
-        //对象池不用事件，这里改成其他功能的消息
-        if(message.Contains("Msg_Pool_"))
-        {
-            //
-        }
+        Handle(message);
     }
-	
+    
 }
