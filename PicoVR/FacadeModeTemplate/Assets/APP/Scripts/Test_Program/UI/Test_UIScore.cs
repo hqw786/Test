@@ -47,17 +47,17 @@ public class Test_UIScore : UIBase
         ma.CallBack += DisplayScore;
         RelateMessage.Add(ma);
     }
-    public override void HandleMessage(string message)
+    public override void HandleMessage(string message, object arg)
     {
         foreach(UIMessageArgs ma in RelateMessage)
         {
             if(ma.Name.Contains(message))
             {
-                ma.CallBack();
+                ma.CallBack(arg);
             }
         }
     }
-    void DisplayScore()
+    void DisplayScore(object arg)
     {
         scoreText.text = "hehe";
     }
@@ -65,7 +65,7 @@ public class Test_UIScore : UIBase
     {
         if (scoreText.text.Contains("haha"))
         {
-            DisplayScore();
+            DisplayScore(null);
         }
         else
         {

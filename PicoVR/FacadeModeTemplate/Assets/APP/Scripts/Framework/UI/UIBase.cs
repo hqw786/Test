@@ -20,5 +20,5 @@ public abstract class UIBase
     //public abstract void RegisterRelateMessage(string message);
     public abstract void RegisterRelateMessage();
     //处理关联消息
-    public abstract void HandleMessage(string message);
+    public abstract void HandleMessage(string message, object arg);
 }

@@ -29,7 +29,7 @@ public class Manager : SingelationT<Manager>
     internal void Init()
     {
         Facade.Instance.Init();
-        Facade.Instance.HandleMessage(Consts.Msg_UI_Score);
+        Facade.Instance.HandleMessage(Consts.Msg_UI_Score, null);
         
 
         statusMachine.SetCurAppStatus(APPStatus.Run);

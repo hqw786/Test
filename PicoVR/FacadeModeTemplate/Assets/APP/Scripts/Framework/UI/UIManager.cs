@@ -23,6 +23,9 @@ public class UIManager : SingelationT<UIManager>
         Test_UIScore score = new Test_UIScore();
         uis.Add(score);
 
+        UI_Help help = new UI_Help();
+        uis.Add(help);
+
         //全部保存后，注册消息
         RegisterMessage();
     }
@@ -40,11 +43,11 @@ public class UIManager : SingelationT<UIManager>
     /// 处理消息
     /// </summary>
     /// <param name="message"></param>
-    public void HandleMessage(string message)
+    public void HandleMessage(string message, object arg)
     {
         foreach(UIBase b in uis)
         {
-            b.HandleMessage(message);
+            b.HandleMessage(message, arg);
         }
     }
 

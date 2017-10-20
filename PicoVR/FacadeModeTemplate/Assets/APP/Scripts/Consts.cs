@@ -17,13 +17,15 @@ public static class Consts
     //音乐
     //UI界面
     public const string UI_Score = "Score";//得分
-    
+    public const string UI_Help = "Help";//帮助
+
     #region Message 子功能调用传递的消息，MSG+子功能+具体作用
 
     //UI具体作用
     public const string Msg_UI_Score = "Msg_UI_统计得分";//统计得分
-    //public const string Msg_Pool_GetObject = "Msg_Pool_获得对象池对象";////对象池不用事件，这里改成其他功能的消息
-    
+    public const string Msg_UI_Help_TopHint = "Msg_UI_Help_顶端提示";
+    public const string Msg_UI_Help_ToolTip = "Msg_UI_Help_提示框";
+
     # endregion
     
     //模板
