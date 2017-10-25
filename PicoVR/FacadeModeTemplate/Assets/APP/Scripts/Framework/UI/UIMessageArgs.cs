@@ -9,5 +9,5 @@ public class UIMessageArgs
     //关联消息名称
     public string Name;
     //关联消息方法
-    public Action<object> CallBack;
+    public Action<string, object> CallBack;
 }

@@ -24,6 +24,23 @@ public class HelpManager : MonoBehaviour {
     {
         print(ha.context);
         //跟UI交互
-        Facade.Instance.HandleMessage(Consts.Msg_UI_Help_TopHint, ha);
+        switch(ha.actionMode)
+        {
+            case HelpActionMode.TopHint:
+                {
+                    Facade.Instance.HandleMessage(Consts.Msg_UI_Help_TopHint, ha);
+                }
+                break;
+            case HelpActionMode.ToolTip:
+                {
+                     Facade.Instance.HandleMessage(Consts.Msg_UI_Help_ToolTip, ha);
+                }
+                break;
+            case HelpActionMode.ToolTipToTask:
+                {
+
+                }
+                break;
+        }
     }
 }

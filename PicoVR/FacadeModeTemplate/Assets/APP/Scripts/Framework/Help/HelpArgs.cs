@@ -44,8 +44,8 @@ public class HelpArgs : MonoBehaviour
     [Header("DaA:距离和角度")]
     public float distance;
     public float angle;
-    //[Header("Collision:碰撞和触发")]
-    //public string objectName;
+    [Header("Collision:碰撞和触发")]
+    public string objectName;
     [Header("Time:时间长度")]
     public float time;
 //#endif

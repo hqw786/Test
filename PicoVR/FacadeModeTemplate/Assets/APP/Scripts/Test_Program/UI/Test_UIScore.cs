@@ -53,11 +53,11 @@ public class Test_UIScore : UIBase
         {
             if(ma.Name.Contains(message))
             {
-                ma.CallBack(arg);
+                ma.CallBack(message, arg);
             }
         }
     }
-    void DisplayScore(object arg)
+    void DisplayScore(string message, object arg)
     {
         scoreText.text = "hehe";
     }
@@ -65,7 +65,7 @@ public class Test_UIScore : UIBase
     {
         if (scoreText.text.Contains("haha"))
         {
-            DisplayScore(null);
+            DisplayScore(string.Empty, null);
         }
         else
         {
